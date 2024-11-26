@@ -362,15 +362,10 @@ const ViewAllButton = styled(Button)(({ theme }) => ({
   fontWeight: 600,
   fontSize: '16px',
   boxShadow: 'none',
-  marginTop: 5,
   textAlign: 'center',
-  marginLeft: 72,
-  [theme.breakpoints.up('md')]: {   //900
-    marginLeft: 106,
-  },
-  [theme.breakpoints.down('sm')]: {   //900
-    marginLeft: '35%',
-  }
+  marginLeft: "45%",
+  marginTop: 30,
+  background: '#ffd036'
 }));
 
 const fadeInUp = {
@@ -1193,7 +1188,6 @@ export default function Softxon() {
       </Box>
       <AnimatedSection>
         <div>
-          <div style={{ marginTop: "10vh" }} />
           <ScrollToTop smooth />
         </div>
       </AnimatedSection>
