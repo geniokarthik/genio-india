@@ -1,7 +1,7 @@
 # genio-india
 Genio India Software private limited - Home Page
 
-## Who to run project
+## How to run project
 
 In the project directory, you can run:
 
