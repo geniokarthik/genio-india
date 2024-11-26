@@ -84,7 +84,7 @@ export default function Footer() {
   return (
     <Box sx={{ minHeight: '100vh' }}>
       <Header />
-      <Box sx={{ bgcolor: "#1c1c1c", color: "#fff", pt: 8, pb: 4 }}>
+      <Box sx={{ bgcolor: "#1c1c1c", color: "#fff", pt: 8, pb: 20 }}>
         <Container maxWidth="lg">
           {/* Top Section */}
           <Box

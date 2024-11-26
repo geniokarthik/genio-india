@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   AppBar,
   Toolbar,
@@ -17,40 +17,20 @@ import {
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
-// Custom styled components with updated styling to match the design
+// Custom styled components
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   background: '#ffffff',
   boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.08)',
   borderRadius: '50px',
   height: '80px',
-  width: "85%",
+  width: '85%',
   maxWidth: '1200px',
   margin: '20px auto',
   position: 'fixed',
   left: '50%',
   transform: 'translateX(-50%)',
-  [theme.breakpoints.down('xs')]: {   //0
-    width: '50%',
-    left: '5%',
-    height: '70px',
-  },
-  [theme.breakpoints.down('sm')]: {   //600
-    width: 10,
-    left: '50%',
-    height: '70px',
-  },
-  [theme.breakpoints.down(700)]: {   //600
-    width: 20,
-    marginLeft: '18%',
-    height: '70px',
-  },
-  [theme.breakpoints.down('md')]: {    //900
-    width: 370,
-    left: '10%',
-    height: '70px',
-  },
 }))
 
 const Logo = styled('div')({
@@ -66,20 +46,31 @@ const Logo = styled('div')({
   fontSize: '1.4rem',
 })
 
-const NavButton = styled(Button)({
-  color: '#1A1A1A',
+const NavButton = styled(Button)(({ active }) => ({
+  position: 'relative',
+  color: active ? '#FF7F11' : '#1A1A1A',
   textTransform: 'none',
   fontSize: '16px',
   fontWeight: 500,
   padding: '8px 16px',
-  borderRadius: '25px',
-  '&:hover': {
-    background: 'rgba(0, 0, 0, 0.04)',
+  overflow: 'hidden',
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: active ? '100%' : '0',
+    height: '3px',
+    backgroundColor: '#FF7F11',
+    transition: 'width 0.3s ease-in-out',
   },
-})
+  '&:hover::after': {
+    width: '100%',
+  },
+}))
 
 const TalkButton = styled(Button)({
-  backgroundColor: '#FFD036',
+  backgroundColor: '#FF7F11',
   color: '#1A1A1A',
   borderRadius: '25px',
   padding: '10px 24px',
@@ -87,7 +78,7 @@ const TalkButton = styled(Button)({
   fontWeight: 600,
   fontSize: '16px',
   '&:hover': {
-    backgroundColor: '#FFD036',
+    backgroundColor: '#FF7F11',
     opacity: 0.9,
   },
 })
@@ -108,6 +99,7 @@ export default function Header() {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const [drawerOpen, setDrawerOpen] = useState(false)
   const navigate = useNavigate()
+  const location = useLocation()
 
   const menuItems = [
     { label: 'Home', path: '/' },
@@ -133,6 +125,7 @@ export default function Header() {
               {menuItems.map((item) => (
                 <NavButton
                   key={item.label}
+                  active={location.pathname === item.path} // Check if active
                   endIcon={item.hasSubmenu ? <KeyboardArrowDownIcon /> : null}
                   onClick={() => navigate(item.path)}
                 >
@@ -169,7 +162,12 @@ export default function Header() {
                         setDrawerOpen(false)
                       }}
                     >
-                      <ListItemText primary={item.label} />
+                      <ListItemText
+                        primary={item.label}
+                        sx={{
+                          color: location.pathname === item.path ? '#FF7F11' : 'inherit',
+                        }}
+                      />
                       {item.hasSubmenu && <KeyboardArrowDownIcon />}
                     </ListItemButton>
                   </ListItem>
@@ -185,4 +183,3 @@ export default function Header() {
     </StyledAppBar>
   )
 }
-
