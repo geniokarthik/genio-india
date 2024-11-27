@@ -227,12 +227,6 @@ const AnimatedSection = ({ children, variants = fadeInUp }) => {
     if (ref.current) {
       observer.observe(ref.current);
     }
-
-    // return () => {
-    //   if (ref.current) {
-    //     observer.unobserve(ref.current);
-    //   }
-    // };
   }, [controls]);
 
   return (
@@ -249,10 +243,10 @@ const AnimatedSection = ({ children, variants = fadeInUp }) => {
 
 export default function Blog() {
   const marqueeRef = useRef(null);
-  
+
   return (
     <Box sx={{ minHeight: '100vh' }}>
-      <Header/>
+      <Header />
       <AnimatedSection>
         <Box
           sx={{
@@ -262,7 +256,7 @@ export default function Blog() {
             overflow: 'hidden',
           }}
         >
-          
+
           <img
             src="/about.jpg"
             alt="Example"
@@ -323,107 +317,107 @@ export default function Blog() {
                   textAlign: "center"
                 }}
               >
-                Explore the artistry behind our innovations and experience<br/> software development redefined.
+                Explore the artistry behind our innovations and experience<br /> software development redefined.
               </Typography>
             </AnimatedSection>
           </Box>
         </Box>
 
         <Box textAlign="center" mb={6}>
-        <Container maxWidth="lg">
-          <AnimatedSection>
-            <Box sx={{ textAlign: "center", mb: 6 }}>
-              <Box
-                component="span"
-                sx={{
-                  backgroundColor: '#FFE4D9',
-                  color: '#FF5722',
-                  px: 1,
-                  py: .2,
-                  borderRadius: '100px',
-                  fontSize: '0.875rem',
-                  mb: 3,
-                  fontWeight: "bold",
-                  display: 'inline-block',
-                }}
-              >
-                Blogs
+          <Container maxWidth="lg">
+            <AnimatedSection>
+              <Box sx={{ textAlign: "center", mb: 6 }}>
+                <Box
+                  component="span"
+                  sx={{
+                    backgroundColor: '#FFE4D9',
+                    color: '#FF5722',
+                    px: 1,
+                    py: .2,
+                    borderRadius: '100px',
+                    fontSize: '0.875rem',
+                    mb: 3,
+                    fontWeight: "bold",
+                    display: 'inline-block',
+                  }}
+                >
+                  Blogs
+                </Box>
+                <Typography
+                  variant="h2"
+                  sx={{
+                    fontSize: { xs: "2rem", md: "3rem" },
+                    fontWeight: 700,
+                    mt: 2,
+                    mb: 4
+                  }}
+                >
+                  Blog and Article Updates
+                </Typography>
               </Box>
-              <Typography
-                variant="h2"
-                sx={{
-                  fontSize: { xs: "2rem", md: "3rem" },
-                  fontWeight: 700,
-                  mt: 2,
-                  mb: 4
-                }}
-              >
-                Blog and Article Updates
-              </Typography>
-            </Box>
-          </AnimatedSection>
-          <AnimatedSection>
-            <Grid container spacing={4} marginLeft={1}>
-              {blogPosts.map((post) => (
-                <Grid item xs={12} md={4} key={post.id}>
-                  <Card
-                    elevation={0}
-                    sx={{
-                      bgcolor: "transparent",
-                      height: "100%",
-                      "&:hover": {
-                        cursor: "pointer",
-                      }
-                    }}
-                  >
-                    <ImageWrapper
-                      whileHover={{
-                        scale: 1.05,
-                        transition: { duration: 0.3 }
-                      }}
-                    >
-                      <img
-                        src={post.image}
-                        alt={post.title}
-                        style={{ objectFit: "cover" }}
-                      />
-                    </ImageWrapper>
-                    <CategoryTag>{post.category}</CategoryTag>
-                    <Typography
-                      variant="h5"
+            </AnimatedSection>
+            <AnimatedSection>
+              <Grid container spacing={4}>
+                {blogPosts.map((post) => (
+                  <Grid item xs={11} md={4} key={post.id}>
+                    <Card
+                      elevation={0}
                       sx={{
-                        fontWeight: 700,
-                        mb: 2,
-                        fontSize: "1.25rem",
-                        lineHeight: 1.4,
-                        minHeight: "3.5em",
-                        display: "-webkit-box",
-                        WebkitLineClamp: 2,
-                        WebkitBoxOrient: "vertical",
-                        overflow: "hidden"
+                        bgcolor: "transparent",
+                        height: "100%",
+                        "&:hover": {
+                          cursor: "pointer",
+                        }
                       }}
                     >
-                      {post.title}
-                    </Typography>
-                    <AuthorName>{post.author}</AuthorName>
-                    <Typography
-                      color="text.secondary"
-                      sx={{
-                        fontSize: "0.875rem",
-                        display: "-webkit-box",
-                        WebkitLineClamp: 2,
-                        WebkitBoxOrient: "vertical",
-                        overflow: "hidden"
-                      }}
-                    >
-                      {post.description}
-                    </Typography>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
-          </AnimatedSection>
-        </Container>
+                      <ImageWrapper
+                        whileHover={{
+                          scale: 1.05,
+                          transition: { duration: 0.3 }
+                        }}
+                      >
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          style={{ objectFit: "cover" }}
+                        />
+                      </ImageWrapper>
+                      <CategoryTag>{post.category}</CategoryTag>
+                      <Typography
+                        variant="h5"
+                        sx={{
+                          fontWeight: 700,
+                          mb: 2,
+                          fontSize: "1.25rem",
+                          lineHeight: 1.4,
+                          minHeight: "3.5em",
+                          display: "-webkit-box",
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden"
+                        }}
+                      >
+                        {post.title}
+                      </Typography>
+                      <AuthorName>{post.author}</AuthorName>
+                      <Typography
+                        color="text.secondary"
+                        sx={{
+                          fontSize: "0.875rem",
+                          display: "-webkit-box",
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden"
+                        }}
+                      >
+                        {post.description}
+                      </Typography>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            </AnimatedSection>
+          </Container>
         </Box>
       </AnimatedSection>
 
@@ -431,121 +425,121 @@ export default function Blog() {
         <Box textAlign="center" mb={6}>
           <AnimatedSection delay={0.2}>
             <Typography variant="h5" sx={{ mt: 2, fontWeight: 'bold' }}>
-             We’ve Worked With 150+ Global Companies
+              We’ve Worked With 150+ Global Companies
             </Typography>
           </AnimatedSection>
         </Box>
       </Grid>
       <Box
-          ref={marqueeRef}
-          sx={{
-            width: "100%",
-            overflow: "hidden",
-            padding: "20px 0",
+        ref={marqueeRef}
+        sx={{
+          width: "100%",
+          overflow: "hidden",
+          padding: "20px 0",
+        }}
+      >
+        <motion.div
+          initial={{ x: 0 }}
+          animate={{ x: "-30%" }}
+          transition={{
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 20,
+            ease: "linear",
+          }}
+          style={{
+            display: "flex",
+            width: "fit-content",
           }}
         >
-          <motion.div
-            initial={{ x: 0 }}
-            animate={{ x: "-30%" }}
-            transition={{
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 20,
-              ease: "linear",
-            }}
-            style={{
-              display: "flex",
-              width: "fit-content",
-            }}
-          >
-            {[...logos, ...logos].map((logo, index) => (
-              <Box
-                key={index}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  minWidth: 150,
-                  height: 80,
-                }}
-              >
-                <AnimatedSection key={`brand_duplicate_${index}`}>
-                  <BrandCard bgcolor={logo.bgColor}>
-                    <Box
-                      component="img"
-                      src={logo.logo}
-                      sx={{ width: 32, height: 32 }}
-                    />
-                    <Typography
-                      sx={{
-                        fontWeight: 600,
-                        flex: 1,
-                      }}
-                    >
-                      {logo.name}
-                    </Typography>
-                    {logo.tag && <Tag color={logo.tagColor}>{logo.tag}</Tag>}
-                  </BrandCard>
-                </AnimatedSection>
-              </Box>
-            ))}
-          </motion.div>
-        </Box>
-        <Box
-          ref={marqueeRef}
-          sx={{
-            width: "100%",
-            overflow: "hidden",
-            padding: "20px 0",
+          {[...logos, ...logos].map((logo, index) => (
+            <Box
+              key={index}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                minWidth: 150,
+                height: 80,
+              }}
+            >
+              <AnimatedSection key={`brand_duplicate_${index}`}>
+                <BrandCard bgcolor={logo.bgColor}>
+                  <Box
+                    component="img"
+                    src={logo.logo}
+                    sx={{ width: 32, height: 32 }}
+                  />
+                  <Typography
+                    sx={{
+                      fontWeight: 600,
+                      flex: 1,
+                    }}
+                  >
+                    {logo.name}
+                  </Typography>
+                  {logo.tag && <Tag color={logo.tagColor}>{logo.tag}</Tag>}
+                </BrandCard>
+              </AnimatedSection>
+            </Box>
+          ))}
+        </motion.div>
+      </Box>
+      <Box
+        ref={marqueeRef}
+        sx={{
+          width: "100%",
+          overflow: "hidden",
+          padding: "20px 0",
+        }}
+      >
+        <motion.div
+          initial={{ x: 0 }}
+          animate={{ x: "30%" }}
+          transition={{
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 20,
+            ease: "linear",
+          }}
+          style={{
+            display: "flex",
+            width: "fit-content",
           }}
         >
-          <motion.div
-            initial={{ x: 0 }}
-            animate={{ x: "30%" }}
-            transition={{
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 20,
-              ease: "linear",
-            }}
-            style={{
-              display: "flex",
-              width: "fit-content",
-            }}
-          >
-            {[...logos, ...logos].map((logo, index) => (
-              <Box
-                key={index}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  minWidth: 150,
-                  height: 80,
-                }}
-              >
-                <AnimatedSection key={`brand_duplicate_${index}`}>
-                  <BrandCard bgcolor={logo.bgColor}>
-                    <Box
-                      component="img"
-                      src={logo.logo}
-                      sx={{ width: 32, height: 32 }}
-                    />
-                    <Typography
-                      sx={{
-                        fontWeight: 600,
-                        flex: 1,
-                      }}
-                    >
-                      {logo.name}
-                    </Typography>
-                    {logo.tag && <Tag color={logo.tagColor}>{logo.tag}</Tag>}
-                  </BrandCard>
-                </AnimatedSection>
-              </Box>
-            ))}
-          </motion.div>
-        </Box>
+          {[...logos, ...logos].map((logo, index) => (
+            <Box
+              key={index}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                minWidth: 150,
+                height: 80,
+              }}
+            >
+              <AnimatedSection key={`brand_duplicate_${index}`}>
+                <BrandCard bgcolor={logo.bgColor}>
+                  <Box
+                    component="img"
+                    src={logo.logo}
+                    sx={{ width: 32, height: 32 }}
+                  />
+                  <Typography
+                    sx={{
+                      fontWeight: 600,
+                      flex: 1,
+                    }}
+                  >
+                    {logo.name}
+                  </Typography>
+                  {logo.tag && <Tag color={logo.tagColor}>{logo.tag}</Tag>}
+                </BrandCard>
+              </AnimatedSection>
+            </Box>
+          ))}
+        </motion.div>
+      </Box>
 
       <Box sx={{ bgcolor: "#1c1c1c", color: "#fff", pt: 8, pb: 4 }}>
         <Container maxWidth="lg">

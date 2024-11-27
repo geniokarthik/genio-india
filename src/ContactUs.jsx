@@ -15,6 +15,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  styled,
 } from '@mui/material';
 import {
   Phone as PhoneIcon,
@@ -42,6 +43,88 @@ const fadeInUp = {
   },
 };
 
+const MainContainer = styled(Container)(({ theme }) => ({
+  zIndex: 1,
+  [theme.breakpoints.up('md')]: {
+    marginLeft: 110
+  },
+}));
+
+const ContactInfoBox = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down('md')]: {   //600
+    width: "50%",
+  },
+  [theme.breakpoints.up('md')]: {
+    maxWidth: "1150",
+    display: 'flex',
+    justifyContent: 'space-evenly',
+  },
+}));
+
+const ContactBox = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.between('340', '350')]: {
+    width: 300,
+  },
+  [theme.breakpoints.between('370', '392')]: {
+    width: 340,
+  },
+  [theme.breakpoints.between('410', '432')]: {
+    width: 380,
+  },
+  [theme.breakpoints.between('530', '550')]: {
+    width: 450,
+  },
+  [theme.breakpoints.between('760', '770')]: {
+    width: 720,
+  },
+
+
+  [theme.breakpoints.up('lg')]: {
+    width: 700,
+  },
+}));
+
+const MapGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('340', '350')]: {
+    width: 310,
+  },
+  [theme.breakpoints.between('360', '365')]: {
+    width: 300,
+  },
+  [theme.breakpoints.between('370', '392')]: {
+    width: 340,
+  },
+  [theme.breakpoints.between('410', '432')]: {
+    width: 380,
+  },
+  [theme.breakpoints.between('760', '770')]: {
+    width: 720,
+  },
+  [theme.breakpoints.between('530', '550')]: {
+    width: 450,
+  },
+
+  [theme.breakpoints.up('lg')]: {
+    width: 700,
+  },
+}));
+
+const GetInBox = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.between('340', '350')]: {
+    width: 310,
+  },
+  [theme.breakpoints.up('lg')]: {
+    width: 800,
+  },
+}));
+
+const Img = styled('img')(({ theme }) => ({
+  objectFit: 'cover',
+  transform: 'scale(1.25)', // Slight zoom effect
+  height: 400,
+  marginTop: 50,
+  width: "100%",
+}));
 const AnimatedSection = ({ children, variants = fadeInUp }) => {
   const controls = useAnimation();
   const ref = useRef(null);
@@ -59,12 +142,6 @@ const AnimatedSection = ({ children, variants = fadeInUp }) => {
     if (ref.current) {
       observer.observe(ref.current);
     }
-
-    // return () => {
-    //   if (ref.current) {
-    //     observer.unobserve(ref.current);
-    //   }
-    // };
   }, [controls]);
 
   return (
@@ -94,16 +171,9 @@ export default function ContactUs() {
           }}
         >
           {/* Image */}
-          <img
+          <Img
             src="/about.jpg"
             alt="Example"
-            style={{
-              height: 400,
-              width: "100%",
-              objectFit: 'cover',
-              transform: 'scale(1.25)', // Slight zoom effect
-              marginTop: 50
-            }}
           />
 
           {/* Dark overlay */}
@@ -162,66 +232,67 @@ export default function ContactUs() {
           </Box>
         </Box>
 
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, marginLeft: 11 }}>
-          <Box maxWidth="1150px" display={'flex'} justifyContent={'space-evenly'}>
+        <MainContainer maxWidth="lg">
+          <ContactInfoBox>
+            <Grid item xs={12} md={6} >
+              <ContactBox >
+                <Typography
+                  variant="h1"
+                  sx={{
+                    color: 'black',
+                    fontSize: { xs: '38px', md: '54px' },
+                    fontWeight: 700,
+                    lineHeight: 1.1,
+                    mb: 3,
+                  }}
+                >
+                  Contact Information
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: 'black',
+                    fontSize: { xs: '16px', md: '18px' },
+                    mb: 4,
+                    maxWidth: '500px',
+                    lineHeight: 1.6,
+                  }}
+                >
+                  Our software solutions transcend boundaries, driving innovation and empowering businesses to thrive in the digital era.
+                </Typography>
 
-            <Grid item xs={12} md={6} width={700}>
-              <Typography
-                variant="h1"
-                sx={{
-                  color: 'black',
-                  fontSize: { xs: '38px', md: '54px' },
-                  fontWeight: 700,
-                  lineHeight: 1.1,
-                  mb: 3,
-                }}
-              >
-                Contact Information
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: 'black',
-                  fontSize: { xs: '16px', md: '18px' },
-                  mb: 4,
-                  maxWidth: '500px',
-                  lineHeight: 1.6,
-                }}
-              >
-                Our software solutions transcend boundaries, driving innovation and empowering businesses to thrive in the digital era.
-              </Typography>
-
-              <List>
-                <ListItem>
-                  <ListItemIcon>
-                    <PhoneIcon color="primary" />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="Phone number"
-                    secondary="(219) 555-0114"
-                  />
-                </ListItem>
-                <ListItem>
-                  <ListItemIcon>
-                    <EmailIcon color="primary" />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="Email address"
-                    secondary="bill.sanders@example.com"
-                  />
-                </ListItem>
-                <ListItem>
-                  <ListItemIcon>
-                    <HelpIcon color="primary" />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="Help & Support"
-                    secondary="Our dedicated team can help you 24/7"
-                  />
-                </ListItem>
-              </List>
+                <List>
+                  <ListItem>
+                    <ListItemIcon>
+                      <PhoneIcon color="primary" />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary="Phone number"
+                      secondary="(219) 555-0114"
+                    />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemIcon>
+                      <EmailIcon color="primary" />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary="Email address"
+                      secondary="bill.sanders@example.com"
+                    />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemIcon>
+                      <HelpIcon color="primary" />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary="Help & Support"
+                      secondary="Our dedicated team can help you 24/7"
+                    />
+                  </ListItem>
+                </List>
+              </ContactBox>
             </Grid>
-            <Grid item xs={12} md={6} width={700}>
+            <MapGrid item xs={12} md={6}>
               <Paper
                 elevation={3}
                 sx={{
@@ -243,9 +314,9 @@ export default function ContactUs() {
                   Map loading...
                 </Typography>
               </Paper>
-            </Grid>
-          </Box>
-        </Container>
+            </MapGrid>
+          </ContactInfoBox>
+        </MainContainer>
       </AnimatedSection>
       <AnimatedSection>
         <Card sx={{ maxWidth: 1000, margin: 'auto', mt: 5, mb: 5, borderRadius: 5 }}>
@@ -256,7 +327,7 @@ export default function ContactUs() {
             <Typography variant="body1" align="center" color="text.secondary" paragraph>
               Reach out to us through the contact form below to get your project started!
             </Typography>
-            <Box component="form" noValidate sx={{ mt: 3 }} width={800} paddingLeft={10}>
+            <GetInBox component="form" noValidate sx={{ mt: 3 }} >
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6} borderRadius={10}>
                   <TextField
@@ -322,7 +393,7 @@ export default function ContactUs() {
               >
                 SEND MESSAGE
               </Button>
-            </Box>
+            </GetInBox>
           </CardContent>
         </Card>
       </AnimatedSection>

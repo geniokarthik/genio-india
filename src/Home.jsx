@@ -171,12 +171,8 @@ const MainSection = styled('div')(({ theme }) => ({
   },
 }));
 
-const Asterisk = styled('div')({
+const Asterisk = styled('div')(({ theme }) => ({
   position: 'absolute',
-  right: '3.5%',
-  top: '20%',
-  width: '500px',
-  height: '500px',
   color: '#ff5c00',
   animation: 'rotate 20s linear infinite',
   '@keyframes rotate': {
@@ -187,7 +183,161 @@ const Asterisk = styled('div')({
       transform: 'rotate(360deg)',
     },
   },
-});
+  [theme.breakpoints.between('340', '350')]: {   //600
+    marginTop: 70,
+  },
+  [theme.breakpoints.down('sm')]: {   //600
+    width: '400px',
+    height: '400px',
+    textAlign: 'center',
+    top: '40%',
+    left: '5%'
+  },
+  [theme.breakpoints.up('sm')]: {
+    width: '500px',
+    height: '500px',
+    left: '15%'
+  },
+  [theme.breakpoints.up('md')]: {   //900
+    top: '20%',
+    width: '500px',
+    height: '500px',
+    marginLeft: "40%"
+  },
+}));
+
+
+const Img = styled('img')(({ theme }) => ({
+  borderRadius: '8px',
+  [theme.breakpoints.between('343', '380')]: {   //600
+    height: 420,
+    marginLeft: 35,
+    width: 300,
+  },
+  [theme.breakpoints.between('390', '393')]: {   //600
+    height: 470,
+    marginLeft: 35,
+    width: 350,
+  },
+  [theme.breakpoints.between('411', '432')]: {   //600
+    height: 490,
+    marginLeft: 35,
+    width: 360,
+  },
+  [theme.breakpoints.between('530', '550')]: {   //600
+    height: 540,
+    marginLeft: 95,
+    width: 380,
+  },
+  [theme.breakpoints.between('760', '770')]: {   //600
+    height: 830,
+    marginLeft: 105,
+    width: 550,
+  },
+  [theme.breakpoints.between('800', '830')]: {   //600
+    height: 850,
+    marginLeft: 105,
+    width: 600,
+  },
+  [theme.breakpoints.between('850', '855')]: {   //600
+    height: 850,
+    marginLeft: 100,
+    width: 600,
+  },
+  [theme.breakpoints.between('1000', '1050')]: {   //600
+    height: 700,
+    width: 500,
+  },
+  [theme.breakpoints.down('sm')]: {   //600
+    paddingRight: 10,
+  },
+  [theme.breakpoints.up('lg')]: {   //900
+    paddingTop: 50,
+    paddingLeft: 140,
+  },
+}));
+
+const ImgBox = styled(Box)(({ theme }) => ({
+  position: 'relative',
+  width: '100%',
+  overflow: 'hidden',
+  marginRight: 11,
+  [theme.breakpoints.between('343', '350')]: {   //600
+    height: 400,
+  },
+  [theme.breakpoints.up('lg')]: {   //900
+    height: '650px'
+  },
+}));
+
+const GridContainer = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {   //600
+    spacing: 3,
+    // paddingLeft: 25,
+    sm: 6
+  },
+  [theme.breakpoints.up('sm')]: {
+    spacing: 3,
+    paddingLeft: 25,
+    xs: 2
+  },
+  [theme.breakpoints.up('md')]: {   //900
+    spacing: 3,
+  },
+  [theme.breakpoints.up('lg')]: {   //900
+    paddingLeft: 180,
+  },
+}));
+
+const GridSubContainer = styled(Grid)(({ theme }) => ({
+  marginTop: 10,
+  [theme.breakpoints.down('sm')]: {   //600
+
+  },
+  [theme.breakpoints.up('sm')]: {
+  },
+  [theme.breakpoints.down('lg')]: {
+  },
+}));
+
+
+const ServiceCard = styled(Card)(({ theme }) => ({
+  [theme.breakpoints.between('344', '374')]: {   //600
+    width: "79%",
+    alignItems: 'center',
+    marginLeft: 2
+  },
+  [theme.breakpoints.between('374', '474')]: {
+    width: "77%",
+    alignItems: 'center',
+    marginLeft: 11
+  },
+  [theme.breakpoints.between('474', 'md')]: {
+    width: "81%",
+    alignItems: 'center',
+    marginLeft: 13
+  },
+  [theme.breakpoints.between('767', '770')]: {
+    width: "84%",
+    alignItems: 'center',
+  },
+  [theme.breakpoints.between('819', '854')]: {
+    width: "85%",
+    alignItems: 'center',
+  },
+  [theme.breakpoints.between('911', '915')]: {
+    width: "90%",
+    alignItems: 'center',
+  },
+  [theme.breakpoints.between('1020', '1050')]: {
+    width: "90%",
+    alignItems: 'center',
+  },
+  [theme.breakpoints.up('md')]: {   //900
+    alignItems: 'center',
+  },
+}));
+
 
 const testimonials = [
   {
@@ -305,7 +455,6 @@ const CategoryTag = styled(Typography)(({ theme }) => ({
 
 const ImageWrapper = styled(motion.div)({
   position: "relative",
-  width: "90%",
   height: "240px",
   borderRadius: "16px",
   overflow: "hidden",
@@ -356,7 +505,7 @@ const CompanyLogo = styled(Box)(({ color }) => ({
 const ViewAllButton = styled(Button)(({ theme }) => ({
   bgcolor: '#ffd036',
   color: '#1c1c1c',
-  '&:hover': { bgcolor: '#ffd036' },
+  '&:hover': { bgcolor: '#ffd036ba' },
   borderRadius: 100,
   textTransform: 'none',
   fontWeight: 600,
@@ -367,6 +516,18 @@ const ViewAllButton = styled(Button)(({ theme }) => ({
   marginTop: 30,
   background: '#ffd036'
 }));
+
+const HeaderContainer = styled(Container)(({ theme }) => ({
+  position: 'relative',
+  zIndex: 1,
+  [theme.breakpoints.down('md')]: {   //600
+    textAlign: 'center',
+  },
+  [theme.breakpoints.up('md')]: {   //600
+    marginLeft: 110
+  },
+}));
+
 
 const fadeInUp = {
   hidden: {
@@ -439,7 +600,7 @@ export default function Softxon() {
     <Box sx={{ minHeight: '100vh' }}>
       <Header />
       <MainSection>
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, marginLeft: 11 }}>
+        <HeaderContainer maxWidth="lg">
           <Box maxWidth="600px">
             <AnimatedSection>
               <Typography
@@ -462,7 +623,6 @@ export default function Softxon() {
                   color: 'rgba(255,255,255,0.7)',
                   fontSize: { xs: '16px', md: '18px' },
                   mb: 4,
-                  maxWidth: '500px',
                   lineHeight: 1.6,
                 }}
               >
@@ -476,7 +636,7 @@ export default function Softxon() {
                   sx={{
                     bgcolor: '#ffd036',
                     color: '#1c1c1c',
-                    '&:hover': { bgcolor: '#ffd036' },
+                    '&:hover': { bgcolor: '#ffd036b5' },
                     borderRadius: '9999px',
                     px: 4,
                     py: 1.5,
@@ -510,7 +670,7 @@ export default function Softxon() {
             </AnimatedSection>
 
           </Box>
-        </Container>
+        </HeaderContainer>
         <Asterisk>
           <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             {/* Vertical line */}
@@ -527,17 +687,9 @@ export default function Softxon() {
           </svg>
         </Asterisk>
         <AnimatedSection>
-          <Box
-            sx={{
-              position: 'relative',
-              width: '100%',
-              height: '650px',
-              overflow: 'hidden',
-              marginRight: 11
-            }}
-          >
-            <img src="/image12.jpg" alt="Example" style={{ height: 600, width: 420, borderRadius: '8px', paddingLeft: 140, paddingTop: 50 }} />
-          </Box>
+          <ImgBox>
+            <Img src="/image12.jpg" alt="Example" />
+          </ImgBox>
         </AnimatedSection>
 
       </MainSection>
@@ -569,14 +721,15 @@ export default function Softxon() {
           </Typography>
         </AnimatedSection>
       </Box>
-      <Grid container spacing={3} paddingLeft={25}>
+      <GridContainer container >
         {services.map((service, index) => (
-          <Grid item xs={2} md={5} key={index}>
+          <GridSubContainer item
+            // xs={2} md={5} 
+            key={index}>
             <AnimatedSection>
-              <Card
+              <ServiceCard
                 sx={{
                   p: 4,
-                  width: "85%",
                   height: '70%',
                   borderRadius: 10,
                   display: 'flex',
@@ -626,62 +779,52 @@ export default function Softxon() {
                     },
                   }}
                 />
-              </Card>
+              </ServiceCard>
             </AnimatedSection>
-          </Grid>
+          </GridSubContainer>
         ))}
-      </Grid>
+      </GridContainer>
       <Grid container spacing={6} alignItems="center">
         <Grid item xs={12} md={6}>
           <AnimatedSection>
-            <Box
-              sx={{
-                position: 'relative',
-                width: '100%',
-                height: '650px',
-                borderRadius: '24px',
-                overflow: 'hidden',
-                marginLeft: 12,
-              }}
-            >
-              <img src="/image2.png" alt="Example" style={{ borderRadius: '8px', paddingTop: 50 }} />
-            </Box>
+            <ImgBox>
+              <Img src="/image1.png" alt="Example" />
+            </ImgBox>
           </AnimatedSection>
 
         </Grid>
-        <Grid item xs={12} md={6} style={{ paddingRight: 40 }}>
+        <Grid item xs={12} md={6} >
           <AnimatedSection delay={0.2}>
-            <Box
-              component="span"
-              sx={{
-                backgroundColor: '#FFE4D9',
-                color: '#FF5722',
-                px: 1,
-                py: .2,
-                borderRadius: '100px',
-                fontSize: '0.875rem',
-                mb: 3,
-                fontWeight: "bold",
-                display: 'inline-block',
-              }}
-            >
-              Features
+            <Box textAlign="center">
+              <Box
+                component="span"
+                sx={{
+                  backgroundColor: '#FFE4D9',
+                  color: '#FF5722',
+                  px: 1,
+                  py: .2,
+                  borderRadius: '100px',
+                  fontSize: '0.875rem',
+                  mb: 3,
+                  fontWeight: "bold",
+                  display: 'inline-block',
+                }}
+              >
+                Features
+              </Box>
+              <Typography
+                variant="h2"
+                sx={{
+                  fontSize: { xs: '2.5rem', md: '3.5rem' },
+                  fontWeight: 700,
+                  mb: 4,
+                  mt: 2,
+                  right: "4%"
+                }}
+              >
+                Our Key Features & Capabilities
+              </Typography>
             </Box>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.3}>
-            <Typography
-              variant="h2"
-              sx={{
-                fontSize: { xs: '2.5rem', md: '3.5rem' },
-                fontWeight: 700,
-                mb: 4,
-                mt: 2,
-                right: "4%"
-              }}
-            >
-              Our Key Features & Capabilities
-            </Typography>
           </AnimatedSection>
 
           <Box sx={{ mt: 4, marginRight: "12%" }}>
@@ -693,6 +836,7 @@ export default function Softxon() {
                     boxShadow: 'none',
                     '&:before': { display: 'none' },
                     mb: 2,
+                    ml: 5,
                   }}
                 >
                   <AccordionSummary
@@ -717,10 +861,11 @@ export default function Softxon() {
                       '&.Mui-expanded': {
                         borderBottomLeftRadius: 0,
                         borderBottomRightRadius: 0,
+                        ml: 5,
                       },
                     }}
                   >
-                    <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600, ml: 5 }}>
                       {feature.title}
                     </Typography>
                   </AccordionSummary>
@@ -730,6 +875,7 @@ export default function Softxon() {
                       borderTop: 'none',
                       borderBottomLeftRadius: '12px',
                       borderBottomRightRadius: '12px',
+                      ml: 5,
                     }}
                   >
                     <Typography color="text.secondary">
@@ -772,7 +918,7 @@ export default function Softxon() {
             <Box
               sx={{
                 display: 'flex',
-                gap: 2,
+                gap: 1,
                 justifyContent: 'center',
                 padding: 4,
               }}
@@ -855,7 +1001,7 @@ export default function Softxon() {
                 onMouseEnter={() => setHoveredMember(index)}
                 onMouseLeave={() => setHoveredMember(null)}
               >
-                <Box style={{ paddingLeft: 50 }}>
+                <Box style={{ paddingLeft: 30 }}>
                   <MemberName>{member.name}</MemberName>
                   <MemberRole>/{member.role}</MemberRole>
                 </Box>
@@ -892,16 +1038,15 @@ export default function Softxon() {
                 <Box
                   component="span"
                   sx={{
-                    background: 'linear-gradient(to bottom, #FF5722, #000000)', // Gradient from orange (#FF5722) to black (#000000)
-                    color: '#fff', // Text color white
-                    '&:hover': {
-                      background: 'linear-gradient(to bottom, #FF5722, #000000)', // Keep the same gradient on hover
-                    },
-                    borderRadius: '9999px',
-                    fontWeight: 600,
-                    height: 40,
-                    fontSize: '16px',
-                    boxShadow: 'none',
+                    backgroundColor: '#FFE4D9',
+                    color: '#FF5722',
+                    px: 1,
+                    py: .2,
+                    borderRadius: '100px',
+                    fontSize: '0.875rem',
+                    mb: 3,
+                    fontWeight: "bold",
+                    display: 'inline-block',
                   }}
                 >
                   Testimonials
@@ -1120,7 +1265,7 @@ export default function Softxon() {
           <AnimatedSection>
             <Grid container spacing={1} marginLeft={1}>
               {blogPosts.map((post) => (
-                <Grid item xs={12} md={4} key={post.id}>
+                <Grid item xs={11} md={4} key={post.id}>
                   <Card
                     elevation={0}
                     sx={{
@@ -1140,7 +1285,6 @@ export default function Softxon() {
                       <img
                         src={post.image}
                         alt={post.title}
-                        style={{ objectFit: "cover" }}
                       />
                     </ImageWrapper>
                     <CategoryTag>{post.category}</CategoryTag>

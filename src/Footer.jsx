@@ -52,6 +52,12 @@ const SocialIcon = styled(Link)({
   }
 })
 
+const Logo = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+})
+
 const footerSections = [
   {
     title: "Main pages",
@@ -98,19 +104,9 @@ export default function Footer() {
             }}
           >
             <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-              <Box
-                sx={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: "50%",
-                  bgcolor: "#fff",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}
-              >
-                <Typography sx={{ color: "#1c1c1c", fontWeight: "bold" }}>G</Typography>
-              </Box>
+              <Logo>
+                <img src="/genio_india_logo.png" alt="" />
+              </Logo>
               <Typography variant="h6" sx={{ fontWeight: "bold" }}>Genio India</Typography>
             </Box>
 
@@ -122,7 +118,7 @@ export default function Footer() {
               sx={{
                 bgcolor: '#ffd036',
                 color: '#1c1c1c',
-                '&:hover': { bgcolor: '#ffd036' },
+                '&:hover': { bgcolor: '#ffd036ba' },
                 borderRadius: '9999px',
                 px: 3,
                 ml: 2,
@@ -156,7 +152,7 @@ export default function Footer() {
                   sx={{
                     bgcolor: '#ffd036',
                     color: '#1c1c1c',
-                    '&:hover': { bgcolor: '#ffd036' },
+                    '&:hover': { bgcolor: '#ffd036ba' },
                     borderRadius: '9999px',
                     px: 3,
                     ml: 2,
@@ -217,7 +213,7 @@ export default function Footer() {
                 <Instagram />
               </SocialIcon>
               <SocialIcon href="#" aria-label="X">
-                <X/>
+                <X />
               </SocialIcon>
               <SocialIcon href="#" aria-label="LinkedIn">
                 <LinkedIn />
