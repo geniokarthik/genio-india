@@ -11,7 +11,7 @@ import {
   Input,
   Link,
 } from '@mui/material';
-import { Facebook, Twitter, LinkedIn, YouTube } from "@mui/icons-material"
+import { Facebook, X, LinkedIn, Instagram } from "@mui/icons-material"
 import Header from './Header';
 import { useNavigate } from 'react-router-dom';
 
@@ -213,14 +213,14 @@ export default function Footer() {
               <SocialIcon href="#" aria-label="Facebook">
                 <Facebook />
               </SocialIcon>
-              <SocialIcon href="#" aria-label="Twitter">
-                <Twitter />
+              <SocialIcon href="#" aria-label="Facebook">
+                <Instagram />
+              </SocialIcon>
+              <SocialIcon href="#" aria-label="X">
+                <X/>
               </SocialIcon>
               <SocialIcon href="#" aria-label="LinkedIn">
                 <LinkedIn />
-              </SocialIcon>
-              <SocialIcon href="#" aria-label="YouTube">
-                <YouTube />
               </SocialIcon>
             </Stack>
           </Box>

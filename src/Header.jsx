@@ -46,7 +46,32 @@ const Logo = styled('div')({
   fontSize: '1.4rem',
 })
 
-const NavButton = styled(Button)(({ active }) => ({
+// const NavButton = styled(Button)(({ active }) => ({
+//   position: 'relative',
+//   color: active ? '#FF7F11' : '#1A1A1A',
+//   textTransform: 'none',
+//   fontSize: '16px',
+//   fontWeight: 500,
+//   padding: '8px 16px',
+//   overflow: 'hidden',
+//   '&::after': {
+//     content: '""',
+//     position: 'absolute',
+//     bottom: 0,
+//     left: 0,
+//     width: active ? '100%' : '0',
+//     height: '3px',
+//     backgroundColor: '#FF7F11',
+//     transition: 'width 0.3s ease-in-out',
+//   },
+//   '&:hover::after': {
+//     width: '100%',
+//   },
+// }))
+
+const NavButton = styled(Button, {
+  shouldForwardProp: (prop) => prop !== 'active', // Prevent `active` from being passed to the DOM
+})(({ active }) => ({
   position: 'relative',
   color: active ? '#FF7F11' : '#1A1A1A',
   textTransform: 'none',
@@ -67,10 +92,10 @@ const NavButton = styled(Button)(({ active }) => ({
   '&:hover::after': {
     width: '100%',
   },
-}))
+}));
 
 const TalkButton = styled(Button)({
-  backgroundColor: '#FF7F11',
+  backgroundColor: '#ffd036',
   color: '#1A1A1A',
   borderRadius: '25px',
   padding: '10px 24px',

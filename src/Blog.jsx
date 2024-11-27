@@ -385,7 +385,6 @@ export default function Blog() {
                       <img
                         src={post.image}
                         alt={post.title}
-                        fill
                         style={{ objectFit: "cover" }}
                       />
                     </ImageWrapper>

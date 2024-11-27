@@ -1140,7 +1140,6 @@ export default function Softxon() {
                       <img
                         src={post.image}
                         alt={post.title}
-                        fill
                         style={{ objectFit: "cover" }}
                       />
                     </ImageWrapper>
