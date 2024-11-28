@@ -45,13 +45,13 @@ const fadeInUp = {
 
 const MainContainer = styled(Container)(({ theme }) => ({
   zIndex: 1,
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.up('1280px')]: {
     marginLeft: 110
   },
 }));
 
 const ContactInfoBox = styled(Box)(({ theme }) => ({
-  [theme.breakpoints.down('md')]: {   //600
+  [theme.breakpoints.down('md')]: {   
     width: "50%",
   },
   [theme.breakpoints.up('md')]: {
@@ -65,6 +65,9 @@ const ContactBox = styled(Box)(({ theme }) => ({
   [theme.breakpoints.between('340', '350')]: {
     width: 300,
   },
+  [theme.breakpoints.between('360', '369')]: {
+    width: 340
+  },
   [theme.breakpoints.between('370', '392')]: {
     width: 340,
   },
@@ -76,6 +79,15 @@ const ContactBox = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.between('760', '770')]: {
     width: 720,
+  },
+  [theme.breakpoints.between('780', 'lg')]: {
+    width: 800,
+  },
+  [theme.breakpoints.between('819', '830')]: {
+    width: 750,
+  },
+  [theme.breakpoints.between('910', '1030')]: {
+    width: 700,
   },
 
 
@@ -89,7 +101,7 @@ const MapGrid = styled(Grid)(({ theme }) => ({
     width: 310,
   },
   [theme.breakpoints.between('360', '365')]: {
-    width: 300,
+    width: 330,
   },
   [theme.breakpoints.between('370', '392')]: {
     width: 340,
@@ -102,6 +114,17 @@ const MapGrid = styled(Grid)(({ theme }) => ({
   },
   [theme.breakpoints.between('530', '550')]: {
     width: 450,
+    marginLeft: 26
+  },
+  [theme.breakpoints.between('700', '820')]: {
+    width: 660,
+  },
+  [theme.breakpoints.between('819', '855')]: {
+    width: 750,
+    marginLeft:10
+  },
+  [theme.breakpoints.between('910', '1030')]: {
+    width: 700,
   },
 
   [theme.breakpoints.up('lg')]: {
@@ -113,8 +136,22 @@ const GetInBox = styled(Box)(({ theme }) => ({
   [theme.breakpoints.between('340', '350')]: {
     width: 310,
   },
+  [theme.breakpoints.between('sm', 'lg')]: {
+    width: 800,
+    paddingLeft: 80
+  },
+  [theme.breakpoints.between('760', '770')]: {
+    width: 540,
+  },
+  [theme.breakpoints.between('819', '855')]: {
+    width: 600,
+  },
+  [theme.breakpoints.between('910', '930')]: {
+    width: 700,
+  },
   [theme.breakpoints.up('lg')]: {
     width: 800,
+    paddingLeft: 80
   },
 }));
 
@@ -327,7 +364,7 @@ export default function ContactUs() {
             <Typography variant="body1" align="center" color="text.secondary" paragraph>
               Reach out to us through the contact form below to get your project started!
             </Typography>
-            <GetInBox component="form" noValidate sx={{ mt: 3 }} >
+            <GetInBox component="form" noValidate sx={{ mt: 3 }} align="center" >
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6} borderRadius={10}>
                   <TextField

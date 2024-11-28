@@ -20,7 +20,6 @@ import { keyframes } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import ScrollToTop from "react-scroll-to-top";
 
 const services = [
   {
@@ -158,15 +157,14 @@ const teamMembers = [
 
 const MainSection = styled('div')(({ theme }) => ({
   background: '#1c1c1c',
-  minHeight: '100vh',
   position: 'relative',
   overflow: 'hidden',
   paddingTop: '120px',
-  [theme.breakpoints.up('md')]: {   //900
+  [theme.breakpoints.up('md')]: {
     display: 'flex',
     alignItems: 'center',
   },
-  [theme.breakpoints.down('xs')]: {   //0
+  [theme.breakpoints.down('xs')]: {
     width: 600,
   },
 }));
@@ -183,10 +181,10 @@ const Asterisk = styled('div')(({ theme }) => ({
       transform: 'rotate(360deg)',
     },
   },
-  [theme.breakpoints.between('340', '350')]: {   //600
+  [theme.breakpoints.between('340', '350')]: {
     marginTop: 70,
   },
-  [theme.breakpoints.down('sm')]: {   //600
+  [theme.breakpoints.down('sm')]: {
     width: '400px',
     height: '400px',
     textAlign: 'center',
@@ -198,7 +196,7 @@ const Asterisk = styled('div')(({ theme }) => ({
     height: '500px',
     left: '15%'
   },
-  [theme.breakpoints.up('md')]: {   //900
+  [theme.breakpoints.up('md')]: {
     top: '20%',
     width: '500px',
     height: '500px',
@@ -209,49 +207,49 @@ const Asterisk = styled('div')(({ theme }) => ({
 
 const Img = styled('img')(({ theme }) => ({
   borderRadius: '8px',
-  [theme.breakpoints.between('343', '380')]: {   //600
+  [theme.breakpoints.between('343', '380')]: {
     height: 420,
     marginLeft: 35,
     width: 300,
   },
-  [theme.breakpoints.between('390', '393')]: {   //600
+  [theme.breakpoints.between('390', '393')]: {
     height: 470,
     marginLeft: 35,
     width: 350,
   },
-  [theme.breakpoints.between('411', '432')]: {   //600
+  [theme.breakpoints.between('411', '432')]: {
     height: 490,
     marginLeft: 35,
     width: 360,
   },
-  [theme.breakpoints.between('530', '550')]: {   //600
+  [theme.breakpoints.between('530', '550')]: {
     height: 540,
     marginLeft: 95,
     width: 380,
   },
-  [theme.breakpoints.between('760', '770')]: {   //600
+  [theme.breakpoints.between('760', '770')]: {
     height: 830,
     marginLeft: 105,
     width: 550,
   },
-  [theme.breakpoints.between('800', '830')]: {   //600
+  [theme.breakpoints.between('800', '830')]: {
     height: 850,
     marginLeft: 105,
     width: 600,
   },
-  [theme.breakpoints.between('850', '855')]: {   //600
+  [theme.breakpoints.between('850', '855')]: {
     height: 850,
     marginLeft: 100,
     width: 600,
   },
-  [theme.breakpoints.between('1000', '1050')]: {   //600
+  [theme.breakpoints.between('1000', '1050')]: {
     height: 700,
     width: 500,
   },
-  [theme.breakpoints.down('sm')]: {   //600
+  [theme.breakpoints.down('sm')]: {
     paddingRight: 10,
   },
-  [theme.breakpoints.up('lg')]: {   //900
+  [theme.breakpoints.up('lg')]: {
     paddingTop: 50,
     paddingLeft: 140,
   },
@@ -262,18 +260,17 @@ const ImgBox = styled(Box)(({ theme }) => ({
   width: '100%',
   overflow: 'hidden',
   marginRight: 11,
-  [theme.breakpoints.between('343', '350')]: {   //600
+  [theme.breakpoints.between('343', '350')]: {
     height: 400,
   },
-  [theme.breakpoints.up('lg')]: {   //900
+  [theme.breakpoints.up('lg')]: {
     height: '650px'
   },
 }));
 
 const GridContainer = styled(Grid)(({ theme }) => ({
-  [theme.breakpoints.down('sm')]: {   //600
+  [theme.breakpoints.down('sm')]: {
     spacing: 3,
-    // paddingLeft: 25,
     sm: 6
   },
   [theme.breakpoints.up('sm')]: {
@@ -281,28 +278,21 @@ const GridContainer = styled(Grid)(({ theme }) => ({
     paddingLeft: 25,
     xs: 2
   },
-  [theme.breakpoints.up('md')]: {   //900
+  [theme.breakpoints.up('md')]: {
     spacing: 3,
   },
-  [theme.breakpoints.up('lg')]: {   //900
-    paddingLeft: 180,
+  [theme.breakpoints.up('lg')]: {
+    paddingLeft: 165,
   },
 }));
 
 const GridSubContainer = styled(Grid)(({ theme }) => ({
   marginTop: 10,
-  [theme.breakpoints.down('sm')]: {   //600
-
-  },
-  [theme.breakpoints.up('sm')]: {
-  },
-  [theme.breakpoints.down('lg')]: {
-  },
 }));
 
 
 const ServiceCard = styled(Card)(({ theme }) => ({
-  [theme.breakpoints.between('344', '374')]: {   //600
+  [theme.breakpoints.between('344', '374')]: {
     width: "79%",
     alignItems: 'center',
     marginLeft: 2
@@ -333,11 +323,10 @@ const ServiceCard = styled(Card)(({ theme }) => ({
     width: "90%",
     alignItems: 'center',
   },
-  [theme.breakpoints.up('md')]: {   //900
+  [theme.breakpoints.up('md')]: {
     alignItems: 'center',
   },
 }));
-
 
 const testimonials = [
   {
@@ -520,14 +509,13 @@ const ViewAllButton = styled(Button)(({ theme }) => ({
 const HeaderContainer = styled(Container)(({ theme }) => ({
   position: 'relative',
   zIndex: 1,
-  [theme.breakpoints.down('md')]: {   //600
+  [theme.breakpoints.down('md')]: {
     textAlign: 'center',
   },
-  [theme.breakpoints.up('md')]: {   //600
+  [theme.breakpoints.up('md')]: {
     marginLeft: 110
   },
 }));
-
 
 const fadeInUp = {
   hidden: {
@@ -562,12 +550,6 @@ const AnimatedSection = ({ children, variants = fadeInUp }) => {
     if (ref.current) {
       observer.observe(ref.current);
     }
-
-    // return () => {
-    //   if (ref.current) {
-    //     observer.unobserve(ref.current);
-    //   }
-    // };
   }, [controls]);
 
   return (
@@ -597,7 +579,7 @@ export default function Softxon() {
   }
 
   return (
-    <Box sx={{ minHeight: '100vh' }}>
+    <Box>
       <Header />
       <MainSection>
         <HeaderContainer maxWidth="lg">
@@ -942,7 +924,7 @@ export default function Softxon() {
                     },
                   }}
                 >
-                  <Typography variant="h6" sx={{ position: 'relative', zIndex: 2 }}>
+                  <Typography sx={{ position: 'relative', zIndex: 2 }}>
                     {step.title}
                   </Typography>
 
@@ -1329,11 +1311,6 @@ export default function Softxon() {
           </ViewAllButton>
         </AnimatedSection>
       </Box>
-      <AnimatedSection>
-        <div>
-          <ScrollToTop smooth />
-        </div>
-      </AnimatedSection>
       <Footer />
     </Box>
   );

@@ -123,6 +123,148 @@ const fadeInUp = {
     },
   },
 };
+const MissionContent = styled(Typography)(({ theme }) => ({
+  mt: 2, 
+  fontWeight: 'bold', 
+  textAlign:"center",
+  [theme.breakpoints.between('359', '392')]: {
+    marginLeft: 10,
+  },
+  [theme.breakpoints.between('410', '420')]: {
+    marginLeft: 18,
+  },
+  [theme.breakpoints.between('760', '830')]: {
+    marginLeft: 90,
+  },
+  [theme.breakpoints.between('850', '860')]: {
+    marginLeft: 150,
+  },
+  [theme.breakpoints.up('md')]: {
+    marginLeft: 80,
+  },
+}))
+
+const MissionBox = styled(Box)(({ theme }) => ({
+  color: 'white', 
+  width: '95%',
+  [theme.breakpoints.up('md')]: {
+    display:'flex', 
+    justifyContent:'space-evenly',
+  },
+}));
+const StoryGrid = styled(Grid)(({ theme }) => ({
+  textAlign: 'center',
+  [theme.breakpoints.between('530', '550')]: {
+    paddingLeft: 20,
+  },
+  [theme.breakpoints.between('760', '8300')]: {
+    paddingLeft: 40,
+  },
+  [theme.breakpoints.between('1000', '1100')]: {
+    paddingLeft: 100,
+  },
+  [theme.breakpoints.between('1200', '1300')]: {
+    paddingLeft: 250,
+  },
+  [theme.breakpoints.up('1300')]: {
+    paddingLeft: 279,
+    spacing: 3,
+  },
+}));
+
+const StoryInsideGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('340', '350')]: {
+    textAlign: 'center',
+  },
+  [theme.breakpoints.up('md')]: {
+    textAlign: 'center',
+    xs: 2, 
+    md: 5,
+  },
+}));
+
+const StoryInsideCard = styled(Card)(({ theme }) => ({
+  [theme.breakpoints.between('340', '350')]: {
+    width: "81%",
+  },
+  [theme.breakpoints.up('350')]: {
+    width: "83%",
+  },
+}));
+
+const TeamMemberBox = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.up('1200')]: {
+    marginLeft: 9,
+    marginRight: 5,
+  },
+}));
+
+
+const Img = styled('img')(({ theme }) => ({
+  borderRadius: '8px',
+  [theme.breakpoints.between('343', '380')]: {   
+    height: 420,
+    marginLeft: 35,
+    width: 300,
+  },
+  [theme.breakpoints.between('390', '393')]: {   
+    height: 470,
+    marginLeft: 35,
+    width: 350,
+  },
+  [theme.breakpoints.between('411', '432')]: {   
+    height: 490,
+    marginLeft: 35,
+    width: 360,
+  },
+  [theme.breakpoints.between('530', '550')]: {   
+    height: 540,
+    marginLeft: 95,
+    width: 380,
+  },
+  [theme.breakpoints.between('760', '770')]: {   
+    height: 830,
+    marginLeft: 105,
+    width: 550,
+  },
+  [theme.breakpoints.between('800', '830')]: {   
+    height: 850,
+    marginLeft: 105,
+    width: 600,
+  },
+  [theme.breakpoints.between('850', '855')]: {   
+    height: 850,
+    marginLeft: 100,
+    width: 600,
+  },
+  [theme.breakpoints.between('1000', '1050')]: {   
+    height: 700,
+    width: 500,
+  },
+  [theme.breakpoints.down('sm')]: {   
+    paddingRight: 10,
+  },
+  [theme.breakpoints.up('lg')]: {   
+    paddingTop: 50,
+    paddingLeft: 140,
+  },
+}));
+
+
+const ImgBox = styled(Box)(({ theme }) => ({
+  borderRadius: '8px',
+  position: 'relative',
+  width: '100%',
+  overflow: 'hidden',
+  marginRight: 11,
+  [theme.breakpoints.between('343', '350')]: {   
+    height: 400,
+  },
+  [theme.breakpoints.up('1000')]: {   
+    height: '500px',
+  },
+}));
+
 
 const AnimatedSection = ({ children, variants = fadeInUp }) => {
   const controls = useAnimation();
@@ -141,12 +283,6 @@ const AnimatedSection = ({ children, variants = fadeInUp }) => {
     if (ref.current) {
       observer.observe(ref.current);
     }
-
-    // return () => {
-    //   if (ref.current) {
-    //     observer.unobserve(ref.current);
-    //   }
-    // };
   }, [controls]);
 
   return (
@@ -272,7 +408,7 @@ export default function About() {
               Empower Customers
             </Typography>
 
-          <AnimatedSection>
+          {/* <AnimatedSection>
             <Box
               sx={{
                 width: '80%',
@@ -288,29 +424,37 @@ export default function About() {
               <img src="/ourmission2.jpg" alt="Example" style={{ borderRadius: 20, height: 400, width: 350 }} />
               <img src="/ourmission3.jpg" alt="Example" style={{ borderRadius: 20, height: 400, width: 350 }} />
             </Box>
-          </AnimatedSection>
+          </AnimatedSection> */}
         </Box>
 
       </AnimatedSection>
       <MainSection>
         <AnimatedSection>
-          <Box style={{display:'flex', justifyContent:'space-evenly', width: '95%'}}>
-            <Typography variant="h4" sx={{ mt: 2, fontWeight: 'bold', color: 'white' , marginLeft: 17}}>
+          <MissionBox>
+            <MissionContent variant="h4" 
+            // sx={{ mt: 2, fontWeight: 'bold', marginLeft: 17}}
+            >
               The Values That Lead Our Company
-            </Typography>
-            <Typography variant="h6" sx={{ mt: 2, color: 'white', marginLeft: 15 }}>
-              {totalClients}M+
+            </MissionContent>
+            <MissionContent variant="h6" 
+            // sx={{ mt: 2, color: 'white', marginLeft: 15 }}
+            >
+              <span style={{color:'#ff5722'}}>{totalClients}M+</span>
               Total Clients
-            </Typography>
-            <Typography variant="h6" sx={{ mt: 2, color: 'white', marginLeft: 14 }}>
-              {anuualRevenue}%
+            </MissionContent>
+            <MissionContent variant="h6" 
+            // sx={{ mt: 2, color: 'white', marginLeft: 14 }}
+            >
+              <span style={{color:'#ff5722'}}>{anuualRevenue}%</span>
               Annual Revenue
-            </Typography>
-            <Typography variant="h6" sx={{ mt: 2, color: 'white', marginLeft: 14, verticalAlign:'center' }}>
-              {globalClient}M+
+            </MissionContent>
+            <MissionContent variant="h6"
+            // sx={{ mt: 2, color: 'white', marginLeft: 14, verticalAlign:'center' }}
+            >
+              <span style={{color:'#ff5722'}}>{globalClient}M+</span>
               Global Clients
-            </Typography>
-          </Box>
+            </MissionContent>
+          </MissionBox>
         </AnimatedSection>
       </MainSection>
 
@@ -344,14 +488,13 @@ export default function About() {
         </AnimatedSection>
       </Box>
 
-      <Grid container spacing={3} paddingLeft={25}>
+      <StoryGrid container>
         {services.map((service, index) => (
-          <Grid item xs={2} md={5} key={index}>
+          <StoryInsideGrid item key={index}>
             <AnimatedSection>
-              <Card
+              <StoryInsideCard
                 sx={{
                   p: 4,
-                  width: "85%",
                   height: '70%',
                   borderRadius: 5,
                   display: 'flex',
@@ -371,90 +514,77 @@ export default function About() {
                 <Typography color="text.secondary" sx={{ mb: 2, flex: 1 }}>
                   {service.description}
                 </Typography>
-              </Card>
+              </StoryInsideCard>
             </AnimatedSection>
-          </Grid>
+          </StoryInsideGrid>
         ))}
-      </Grid>
+      </StoryGrid>
       <Grid container spacing={6} alignItems="center">
         <Grid item xs={12} md={6}>
           <AnimatedSection>
-            <Box
-              sx={{
-                position: 'relative',
-                width: '100%',
-                height: '650px',
-                overflow: 'hidden',
-                marginLeft: 15,
-              }}
-            >
-              <img src="/careers.jpg" alt="Example" style={{ borderRadius: 20, height: 550, width: 550 }} />
-            </Box>
+            <ImgBox>
+              <Img src="/careers.jpg" alt="Example" />
+            </ImgBox>
           </AnimatedSection>
-
         </Grid>
-        <Grid item xs={12} md={6} style={{ paddingRight: 40 }}>
+        <Grid item xs={12} md={6} >
+          <Box textAlign={'center'}>
           <AnimatedSection delay={0.2}>
-            <Box
-              component="span"
-              sx={{
-                backgroundColor: '#FFE4D9',
-                color: '#FF5722',
-                px: 1,
-                py: .2,
-                borderRadius: '100px',
-                fontSize: '0.875rem',
-                mb: 3,
-                fontWeight: "bold",
-                display: 'inline-block',
-              }}
-            >
-              Careers
-            </Box>
+              <Box
+                component="span"
+                sx={{
+                  backgroundColor: '#FFE4D9',
+                  color: '#FF5722',
+                  px: 1,
+                  py: .2,
+                  borderRadius: '100px',
+                  fontSize: '0.875rem',
+                  mb: 3,
+                  fontWeight: "bold",
+                  display: 'inline-block',
+                }}
+              >
+                Careers
+              </Box>
+              <Typography
+                variant="h2"
+                sx={{
+                  fontSize: { xs: '2.5rem', md: '3.5rem' },
+                  fontWeight: 700,
+                  mb: 4,
+                  mt: 2,
+                }}
+              >
+                We Develop Strategic Software Solutions for Businesses
+              </Typography>
+              <Typography variant='h6'>
+                Our software solutions transcend boundaries, driving innovation and empowering businesses to thrive in the digital era.
+              </Typography>
+              <Button
+                variant="contained"
+                sx={{
+                  bgcolor: '#ffd036',
+                  color: '#1c1c1c',
+                  '&:hover': { bgcolor: '#ffd036' },
+                  borderRadius: '9999px',
+                  px: 3,
+                  ml: 2,
+                  textTransform: 'none',
+                  fontWeight: 600,
+                  fontSize: '16px',
+                  boxShadow: 'none',
+                  marginTop: 4,
+                  textAlign: 'center'
+                }}
+                onClick={clickLearnMore}
+              >
+                Learn More
+              </Button>
           </AnimatedSection>
-
-          <AnimatedSection delay={0.3}>
-            <Typography
-              variant="h2"
-              sx={{
-                fontSize: { xs: '2.5rem', md: '3.5rem' },
-                fontWeight: 700,
-                mb: 4,
-                mt: 2,
-                paddingRight: 10
-              }}
-            >
-              We Develop Strategic Software Solutions for Businesses
-            </Typography>
-            <Typography variant='h6' pr={10}>
-              Our software solutions transcend boundaries, driving innovation and empowering businesses to thrive in the digital era.
-            </Typography>
-            <Button
-              variant="contained"
-              sx={{
-                bgcolor: '#ffd036',
-                color: '#1c1c1c',
-                '&:hover': { bgcolor: '#ffd036' },
-                borderRadius: '9999px',
-                px: 3,
-                ml: 2,
-                textTransform: 'none',
-                fontWeight: 600,
-                fontSize: '16px',
-                boxShadow: 'none',
-                marginTop: 4
-              }}
-              onClick={clickLearnMore}
-            >
-              Learn More
-            </Button>
-          </AnimatedSection>
-          <AnimatedSection delay={0.7}>
-
-          </AnimatedSection>
+          </Box>
         </Grid>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} md={6} mt={5}>
         <Box textAlign="center" mb={6}>
           <AnimatedSection delay={0.2}>
             <Box
@@ -478,7 +608,7 @@ export default function About() {
             </Typography>
           </AnimatedSection>
         </Box>
-        <Box marginLeft={9} marginRight={5}>
+        <TeamMemberBox>
           <AnimatedSection>
             {teamMembers.map((member, index) => (
               <TeamMemberContainer
@@ -506,7 +636,7 @@ export default function About() {
               </TeamMemberContainer>
             ))}
           </AnimatedSection>
-        </Box>
+        </TeamMemberBox>
       </Grid>
       <Footer/>
     </Box>

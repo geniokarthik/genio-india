@@ -12,7 +12,6 @@ import {
   Link,
 } from '@mui/material';
 import { Facebook, X, LinkedIn, Instagram } from "@mui/icons-material"
-import Header from './Header';
 import { useNavigate } from 'react-router-dom';
 
 const StyledInput = styled(Input)({
@@ -88,9 +87,8 @@ export default function Footer() {
     navigate('/contactus');
   }
   return (
-    <Box sx={{ minHeight: '100vh' }}>
-      <Header />
-      <Box sx={{ bgcolor: "#1c1c1c", color: "#fff", pt: 8, pb: 20 }}>
+    <Box>
+      <Box sx={{ bgcolor: "#1c1c1c", color: "#fff", pt: 8 }}>
         <Container maxWidth="lg">
           {/* Top Section */}
           <Box
@@ -193,6 +191,7 @@ export default function Footer() {
           <Box
             sx={{
               pt: 4,
+              pb: 5,
               borderTop: "1px solid rgba(255, 255, 255, 0.1)",
               display: "flex",
               justifyContent: "space-between",
@@ -209,7 +208,7 @@ export default function Footer() {
               <SocialIcon href="#" aria-label="Facebook">
                 <Facebook />
               </SocialIcon>
-              <SocialIcon href="#" aria-label="Facebook">
+              <SocialIcon href="#" aria-label="Instagram">
                 <Instagram />
               </SocialIcon>
               <SocialIcon href="#" aria-label="X">

@@ -123,15 +123,26 @@ const FooterLink = styled(Link)({
   }
 })
 
-
-const ImageWrapper = styled(motion.div)({
+const ImageWrapper = styled(motion.div)(({ theme }) => ({
   position: "relative",
   width: "90%",
   height: "240px",
   borderRadius: "16px",
   overflow: "hidden",
-  marginBottom: "1.5rem"
-})
+  marginBottom: "1.5rem",
+  [theme.breakpoints.between('340', '380')]: {
+    marginLeft: 30,
+  },
+  [theme.breakpoints.between('390', '542')]: {
+    marginLeft: 35,
+  },
+  [theme.breakpoints.between('760', '860')]: {
+    marginLeft: 60,
+  },
+  [theme.breakpoints.up('1270')]: {
+    marginLeft: 20,
+  },
+}));
 
 
 const CategoryTag = styled(Typography)(({ theme }) => ({
@@ -367,7 +378,7 @@ export default function Blog() {
                         height: "100%",
                         "&:hover": {
                           cursor: "pointer",
-                        }
+                        },
                       }}
                     >
                       <ImageWrapper
