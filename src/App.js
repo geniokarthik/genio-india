@@ -6,6 +6,7 @@ import Header from './Header';
 import Blog from './Blog';
 import Footer from './Footer';
 import ContactUs from './ContactUs';
+import NewHome from './New/Home';
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/footer" element={<Footer />} />
           <Route path="/contactus" element={<ContactUs />} />
+
+          {/* New Design */}
+          <Route path="/new/" element={<NewHome />} />
         </Routes>
       </Router>
   );
