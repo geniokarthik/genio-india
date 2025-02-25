@@ -42,7 +42,7 @@ export default function Header() {
           <Link href="/service" className={styles.link}>
             Service
           </Link>
-          <Link href="/about" className={styles.link}>
+          <Link href="/aboutus" className={styles.link}>
             About Us
           </Link>
           <Link href="/contact" className={styles.link}>

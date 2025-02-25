@@ -1,0 +1,206 @@
+.about {
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero Section */
+.hero {
+  margin-bottom: 4rem;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.heroRedText {
+  color: #e22110;
+}
+
+.heroSubtitle {
+  color: #050505;
+  margin-bottom: 2rem;
+}
+
+/* Timeline Section */
+.timeline {
+  position: relative;
+  padding: 2rem 0;  
+  margin-left: 100px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 5%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 70%;
+  background-color: #333;
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 4rem;
+  width: 90%;
+  margin-left: 0%;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.6s ease-out;
+}
+
+.timelineItem.animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timelineDot {
+  position: absolute;
+  top: 0;
+  left: 5.5%;
+  transform: translateX(-50%);
+  width: 27px;
+  height: 27px;
+  background-color: #e22110;
+  border-radius: 50%;
+}
+
+.timelineContent {
+  padding: 1rem;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  margin-left: 10%;
+  text-align: left;
+}
+
+.year {
+  font-size: 3rem;
+  color: #e22110;
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #0a0a0a;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 20px;
+}
+
+.description::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: -0.2em;
+  font-size: 1.5rem;
+  color: #000;
+}
+
+/* Vision Section */
+.vision {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+}
+
+.visionTitle {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.visionText {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #070707;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Values Section */
+.values {
+  padding: 2rem 0;
+}
+
+.valuesTitle {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.valueCard {
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.valueCard h3 {
+  color: #e22110;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.valueCard p {
+  color: #050505;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.25rem;
+  }
+
+  .timeline::before {
+    left: 10px;
+  }
+
+  .timelineItem {
+    width: 100%;
+    margin-left: 15%;
+  }
+
+  .timelineDot {
+    left: 10px;
+  }
+
+  .timelineContent {
+    margin: 0 2rem;
+  }
+
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.heroBackgroundGradient {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 60%;
+  width: 18.3%;
+}
