@@ -1,0 +1,88 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .logoContainer {
+    flex-shrink: 0;
+  }
+  
+  .logo {
+    object-fit: contain;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 2rem;
+    background-color: #333333;
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    align-items: center;
+  }
+  .circle {
+    width: 65px;
+    height: 65px;
+    background-color: #e22110;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    margin-left: 730px;
+  }  
+
+  .logoicon
+  {
+    margin-left: 52%;
+  }
+  
+  .link {
+    color: white;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .link:hover {
+    color: #ff3333;
+  }
+
+  .flagtext {
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+    }
+  
+    .nav {
+      padding: 0.75rem 1.5rem;
+      gap: 1rem;
+    }
+  
+    .link {
+      font-size: 0.875rem;
+    }
+
+    .flagtext {
+      font-size: 0.875rem;
+    }
+
+  }
+  
+  

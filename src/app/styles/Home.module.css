@@ -1,0 +1,316 @@
+/* home.module.css */
+/* Hero Styles */
+.home {
+    clear: both;
+      box-sizing: content-box;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 5%;
+      padding-right: 5%;
+  }
+.hero {
+    position: relative;
+    min-height: 500px;
+    padding: 3rem 1.5rem;
+    background-color: white;
+    overflow: hidden;
+  }
+  
+  .heroContent {
+    position: relative;
+    z-index: 10;
+    max-width: 600px;
+  }
+  
+  .heroTitle {
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  
+  .heroRedText {
+    color: #e22110;
+  }
+  
+  .heroThinkWrapper {
+    position: relative;
+    display: inline-block;
+    height: 70px;
+  }
+  
+  .heroThinkBorder {
+    position: absolute;
+    left: -0.5rem;
+    right: -0.5rem;
+    top: 50%;
+    height: 100%;
+    transform: translateY(-50%);
+    border: 2px solid #e5e7eb;
+    z-index: -1;
+  }
+  
+  .heroIconWrapper {
+    position: absolute;
+    right: -4rem;
+    top: -1.5rem;
+  }
+  
+  .heroIconCircle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    background-color: #e22110;
+    border-radius: 50%;
+  }
+  
+  .heroIcon {
+    width: 2rem;
+    height: 2rem;
+    color: white;
+  }
+  
+  .heroSubtitleWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .heroSubtitleBox {
+    display: inline-block;
+    background-color: #e22110;
+    padding: 6px 13px;
+  }
+  
+  .heroSubtitle {
+    color: white;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0;
+  }
+  
+  .heroDescription {
+    margin-top: 2rem;
+    font-size: 1.25rem;
+    color: #1f2937;
+  }
+  
+  .heroBackgroundGradient {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 18.3%;
+  }
+  
+  /* Business Content Styles */
+  .businessContent {
+    background-color: #e22110;
+    padding: 2rem 2rem;
+    color: white;
+    text-align: center;
+    border-radius: 2rem;
+    margin: 2rem 0;
+  }
+  
+  .businessContentTitle {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+
+  .businessContentSubtitle {
+    margin-bottom: 2rem;
+  }
+  
+  .businessServices {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+  }
+  
+  .businessService {
+    background-color: white;
+    border-radius: 2rem;
+    padding: 2rem;
+    width: 30%;
+  }
+  
+  .businessService h3 {
+    color: #e22110;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  /* Fun Facts Styles */
+  .funFacts {
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  
+  .funFactsTitle {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+  
+  .funFactsContainer {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .funFact {
+    background-color: #333333;
+    color: white;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .factNumber {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #e22110;
+  }
+  
+  .factText {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  /* Company Profile Styles */
+  .companyProfile {
+    display: flex;
+    gap: 120px;
+    padding: 60px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: Inter, -apple-system, system-ui, sans-serif;
+  }
+  
+  .profileTitleWrapper {
+    flex-shrink: 0;
+    width: 280px;
+  }
+  
+  .profileTitle {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+  
+  .profileRedC {
+    color: #ff0000;
+  }
+  
+  .profileContent {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 12px;
+  }
+  
+  .profileRow {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 40px;
+    align-items: baseline;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .profileLabel {
+    font-size: 24px;
+    font-weight: 600;
+    color: #000;
+    min-width: 250px;
+  }
+  
+  .profileValue {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #000;
+  }
+
+  .profileBulletPoints {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .profileBulletPoints div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .profileAddress {
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+  
+  .profileMapLink {
+    color: #ff0000;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .profileArrow {
+    font-size: 14px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .heroSubtitle {
+      font-size: 32px;
+    }
+    
+    .businessServices {
+      flex-direction: column;
+    }
+    
+    .businessService {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .companyProfile {
+      flex-direction: column;
+      gap: 48px;
+      padding: 32px;
+    }
+    
+    .profileTitle {
+      font-size: 48px;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .companyProfile {
+      padding: 24px;
+    }
+    
+    .profileTitle {
+      font-size: 40px;
+    }
+    
+    .profileRow {
+      grid-template-columns: 1fr;
+    }
+  }

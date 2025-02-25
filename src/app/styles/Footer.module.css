@@ -1,0 +1,100 @@
+.footer {
+  background-color: #222;
+  color: white;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footerTop {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #444;
+  padding-bottom: 20px;
+}
+
+.companyInfo {
+  max-width: 300px;
+}
+
+.companyInfo p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #bbb;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 50px;
+}
+
+.footerLinks div {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerLinks h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footerLinks a {
+  text-decoration: none;
+  color: #bbb;
+  font-size: 14px;
+  margin-bottom: 5px;
+  transition: color 0.3s ease-in-out;
+}
+
+.footerLinks a:hover {
+  color: white;
+}
+
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.socialMedia, .contact {
+  display: flex;
+  flex-direction: row; /* Align items horizontally */
+  align-items: center;
+  gap: 15px;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.footerBottom p {
+  font-size: 14px;
+  color: #bbb;
+  margin-left: 10px; /* Optional: Space between copyright and contact */
+}
+
+@media (max-width: 768px) {
+  .footerTop {
+    flex-direction: column;
+  }
+
+  .footerLinks {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footerBottom {
+    flex-direction: row;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .footerBottom .socialMedia,
+  .footerBottom .contact {
+    justify-content: center; /* Center both sections */
+  }
+}

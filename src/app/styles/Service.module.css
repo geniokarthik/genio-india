@@ -1,0 +1,244 @@
+/* Layout & Container */
+.main {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero {
+  padding: var(--spacing-lg) var(--spacing-sm);
+}
+
+.hero__content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+
+.hero__contents {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.hero__text {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.subtitle {
+  font-weight: 600;
+  font-size: 1.5rem;
+  font-family: "Belanosima";
+}
+
+.hero__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  font-family: "ADLaM Display";
+  color:#0a0a0a;
+}
+
+.web_dev__description {
+  font-size: 1.7rem;
+}
+
+@media (max-width: 660px) {
+  .web_dev__description {
+    text-align: center;
+    font-size: 1.4rem;
+  }
+  .app_dev__description {
+    text-align: center;
+    font-size: 1.4rem;
+  }
+
+}
+
+.app_dev__description {
+  font-size: 1.7rem;
+}
+/* Services Section */
+.services {
+  padding: var(--spacing-lg) var(--spacing-sm);
+}
+
+.services__title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: var(--spacing-lg);
+  font-family: "Belanosima";
+}
+
+.services__grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.service_card {
+  background: var(--color-background);
+  padding: var(--spacing-md);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.service_card__icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.service_card__title {
+  font-size: 1.7rem;
+  margin-bottom: 0.5rem;
+  font-family: "ADLaM Display";
+}
+
+.service_card__text {
+  color: var(--color-text-light);
+}
+
+/* Web Development Section */
+.web_dev {
+  padding: var(--spacing-lg) var(--spacing-sm);
+}
+
+.web_dev__content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.web_dev__text {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.web_dev__title {
+  font-size: 2.5rem;
+  text-align: center;
+  font-family: "Cherry Bomb";
+  color:#0a0a0a
+}
+
+.web_single__text {
+  color:#e02311
+}
+
+.web-dev__images {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+.web_dev__image {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* App Development Section */
+.app_dev {
+  padding: var(--spacing-lg) var(--spacing-sm);
+}
+
+@media (max-width: 768px) {
+  .app_dev {
+    padding: var(--spacing-sm) var(--spacing-sm);
+  }
+  .web_dev {
+    padding: var(--spacing-sm) var(--spacing-sm);
+  }
+  .hero {
+    padding: var(--spacing-sm) var(--spacing-sm);
+  }
+}
+
+.app_dev__content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.app_dev__text {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.app_dev__title {
+  font-size: 2.5rem;
+  text-align: center;
+  font-family: "Cherry Bomb";
+  color:#0a0a0a
+}
+
+.app_dev__images {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+}
+
+.app_dev__image {
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 945px) {
+  .service_card__content {
+    text-align: center;
+  }
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .hero__content {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .hero__contents {
+    align-items: center;
+  }
+  
+  .hero__title {
+    font-size: 3.5rem;
+  }
+
+  .services__grid {
+    text-align: center;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .web_dev__content {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .web_dev__images {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .app_dev__content {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .app_dev__images {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .app_dev__image {
+    max-width: 250px;
+  }
+}
