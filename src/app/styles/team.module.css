@@ -1,186 +1,211 @@
 .team {
-    padding: 4rem 2rem;
-    background-color: white;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .title {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 3rem;
-    color: #090909;
-  }
-  
-  .teamGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    padding: 1rem;
-  }
-  
-  .teamCard {
-    perspective: 1000px;
-    padding: 1rem;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .flipCard {
-    position: relative;
-    width: 100%;
-    height: 350px; /* Reduced height */
-    cursor: pointer;
-    transition: transform 0.6s ease-in-out;
-    border-radius: 20px; /* Adds rounded corners */
-    background-color: #ff0000; /* Red background */
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Adds shadow for depth */
-  }
-  
-  .flipCardInner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s ease-in-out;
-    transform-style: preserve-3d;
-    border-radius: inherit;
-  }
-  
-  .teamCard:hover .flipCardInner {
-    transform: rotateY(180deg);
-  }
-  
-  .flipCardFront,
-  .flipCardBack {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: inherit; /* Ensures curves apply to both sides */
-    overflow: hidden;
-  }
-  
-  .flipCardFront {
-    background-color: white;
-    border: none;
-  }
-  
-  .flipCardBack {
-    background-color: #f7f6f6; /* Red background for the back */
-    color: rgb(8, 8, 8);
-    transform: rotateY(180deg);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1.5rem;
-  }
-  
-  .memberImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: inherit;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .teamCard:hover .memberImage {
-    transform: scale(1.05); /* Slight zoom effect on hover */
-  }
-  
-  .memberInfo {
-    text-align: center;
-    padding: 0.5rem 0; /* Reduced padding */
-    margin-top: 0.5rem;
-  }
-  
-  .memberName {
-    font-size: 1.4rem; /* Reduced size */
-    font-weight: bold;
-    margin-bottom: 0.3rem;
-    color: rgb(4, 4, 4); /* White text */
-  }
-  
-  .memberRole {
-    font-size: 1.1rem;
-    color: #e22110; /* Golden color for better contrast */
-    margin-bottom: 0.5rem;
-    text-align: center;
-  }
-  
-  .memberDescription {
-    font-size: 0.9rem; /* Smaller size for secondary details */
-    line-height: 1.4;
-    text-align: center;
-  }
-  
-  @media (max-width: 768px) {
-    .title {
-      font-size: 2rem;
-    }
-  
-    .teamGrid {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-  
-    .flipCard {
-      height: 300px; /* Reduced height for smaller screens */
-    }
-  }
+  padding: 4rem 2rem;
+  background-color: white;
+}
 
-  .teamContent {
-    background-color: #e22110;
-    padding: 1.5rem 1.5rem;
-    color: white;
-    text-align: center;
-    border-radius: 3rem;
-    margin: 2rem 0;
-  }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
+.heroTitle {
+  font-size: 2.5rem;
+  color: #050505;
+  margin-bottom: 1rem;
+}
+
+.heroRedText {
+  color: #e22110;
+  font-weight: bold;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  color: #020202;
+  margin-bottom: 3rem;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0rem;
+  padding: 1rem;
+}
+
+.teamCard {
+  perspective: 1000px;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.flipCard {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  cursor: pointer;
+  transition: transform 0.6s ease-in-out;
+  border-radius: 20px;
+  background-color: #ff0000;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.flipCardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s ease-in-out;
+  transform-style: preserve-3d;
+  border-radius: inherit;
+}
+
+.teamCard:hover .flipCardInner {
+  transform: rotateY(180deg);
+}
+
+.flipCardFront,
+.flipCardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.flipCardFront {
+  background-color: white;
+  border: none;
+}
+
+.flipCardBack {
+  background-color: #f7f6f6;
+  color: rgb(8, 8, 8);
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.memberImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  transition: transform 0.3s ease-in-out;
+}
+
+.teamCard:hover .memberImage {
+  transform: scale(1.05);
+}
+
+.memberInfo {
+  text-align: center;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+}
+
+.memberName {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: rgb(4, 4, 4);
+}
+
+.memberRole {
+  font-size: 1.1rem;
+  color: #e22110;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.memberDescription {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.socialMedia {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.socialLink {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+}
+
+.socialLink:hover {
+  transform: scale(1.1);
+}
+
+.socialIcon {
+  border-radius: 50%;
+  display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .heroTitle {
-    font-size: 2.5rem;
-    color: #050505;
-   /* text-align: center;*/
-    margin-bottom: 1rem; /* Add bottom margin */
+    font-size: 2rem;
   }
-  
-  .heroRedText {
-    color: #e22110;
-    font-weight: bold;
-  }
-  
+
   .heroSubtitle {
-    font-size: 1.5rem;
-    color: #020202;
-    /*text-align: center;*/
+    font-size: 1.25rem;
   }
 
-  .socialMedia {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-  
-  .socialLink {
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    transition: transform 0.3s ease;
-  }
-  
-  .socialLink:hover {
-    transform: scale(1.1);
-  }
-  
-  .socialIcon {
-    border-radius: 50%;
-    display: block;
+  .teamGrid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 
-  
+  .flipCard {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 1.75rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+
+  .teamGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .flipCard {
+    height: 250px;
+  }
+
+  .memberName {
+    font-size: 1.2rem;
+  }
+
+  .memberRole {
+    font-size: 1rem;
+  }
+
+  .memberDescription {
+    font-size: 0.8rem;
+  }
+}
+
+
+.teamContent {
+  background-color: #e22110;
+  padding: 1rem 1rem;
+  color: white;
+  text-align: center;
+  border-radius: 3rem;
+  margin: 2rem 0;
+}
