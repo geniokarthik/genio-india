@@ -1,65 +1,177 @@
 "use client";
-
-import { useState } from "react";
-import Image from "next/image"
-import Link from "next/link"
-import styles from "src/app/styles/Header.module.css"
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation"; // Import usePathname
+import styles from "src/app/styles/Header.module.css";
 import logo from "src/assets/images/logo.png";
 import logoicon from "src/assets/images/logoicon.png";
 import IndFlgIcon from "src/assets/images/indflag.png";
 import JpFlgIcon from "src/assets/images/jpflag.png";
+import Sidebar from "react-sidebar";
 
 export default function Header() {
-
   const [flag, setFlag] = useState(IndFlgIcon);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const pathname = usePathname(); // Get current pathname
 
+  // Handle flag toggle
   const handleFlagClick = () => {
     setFlag(flag === IndFlgIcon ? JpFlgIcon : IndFlgIcon);
-  }
+  };
 
-    return (
-      <header className={styles.header}>
-        <div className={styles.logoContainer}>
-          <Image
-            src={logo}
-            alt="Genio India Logo"
-            width={180}
-            height={100}
-            className={styles.logo}
-          />
-        </div>
-        <div className={styles.logoicon}>
-          <Link href="/" className={styles.link}>
-            <Image
-              src={logoicon}
-              alt="Genio India Logo"
-              width={50}
-              height={50}
-            />
-          </Link>
-        </div>
-        <nav className={styles.nav}>
-          <Link href="/service" className={styles.link}>
-            Service
-          </Link>
-          <Link href="/aboutus" className={styles.link}>
-            About Us
-          </Link>
-          <Link href="/contact" className={styles.link}>
-            Contact Us
-          </Link>
-        </nav>
-        <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+  // Handle sidebar toggle
+  const onSetSidebarOpen = (open) => {
+    setSidebarOpen(open);
+  };
+
+  // Check screen size
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Sidebar content
+  const sidebarContent = (
+    <div className={styles.sidebarContent}>
+      <button 
+        className={styles.closeButton}
+        onClick={() => setSidebarOpen(false)}
+      >
+        ✕
+      </button>
+      <div className={styles.sidebarNav}>
+        <Link 
+          href="/" 
+          className={`${styles.sidebarLink} ${pathname === "/" ? styles.active : ""}`} 
+          onClick={() => setSidebarOpen(false)}
+        >
+          Home
+        </Link>
+        <Link 
+          href="/service" 
+          className={`${styles.sidebarLink} ${pathname === "/service" ? styles.active : ""}`} 
+          onClick={() => setSidebarOpen(false)}
+        >
+          Service
+        </Link>
+        <Link 
+          href="/aboutus" 
+          className={`${styles.sidebarLink} ${pathname === "/aboutus" ? styles.active : ""}`} 
+          onClick={() => setSidebarOpen(false)}
+        >
+          About Us
+        </Link>
+        <Link 
+          href="/contactus" 
+          className={`${styles.sidebarLink} ${pathname === "/contactus" ? styles.active : ""}`} 
+          onClick={() => setSidebarOpen(false)}
+        >
+          Contact Us
+        </Link>
+        <div className={styles.sidebarFlagContainer} onClick={handleFlagClick}>
           <Image 
             src={flag} 
-            alt="India Flag" 
+            alt={flag === IndFlgIcon ? "India Flag" : "Japan Flag"} 
             width={30} 
             height={30} 
-            onClick={handleFlagClick}
           />
-          <span className={styles.flagtext}>{flag === IndFlgIcon ? 'In' : 'Jp'}</span>
+          <span className={styles.flagtext}>{flag === IndFlgIcon ? "IN" : "JP"}</span>
         </div>
-      </header>
-    )
-  }
+      </div>
+    </div>
+  );
 
+  return (
+    <header className={styles.header}>
+      <div className={styles.logoContainer}>
+        <Image
+          src={logo}
+          alt="Genio India Logo"
+          width={180}
+          height={100}
+          className={styles.logo}
+        />
+      </div>
+
+      {isMobile ? (
+        <Sidebar
+          sidebar={sidebarContent}
+          open={sidebarOpen}
+          onSetOpen={onSetSidebarOpen}
+          pullRight={true}
+          styles={{ 
+            sidebar: { 
+              background: "white",
+              width: "250px",
+              position: "fixed",
+              zIndex: 999,
+              top: 0,
+              bottom: 0
+            },
+            overlay: {
+              zIndex: 998
+            }
+          }}
+        >
+          <div className={styles.mobileMenu}>
+            <button 
+              className={`${styles.hamburger} ${sidebarOpen ? styles.open : ""}`}
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+            >
+              <span className={styles.hamburgerIcon}></span>
+            </button>
+          </div>
+        </Sidebar>
+      ) : (
+        <div className={styles.rightSection}>
+          <div className={styles.logoicon}>
+            <Link href="/" className={styles.link}>
+              <Image
+                src={logoicon}
+                alt="Genio India Logo"
+                width={50}
+                height={50}
+              />
+            </Link>
+          </div>
+          <nav className={styles.nav}>
+            <Link 
+              href="/service" 
+              className={`${styles.link} ${pathname === "/service" ? styles.active : ""}`}
+            >
+              Service
+            </Link>
+            <Link 
+              href="/aboutus" 
+              className={`${styles.link} ${pathname === "/aboutus" ? styles.active : ""}`}
+            >
+              About Us
+            </Link>
+            <Link 
+              href="/contactus" 
+              className={`${styles.link} ${pathname === "/contactus" ? styles.active : ""}`}
+            >
+              Contact Us
+            </Link>
+          </nav>
+          <div className={styles.flagContainer} onClick={handleFlagClick}>
+            <Image 
+              src={flag} 
+              alt={flag === IndFlgIcon ? "India Flag" : "Japan Flag"} 
+              width={30} 
+              height={30} 
+            />
+            <span className={styles.flagtext}>{flag === IndFlgIcon ? "IN" : "JP"}</span>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}

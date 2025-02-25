@@ -4,6 +4,16 @@
   overflow-x: hidden;
 }
 
+.home {
+  clear: both;
+  box-sizing: content-box;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
 /* Hero Section */
 .hero {
   padding: var(--spacing-lg) var(--spacing-sm);
@@ -50,7 +60,7 @@
 @media (max-width: 660px) {
   .web_dev__description {
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 1rem;
   }
   .app_dev__description {
     text-align: center;
@@ -60,7 +70,7 @@
 }
 
 .app_dev__description {
-  font-size: 1.7rem;
+  font-size: 1rem;
 }
 /* Services Section */
 .services {

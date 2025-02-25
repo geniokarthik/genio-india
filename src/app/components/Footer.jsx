@@ -15,26 +15,21 @@ export default function Footer() {
       <div className={styles.footerTop}>
         <div className={styles.companyInfo}>
           <Image src={logo} alt="Genio Logo" width={150} height={50} />
+        </div>
+        <div>
           <p>Genio India Software Pvt. Ltd.</p>
           <p>Business hours 09:00 to 18:00</p>
-          <p>No. 5/131B1, Narikkal karadu, Vennandur, Rasipuram, Namakkal, Tamil Nadu, India-637505.</p>
+          <p>No. 5/131B1, Narikkal karadu, Vennandur, Rasipuram, Namakkal,</p>
+          <p>Tamil Nadu, India - 637505.</p>
         </div>
         <div className={styles.footerLinks}>
           <div>
-            <h3>About Genio</h3>
-            <Link href="#">Company Profile</Link>
-            <Link href="#">Access</Link>
-            <Link href="#">Corporate Philosophy</Link>
-            <Link href="#">Message from the CEO</Link>
+            <Link href="/aboutus">About Genio India</Link>
+            <Link href="#companyprofile">Company Profile</Link>
+            <Link href="#corporatehistory">Corporate History</Link>
           </div>
           <div>
-            <h3>Business Information</h3>
-            <Link href="#">Development and production track record</Link>
-            <Link href="#">Pricing & Plans</Link>
-            <Link href="#">Recruitment Information</Link>
-          </div>
-          <div>
-            <h3>Notice</h3>
+            <Link href="#">Notice</Link>
             <Link href="#">Contact Us</Link>
           </div>
         </div>

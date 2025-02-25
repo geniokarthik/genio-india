@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
 import Header from "src/app/components/Header";
 import Footer from "src/app/components/Footer";
 import TeamSection from "src/app/aboutus/TeamSection";
-
-import styles from "src/app/styles/aboutus.module.css";
-import sidelogo from "src/assets/images/home/sidelogo.png";
+import ScrollTop from "src/app/scrolltop/ScrollTop";
+import styles from "src/app/styles/Aboutus.module.css";
+import sidelogo from "src/assets/images/aboutus/sidelogo.png";
 
 export default function AboutUs() {
   const timelineRef = useRef(null);
@@ -37,8 +37,7 @@ export default function AboutUs() {
   return (
     <>
       <Header />
-      <div className={styles.about}>
-        <div className={styles.container}>
+      <div className={styles.home}>
           {/* Hero Section */}
           <motion.section
             initial={{ opacity: 0, y: 50 }}
@@ -46,6 +45,7 @@ export default function AboutUs() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className={styles.hero}
+            id="corporatehistory"
           >
             <div className={styles.heroContent}>
               <h1 className={styles.heroTitle}>
@@ -120,11 +120,10 @@ export default function AboutUs() {
               className={styles.heroBackgroundGradient}
             />
           </motion.section>
-
-          {/* Team Section */}
           <TeamSection />
-        </div>
+        {/* </div> */}
       </div>
+      <ScrollTop/>
       <Footer />
     </>
   );

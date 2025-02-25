@@ -1,48 +1,69 @@
+
 'use client';
 import { useState, useEffect } from "react";
-import Image from "next/image"
+import { motion } from "framer-motion";
+import Image from "next/image";
+import "../globals.css";
+import Header from "src/app/components/Header";
+import Footer from "src/app/components/Footer";
 
-import Header from "src/app/components/Header"
-import Footer from "src/app/components/Footer"
-
-import webdevelopment from "src/assets/images/home/webdevelopment.png"
-import appdevelopment from "src/assets/images/home/appdevelopment.png"
-import mysqldatabase from "src/assets/images/home/mysqldatabase.png"
-import sloganicon from "src/assets/images/home/sloganicon.png"
-import sloganicon2 from "src/assets/images/home/sloganicon2.png"
-import sidelogo from "src/assets/images/home/sidelogo.png"
-
-import styles from "src/app/styles/Home.module.css"
+import webdevelopment from "src/assets/images/home/webdevelopment.png";
+import appdevelopment from "src/assets/images/home/appdevelopment.png";
+import mysqldatabase from "src/assets/images/home/mysqldatabase.png";
+import sloganicon from "src/assets/images/home/sloganicon.png";
+import sloganicon2 from "src/assets/images/home/sloganicon2.png";
+import sidelogo from "src/assets/images/home/sidelogo.png";
+import ScrollTop from "src/app/scrolltop/ScrollTop";
+import styles from "src/app/styles/home.module.css";
 
 export default function Home() {
   const [imageSrc, setImageSrc] = useState(sloganicon);
+  const [heroText, setHeroText] = useState("Think");
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setImageSrc((prevImage) => 
+      setImageSrc((prevImage) =>
         prevImage === sloganicon ? sloganicon2 : sloganicon
       );
-    }, 3000); 
+      setHeroText((prevText) =>
+        prevText === "Think" ? "Create" : "Think"
+      );
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-  <><><Header />
-      <div className={styles.home}>
+    <>
+      <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet"></link>
+      <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"></link>
+      <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet"></link>
+      <Header />
+      <motion.div
+        className={styles.home}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <div className={styles.container}>
+
           {/* Hero Section */}
-          <section className={styles.hero}>
+          <motion.section
+            className={styles.hero}
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
             <div className={styles.heroContent}>
               <h1 className={styles.heroTitle}>
                 <span className={styles.heroRedText}>T</span>ogether,{" "}
                 <span className={styles.heroThinkWrapper}>
                   <span className={styles.heroRedText}>We </span>
-                  Think
+                  {heroText}
                   <span className={styles.heroThinkBorder}></span>
                   <span className={styles.heroIconWrapper}>
                     <span className={styles.heroIconCircle}>
-                      <Image src={imageSrc} alt="sloganicon" width={180} height={100}/>
+                      <Image src={imageSrc} alt="sloganicon" width={180} height={100} />
                     </span>
                   </span>
                 </span>
@@ -51,6 +72,8 @@ export default function Home() {
                 <div className={styles.heroSubtitleBox}>
                   <p className={styles.heroSubtitle}>High-quality websites</p>
                 </div>
+              </div>
+              <div className={styles.heroSubtitleWrapper1}>
                 <div className={styles.heroSubtitleBox}>
                   <p className={styles.heroSubtitle}>for all Companies</p>
                 </div>
@@ -59,76 +82,82 @@ export default function Home() {
                 Since 2022, we've been crafting innovative web, app, and database solutions with excellence!
               </p>
             </div>
-            <div >
-              <Image src={sidelogo} alt="sloganicon" className={styles.heroBackgroundGradient}/>
+            <div>
+              <Image src={sidelogo} alt="sloganicon" className={styles.heroBackgroundGradient} />
             </div>
-          </section>
+          </motion.section>
 
           {/* Business Content Section */}
-          <section className={styles.businessContent}>
-            <h2 className={styles.businessContentTitle}>Business Content</h2>
-            <p className={styles.businessContentSubtitle}>
-              We Face Our Customers&apos; Challenges And Provide Services That Bring Smiles To The Faces Of All Those
-              Involved.
-            </p>
+          <motion.section
+            className={styles.businessContent}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className={styles.businessContentTitle}>Service Content</h2>
             <div className={styles.businessServices}>
-              <div className={styles.businessService}>
-                <div className={styles.serviceImage}>
-                  <Image
-                    src={webdevelopment}
-                    alt="Web Development"
-                    width={200}
-                    height={200}
-                    className={styles.serviceIllustration} />
-                </div>
-                <h3>WEB DEVELOPMENT</h3>
-              </div>
-              <div className={styles.businessService}>
-                <div className={styles.serviceImage}>
-                  <Image
-                    src={appdevelopment}
-                    alt="App Development"
-                    width={200}
-                    height={200}
-                    className={styles.serviceIllustration} />
-                </div>
-                <h3>APP DEVELOPMENT</h3>
-              </div>
-              <div className={styles.businessService}>
-                <div className={styles.serviceImage}>
-                  <Image
-                    src={mysqldatabase}
-                    alt="MySQL Database"
-                    width={200}
-                    height={200}
-                    className={styles.serviceIllustration} />
-                </div>
-                <h3>MYSQL DATABASE</h3>
-              </div>
+              {[webdevelopment, appdevelopment, mysqldatabase].map((imgSrc, index) => (
+                <motion.div
+                  key={index}
+                  className={styles.businessService}
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                >
+                  <div className={styles.serviceImage}>
+                    <Image src={imgSrc} alt="Service" width={200} height={200} className={styles.serviceIllustration} />
+                  </div>
+                </motion.div>
+              ))}
             </div>
-          </section>
+            <div className={styles.businessServicesHeader}>
+              <h3>WEB DEVELOPMENT</h3>
+              <h3>APP DEVELOPMENT</h3>
+              <h3>MYSQL DATABASE</h3>
+            </div>
+          </motion.section>
 
           {/* Fun Facts Section */}
-          <section className={styles.funFacts}>
+          <motion.section
+            className={styles.funFacts}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <h2 className={styles.funFactsTitle}>Some Fun Facts</h2>
             <div className={styles.funFactsContainer}>
-              <div className={styles.funFact}>
-                <div className={styles.factNumber}>8</div>
-                <div className={styles.factText}>CUP OF COFFEE</div>
-              </div>
-              <div className={styles.funFact}>
-                <div className={styles.factNumber}>7</div>
-                <div className={styles.factText}>PROJECT ONGOING</div>
-              </div>
-              <div className={styles.funFact}>
-                <div className={styles.factNumber}>5</div>
-                <div className={styles.factText}>PROJECT DELIVERED</div>
-              </div>
+              {[
+                { number: "8", text: "CUP OF COFFEE" },
+                { number: "7", text: "PROJECT ONGOING" },
+                { number: "5", text: "PROJECT DELIVERED" },
+              ].map((fact, index) => (
+                <motion.div
+                  key={index}
+                  className={styles.funFact}
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                >
+                  <div className={styles.factNumber}>{fact.number}</div>
+                  <div className={styles.factText}>{fact.text}</div>
+                </motion.div>
+              ))}
             </div>
-          </section>
+          </motion.section>
 
           {/* Company Profile Section */}
-          <section className={styles.companyProfile}>
+          <motion.section
+            className={styles.companyProfile}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            id="companyprofile"
+          >
             <div className={styles.profileTitleWrapper}>
               <h1 className={styles.profileTitle}>
                 <span className={styles.profileRedC}>C</span>ompany
@@ -168,7 +197,7 @@ export default function Home() {
                 <div className={styles.profileLabel}>Location</div>
                 <div className={styles.profileValue}>
                   <div className={styles.profileAddress}>
-                    No. 5/131B1, Narikkal karadu, Vennandur, Rasipuram, Namakkal, Tamil Nadu, India-637505 .
+                    No. 5/131B1, Narikkal karadu, Vennandur, Rasipuram, Namakkal, Tamil Nadu, India-637505.
                   </div>
                   <a href="#" className={styles.profileMapLink}>
                     Google map <span className={styles.profileArrow}>↗</span>
@@ -176,8 +205,11 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </section>
+          </motion.section>
         </div>
-      </div></><Footer /></>
-  )
+      </motion.div>
+      <ScrollTop/>
+      <Footer />
+    </>
+  );
 }

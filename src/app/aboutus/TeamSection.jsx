@@ -3,9 +3,8 @@
 import Image from "next/image";
 import "../globals.css";
 import { motion } from "framer-motion";
-import styles from "src/app/styles/team.module.css";
+import styles from "src/app/styles/Team.module.css";
 import employee from "src/assets/images/our_team/employee.png";
-import insta from "src/assets/images/our_team/insta.png";
 import linkedin from "src/assets/images/our_team/linkedin.png";
 
 const teamMembers = [
@@ -14,7 +13,6 @@ const teamMembers = [
     role: "Web Developer",
     image: employee,
     description: "Experienced web developer specializing in React and Next.js",
-    instagram: "https://instagram.com/johndoe",
     linkedin: "https://linkedin.com/in/johndoe",
   },
   {
@@ -22,7 +20,6 @@ const teamMembers = [
     role: "App Developer",
     image: employee,
     description: "Mobile app expert with focus on React Native development",
-    instagram: "https://instagram.com/janesmith",
     linkedin: "https://linkedin.com/in/janesmith",
   },
   {
@@ -30,7 +27,6 @@ const teamMembers = [
     role: "Database Engineer",
     image: employee,
     description: "Database specialist with extensive MySQL experience",
-    instagram: "https://instagram.com/mikejohnson",
     linkedin: "https://linkedin.com/in/mikejohnson",
   },
   {
@@ -38,7 +34,6 @@ const teamMembers = [
     role: "UI/UX Designer",
     image: employee,
     description: "Creative designer focused on user-centered experiences",
-    instagram: "https://instagram.com/sarahwilson",
     linkedin: "https://linkedin.com/in/sarahwilson",
   },
   {
@@ -46,7 +41,6 @@ const teamMembers = [
     role: "App Developer",
     image: employee,
     description: "Mobile app expert with focus on React Native development",
-    instagram: "https://instagram.com/janesmith",
     linkedin: "https://linkedin.com/in/janesmith",
   },
   {
@@ -54,20 +48,20 @@ const teamMembers = [
     role: "Database Engineer",
     image: employee,
     description: "Database specialist with extensive MySQL experience",
-    instagram: "https://instagram.com/mikejohnson",
     linkedin: "https://linkedin.com/in/mikejohnson",
   },
 ];
 
 export default function TeamSection() {
   return (
+ 
     <motion.section
       id="team"
-      initial={{ opacity: 0, x: -50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true, amount: 0.2 }}
-      className={styles.team}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1.8 }}
+      viewport={{ once: true }}
+      className={styles.hero}
     >
       <div className={styles.container}>
         <h2 className={styles.heroTitle}>
@@ -100,21 +94,6 @@ export default function TeamSection() {
                       {member.description}
                     </p>
                     <div className={styles.socialMedia}>
-                      {/* Instagram Link */}
-                      <a
-                        href={member.instagram}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.socialLink}
-                      >
-                        <Image
-                          src={insta}
-                          alt="Instagram"
-                          width={32}
-                          height={32}
-                          className={styles.socialIcon}
-                        />
-                      </a>
                       {/* LinkedIn Link */}
                       <a
                         href={member.linkedin}
