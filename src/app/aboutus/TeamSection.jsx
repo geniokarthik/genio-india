@@ -57,14 +57,7 @@ const teamMembers = [
     instagram: "https://instagram.com/mikejohnson",
     linkedin: "https://linkedin.com/in/mikejohnson",
   },
-  {
-    name: "Sarah Wilson",
-    role: "UI/UX Designer",
-    image: employee,
-    description: "Creative designer focused on user-centered experiences",
-    instagram: "https://instagram.com/sarahwilson",
-    linkedin: "https://linkedin.com/in/sarahwilson",
-  },
+
 ];
 
 export default function TeamSection() {

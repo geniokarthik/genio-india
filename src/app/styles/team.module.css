@@ -71,8 +71,8 @@
   }
   
   .flipCardBack {
-    background-color: #ff0000; /* Red background for the back */
-    color: white;
+    background-color: #f7f6f6; /* Red background for the back */
+    color: rgb(8, 8, 8);
     transform: rotateY(180deg);
     display: flex;
     flex-direction: column;
@@ -103,12 +103,12 @@
     font-size: 1.4rem; /* Reduced size */
     font-weight: bold;
     margin-bottom: 0.3rem;
-    color: white; /* White text */
+    color: rgb(4, 4, 4); /* White text */
   }
   
   .memberRole {
     font-size: 1.1rem;
-    color: #ffd700; /* Golden color for better contrast */
+    color: #e22110; /* Golden color for better contrast */
     margin-bottom: 0.5rem;
     text-align: center;
   }
