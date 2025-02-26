@@ -1,11 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
 import styles from "src/app/styles/Footer.module.css"
-import logo from "src/assets/images/logo.png";
+import logo from "src/assets/images/footerlogo.png";
 import xicon from "src/assets/images/twitter.png";
 import instagramicon from "src/assets/images/instagram.png";
 import linkedinicon from "src/assets/images/linkedin.png";
-import mailinboxicon from "src/assets/images/mailinbox.png";
 import facebookicon from "src/assets/images/facebook.png";
 
 
@@ -39,19 +38,13 @@ export default function Footer() {
       <div className={styles.footerBottom}>
         {/* FOLLOW US (Left Side) */}
         <div className={styles.socialMedia}>
-          <h3>FOLLOW US</h3>
+          <h3 style={{marginTop: 11}}>FOLLOW US</h3>
           <div className={styles.socialIcons}>
           <Image src={xicon} alt="Twitter" width={24} height={24} />
             <Image src={facebookicon} alt="Facebook" width={24} height={24} />
             <Image src={instagramicon} alt="Instagram" width={24} height={24} />
             <Image src={linkedinicon} alt="LinkedIn" width={24} height={24} />
           </div>
-        </div>
-
-        {/* CONTACT (Right Side) */}
-        <div className={styles.contact}>
-          <h3>CONTACT</h3>
-          <Image src={mailinboxicon} alt="Mail" width={24} height={24} />
         </div>
         
         {/* Copyright Text (Centered) */}

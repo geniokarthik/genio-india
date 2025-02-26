@@ -64,14 +64,11 @@
   }
   .app_dev__description {
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 1rem;
   }
 
 }
 
-.app_dev__description {
-  font-size: 1rem;
-}
 /* Services Section */
 .services {
   padding: var(--spacing-lg) var(--spacing-sm);

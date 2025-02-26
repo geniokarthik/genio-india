@@ -8,7 +8,7 @@ export async function POST(req) {
             return new Response(JSON.stringify({ error: "Missing required fields" }), { status: 400 });
         }
 
-        const to = "naveen.sathi710@gmail.com";
+        const to = "info@genioindia.co.in";
         const subject = inquiryCategory;
         const text = `
             Name: ${name}
@@ -39,8 +39,8 @@ export async function POST(req) {
 
         let info = await transporter.sendMail(mailOptions);
 
-        return new Response(JSON.stringify({ success: true, message: "Email sent!", info }), { status: 200 });
+        return new Response(JSON.stringify({ success: true, message: "Your email has been sent successfully!", info }), { status: 200 });
     } catch (error) {
-        return new Response(JSON.stringify({ error: "Email sending failed", details: error.message }), { status: 500 });
+        return new Response(JSON.stringify({ success: false, message: "Email sending failed", details: error.message }), { status: 500 });
     }
 }

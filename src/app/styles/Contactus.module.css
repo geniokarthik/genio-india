@@ -1,305 +1,381 @@
 .container {
-    clear: both;
-    box-sizing: content-box;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 5%;
-    padding-right: 5%;
-  }
+  clear: both;
+  box-sizing: content-box;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.title {
+  color: #e22012;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-family: 'Belanosima';
+}
+
+.footerHead {
+  color: #e22012;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-family: 'Belanosima';
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  font-family: 'Inter';
+}
+
+.formWrapper {
+  display: grid;
+  gap: 2rem;
+  background: #f5f5f5;
+  border-radius: 0 100px 100px 0px;
+  padding: 2rem;
+  margin-bottom: 100px;
+  max-width: 850px;
+  max-height: 1040px;
+}
+
+.formContainer {
+  padding: 2rem;
+  border-radius: 15px;
+}
+
+.mailSection {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #e22012;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-family: 'Belanosima';
+  font-size: 3rem;
+}
+
+.mailIcon {
+  color: #e22012;
+}
+
+.mailText {
+  margin-left: 10px;
+}
+
+.formTitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  font-family: 'Inter';
+}
+
+.form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+  grid-template-columns: 200px 1fr;
+  gap: 1rem;
+  display: grid;
+  align-items: flex-start;
+}
+
+.formGroups {
+  margin-bottom: 1.5rem;
+  grid-template-columns: 200px 1fr;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.formGroup1 {
+  margin-left: 300px;
+  margin-top: 60px;
+}
+
+.labelField {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  padding-top: 0.5rem;
+  font-family: 'Inter';
+  text-align: left;
+}
+
+.required {
+  color: #e22012;
+  margin-left: 4px;
+}
+
+.inputField,
+.textareaField,
+.selectAreaField {
+  width: 500px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  font-size: 1rem;
+  background-color: white;
+  transition: border-color 0.2s ease;
+  font-family: 'Inter';
   
+}
+
+.inputField::placeholder,
+.textareaField::placeholder {
+  color: #999;
+}
+
+.inputField:focus,
+.textareaField:focus,
+.selectAreaField:focus {
+  outline: none;
+  border-color: #e22012;
+}
+
+.textareaField {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.error {
+  border-color: #e22012;
+}
+
+.errorMessage {
+  grid-column: 2;
+  color: #e22012;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.submitButton {
+  background: #e22012;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: 'Inter';
+  font-weight: bold;
+}
+
+.submitButton:hover {
+  background: #cc0000;
+}
+
+.progress {
+  margin-top: 100px;
+  position: absolute;
+  right: 120px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stepNumber {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Atomic Age';
+  background: #ccc;
+  color: #000;
+  line-height: 70px;
+  text-align: center;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stepNumber.active {
+  background: #e22012;
+  color: white;
+}
+
+.stepNumber.inactive {
+  background-color: #ccc;
+  color: #000;
+}
+
+.stepLabel {
+  font-size: 16px;
+  font-family: 'Inter';
+  font-weight: bold;
+  white-space: nowrap;
+  color: #000;
+}
+
+.instepLabel {
+  font-size: 16px;
+  font-family: 'Inter';
+  font-weight: bold;
+  white-space: nowrap;
+  color: #e22012;
+}
+
+.line {
+  width: 3px;
+  height: 40px;
+  background-color: #000;
+  margin-left: 35px;
+}
+
+.step:last-child .line {
+  display: none;
+}
+
+/* Mobile View (below 768px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
   .title {
-    color: #e22012;
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    font-family: 'Belanosima';
+    font-size: 2rem;
+    text-align: center;
   }
-  
+
   .subtitle {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    font-family: 'Inter';
-  }
-  
-  .formWrapper {
-    display: grid;
-    grid-template-columns: 1fr 200px;
-    gap: 2rem;
-    background: #f5f5f5;
-    border-radius: 0 100px 100px 0px;
-    padding: 2rem;
-    margin-bottom: 100px;
-    max-width: 950px;
-    max-height: 1040px;
-  }
-  
-  .formContainer {
-    padding: 2rem;
-    border-radius: 15px;
-  }
-  
-  .mailSection {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #e22012;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    font-family: 'Belanosima';
-    font-size: 3rem;
-  }
-  
-  .mailIcon {
-    color: #e22012;
-  }
-  
-  .formTitle {
     font-size: 1.25rem;
-    margin-bottom: 2rem;
-    font-family: 'Inter';
+    text-align: center;
   }
-  
+
+  .formWrapper {
+    grid-template-columns: 1fr;
+    border-radius: 20px;
+    padding: 1rem;
+    margin-bottom: 50px;
+    max-width: 100%;
+    max-height: none;
+  }
+
+  .formContainer {
+    padding: 1rem;
+  }
+
+  .mailSection {
+    flex-direction: column;
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .mailIcon {
+    margin-bottom: 0.5rem;
+  }
+
+  .mailText {
+    vertical-align: text-bottom;
+  }
+
   .form {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    border-radius: 8px;
+    max-width: 100%;
+    padding: 1rem;
   }
-  
+
   .formGroup {
-    margin-bottom: 1.5rem;
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 1rem;
-    align-items: flex-start;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   .formGroup1 {
-    margin-left: 300px;
+    margin-left: 0;
+    text-align: center;
   }
-  
+
   .labelField {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #333;
-    padding-top: 0.5rem;
-    font-family: 'Inter';
     text-align: left;
-  }
-  
-  .required {
-    color: #e22012;
-    margin-left: 4px;
-  }
-  
-
- .inputField,
- .textareaField,
- .selectAreaField {
-    width: 600px;
-    padding: 0.75rem 1rem;
-    border: 1px solid #ddd;
-    border-radius: 18px;
-    font-size: 1rem;
-    background-color: white;
-    transition: border-color 0.2s ease;
-    font-family: 'Inter';
-  }
-  
-
- .inputField::placeholder,
- .textareaField::placeholder {
-    color: #999;
-  }
-  
-  .inputField:focus,
-  .textareaField:focus,
-  .selectAreaField:focus {
-    outline: none;
-    border-color: #e22012;
-  } 
-  
-  .textareaField {
-    resize: vertical;
-    min-height: 120px;
-  }
-  
-  .error {
-    border-color: #e22012;
-  }
-  
-  .errorMessage {
-    grid-column: 2;
-    color: #e22012;
     font-size: 0.875rem;
+  }
+
+  .inputField,
+  .textareaField,
+  .selectAreaField {
+    width: 100%;
+    font-size: 0.875rem;
+    padding: 0.5rem;
+  }
+
+  .textareaField {
+    min-height: 100px;
+  }
+
+  .submitButton {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+
+
+
+}
+
+@media (max-width: 1200px) {
+  .progress {
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 20px;
+    padding: 0;
+    display: flex;
+    /* Ensure flex layout */
+    justify-content: center;
+    /* Center the steps */
+    align-items: baseline;
+    /* Vertically center items */
+    flex-wrap: nowrap;
+    /* Prevent wrapping */
+    position: static;
+    /* Remove absolute positioning for mobile */
+  }
+
+  .line {
+    width: 40px;
+    /* Adjust length to connect steps horizontally */
+    height: 2px;
+    /* Make it a horizontal line */
+    margin-left: 0;
+    /* Remove vertical margin */
+    margin-top: -20px;
+    /* Adjust to align with the center of steps */
+    background-color: #000;
+  }
+
+  .step:first-child .line {
+    display: none;
+    /* Hide line before the first step */
+  }
+
+  .step:last-child .line {
+    display: block;
+    /* Show line after the last step if needed, adjust as per design */
+  }
+
+
+  .stepLabel {
+    font-size: 14px;
     margin-top: 0.25rem;
   }
-  
-  
-  .submitButton {
-    background: #e22012;
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 18px;
-    font-size: 1rem;
-    cursor: pointer;
-    font-family: 'Inter';
-  }
-  
-  .submitButton:hover {
-    background: #cc0000;
-  }
-  
-  .progress {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    padding: 10px;
-    border-radius: 5px;
-    width: 250px; 
-    margin-top: 100px;
-    margin-left: 100px;    
-  }
-  
-  .step {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    position: relative;
-    width: 100%;
-  }
-  
-  .stepNumber {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    font-size: 30px;
-    font-weight: bold;
-    font-family: 'Atomic Age';
-    background: #ccc;
-    color: black;
-    line-height: 75px;
-    text-align: center;
-    flex-shrink: 0;
-  }
-  
-  .stepNumber.active {
-    background: red;
-    color: white;
-  }
-  
-  .stepNumber.inactive {
-    background-color: #ccc;
-    color: #000;
-  }
-  
-  .stepLabel {
-    font-size: 16px;
-    color: #000;
-    font-family: 'Inter';
-    font-weight: bold;
-    white-space: nowrap;
-  }
-  
-  .line {
-    width: 3px;
-    height: 40px;
-    background-color: #000;
-    margin-left: 35px;
-  }
-  
-  .step:last-child .line {
-    display: none;
-  }
-  
-  /* Mobile View (below 768px) */
-@media (max-width: 768px) {
-    .container {
-      padding: 1rem;
-      max-width: 100%;
-    }
-  
-    .title {
-      font-size: 2rem;
-      text-align: center;
-    }
-  
-    .subtitle {
-      font-size: 1.25rem;
-      text-align: center;
-    }
-  
-    .formWrapper {
-      grid-template-columns: 1fr;
-      border-radius: 20px; /* Make it uniform */
-      padding: 1.5rem;
-      margin-bottom: 50px;
-      max-width: 100%;
-    }
-  
-    .formContainer {
-      padding: 1.5rem;
-    }
-  
-    .mailSection {
-      flex-direction: column;
-      text-align: center;
-      font-size: 2rem;
-    }
-  
-    .form {
-      max-width: 100%;
-      padding: 1rem;
-    }
-  
-    .formGroup {
-      grid-template-columns: 1fr;
-      gap: 0.5rem;
-    }
-  
-    .formGroup1 {
-      margin-left: 0;
-    }
-  
-    .labelField {
-      text-align: left;
-      font-size: 0.875rem;
-    }
-  
-    .inputField,
-    .textareaField,
-    .selectAreaField {
-      width: 100%;
-      font-size: 0.875rem;
-    }
-  
-    .textareaField {
-      min-height: 100px;
-    }
-  
-    .submitButton {
-      width: 100%;
-      padding: 0.75rem;
-    }
-  
-    /* Progress Steps */
-  .progress {
-    width: 100%;
-    margin-top: -2rem;
-    margin-bottom: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 1rem;
-    flex-direction: row;
-  }
 
   .step {
-    flex-direction: row;
-    justify-content: flex-start;
-    margin-bottom: 1rem;
+    flex-direction: column;
+    /* Keep number and label stacked vertically within each step */
+    align-items: center;
+    margin: 0 1rem;
+    /* Spacing between steps */
   }
 
   .stepNumber {
@@ -307,24 +383,6 @@
     height: 40px;
     font-size: 18px;
     line-height: 40px;
-    margin-right: 10px;
+    margin: 0;
   }
-
-  .stepLabel {
-    font-size: 14px;
-    line-height: 40px;
-  }
-
-  .line {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #000;
-    z-index: 1;
-    transform: translateY(-50%);
-  }
-    
-  }
-  
+}

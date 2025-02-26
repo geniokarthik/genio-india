@@ -138,6 +138,7 @@ export default function Header() {
                 alt="Genio India Logo"
                 width={50}
                 height={50}
+                style={{marginTop: 8}}
               />
             </Link>
           </div>

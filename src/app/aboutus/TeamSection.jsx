@@ -81,7 +81,7 @@ export default function TeamSection() {
                       src={member.image}
                       alt={member.name}
                       width={300}
-                      height={400}
+                      height={600}
                       className={styles.memberImage}
                     />
                   </div>

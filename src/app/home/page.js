@@ -185,6 +185,7 @@ export default function Home() {
               </div>
               <div className={styles.profileRow}>
                 <div className={styles.profileLabel}>Business Contents</div>
+                <div>We face our cutomer's challenges and provide services that bring smiles to the faces of all those involved.</div>
                 <div className={styles.profileValue}>
                   <div className={styles.profileBulletPoints}>
                     <div>• App Development</div>

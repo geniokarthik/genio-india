@@ -1,16 +1,21 @@
 "use client";
 import { useState, useEffect } from "react";
-
+import { motion } from "framer-motion";
 import Header from "src/app/components/Header";
 import Footer from "src/app/components/Footer";
-import Image from "next/image"
-
+import Image from "next/image";
+import Link from "next/link";
 import styles from "src/app/styles/Contactus.module.css";
 import emailicon from "src/assets/images/contactus/email.png";
+import returnhomeicon from "src/assets/images/contactus/returnhome.png";
 
 export default function ContactForm() {
-
     const [isClient, setIsClient] = useState(false);
+    const [buttonFlg, setButtonFlg] = useState(false);
+    const [inputFlg, setInputFlg] = useState(true);
+    const [checkFlg, setCheckFlg] = useState(false);
+    const [completedFlg, setCompletedFlg] = useState(false);
+
     const [formData, setFormData] = useState({
         inquiryCategory: "",
         companyName: "",
@@ -36,7 +41,7 @@ export default function ContactForm() {
         if (!formData.phoneNumber) {
             newErrors.phoneNumber = "Phone number is required";
         } else if (!/^\d+$/.test(formData.phoneNumber)) {
-            newErrors.phoneNumber = "Please enter only numbers without hyphens";
+            newErrors.phoneNumber = "Please enter numbers only";
         }
 
         if (!formData.emailAddress) {
@@ -58,39 +63,53 @@ export default function ContactForm() {
 
         if (validateForm()) {
             try {
-                // Keep a copy of formData before resetting
+                setButtonFlg(true);
+                setInputFlg(false);
+                setCheckFlg(true);
                 const formDataCopy = { ...formData };
+                if (buttonFlg) {
+                    const response = await fetch("/api/sendmail", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(formDataCopy),
+                    });
 
-                setFormData({
-                    inquiryCategory: "",
-                    companyName: "",
-                    name: "",
-                    phoneNumber: "",
-                    emailAddress: "",
-                    inquiryContent: "",
-                });
-
-                const response = await fetch("/api/sendmail", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(formDataCopy),
-                });
-
-                // Check if response is valid JSON
-                const text = await response.text();
-                try {
+                    const text = await response.text();
                     const data = JSON.parse(text);
-                    alert("Your email has been sent successfully");
-                } catch (jsonError) {
-                    alert("Invalid JSON response from server");
+                    try {
+                        if (data.success) {
+                            alert(data.message);
+                            setFormData({
+                                inquiryCategory: "",
+                                companyName: "",
+                                name: "",
+                                phoneNumber: "",
+                                emailAddress: "",
+                                inquiryContent: "",
+                            });
+                            setCheckFlg(false);
+                            setCompletedFlg(true);
+                        } else {
+                            alert(response.message);
+                            setFormData({
+                                inquiryCategory: "",
+                                companyName: "",
+                                name: "",
+                                phoneNumber: "",
+                                emailAddress: "",
+                                inquiryContent: "",
+                            });
+                            setButtonFlg(false);
+                        }
+                    } catch (jsonError) {
+                        alert("Invalid JSON response from server");
+                    }
                 }
-
             } catch (error) {
                 alert("Error submitting form:", error);
             }
         }
     };
-
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -105,15 +124,13 @@ export default function ContactForm() {
                 [name]: "",
             }));
         }
-
     };
-
 
     useEffect(() => {
         setIsClient(true);
     }, []);
 
-    if (!isClient) return null; // Avoid rendering on server
+    if (!isClient) return null;
 
     return (
         <>
@@ -123,111 +140,163 @@ export default function ContactForm() {
             <link href="https://fonts.googleapis.com/css2?family=Atomic Age&display=swap" rel="stylesheet"></link>
             <Header />
             <div className={styles.container}>
-                <h1 className={styles.title}>CONTACT</h1>
-                <h2 className={styles.subtitle}>Inquiry</h2>
+                <motion.div
+                    className={styles.home}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1 }}
+                >
+                    <h1 className={styles.title}>CONTACT</h1>
+                    <h2 className={styles.subtitle}>Inquiry</h2>
+                    <div className={styles.formWrapper}>
+                        <motion.section
+                            className={styles.hero}
+                            initial={{ y: 50, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 1 }}
+                        >
+                            <div className={styles.formContainer}>
+                                <div className={styles.mailSection}>
+                                    <span className={styles.mailIcon}>
+                                        <Image
+                                            src={emailicon}
+                                            alt="Genio India Logo"
+                                            width={35}
+                                            height={35}
+                                        />
+                                        <span className={styles.mailText}>MAIL</span>
+                                    </span>
+                                </div>
 
-                <div className={styles.formWrapper}>
-                    <div className={styles.formContainer}>
-                        <div className={styles.mailSection}>
-                            <span className={styles.mailIcon}>
-                                <Image
-                                    src={emailicon}
-                                    alt="Genio India Logo"
-                                    width={100}
-                                    height={100}
-                                />
-                            </span> MAIL
+                                <h3 className={styles.formTitle}>Questions & Consultations Form</h3>
+
+                                {!completedFlg ? (
+                                    <>
+                                        <form className={styles.form} onSubmit={handleSubmit}>
+                                            <div className={styles.formGroup}>
+                                                <label className={styles.labelField}>
+                                                    Inquiry Category<span className={styles.required}>*</span>
+                                                </label>
+                                                {!buttonFlg ?
+                                                    <select
+                                                        name="inquiryCategory"
+                                                        value={formData.inquiryCategory}
+                                                        onChange={handleChange}
+                                                        className={`${styles.inputField} ${errors.inquiryCategory ? styles.error : ""}`}
+                                                    >
+                                                        <option value="">--Please Select--</option>
+                                                        <option value="General Inquiry">General Inquiry</option>
+                                                        <option value="Service Related">Service Related</option>
+                                                        <option value="Technical Support">Technical Support</option>
+                                                        <option value="Other">Other</option>
+                                                    </select>
+                                                    :
+                                                    <input disabled={buttonFlg} type="text" name="inquiryCategory" value={formData.inquiryCategory} className={styles.inputField} />
+                                                }
+                                                {errors.inquiryCategory && <span className={styles.errorMessage}>{errors.inquiryCategory}</span>}
+                                            </div>
+
+                                            <div className={styles.formGroup}>
+                                                <label className={styles.labelField}>Company Name</label>
+                                                <input disabled={buttonFlg} type="text" name="companyName" value={formData.companyName} onChange={handleChange} className={styles.inputField} />
+                                            </div>
+
+                                            <div className={styles.formGroup}>
+                                                <label className={styles.labelField}>
+                                                    Name<span className={styles.required}>*</span>
+                                                </label>
+                                                <input disabled={buttonFlg} type="text" name="name" value={formData.name} onChange={handleChange} className={`${styles.inputField} ${errors.name ? styles.error : ""}`} />
+                                                {errors.name && <span className={styles.errorMessage}>{errors.name}</span>}
+                                            </div>
+
+                                            <div className={styles.formGroup}>
+                                                <label className={styles.labelField}>
+                                                    Phone Number<span className={styles.required}>*</span>
+                                                </label>
+                                                <input disabled={buttonFlg} type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} className={`${styles.inputField} ${errors.phoneNumber ? styles.error : ""}`} />
+                                                {errors.phoneNumber && <span className={styles.errorMessage}>{errors.phoneNumber}</span>}
+                                            </div>
+
+                                            <div className={styles.formGroup}>
+                                                <label className={styles.labelField}>
+                                                    Email Address<span className={styles.required}>*</span>
+                                                </label>
+                                                <input disabled={buttonFlg} type="email" name="emailAddress" value={formData.emailAddress} onChange={handleChange} className={`${styles.inputField} ${errors.emailAddress ? styles.error : ""}`} />
+                                                {errors.emailAddress && <span className={styles.errorMessage}>{errors.emailAddress}</span>}
+                                            </div>
+
+                                            <div className={styles.formGroup}>
+                                                <label className={styles.labelField}>
+                                                    Inquiry Content<span className={styles.required}>*</span>
+                                                </label>
+                                                <textarea
+                                                    disabled={buttonFlg}
+                                                    name="inquiryContent"
+                                                    value={formData.inquiryContent || ""}
+                                                    onChange={handleChange}
+                                                    className={`${styles.textareaField} ${errors.inquiryContent ? styles.error : ""}`}
+                                                    rows={5}
+                                                />
+                                                {errors.inquiryContent && <span className={styles.errorMessage}>{errors.inquiryContent}</span>}
+                                            </div>
+
+                                            <div className={styles.formGroup1}>
+                                                <button type="submit" className={styles.submitButton}>
+                                                    {!buttonFlg ? 'Confirm' : 'Send'}
+                                                </button>
+                                            </div>
+
+                                        </form> </>
+                                ) : (
+                                    <>
+                                        <h1 className={styles.footerHead}>THANK YOU !</h1>
+                                        <div className={styles.formGroups}>
+                                            <p>
+                                                Thank you for contacting Genio India Software Pvt. Ltd.
+                                                <br /><br />
+                                                We have received your inquiry and will review its contents.
+                                                Our team will reach out to you within two business days at the email address you provided.
+                                                <br /><br />
+                                                If you do not receive a response within three days, your email may not have been received correctly.
+                                                In that case, please call us at 000-111-2222 for assistance.
+                                            </p>
+                                        </div>
+                                        <div style={{ paddingTop: 50, textAlign: 'center' }}>
+                                            <Link href="/" className={styles.formFooter}>
+                                                <h3>
+                                                    Return to Home
+                                                    <Image
+                                                        src={returnhomeicon}
+                                                        alt="Back to home"
+                                                        width={40}
+                                                        height={40}
+                                                        style={{ verticalAlign: 'middle', paddingLeft: 10 }}
+                                                    />
+                                                </h3>
+                                            </Link>
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+                        </motion.section>
+                        <div className={styles.progress}>
+                            <div className={styles.step}>
+                                <span className={`${styles.stepNumber} ${inputFlg ? styles.active : styles.inactive}`}>01</span>
+                                <span className={inputFlg ? styles.stepLabel : styles.instepLabel}>Input</span>
+                            </div>
+                            <div className={styles.line}></div>
+                            <div className={styles.step}>
+                                <span className={`${styles.stepNumber} ${checkFlg ? styles.active : styles.inactive}`}>02</span>
+                                <span className={checkFlg ? styles.stepLabel : styles.instepLabel}>Check</span>
+                            </div>
+                            <div className={styles.line}></div>
+                            <div className={styles.step}>
+                                <span className={`${styles.stepNumber} ${completedFlg ? styles.active : styles.inactive}`}>03</span>
+                                <span className={completedFlg ? styles.stepLabel : styles.instepLabel}>Completed</span>
+                            </div>
                         </div>
-
-                        <h3 className={styles.formTitle}>Questions & Consultations Form</h3>
-
-                        <form className={styles.form} onSubmit={handleSubmit}>
-                            <div className={styles.formGroup}>
-                                <label className={styles.labelField}>
-                                    Inquiry Category<span className={styles.required}>*</span>
-                                </label>
-                                <select
-                                    name="inquiryCategory"
-                                    value={formData.inquiryCategory}
-                                    onChange={handleChange}
-                                    className={`${styles.inputField} ${errors.inquiryCategory ? styles.error : ""}`}
-                                >
-                                    <option value="">--Please Select--</option>
-                                    <option value="general">General Inquiry</option>
-                                    <option value="service">Service Related</option>
-                                    <option value="support">Technical Support</option>
-                                    <option value="other">Other</option>
-                                </select>
-                                {errors.inquiryCategory && <span className={styles.errorMessage}>{errors.inquiryCategory}</span>}
-                            </div>
-
-                            <div className={styles.formGroup}>
-                                <label className={styles.labelField}>Company Name</label>
-                                <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} className={styles.inputField} />
-                            </div>
-
-                            <div className={styles.formGroup}>
-                                <label className={styles.labelField}>
-                                    Name<span className={styles.required}>*</span>
-                                </label>
-                                <input type="text" name="name" value={formData.name} onChange={handleChange} className={`${styles.inputField} ${errors.name ? styles.error : ""}`} />
-                                {errors.name && <span className={styles.errorMessage}>{errors.name}</span>}
-                            </div>
-
-                            <div className={styles.formGroup}>
-                                <label className={styles.labelField}>
-                                    Phone Number<span className={styles.required}>*</span>
-                                </label>
-                                <input type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} className={`${styles.inputField} ${errors.phoneNumber ? styles.error : ""}`} />
-                                {errors.phoneNumber && <span className={styles.errorMessage}>{errors.phoneNumber}</span>}
-                            </div>
-
-                            <div className={styles.formGroup}>
-                                <label className={styles.labelField}>
-                                    Email Address<span className={styles.required}>*</span>
-                                </label>
-                                <input type="email" name="emailAddress" value={formData.emailAddress} onChange={handleChange} className={`${styles.inputField} ${errors.emailAddress ? styles.error : ""}`} />
-                                {errors.emailAddress && <span className={styles.errorMessage}>{errors.emailAddress}</span>}
-                            </div>
-
-                            <div className={styles.formGroup}>
-                                <label className={styles.labelField}>
-                                    Inquiry Content<span className={styles.required}>*</span>
-                                </label>
-                                <textarea
-                                    name="inquiryContent"
-                                    value={formData.inquiryContent || ""}
-                                    onChange={handleChange}
-                                    className={`${styles.textareaField} ${errors.inquiryContent ? styles.error : ""}`}
-                                    rows={5}
-                                />
-                                {errors.inquiryContent && <span className={styles.errorMessage}>{errors.inquiryContent}</span>}
-                            </div>
-
-                            <div className={styles.formGroup1}>
-                                <button type="submit" className={styles.submitButton}>
-                                    Submit
-                                </button>
-                            </div>
-                        </form>
                     </div>
-                    <div className={styles.progress}>
-                        <div className={styles.step}>
-                            <span className={`${styles.stepNumber} ${styles.active}`}>01</span>
-                            <span className={styles.stepLabel}>Input</span>
-                        </div>
-                        <div className={styles.line}></div>
-                        <div className={styles.step}>
-                            <span className={`${styles.stepNumber} ${styles.inactive}`}>02</span>
-                            <span className={styles.stepLabel}>Check</span>
-                        </div>
-                        <div className={styles.line}></div>
-                        <div className={styles.step}>
-                            <span className={`${styles.stepNumber} ${styles.inactive}`}>03</span>
-                            <span className={styles.stepLabel}>Completed</span>
-                        </div>
-                    </div>
-                </div>
+                </motion.div>
             </div>
             <Footer />
         </>

@@ -151,6 +151,14 @@
   .description {
     font-size: 0.9rem;
   }
+
+  .heroBackgroundGradient {
+    position: absolute;
+    right: 100px;
+    top: 100px;
+    height: 60%;
+    width: 30%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -182,8 +190,8 @@
 
 .heroBackgroundGradient {
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 200px;
+  top: 100px;
   height: 60%;
-  width: 18.3%;
+  width: 16%;
 }
