@@ -62,9 +62,7 @@ export default function Home() {
                   {heroText}
                   <span className={styles.heroThinkBorder}></span>
                   <span className={styles.heroIconWrapper}>
-                    <span className={styles.heroIconCircle}>
-                      <Image src={imageSrc} alt="sloganicon" width={180} height={100} />
-                    </span>
+                      <Image src={imageSrc} alt="sloganicon" width={70} height={70} />
                   </span>
                 </span>
               </h1>
@@ -96,6 +94,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <h2 className={styles.businessContentTitle}>Service Content</h2>
+            <h4 className={styles.businessContentHeader}>We face our customers' challenges and provide services that bring smiles to the faces of all those involved.</h4>
             <div className={styles.businessServices}>
               {[webdevelopment, appdevelopment, mysqldatabase].map((imgSrc, index) => (
                 <motion.div

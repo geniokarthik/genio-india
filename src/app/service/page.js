@@ -20,6 +20,7 @@ export default function Service() {
       <link href='https://fonts.googleapis.com/css?family=ADLaM Display' rel='stylesheet'></link>
       <link href='https://fonts.googleapis.com/css?family=Cherry Bomb' rel='stylesheet'></link>
       <link href='https://fonts.googleapis.com/css?family=Belanosima' rel='stylesheet'></link>
+      <link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet'></link>
       <Header />
       <div className={styles.home}>
         <motion.section
@@ -61,7 +62,10 @@ export default function Service() {
           viewport={{ once: true }}
           className={styles.services}
         >
-          <h2 className={styles.services__title}>SERVICE</h2>
+          <div className={styles.services__container}>
+            <h2 className={styles.services__title}>SERVICE</h2>
+            <h1 className={styles.services__background}>S</h1>
+          </div>
           <div className={styles.services__grid}>
             <div className={styles.service_card__content}>
               <Link href="#webdev">
