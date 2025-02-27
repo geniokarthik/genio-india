@@ -58,8 +58,8 @@
   
 .heroIconWrapper {
   position: absolute;
-  right: -4rem;
-  top: -1.5rem;
+  right: -3rem;
+  top: -2.5rem;
 }
   
 .heroIconCircle {
@@ -125,7 +125,7 @@
 
 .heroBackgroundGradient {
   position: absolute;
-  right: 0;
+  right: 4%;
   top: 0;
   height: 100%;
   width: 18.3%;
@@ -144,7 +144,13 @@
 .businessContentTitle {
   font-size: 3rem;
   font-weight: 600;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.businessContentHeader {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
 }
 
 .businessContentSubtitle {
@@ -362,9 +368,9 @@
   }
 
   .heroIconWrapper {
-      right: 0;
-      top: 0;
       transform: scale(0.8);
+      right: -3rem;
+      top: -3.5rem;
   }
 
   .heroSubtitleWrapper {

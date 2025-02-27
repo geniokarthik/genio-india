@@ -124,8 +124,36 @@
   background-color: white;
   transition: border-color 0.2s ease;
   font-family: 'Inter';
-  
+  padding-left: 18px;
 }
+
+/* .inputFields {
+  width: 500px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  font-size: 1rem;
+  background-color: white;
+  transition: border-color 0.2s ease;
+  font-family: 'Inter';
+} */
+.inputFields {
+  width: 500px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  font-size: 1rem;
+  background-color: white;
+  transition: border-color 0.2s ease;
+  font-family: 'Inter';
+  appearance: none; /* Default arrow remove pannudhu */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'><path fill='red' d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Right-la irunthu konjam left-ku shift */
+  background-size: 24px; /* Arrow size increase pannudhu */
+  padding-right: 40px; /* Text overlap aagama irukka */
+}
+
 
 .inputField::placeholder,
 .textareaField::placeholder {
@@ -142,6 +170,12 @@
 .textareaField {
   resize: vertical;
   min-height: 120px;
+}
+
+.image {
+  width: 50px;
+  height: 50px;
+  vertical-align: sub; 
 }
 
 .error {
@@ -172,9 +206,9 @@
 }
 
 .progress {
-  margin-top: 100px;
   position: absolute;
   right: 120px;
+  top: 70%;
 }
 
 .step {
@@ -228,7 +262,7 @@
 
 .line {
   width: 3px;
-  height: 40px;
+  height: 100px;
   background-color: #000;
   margin-left: 35px;
 }
@@ -243,6 +277,14 @@
     padding: 1rem;
     max-width: 100%;
   }
+
+  
+.image {
+  width: 35px;
+  height: 35px;
+  vertical-align: baseline;
+}
+
 
   .title {
     font-size: 2rem;
@@ -305,6 +347,13 @@
   .inputField,
   .textareaField,
   .selectAreaField {
+    width: 100%;
+    font-size: 0.875rem;
+    padding: 0.5rem;
+    padding-left: 9px;
+  }
+
+  .inputFields {
     width: 100%;
     font-size: 0.875rem;
     padding: 0.5rem;

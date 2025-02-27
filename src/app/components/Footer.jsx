@@ -13,7 +13,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.footerTop}>
         <div className={styles.companyInfo}>
-          <Image src={logo} alt="Genio Logo" width={150} height={50} />
+          <Image src={logo} alt="Genio Logo" width={180} height={65} />
         </div>
         <div>
           <p>Genio India Software Pvt. Ltd.</p>
@@ -38,7 +38,7 @@ export default function Footer() {
       <div className={styles.footerBottom}>
         {/* FOLLOW US (Left Side) */}
         <div className={styles.socialMedia}>
-          <h3 style={{marginTop: 11}}>FOLLOW US</h3>
+          <h3 style={{paddingTop: 12}}>FOLLOW US</h3>
           <div className={styles.socialIcons}>
           <Image src={xicon} alt="Twitter" width={24} height={24} />
             <Image src={facebookicon} alt="Facebook" width={24} height={24} />

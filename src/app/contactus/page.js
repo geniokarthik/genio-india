@@ -8,6 +8,7 @@ import Link from "next/link";
 import styles from "src/app/styles/Contactus.module.css";
 import emailicon from "src/assets/images/contactus/email.png";
 import returnhomeicon from "src/assets/images/contactus/returnhome.png";
+import ScrollTop from "src/app/scrolltop/ScrollTop";
 
 export default function ContactForm() {
     const [isClient, setIsClient] = useState(false);
@@ -161,8 +162,7 @@ export default function ContactForm() {
                                         <Image
                                             src={emailicon}
                                             alt="Genio India Logo"
-                                            width={35}
-                                            height={35}
+                                            className={styles.image}
                                         />
                                         <span className={styles.mailText}>MAIL</span>
                                     </span>
@@ -182,7 +182,7 @@ export default function ContactForm() {
                                                         name="inquiryCategory"
                                                         value={formData.inquiryCategory}
                                                         onChange={handleChange}
-                                                        className={`${styles.inputField} ${errors.inquiryCategory ? styles.error : ""}`}
+                                                        className={`${styles.inputFields} ${errors.inquiryCategory ? styles.error : ""}`}
                                                     >
                                                         <option value="">--Please Select--</option>
                                                         <option value="General Inquiry">General Inquiry</option>
@@ -298,6 +298,7 @@ export default function ContactForm() {
                     </div>
                 </motion.div>
             </div>
+            <ScrollTop/>
             <Footer />
         </>
     );
