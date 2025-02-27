@@ -7,7 +7,7 @@
 
 .footerTop {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   flex-wrap: wrap;
   border-bottom: 1px solid #444;
   padding-bottom: 20px;
@@ -15,6 +15,12 @@
 
 .companyInfo {
   max-width: 300px;
+  margin-right: 70px;
+
+}
+
+.address {
+  margin-right: 500px;
 }
 
 .companyInfo p {
@@ -96,5 +102,10 @@
   .footerBottom .socialMedia,
   .footerBottom .contact {
     justify-content: center; /* Center both sections */
+  }
+
+  .address {
+    margin-right: 100px;
+    margin-bottom: 10px;
   }
 }

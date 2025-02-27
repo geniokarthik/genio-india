@@ -15,7 +15,7 @@ export default function Footer() {
         <div className={styles.companyInfo}>
           <Image src={logo} alt="Genio Logo" width={180} height={65} />
         </div>
-        <div>
+        <div className={styles.address}>
           <p>Genio India Software Pvt. Ltd.</p>
           <p>Business hours 09:00 to 18:00</p>
           <p>No. 5/131B1, Narikkal karadu, Vennandur, Rasipuram, Namakkal,</p>
