@@ -40,10 +40,18 @@ export default function Footer() {
         <div className={styles.socialMedia}>
           <h3 style={{paddingTop: 12}}>FOLLOW US</h3>
           <div className={styles.socialIcons}>
-          <Image src={xicon} alt="Twitter" width={24} height={24} />
-            <Image src={facebookicon} alt="Facebook" width={24} height={24} />
-            <Image src={instagramicon} alt="Instagram" width={24} height={24} />
-            <Image src={linkedinicon} alt="LinkedIn" width={24} height={24} />
+            <Link href="https://x.com/Genio_India">
+              <Image src={xicon} alt="Twitter" width={24} height={24} />
+            </Link>
+            <Link href="https://www.facebook.com/profile.php?id=61572639517968">
+              <Image src={facebookicon} alt="Facebook" width={24} height={24} />
+            </Link>
+            <Link href="https://www.instagram.com/genio_india">
+              <Image src={instagramicon} alt="Instagram" width={24} height={24} />
+            </Link>
+            <Link href="https://www.linkedin.com/company/genio-india-software">
+              <Image src={linkedinicon} alt="LinkedIn" width={24} height={24} />
+            </Link>
           </div>
         </div>
         

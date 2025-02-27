@@ -38,6 +38,7 @@ export default function Home() {
       <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet"></link>
       <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"></link>
       <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet"></link>
+      <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'></link>
       <Header />
       <motion.div
         className={styles.home}
@@ -56,22 +57,23 @@ export default function Home() {
           >
             <div className={styles.heroContent}>
               <h1 className={styles.heroTitle}>
-                <span className={styles.heroRedText}>T</span>ogether,{" "}
-                <span className={styles.heroThinkWrapper}>
-                  <span className={styles.heroRedText}>We </span>
-                  {heroText}
+                <span>
+                  <span className={styles.heroRedText}>T</span>ogether,{" "}</span>
+                <span className={styles.heroThinkWrapper} style={{ marginLeft: 9 }}>
+                  <span className={styles.heroRedText} style={{ marginLeft: 9 }}>We </span>
+                  <span style={{ marginRight: 9 }}>{heroText}</span>
                   <span className={styles.heroThinkBorder}></span>
                   <span className={styles.heroIconWrapper}>
-                      <Image src={imageSrc} alt="sloganicon" width={70} height={70} />
+                    <Image src={imageSrc} alt="sloganicon" width={80} height={80} />
                   </span>
                 </span>
               </h1>
-              <div className={styles.heroSubtitleWrapper}>
+              <div style={{ paddingBottom: 12, paddingTop: 12 }} className={styles.heroContent}>
                 <div className={styles.heroSubtitleBox}>
                   <p className={styles.heroSubtitle}>High-quality websites</p>
                 </div>
               </div>
-              <div className={styles.heroSubtitleWrapper1}>
+              <div className={styles.heroContent}>
                 <div className={styles.heroSubtitleBox}>
                   <p className={styles.heroSubtitle}>for all Companies</p>
                 </div>
@@ -93,29 +95,58 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className={styles.businessContentTitle}>Service Content</h2>
-            <h4 className={styles.businessContentHeader}>We face our customers' challenges and provide services that bring smiles to the faces of all those involved.</h4>
-            <div className={styles.businessServices}>
-              {[webdevelopment, appdevelopment, mysqldatabase].map((imgSrc, index) => (
-                <motion.div
-                  key={index}
-                  className={styles.businessService}
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.2 }}
-                >
-                  <div className={styles.serviceImage}>
-                    <Image src={imgSrc} alt="Service" width={200} height={200} className={styles.serviceIllustration} />
+            <header className={styles.header}>
+              <h2 className={styles.title}>Business Content</h2>
+              <h4 className={styles.subtitle}>
+                <div className={styles.businessTitle}> We face our customers' challenges and provide services that bring smiles to the faces of all those involved.</div>
+              </h4>
+            </header>
+            <motion.section
+              className={styles.funFacts}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className={styles.servicesGrid}>
+                <div className={styles.serviceItem}>
+                  <div className={styles.serviceCard}>
+                    <Image
+                      src={webdevelopment}
+                      alt="Web Development"
+                      width={200}
+                      height={200}
+                      className={styles.serviceImage}
+                    />
                   </div>
-                </motion.div>
-              ))}
-            </div>
-            <div className={styles.businessServicesHeader}>
-              <h3>WEB DEVELOPMENT</h3>
-              <h3>APP DEVELOPMENT</h3>
-              <h3>MYSQL DATABASE</h3>
-            </div>
+                  <h3 className={styles.serviceTitle}>WEB DEVELOPMENT</h3>
+                </div>
+                <div className={styles.serviceItem}>
+                  <div className={styles.serviceCard}>
+                    <Image
+                      src={appdevelopment}
+                      alt="App Development"
+                      width={200}
+                      height={200}
+                      className={styles.serviceImage}
+                    />
+                  </div>
+                  <h3 className={styles.serviceTitle}>APP DEVELOPMENT</h3>
+                </div>
+                <div className={styles.serviceItem}>
+                  <div className={styles.serviceCard}>
+                    <Image
+                      src={mysqldatabase}
+                      alt="MySQL Database"
+                      width={200}
+                      height={200}
+                      className={styles.serviceImage}
+                    />
+                  </div>
+                  <h3 className={styles.serviceTitle}>MYSQL DATABASE</h3>
+                </div>
+              </div>
+            </motion.section>
           </motion.section>
 
           {/* Fun Facts Section */}
@@ -199,7 +230,7 @@ export default function Home() {
                   <div className={styles.profileAddress}>
                     No. 5/131B1, Narikkal karadu, Vennandur, Rasipuram, Namakkal, Tamil Nadu, India-637505.
                   </div>
-                  <a href="#" className={styles.profileMapLink}>
+                  <a href="https://maps.app.goo.gl/ZY49ZsaEBoErHQYXA" className={styles.profileMapLink}>
                     Google map <span className={styles.profileArrow}>↗</span>
                   </a>
                 </div>
@@ -208,7 +239,7 @@ export default function Home() {
           </motion.section>
         </div>
       </motion.div>
-      <ScrollTop/>
+      <ScrollTop />
       <Footer />
     </>
   );
