@@ -122,7 +122,7 @@
   margin-bottom: 3.5rem;
   text-align: center;
   font-weight: bold;
-  font-style: italic;
+  font-family: 'Racing Sans One', sans-serif; /* Corrected */
 }
 
 .memberDescription {
@@ -171,7 +171,7 @@
   }
 
   .flipCard {
-    height: 300px;
+    height: 440px;
   }
 }
 
@@ -189,7 +189,11 @@
   }
 
   .flipCard {
-    height: 250px;
+    height: 384px;
+  }
+
+  .teamCard {
+    height: 400px;
   }
 
   .memberName {
@@ -203,6 +207,7 @@
   .memberDescription {
     font-size: 0.8rem;
   }
+
 }
 
 

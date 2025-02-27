@@ -91,7 +91,7 @@ export default function TeamSection() {
                     <h3 className={styles.memberName}>{member.name}</h3>
                     <p className={styles.memberRole}>{member.role}</p>
                     <p className={styles.memberDescription}>
-                      {member.description}
+                     " {member.description} "
                     </p>
                     <div className={styles.socialMedia}>
                       {/* LinkedIn Link */}
