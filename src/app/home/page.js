@@ -228,7 +228,7 @@ export default function Home() {
                 <div className={styles.profileLabel}>Location</div>
                 <div className={styles.profileValue}>
                   <div className={styles.profileAddress}>
-                    No. 5/131B1, Narikkal karadu, Vennandur, Rasipuram, Namakkal, Tamil Nadu, India-637505.
+                    No. 171/3/1, Narikkal karadu, Vennandur, Rasipuram, Namakkal, Tamil Nadu, India-637505.
                   </div>
                   <a href="https://maps.app.goo.gl/ZY49ZsaEBoErHQYXA" className={styles.profileMapLink}>
                     Google map <span className={styles.profileArrow}>↗</span>

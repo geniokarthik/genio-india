@@ -64,8 +64,8 @@
 
 .socialMedia {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row;
+  gap: 30px;
 }
 
 .socialIcons {
