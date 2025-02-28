@@ -11,54 +11,55 @@ import facebookicon from "src/assets/images/facebook.png";
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={styles.footerTop}>
-        <div className={styles.companyInfo}>
-          <Image src={logo} alt="Genio Logo" width={180} height={65} />
-        </div>
-        <div className={styles.address}>
-          <p>Genio India Software Pvt. Ltd.</p>
-          <p>Business hours 09:00 to 18:00</p>
-          <p>No. 5/131B1, Narikkal karadu, Vennandur, Rasipuram, Namakkal,</p>
-          <p>Tamil Nadu, India - 637505.</p>
-        </div>
-        <div className={styles.footerLinks}>
-          <div>
-            <Link href="/aboutus">About Genio India</Link>
-            <Link href="#companyprofile">Company Profile</Link>
-            <Link href="#corporatehistory">Corporate History</Link>
-          </div>
-          <div>
-            <Link href="#">Notice</Link>
-            <Link href="#">Contact Us</Link>
-          </div>
-        </div>
-      </div>
+  <div className={styles.footerTop}>
+    {/* Company Info */}
+    <div className={styles.companyInfo}>
+      <Image src={logo} alt="Genio Logo" width={180} height={65} />
+    </div>
 
-      {/* ✅ Updated Footer Bottom Section */}
-      <div className={styles.footerBottom}>
-        {/* FOLLOW US (Left Side) */}
-        <div className={styles.socialMedia}>
-          <h3 style={{paddingTop: 12}}>FOLLOW US</h3>
-          <div className={styles.socialIcons}>
-            <Link href="https://x.com/Genio_India">
-              <Image src={xicon} alt="Twitter" width={24} height={24} />
-            </Link>
-            <Link href="https://www.facebook.com/profile.php?id=61572639517968">
-              <Image src={facebookicon} alt="Facebook" width={24} height={24} />
-            </Link>
-            <Link href="https://www.instagram.com/genio_india">
-              <Image src={instagramicon} alt="Instagram" width={24} height={24} />
-            </Link>
-            <Link href="https://www.linkedin.com/company/genio-india-software">
-              <Image src={linkedinicon} alt="LinkedIn" width={24} height={24} />
-            </Link>
-          </div>
-        </div>
-        
-        {/* Copyright Text (Centered) */}
-        <p className={styles.copyright}>&copy; 2025 Genio India Software Pvt. Ltd.</p>
+    {/* Address */}
+    <div className={styles.address}>
+      <p>Genio India Software Pvt. Ltd.</p>
+      <p>Business hours 09:00 to 18:00</p>
+      <p>No. 5/131B1, Narikkal karadu, Vennandur, Rasipuram, Namakkal,</p>
+      <p>Tamil Nadu, India - 637505.</p>
+    </div>
+
+    {/* Footer Links - Column 1 */}
+    <div className={styles.footerLinks}>
+      <Link href="/aboutus">About Genio India</Link>
+      <Link href="#companyprofile">Company Profile</Link>
+      <Link href="#corporatehistory">Corporate History</Link>
+    </div>
+
+    {/* Footer Links - Column 2 */}
+    <div className={styles.footerLinks}>
+      <Link href="#">Notice</Link>
+      <Link href="#">Contact Us</Link>
+    </div>
+  </div>
+
+  <div className={styles.footerBottom}>
+    <div className={styles.socialMedia}>
+      <h3>FOLLOW US</h3>
+      <div className={styles.socialIcons}>
+        <Link href="https://x.com/Genio_India">
+          <Image src={xicon} alt="Twitter" width={24} height={24} />
+        </Link>
+        <Link href="https://www.facebook.com/profile.php?id=61572639517968">
+          <Image src={facebookicon} alt="Facebook" width={24} height={24} />
+        </Link>
+        <Link href="https://www.instagram.com/genio_india">
+          <Image src={instagramicon} alt="Instagram" width={24} height={24} />
+        </Link>
+        <Link href="https://www.linkedin.com/company/genio-india-software">
+          <Image src={linkedinicon} alt="LinkedIn" width={24} height={24} />
+        </Link>
       </div>
-    </footer>
+    </div>
+    <p className={styles.copyright}>&copy; 2025 Genio India Software Pvt. Ltd.</p>
+  </div>
+</footer>
   );
 }
 
