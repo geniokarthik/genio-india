@@ -10,7 +10,10 @@
 }
 
 .logoContainer {
+  pointer-events: auto !important;
   flex-shrink: 0;
+  position: relative;
+  z-index: 10;
 }
 
 .logo {
@@ -36,11 +39,11 @@
 }
 
 .link:hover {
-  color: #ff3333;
+  color: #e0655a;
 }
 
 .link.active {
-  color: #e22110; /* Active link color */
+  color: #e0655a; /* Active link color */
 }
 
 .flagContainer {
@@ -176,7 +179,7 @@
 }
 
 .closeButton:hover {
-  color: #ff3333;
+  color: #e0655a;
 }
 
 @media (max-width: 768px) {

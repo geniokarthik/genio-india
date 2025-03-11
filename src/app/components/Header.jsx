@@ -42,7 +42,12 @@ export default function Header() {
       e.preventDefault();
       setSidebarOpen(false)
       window.location.href = href;
-  };                  
+  };   
+  
+  const handleHomePage = (e, href) => {
+    e.preventDefault();
+    router.push(href);
+  }
 
   // Sidebar content
   const sidebarContent = (
@@ -99,15 +104,16 @@ export default function Header() {
     <header className={styles.header}>
       <title>Genio India</title>
       <div className={styles.logoContainer}>
-        <Link href="/">
+        <a href="/">
           <Image
             src={logo}
             alt="Genio India Logo"
             width={180}
             height={100}
             className={styles.logo}
+            onClick={(e) => { handleHomePage(e, "/"); }}
           />
-        </Link>
+        </a>
       </div>
 
       {isMobile ? (
@@ -141,7 +147,7 @@ export default function Header() {
         </Sidebar>
       ) : (
         <div className={styles.rightSection}>
-          <div className={styles.logoicon}>
+          {/* <div className={styles.logoicon}>
             <Link href="/" className={styles.link}>
               <Image
                 src={logoicon}
@@ -151,7 +157,7 @@ export default function Header() {
                 style={{marginTop: 7}}
               />
             </Link>
-          </div>
+          </div> */}
           <nav className={styles.nav}>
             <Link 
               href="/service" 

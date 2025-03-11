@@ -227,9 +227,20 @@ export default function Home() {
                   <div className={styles.profileAddress}>
                     No. 171/3/1, Narikkal karadu, Vennandur, Rasipuram, Namakkal, Tamil Nadu, India-637505.
                   </div>
-                  <a href="https://maps.app.goo.gl/ZY49ZsaEBoErHQYXA" className={styles.profileMapLink} target="_blank" >
-                    Google map <span className={styles.profileArrow}>↗</span>
-                  </a>
+                  <span className={styles.profileMapLink} target="_blank" >
+                    Google map <span className={styles.profileArrow}>↘</span>
+                  </span>
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    style={{ border: 0, borderRadius: "10px" }}
+                    src="https://www.google.com/maps?q=11.515406,78.091705&output=embed"
+                    target="_blank" 
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
                 </div>
               </div>
             </div>
