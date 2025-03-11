@@ -38,92 +38,108 @@ export default function AboutUs() {
     <>
       <Header />
       <div className={styles.home}>
-          {/* Hero Section */}
-          <motion.section
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className={styles.hero}
-            id="corporatehistory"
-          >
-            <div className={styles.heroContent}>
-              <h1 className={styles.heroTitle}>
-                <span className={styles.heroRedText}>Corporate History</span>
-              </h1>
-              <h2 className={styles.heroSubtitle}>
-                The Story of Our Growth and Milestones Over the Years
-              </h2>
+        {/* Hero Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className={styles.hero}
+          id="corporatehistory"
+        >
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>
+              <span className={styles.heroRedText}>Corporate History</span>
+            </h1>
+            <h2 className={styles.heroSubtitle}>
+              The Story of Our Growth and Milestones Over the Years
+            </h2>
+          </div>
+        </motion.section>
+
+        {/* Timeline Section */}
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+          className={styles.timelineSection}
+        >
+          <div className={styles.timeline} ref={timelineRef}>
+            <div className={styles.timelineItem}>
+              <div className={styles.timelineContent}>
+                <span className={styles.year}>2025</span>
+                <span className={styles.text}> - Expansion of Japanese Language Education & Global Talent Support</span>
+                <p className={styles.description}>
+                  In addition to providing Japanese language education for engineers, we launched training programs for university students and graduates interested in learning Japanese.
+                </p>
+                <p className={styles.description}>
+                  We placed a special focus on the construction industry, offering tailored language training and a new talent-matching service to connect skilled professionals with Japanese companies.
+                </p>
+                <p className={styles.description}>
+                  Beyond the IT sector, we continue to strengthen our collaboration with companies in various industries.
+                </p>
+              </div>
+              <div className={styles.timelineDot}></div>
             </div>
-          </motion.section>
 
-          {/* Timeline Section */}
-          <motion.section
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-            className={styles.timelineSection}
-          >
-            <div className={styles.timeline} ref={timelineRef}>
-              <div className={styles.timelineItem}>
-                <div className={styles.timelineContent}>
-                  <h3 className={styles.year}>2025</h3>
-                  <p className={styles.description}>
-                    Focused on website and application development services,
-                    Genio India has expanded its portfolio.
-                  </p>
-                </div>
-                <div className={styles.timelineDot}></div>
+            <div className={styles.timelineItem}>
+              <div className={styles.timelineContent}>
+                <span className={styles.year}>2024</span>
+                <span className={styles.text}> - New Office Opening & Talent Development</span>
+                <p className={styles.description}>
+                  To better support projects for the Japanese market, we started offering Japanese language education for our engineers.
+                </p>
+                <p className={styles.description}>
+                  We also began hiring new graduate engineers and introduced in-house training programs.
+                </p>
+                <p className={styles.description}>
+                  To accommodate further growth, we relocated to a new office and enhanced our development environment.
+                </p>
               </div>
-
-              <div className={styles.timelineItem}>
-                <div className={styles.timelineContent}>
-                  <h3 className={styles.year}>2024</h3>
-                  <p className={styles.description}>
-                    The company relocated to a new office in Vennandur and began
-                    offering Japanese language training for its IT engineers.
-                  </p>
-                </div>
-                <div className={styles.timelineDot}></div>
-              </div>
-
-              <div className={styles.timelineItem}>
-                <div className={styles.timelineContent}>
-                  <h3 className={styles.year}>2023</h3>
-                  <p className={styles.description}>
-                    Expanded our development team and established strong
-                    partnerships with international clients.
-                  </p>
-                </div>
-                <div className={styles.timelineDot}></div>
-              </div>
-
-              <div className={styles.timelineItem}>
-                <div className={styles.timelineContent}>
-                  <h3 className={styles.year}>2022</h3>
-                  <p className={styles.description}>
-                    Genio India Software Pvt. Ltd. was established in December,
-                    marking the beginning of our journey.
-                  </p>
-                  <p className={styles.description}>
-                    The Indian Operation is aimed at fulfilling both offshore
-                    Development Requirements.
-                  </p>
-                </div>
-                <div className={styles.timelineDot}></div>
-              </div>
+              <div className={styles.timelineDot}></div>
             </div>
-            <Image
-              src={sidelogo}
-              alt="sloganicon"
-              className={styles.heroBackgroundGradient}
-            />
-          </motion.section>
-          <TeamSection />
-        {/* </div> */}
+
+            <div className={styles.timelineItem}>
+              <div className={styles.timelineContent}>
+                <span className={styles.year}>2023</span>
+                <span className={styles.text}> - Business Expansion & Development Scope Growth</span>
+                <p className={styles.description}>
+                  We expanded our partnerships with Japanese clients and officially launched web system and mobile app development services.
+                </p>
+                <p className={styles.description}>
+                  By adopting agile development methodologies, we established a fast and flexible development process.
+                </p>
+                <p className={styles.description}>
+                  Additionally, we strengthened our project management capabilities while collaborating with clients across various industries.
+                </p>
+              </div>
+              <div className={styles.timelineDot}></div>
+            </div>
+
+            <div className={styles.timelineItem}>
+              <div className={styles.timelineContent}>
+                <span className={styles.year}>2022</span>
+                <span className={styles.text}> - Company Establishment & Offshore Development Launch</span>
+                <p className={styles.description}>
+                  Our company was established in 2022 with a primary focus on offshore development in India.
+                </p>
+                <p className={styles.description}>
+                  We aimed to provide high-quality and cost-effective IT development services to support the digital transformation (DX) of Japanese businesses.
+                </p>
+              </div>
+              <div className={styles.timelineDot}></div>
+            </div>
+          </div>
+          <Image
+            src={sidelogo}
+            alt="sloganicon"
+            className={styles.heroBackgroundGradient}
+          />
+        </motion.section>
+        <TeamSection />
       </div>
-      <ScrollTop/>
+      <ScrollTop />
       <Footer />
     </>
   );

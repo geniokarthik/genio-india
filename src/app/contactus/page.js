@@ -16,6 +16,7 @@ export default function ContactForm() {
     const [inputFlg, setInputFlg] = useState(true);
     const [checkFlg, setCheckFlg] = useState(false);
     const [completedFlg, setCompletedFlg] = useState(false);
+    const [disableFlg, setDisableFlg] = useState(false);
 
     const [formData, setFormData] = useState({
         inquiryCategory: "",
@@ -43,6 +44,8 @@ export default function ContactForm() {
             newErrors.phoneNumber = "Phone number is required";
         } else if (!/^\d+$/.test(formData.phoneNumber)) {
             newErrors.phoneNumber = "Please enter numbers only";
+        } else if (formData.phoneNumber.length !== 10) {
+            newErrors.phoneNumber = "Phone number must be at least 10 digits";
         }
 
         if (!formData.emailAddress) {
@@ -69,6 +72,7 @@ export default function ContactForm() {
                 setCheckFlg(true);
                 const formDataCopy = { ...formData };
                 if (buttonFlg) {
+                    setDisableFlg(true);
                     const response = await fetch("/api/sendmail", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
@@ -80,6 +84,7 @@ export default function ContactForm() {
                     try {
                         if (data.success) {
                             alert(data.message);
+                            setDisableFlg(false);
                             setFormData({
                                 inquiryCategory: "",
                                 companyName: "",
@@ -241,7 +246,11 @@ export default function ContactForm() {
                                             </div>
 
                                             <div className={styles.formGroup1}>
-                                                <button type="submit" className={styles.submitButton}>
+                                                <button type="submit" className={styles.submitButton} disabled={disableFlg}
+                                                style={{
+                                                    pointerEvents: disableFlg ? "none" : "auto",
+                                                    opacity: disableFlg ? 0.6 : 1
+                                                }}>
                                                     {!buttonFlg ? 'Confirm' : 'Send'}
                                                 </button>
                                             </div>
@@ -256,9 +265,6 @@ export default function ContactForm() {
                                                 <br /><br />
                                                 We have received your inquiry and will review its contents.
                                                 Our team will reach out to you within two business days at the email address you provided.
-                                                <br /><br />
-                                                If you do not receive a response within three days, your email may not have been received correctly.
-                                                In that case, please call us at 000-111-2222 for assistance.
                                             </p>
                                         </div>
                                         <div style={{ paddingTop: 50, textAlign: 'center' }}>

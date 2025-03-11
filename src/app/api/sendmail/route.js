@@ -2,20 +2,11 @@ import nodemailer from "nodemailer";
 
 export async function POST(req) {
     try {
-        const { inquiryCategory, name, phoneNumber, emailAddress, inquiryContent } = await req.json();
+        const { inquiryCategory, name, phoneNumber, emailAddress, inquiryContent, companyName } = await req.json();
 
         if (!inquiryCategory || !name || !phoneNumber || !emailAddress || !inquiryContent) {
             return new Response(JSON.stringify({ error: "Missing required fields" }), { status: 400 });
         }
-
-        const to = "info@genioindia.co.in";
-        const subject = inquiryCategory;
-        const text = `
-            Name: ${name}
-            Phone No: ${phoneNumber}
-            Email Address: ${emailAddress}
-            Inquiry Content: ${inquiryContent}
-            `;
 
         let transporter = nodemailer.createTransport({
             service: "gmail",
@@ -25,18 +16,35 @@ export async function POST(req) {
             },
             secure: true,
             tls: {
-                rejectUnauthorized: false, // 🔥 Fix SSL certificate issue
+                rejectUnauthorized: false,
             },
         });
         
-        // Email options
-        let mailOptions = {
+        const mailOptions = {
             from: process.env.EMAIL_USER,
-            to,
-            subject,
-            text, // FIXED
+            to: "info@genioindia.co.in",
+            subject: inquiryCategory,
+            text: `
+            New Inquiry Received
+        
+            Hello,
+        
+            You have received a new inquiry from the website. Please find the details below:
+        
+            -----------------------------------
+            Inquiry Details:
+            Name: ${name}
+            Phone: ${phoneNumber}
+            Email: ${emailAddress}
+            Company: ${companyName || "Not provided"}
+            
+            Message:
+            ${inquiryContent}
+            -----------------------------------
+        
+            Sent on: ${new Date().toLocaleString()}
+            `,
         };
-
         let info = await transporter.sendMail(mailOptions);
 
         return new Response(JSON.stringify({ success: true, message: "Your email has been sent successfully!", info }), { status: 200 });

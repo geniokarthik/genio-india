@@ -45,7 +45,7 @@
 /* Timeline Section */
 .timelineSection {
   position: relative;
-  margin-left: 8%;
+  /* margin-left: 8%; */
 }
 
 .timeline {
@@ -60,13 +60,12 @@
   position: absolute;
   left: 20px;
   width: 3px;
-  height: 70%;
+  height: 76%;
   background-color: #333;
 }
 
 .timelineItem {
   position: relative;
-  margin-bottom: 4rem;
   width: 100%;
   opacity: 0;
   transform: translateX(-20px);
@@ -102,6 +101,14 @@
   font-size: 3rem;
   color: #e22110;
   margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.text {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  vertical-align: super;
+  font-weight: bold;
 }
 
 .description {
@@ -129,7 +136,7 @@
 
   .timeline::before {
     left: 7px;
-    height: 67%;
+    height: 75%;
   }
 
   .timelineItem {
@@ -138,6 +145,7 @@
 
   .timelineDot {
     left: 8px;
+    top: 20px;
   }
 
   .timelineContent {
@@ -146,6 +154,10 @@
 
   .year {
     font-size: 1.5rem;
+  }
+  .text {
+    font-size: 1rem;
+    vertical-align: text-bottom;
   }
 
   .description {
@@ -168,7 +180,7 @@
 
   .timeline::before {
     left: 5px;
-    height: 67%;
+    height: 75%;
   }
 
   .timelineDot {
@@ -181,6 +193,10 @@
 
   .year {
     font-size: 1.25rem;
+  }
+
+  .text {
+    font-size: 1rem;
   }
 
   .description {

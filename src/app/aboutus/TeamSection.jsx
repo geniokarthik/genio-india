@@ -5,50 +5,80 @@ import "../globals.css";
 import { motion } from "framer-motion";
 import styles from "src/app/styles/Team.module.css";
 import employee from "src/assets/images/our_team/employee.png";
+import elavarasan from "src/assets/images/our_team/elavarasan.png";
+import naveen from "src/assets/images/our_team/naveen.png";
+import sivaraj from "src/assets/images/our_team/sivaraj.png";
+import takuyayoneda from "src/assets/images/our_team/takuyayoneda.png";
+import deivaraj from "src/assets/images/our_team/deivaraj.png";
+import dhanasekaran from "src/assets/images/our_team/dhanasekaran.png";
+import ajith from "src/assets/images/our_team/ajith.png";
+import kavinesh from "src/assets/images/our_team/kavinesh.png";
 import linkedin from "src/assets/images/our_team/linkedin.png";
 
+
 const teamMembers = [
+  // {
+  //   name: "Takuya Yoneda",
+  //   role: "Founder",
+  //   image: takuyayoneda,
+  //   description: "",
+  //   linkedin: "",
+  // },
+  // {
+  //   name: "Karthik",
+  //   role: "Director & Manager",
+  //   image: employee,
+  //   description: "",
+  //   linkedin: "",
+  // },
   {
-    name: "John Doe",
-    role: "Web Developer",
-    image: employee,
-    description: "Experienced web developer specializing in React and Next.js",
-    linkedin: "https://linkedin.com/in/johndoe",
+    name: "Deivaraj",
+    role: "Team Lead",
+    image: deivaraj,
+    description: "Code smart, build fast, innovate always—efficient in front, powerful in back, full-stack expertise.",
+    linkedin: "https://www.linkedin.com/in/deivaraj-p-a67023146",
   },
   {
-    name: "Jane Smith",
-    role: "App Developer",
-    image: employee,
-    description: "Mobile app expert with focus on React Native development",
-    linkedin: "https://linkedin.com/in/janesmith",
-  },
-  {
-    name: "Mike Johnson",
-    role: "Database Engineer",
-    image: employee,
+    name: "Dhanasekaran",
+    role: "Senior Developer",
+    image: dhanasekaran,
     description: "Database specialist with extensive MySQL experience",
-    linkedin: "https://linkedin.com/in/mikejohnson",
+    linkedin: "",
   },
   {
-    name: "Sarah Wilson",
-    role: "UI/UX Designer",
-    image: employee,
+    name: "Sivaraj",
+    role: "Software Developer",
+    image: sivaraj,
+    description: "Database specialist with extensive MySQL experience",
+    linkedin: "https://www.linkedin.com/in/sivaraj-c-a956a8283",
+  },
+  {
+    name: "Ajith",
+    role: "Bilingual Full Stack Developer",
+    image: ajith,
     description: "Creative designer focused on user-centered experiences",
-    linkedin: "https://linkedin.com/in/sarahwilson",
+    linkedin: "",
   },
   {
-    name: "Jane Smith",
+    name: "Naveen",
+    role: "Bilingual Full Stack Developer",
+    image: naveen,
+    description: "Creating seamless, efficient, and innovative digital experiences with precision.",
+    linkedin: "www.linkedin.com/in/naveen-kumar-8816a11b9",
+  },
+  {
+    name: "Kavinesh",
+    role: "Software Developer",
+    image: kavinesh,
+    description: "",
+    linkedin: "",
+  },
+  {
+    name: "Elavarasan",
     role: "App Developer",
-    image: employee,
-    description: "Mobile app expert with focus on React Native development",
-    linkedin: "https://linkedin.com/in/janesmith",
-  },
-  {
-    name: "Mike Johnson",
-    role: "Database Engineer",
-    image: employee,
-    description: "Database specialist with extensive MySQL experience",
-    linkedin: "https://linkedin.com/in/mikejohnson",
+    image: elavarasan,
+    description: "Great apps aren’t just built with code; they’re crafted with passion, innovation, and a vision for the future.",
+    linkedin: "https://www.linkedin.com/in/elavarasan-m-0260a527a/",
   },
 ];
 
@@ -80,8 +110,8 @@ export default function TeamSection() {
                     <Image
                       src={member.image}
                       alt={member.name}
-                      width={300}
-                      height={600}
+                      width={200}
+                      height={400}
                       className={styles.memberImage}
                     />
                   </div>
@@ -104,8 +134,8 @@ export default function TeamSection() {
                         <Image
                           src={linkedin}
                           alt="LinkedIn"
-                          width={32}
-                          height={32}
+                          width={40}
+                          height={40}
                           className={styles.socialIcon}
                         />
                       </a>

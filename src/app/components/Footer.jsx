@@ -28,31 +28,26 @@ export default function Footer() {
     {/* Footer Links - Column 1 */}
     <div className={styles.footerLinks}>
       <Link href="/aboutus">About Genio India</Link>
-      <Link href="#companyprofile">Company Profile</Link>
-      <Link href="#corporatehistory">Corporate History</Link>
+      <Link href="/#companyprofile">Company Profile</Link>
+      <Link href="/contactus">Contact Us</Link>
     </div>
 
-    {/* Footer Links - Column 2 */}
-    <div className={styles.footerLinks}>
-      <Link href="#">Notice</Link>
-      <Link href="#">Contact Us</Link>
-    </div>
   </div>
 
   <div className={styles.footerBottom}>
     <div className={styles.socialMedia}>
       <h3>FOLLOW US</h3>
       <div className={styles.socialIcons}>
-        <Link href="https://x.com/Genio_India">
+        <Link href="https://x.com/Genio_India" target="_blank">
           <Image src={xicon} alt="Twitter" width={24} height={24} />
         </Link>
-        <Link href="https://www.facebook.com/profile.php?id=61572639517968">
+        <Link href="https://www.facebook.com/genioindia.co.in" target="_blank">
           <Image src={facebookicon} alt="Facebook" width={24} height={24} />
         </Link>
-        <Link href="https://www.instagram.com/genio_india">
+        <Link href="https://www.instagram.com/genio_india" target="_blank">
           <Image src={instagramicon} alt="Instagram" width={24} height={24} />
         </Link>
-        <Link href="https://www.linkedin.com/company/genio-india-software">
+        <Link href="https://www.linkedin.com/company/genio-india-software" target="_blank">
           <Image src={linkedinicon} alt="LinkedIn" width={24} height={24} />
         </Link>
       </div>

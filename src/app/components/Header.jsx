@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Import usePathname
+import { usePathname, useRouter } from "next/navigation"; // Import usePathname
 import styles from "src/app/styles/Header.module.css";
 import logo from "src/assets/images/logo.png";
 import logoicon from "src/assets/images/logoicon.png";
@@ -15,11 +15,12 @@ export default function Header() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const pathname = usePathname(); // Get current pathname
+  const router = useRouter();
 
   // Handle flag toggle
-  const handleFlagClick = () => {
-    setFlag(flag === IndFlgIcon ? JpFlgIcon : IndFlgIcon);
-  };
+  // const handleFlagClick = () => {
+  //   setFlag(flag === IndFlgIcon ? JpFlgIcon : IndFlgIcon);
+  // };
 
   // Handle sidebar toggle
   const onSetSidebarOpen = (open) => {
@@ -36,6 +37,12 @@ export default function Header() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const handleReload = (e, href) => {
+      e.preventDefault();
+      setSidebarOpen(false)
+      window.location.href = href;
+  };                  
 
   // Sidebar content
   const sidebarContent = (
@@ -71,11 +78,11 @@ export default function Header() {
         <Link 
           href="/contactus" 
           className={`${styles.sidebarLink} ${pathname === "/contactus" ? styles.active : ""}`} 
-          onClick={() => setSidebarOpen(false)}
+          onClick={(e) => handleReload(e, "/contactus")}
         >
           Contact Us
         </Link>
-        <div className={styles.sidebarFlagContainer} onClick={handleFlagClick}>
+        {/* <div className={styles.sidebarFlagContainer} onClick={handleFlagClick}>
           <Image 
             src={flag} 
             alt={flag === IndFlgIcon ? "India Flag" : "Japan Flag"} 
@@ -83,21 +90,24 @@ export default function Header() {
             height={30} 
           />
           <span className={styles.flagtext}>{flag === IndFlgIcon ? "IN" : "JP"}</span>
-        </div>
+        </div> */}
       </div>
     </div>
   );
 
   return (
     <header className={styles.header}>
+      <title>Genio India</title>
       <div className={styles.logoContainer}>
-        <Image
-          src={logo}
-          alt="Genio India Logo"
-          width={180}
-          height={100}
-          className={styles.logo}
-        />
+        <Link href="/">
+          <Image
+            src={logo}
+            alt="Genio India Logo"
+            width={180}
+            height={100}
+            className={styles.logo}
+          />
+        </Link>
       </div>
 
       {isMobile ? (
@@ -157,12 +167,13 @@ export default function Header() {
             </Link>
             <Link 
               href="/contactus" 
+              onClick={(e) => handleReload(e, "/contactus")}
               className={`${styles.link} ${pathname === "/contactus" ? styles.active : ""}`}
             >
               Contact Us
             </Link>
           </nav>
-          <div className={styles.flagContainer} onClick={handleFlagClick}>
+          {/* <div className={styles.flagContainer} onClick={handleFlagClick}>
             <Image 
               src={flag} 
               alt={flag === IndFlgIcon ? "India Flag" : "Japan Flag"} 
@@ -170,7 +181,7 @@ export default function Header() {
               height={30} 
             />
             <span className={styles.flagtext}>{flag === IndFlgIcon ? "IN" : "JP"}</span>
-          </div>
+          </div> */}
         </div>
       )}
     </header>

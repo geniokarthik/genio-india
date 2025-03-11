@@ -160,8 +160,8 @@ export default function Home() {
             <h2 className={styles.funFactsTitle}>Some Fun Facts</h2>
             <div className={styles.funFactsContainer}>
               {[
-                { number: "8", text: "CUP OF COFFEE" },
-                { number: "7", text: "PROJECT ONGOING" },
+                { number: "8", text: "DEVELOPERS" },
+                { number: "4", text: "PROJECT ONGOING" },
                 { number: "5", text: "PROJECT DELIVERED" },
               ].map((fact, index) => (
                 <motion.div
@@ -203,7 +203,7 @@ export default function Home() {
               </div>
               <div className={styles.profileRow}>
                 <div className={styles.profileLabel}>Established</div>
-                <div className={styles.profileValue}>December 28, 2022</div>
+                <div className={styles.profileValue}>July 28, 2022</div>
               </div>
               <div className={styles.profileRow}>
                 <div className={styles.profileLabel}>Representative</div>
@@ -215,14 +215,11 @@ export default function Home() {
               </div>
               <div className={styles.profileRow}>
                 <div className={styles.profileLabel}>Business Contents</div>
-                <div>We face our cutomer's challenges and provide services that bring smiles to the faces of all those involved.</div>
-                <div className={styles.profileValue}>
-                  <div className={styles.profileBulletPoints}>
+                  <div>
                     <div>• App Development</div>
                     <div>• Web Development</div>
                     <div>• MySql Database</div>
                   </div>
-                </div>
               </div>
               <div className={styles.profileRow}>
                 <div className={styles.profileLabel}>Location</div>
@@ -230,7 +227,7 @@ export default function Home() {
                   <div className={styles.profileAddress}>
                     No. 171/3/1, Narikkal karadu, Vennandur, Rasipuram, Namakkal, Tamil Nadu, India-637505.
                   </div>
-                  <a href="https://maps.app.goo.gl/ZY49ZsaEBoErHQYXA" className={styles.profileMapLink}>
+                  <a href="https://maps.app.goo.gl/ZY49ZsaEBoErHQYXA" className={styles.profileMapLink} target="_blank" >
                     Google map <span className={styles.profileArrow}>↗</span>
                   </a>
                 </div>

@@ -208,7 +208,6 @@
 .progress {
   position: absolute;
   right: 120px;
-  top: 70%;
 }
 
 .step {
@@ -271,8 +270,8 @@
   display: none;
 }
 
-/* Mobile View (below 768px) */
-@media (max-width: 768px) {
+/* Mobile View (below 900px) */
+@media (max-width: 900px) {
   .container {
     padding: 1rem;
     max-width: 100%;

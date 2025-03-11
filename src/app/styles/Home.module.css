@@ -111,7 +111,8 @@
   font-size: 48px;
   font-weight: 500;
   line-height: 1.2;
-  margin: 0;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .heroDescription {
@@ -475,7 +476,6 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
   box-sizing: border-box;
 }
 
