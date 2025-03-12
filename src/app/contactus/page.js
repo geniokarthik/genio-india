@@ -9,6 +9,7 @@ import styles from "src/app/styles/Contactus.module.css";
 import emailicon from "src/assets/images/contactus/email.png";
 import returnhomeicon from "src/assets/images/contactus/returnhome.png";
 import ScrollTop from "src/app/scrolltop/ScrollTop";
+import CryptoJS from 'crypto-js';
 
 export default function ContactForm() {
     const [isClient, setIsClient] = useState(false);
@@ -73,9 +74,15 @@ export default function ContactForm() {
                 const formDataCopy = { ...formData };
                 if (buttonFlg) {
                     setDisableFlg(true);
+                    const apiKey = "genio-india-secret-key-123";
+                    const secretKey = "user-defined-secret"; 
+                    const encryptedKey = CryptoJS.AES.encrypt(apiKey, secretKey).toString();
                     const response = await fetch("/api/sendmail", {
                         method: "POST",
-                        headers: { "Content-Type": "application/json" },
+                        headers: { 
+                            "Content-Type": "application/json",
+                            "x-api-key": encryptedKey
+                        },
                         body: JSON.stringify(formDataCopy),
                     });
 
@@ -96,7 +103,7 @@ export default function ContactForm() {
                             setCheckFlg(false);
                             setCompletedFlg(true);
                         } else {
-                            alert(response.message);
+                            alert("Unauthorized Request");
                             setFormData({
                                 inquiryCategory: "",
                                 companyName: "",
@@ -107,6 +114,7 @@ export default function ContactForm() {
                             });
                             setButtonFlg(false);
                         }
+                        setDisableFlg(false);
                     } catch (jsonError) {
                         alert("Invalid JSON response from server");
                     }

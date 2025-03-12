@@ -1,11 +1,17 @@
 import nodemailer from "nodemailer";
+import CryptoJS from "crypto-js";
 
 export async function POST(req) {
     try {
         const { inquiryCategory, name, phoneNumber, emailAddress, inquiryContent, companyName } = await req.json();
-
+        const apiKey = req.headers.get('x-api-key');
+        const secretKey = "user-defined-secret"; 
+        const decryptedKey = CryptoJS.AES.decrypt(apiKey, secretKey).toString(CryptoJS.enc.Utf8);
+        if (!decryptedKey || decryptedKey !== process.env.CONTACT_API_KEY) {
+            return new Response(JSON.stringify({ success: false, message: "Unauthorized Request", details: error.message }), { status: 403 });
+        }
         if (!inquiryCategory || !name || !phoneNumber || !emailAddress || !inquiryContent) {
-            return new Response(JSON.stringify({ error: "Missing required fields" }), { status: 400 });
+            return new Response(JSON.stringify({ success: false, message: "Missing required fields", details: error.message }), { status: 400 });
         }
 
         let transporter = nodemailer.createTransport({
