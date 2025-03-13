@@ -4,7 +4,7 @@ import Image from "next/image";
 import "../globals.css";
 import { motion } from "framer-motion";
 import styles from "src/app/styles/Team.module.css";
-import employee from "src/assets/images/our_team/employee.png";
+import karthik from "src/assets/images/our_team/karthik.png";
 import elavarasan from "src/assets/images/our_team/elavarasan.png";
 import naveen from "src/assets/images/our_team/naveen.png";
 import sivaraj from "src/assets/images/our_team/sivaraj.png";
@@ -24,13 +24,13 @@ const teamMembers = [
   //   description: "",
   //   linkedin: "",
   // },
-  // {
-  //   name: "Karthik",
-  //   role: "Director & Manager",
-  //   image: employee,
-  //   description: "",
-  //   linkedin: "",
-  // },
+  {
+    name: "Karthik",
+    role: "Manager",
+    image: karthik,
+    description: "The strength of the team is each individual member. The strength of each member is the team.",
+    linkedin: "https://www.linkedin.com/in/karthik-seerangan-7b6058356",
+  },
   {
     name: "Deivaraj",
     role: "Team Lead",
@@ -56,7 +56,7 @@ const teamMembers = [
     name: "Ajith",
     role: "Bilingual Full Stack Developer",
     image: ajith,
-    description: "Creative designer focused on user-centered experiences",
+    description: "Bringing ideas to life through lines of code and endless cups of coffee.",
     linkedin: "https://www.linkedin.com/in/ajith-r-21a377266/",
   },
   {
@@ -112,7 +112,9 @@ export default function TeamSection() {
                       alt={member.name}
                       width={200}
                       height={400}
+                      quality={100}
                       className={styles.memberImage}
+                      priority
                     />
                   </div>
 
