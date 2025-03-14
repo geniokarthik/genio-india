@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation"; // Import usePathname
 import styles from "src/app/styles/Header.module.css";
 import logo from "src/assets/images/logo.png";
+import logoMob from "src/assets/images/logoMob.png";
 import logoicon from "src/assets/images/logoicon.png";
 import IndFlgIcon from "src/assets/images/indflag.png";
 import JpFlgIcon from "src/assets/images/jpflag.png";
@@ -106,7 +107,7 @@ export default function Header() {
       <div className={styles.logoContainer}>
         <a href="/">
           <Image
-            src={logo}
+            src={isMobile ? logoMob : logo}
             alt="Genio India Logo"
             width={180}
             height={100}
