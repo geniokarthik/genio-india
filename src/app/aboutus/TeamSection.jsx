@@ -17,13 +17,13 @@ import linkedin from "src/assets/images/our_team/linkedin.png";
 
 
 const teamMembers = [
-  // {
-  //   name: "Takuya Yoneda",
-  //   role: "Founder",
-  //   image: takuyayoneda,
-  //   description: "",
-  //   linkedin: "",
-  // },
+  {
+    name: "Takuya Yoneda",
+    role: "Managing Director",
+    image: takuyayoneda,
+    description: "",
+    linkedin: "",
+  },
   {
     name: "Karthik",
     role: "Manager",
@@ -123,7 +123,7 @@ export default function TeamSection() {
                     <h3 className={styles.memberName}>{member.name}</h3>
                     <p className={styles.memberRole}>{member.role}</p>
                     <p className={styles.memberDescription}>
-                     " {member.description} "
+                     {member.description}
                     </p>
                     <div className={styles.socialMedia}>
                       {/* LinkedIn Link */}
