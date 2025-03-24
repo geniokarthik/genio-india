@@ -2,27 +2,29 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation"; // Import usePathname
-import styles from "src/app/styles/Header.module.css";
+import { usePathname } from "next/navigation"; // Import usePathname
+import styles from "src/app/ja/styles/Header.module.css";
 import logo from "src/assets/images/logo.png";
-import logoMob from "src/assets/images/logoMob.png";
-import logoicon from "src/assets/images/logoicon.png";
-import IndFlgIcon from "src/assets/images/indflag.png";
-import JpFlgIcon from "src/assets/images/jpflag.png";
+import IndFlgIcon from "src/assets/images/india.png";
+import JpFlgIcon from "src/assets/images/japan.png";
 import Sidebar from "react-sidebar";
+import { useRouter } from 'next/navigation';
 
 export default function Header() {
+  const { push } = useRouter();
   const [flag, setFlag] = useState(IndFlgIcon);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const pathname = usePathname(); // Get current pathname
-  const router = useRouter();
 
   // Handle flag toggle
-  // const handleFlagClick = () => {
-  //   setFlag(flag === IndFlgIcon ? JpFlgIcon : IndFlgIcon);
-  // };
-
+  const handleFlagClick = () => {
+    setFlag(flag === IndFlgIcon ? JpFlgIcon : IndFlgIcon);
+    if(localStorage.getItem("lang") === 'EnFlgIcon') {
+      localStorage.setItem("lang", "JpFlgIcon");
+    }
+    push('/');
+  };
   // Handle sidebar toggle
   const onSetSidebarOpen = (open) => {
     setSidebarOpen(open);
@@ -39,17 +41,6 @@ export default function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleReload = (e, href) => {
-      e.preventDefault();
-      setSidebarOpen(false)
-      window.location.href = href;
-  };   
-  
-  const handleHomePage = (e, href) => {
-    e.preventDefault();
-    router.push(href);
-  }
-
   // Sidebar content
   const sidebarContent = (
     <div className={styles.sidebarContent}>
@@ -65,30 +56,30 @@ export default function Header() {
           className={`${styles.sidebarLink} ${pathname === "/" ? styles.active : ""}`} 
           onClick={() => setSidebarOpen(false)}
         >
-          Home
+          ホーム
         </Link>
         <Link 
-          href="/service" 
-          className={`${styles.sidebarLink} ${pathname === "/service" ? styles.active : ""}`} 
+          href="/ja/service" 
+          className={`${styles.sidebarLink} ${pathname === "/ja/service" ? styles.active : ""}`} 
           onClick={() => setSidebarOpen(false)}
         >
-          Service
+          サービス
         </Link>
         <Link 
-          href="/aboutus" 
-          className={`${styles.sidebarLink} ${pathname === "/aboutus" ? styles.active : ""}`} 
+          href="/ja/aboutus" 
+          className={`${styles.sidebarLink} ${pathname === "/ja/aboutus" ? styles.active : ""}`} 
           onClick={() => setSidebarOpen(false)}
         >
-          About Us
+          会社情報
         </Link>
         <Link 
-          href="/contactus" 
-          className={`${styles.sidebarLink} ${pathname === "/contactus" ? styles.active : ""}`} 
-          onClick={(e) => handleReload(e, "/contactus")}
+          href="/ja/contactus" 
+          className={`${styles.sidebarLink} ${pathname === "/ja/contactus" ? styles.active : ""}`} 
+          onClick={() => setSidebarOpen(false)}
         >
-          Contact Us
+          お問い合わせ
         </Link>
-        {/* <div className={styles.sidebarFlagContainer} onClick={handleFlagClick}>
+        <div className={styles.sidebarFlagContainer} onClick={handleFlagClick}>
           <Image 
             src={flag} 
             alt={flag === IndFlgIcon ? "India Flag" : "Japan Flag"} 
@@ -96,25 +87,23 @@ export default function Header() {
             height={30} 
           />
           <span className={styles.flagtext}>{flag === IndFlgIcon ? "IN" : "JP"}</span>
-        </div> */}
+        </div>
       </div>
     </div>
   );
 
   return (
     <header className={styles.header}>
-      <title>Genio India</title>
       <div className={styles.logoContainer}>
-        <a href="/">
+        <Link href="/" >
           <Image
-            src={isMobile ? logoMob : logo}
+            src={logo}
             alt="Genio India Logo"
             width={180}
             height={100}
             className={styles.logo}
-            onClick={(e) => { handleHomePage(e, "/"); }}
           />
-        </a>
+        </Link>
       </div>
 
       {isMobile ? (
@@ -148,39 +137,27 @@ export default function Header() {
         </Sidebar>
       ) : (
         <div className={styles.rightSection}>
-          {/* <div className={styles.logoicon}>
-            <Link href="/" className={styles.link}>
-              <Image
-                src={logoicon}
-                alt="Genio India Logo"
-                width={55}
-                height={55}
-                style={{marginTop: 7}}
-              />
-            </Link>
-          </div> */}
           <nav className={styles.nav}>
             <Link 
-              href="/service" 
-              className={`${styles.link} ${pathname === "/service" ? styles.active : ""}`}
+              href="/ja/service" 
+              className={`${styles.link} ${pathname === "/ja/service" ? styles.active : ""}`}
             >
-              Service
+              サービス
             </Link>
             <Link 
-              href="/aboutus" 
-              className={`${styles.link} ${pathname === "/aboutus" ? styles.active : ""}`}
+              href="/ja/aboutus" 
+              className={`${styles.link} ${pathname === "/ja/aboutus" ? styles.active : ""}`}
             >
-              About Us
+              会社情報
             </Link>
             <Link 
-              href="/contactus" 
-              onClick={(e) => handleReload(e, "/contactus")}
-              className={`${styles.link} ${pathname === "/contactus" ? styles.active : ""}`}
+              href="/ja/contactus" 
+              className={`${styles.link} ${pathname === "/ja/contactus" ? styles.active : ""}`}
             >
-              Contact Us
+              お問い合わせ
             </Link>
           </nav>
-          {/* <div className={styles.flagContainer} onClick={handleFlagClick}>
+          <div className={styles.flagContainer} onClick={handleFlagClick}>
             <Image 
               src={flag} 
               alt={flag === IndFlgIcon ? "India Flag" : "Japan Flag"} 
@@ -188,9 +165,10 @@ export default function Header() {
               height={30} 
             />
             <span className={styles.flagtext}>{flag === IndFlgIcon ? "IN" : "JP"}</span>
-          </div> */}
+          </div>
         </div>
       )}
+      <hr/>
     </header>
   );
 }

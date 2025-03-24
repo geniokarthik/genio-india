@@ -1,14 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Header from "src/app/components/Header";
-import Footer from "src/app/components/Footer";
+import Header from "src/app/en/components/Header";
+import Footer from "src/app/en/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "src/app/styles/Contactus.module.css";
+import styles from "src/app/en/styles/Contactus.module.css";
 import emailicon from "src/assets/images/contactus/email.png";
 import returnhomeicon from "src/assets/images/contactus/returnhome.png";
-import ScrollTop from "src/app/scrolltop/ScrollTop";
+import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import CryptoJS from 'crypto-js';
 
 export default function ContactForm() {

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import "../globals.css";
+import "../../globals.css";
 import { motion } from "framer-motion";
 import TeamMbersImg from "src/assets/images/service/teammembers.png";
 import DownArrowImg from "src/assets/images/service/downarrow.png";
@@ -8,11 +8,11 @@ import DesktopImg from "src/assets/images/service/desktop.png";
 import AppDevelopmentImg from "src/assets/images/service/appdevelopment.png";
 import LanguageTeachingImg from "src/assets/images/service/languageteaching.png";
 import MySqlImg from "src/assets/images/service/mysql.png";
-import Header from "src/app/components/Header";
-import Footer from "src/app/components/Footer";
+import Header from "src/app/en/components/Header";
+import Footer from "src/app/en/components/Footer";
 import Link from "next/link";
-import styles from "src/app/styles/Service.module.css"
-import ScrollTop from "src/app/scrolltop/ScrollTop";
+import styles from "src/app/en/styles/Service.module.css"
+import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 
 export default function Service() {
   return (

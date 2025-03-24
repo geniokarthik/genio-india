@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import "../globals.css";
-import Header from "src/app/components/Header";
-import Footer from "src/app/components/Footer";
+import "../../globals.css";
+import Header from "src/app/en/components/Header";
+import Footer from "src/app/en/components/Footer";
 
 import webdevelopment from "src/assets/images/home/webdevelopment.png";
 import appdevelopment from "src/assets/images/home/appdevelopment.png";
@@ -13,8 +13,8 @@ import mysqldatabase from "src/assets/images/home/mysqldatabase.png";
 import sloganicon from "src/assets/images/home/sloganicon.png";
 import sloganicon2 from "src/assets/images/home/sloganicon2.png";
 import sidelogo from "src/assets/images/home/sidelogo.png";
-import ScrollTop from "src/app/scrolltop/ScrollTop";
-import styles from "src/app/styles/Home.module.css";
+import ScrollTop from "src/app/common/scrolltop/ScrollTop";
+import styles from "src/app/en/styles/Home.module.css";
 
 export default function Home() {
   const [imageSrc, setImageSrc] = useState(sloganicon);

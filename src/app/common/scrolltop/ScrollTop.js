@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import DownArrowImg from "src/assets/images/uparrow.png";
 import Image from "next/image";
-import "../globals.css";
+import "../../globals.css";
 
 const ScrollTop = () => {
     const [isVisible, setIsVisible] = useState(false);

@@ -1,14 +1,14 @@
 "use client";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import "../globals.css";
+import "../../globals.css";
 import { motion } from "framer-motion";
 
-import Header from "src/app/components/Header";
-import Footer from "src/app/components/Footer";
-import TeamSection from "src/app/aboutus/TeamSection";
-import ScrollTop from "src/app/scrolltop/ScrollTop";
-import styles from "src/app/styles/Aboutus.module.css";
+import Header from "src/app/en/components/Header";
+import Footer from "src/app/en/components/Footer";
+import TeamSection from "src/app/en/aboutus/TeamSection";
+import ScrollTop from "src/app/common/scrolltop/ScrollTop";
+import styles from "src/app/en/styles/Aboutus.module.css";
 import sidelogo from "src/assets/images/aboutus/sidelogo.png";
 
 export default function AboutUs() {

@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import styles from "src/app/styles/Footer.module.css"
+import styles from "src/app/en/styles/Footer.module.css"
 import logo from "src/assets/images/footerlogo.png";
 import xicon from "src/assets/images/twitter.png";
 import instagramicon from "src/assets/images/instagram.png";
