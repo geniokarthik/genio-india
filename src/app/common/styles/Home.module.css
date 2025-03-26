@@ -20,10 +20,19 @@
   position: relative;
   z-index: 10;
   max-width: 600px;
-  font-family: 'Inter';
+  font-family: "Inter";
 }
 
 .heroTitle {
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: 2.2;
+  white-space: nowrap;
+  color: #000;
+  display: block;
+}
+
+.heroTittle {
   font-size: 4rem;
   font-weight: 600;
   line-height: 2.2;
@@ -103,7 +112,6 @@
 .heroSubtitleBox {
   display: inline-block;
   background-color: #e22110;
-
 }
 
 .heroSubtitle {
@@ -118,7 +126,8 @@
 .heroDescription {
   margin-top: 2rem;
   font-size: 1.25rem;
-  color: #1f2937;
+  font-weight: 50;
+  color: #00060c;
 }
 
 .heroBackgroundGradient {
@@ -153,7 +162,7 @@
 
 .businessContentSubtitle {
   margin-bottom: 2rem;
-  font-family: 'Belanosima';
+  font-family: "Belanosima";
 }
 
 .businessServices {
@@ -192,7 +201,7 @@
   font-size: 40px;
   line-height: 38px;
   margin-bottom: 2rem;
-  font-family: 'Abel';
+  font-family: "Abel";
 }
 
 .funFactsContainer {
@@ -222,7 +231,7 @@
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
-  font-family: 'Abel';
+  font-family: "Abel";
 }
 
 /* Company Profile Styles */
@@ -232,7 +241,7 @@
   padding: 60px 80px;
   max-width: 1400px;
   margin: 0 auto;
-  font-family: 'Inter';
+  font-family: "Inter";
 }
 
 .profileTitleWrapper {
@@ -307,10 +316,20 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  cursor: pointer;
 }
 
 .profileArrow {
   font-size: 14px;
+}
+
+/* Add specific styles for the map iframe */
+.profileValue iframe {
+  margin-top: 15px;
+  height: 300px;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive Styles */
@@ -331,12 +350,23 @@
     font-size: 1rem;
   }
 
+  .businessTittle {
+    font-size: 0.7rem !important;
+  }
+
   .heroBackgroundGradient {
     display: none;
   }
 
   .heroTitle {
     font-size: 2.5rem;
+    line-height: 1.6;
+    display: block;
+    white-space: normal;
+  }
+
+  .heroTittle {
+    font-size: 2rem;
     line-height: 1.6;
     display: block;
     white-space: normal;
@@ -357,7 +387,6 @@
   .heroThinkBorder {
     top: 50%;
   }
-
 
   .heroIconCircle {
     display: flex;
@@ -439,6 +468,13 @@
     font-size: 0.8rem;
   }
 
+  /* Fix map display on mobile */
+  .profileValue iframe {
+    height: 250px;
+    margin-top: 15px;
+    display: block;
+    width: 100%;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -470,6 +506,15 @@
 
   .profileRow {
     grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  /* Ensure map is visible on small screens */
+  .profileValue iframe {
+    height: 200px;
+    margin-top: 10px;
+    width: 100%;
+    display: block;
   }
 }
 
@@ -495,13 +540,13 @@
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  font-family: 'Inter';
+  font-family: "Inter";
 }
 
 .subtitle {
   font-size: 1rem;
   line-height: 1.5;
-  font-family: 'Belanosima';
+  font-family: "Belanosima";
   max-width: 600px;
   margin: 0 auto;
 }
@@ -528,7 +573,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
   max-width: 280px;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1 / 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -551,7 +596,7 @@
   /* Ensure text is white to be visible on red background */
   font-size: 1.25rem;
   font-weight: bold;
-  font-family: 'Belanosima';
+  font-family: "Belanosima";
   margin-top: 1rem;
   text-transform: uppercase;
   line-height: 1.2;
@@ -562,7 +607,17 @@
 .businessTitle {
   color: white;
   font-size: 1rem;
-  font-family: 'Belanosima';
+  font-family: "Belanosima";
+  margin-top: 1rem;
+  line-height: 1.2;
+  visibility: visible;
+  opacity: 1;
+}
+
+.businessTittle {
+  color: white;
+  font-size: 0.9rem;
+  font-family: "Belanosima";
   margin-top: 1rem;
   line-height: 1.2;
   visibility: visible;
@@ -641,3 +696,4 @@
     margin-top: 0.75rem;
   }
 }
+

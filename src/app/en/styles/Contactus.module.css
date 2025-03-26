@@ -13,7 +13,7 @@
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  font-family: 'Belanosima';
+  font-family: "Belanosima";
 }
 
 .footerHead {
@@ -21,14 +21,24 @@
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  font-family: 'Belanosima';
+  font-family: "Belanosima";
   text-align: center;
 }
 
 .subtitle {
   font-size: 1.5rem;
   margin-bottom: 2rem;
-  font-family: 'Inter';
+  font-family: "Inter";
+}
+
+.intotext {
+  font-size: 1rem;
+  font-weight: 200;
+  line-height: 1.2;
+  font-family: "Courier New", Courier, monospace;
+  color: #1f1c1c;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .formWrapper {
@@ -54,7 +64,7 @@
   color: #e22012;
   font-weight: bold;
   margin-bottom: 1rem;
-  font-family: 'Belanosima';
+  font-family: "Belanosima";
   font-size: 3rem;
 }
 
@@ -69,7 +79,7 @@
 .formTitle {
   font-size: 1.25rem;
   margin-bottom: 2rem;
-  font-family: 'Inter';
+  font-family: "Inter";
 }
 
 .form {
@@ -104,7 +114,7 @@
   font-weight: 600;
   color: #333;
   padding-top: 0.5rem;
-  font-family: 'Inter';
+  font-family: "Inter";
   text-align: left;
 }
 
@@ -123,20 +133,10 @@
   font-size: 1rem;
   background-color: white;
   transition: border-color 0.2s ease;
-  font-family: 'Inter';
+  font-family: "Inter";
   padding-left: 18px;
 }
 
-/* .inputFields {
-  width: 500px;
-  padding: 0.75rem 1rem;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  font-size: 1rem;
-  background-color: white;
-  transition: border-color 0.2s ease;
-  font-family: 'Inter';
-} */
 .inputFields {
   width: 500px;
   padding: 0.75rem 1rem;
@@ -145,7 +145,7 @@
   font-size: 1rem;
   background-color: white;
   transition: border-color 0.2s ease;
-  font-family: 'Inter';
+  font-family: "Inter";
   appearance: none; /* Default arrow remove pannudhu */
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'><path fill='red' d='M7 10l5 5 5-5z'/></svg>");
   background-repeat: no-repeat;
@@ -153,7 +153,6 @@
   background-size: 24px; /* Arrow size increase pannudhu */
   padding-right: 40px; /* Text overlap aagama irukka */
 }
-
 
 .inputField::placeholder,
 .textareaField::placeholder {
@@ -175,7 +174,7 @@
 .image {
   width: 50px;
   height: 50px;
-  vertical-align: sub; 
+  vertical-align: sub;
 }
 
 .error {
@@ -189,6 +188,19 @@
   margin-top: 0.25rem;
 }
 
+.divider {
+  height: 3px; /* Increase thickness */
+  background-color: rgb(112, 110, 110);
+  width: 8%;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
 .submitButton {
   background: #e22012;
   color: white;
@@ -197,12 +209,29 @@
   border-radius: 18px;
   font-size: 1rem;
   cursor: pointer;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-weight: bold;
 }
 
 .submitButton:hover {
   background: #cc0000;
+}
+
+.backButton {
+  background: #666;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  min-width: 120px;
+}
+
+.backButton:hover {
+  background: #555;
 }
 
 .progress {
@@ -222,7 +251,7 @@
   border-radius: 50%;
   font-size: 30px;
   font-weight: bold;
-  font-family: 'Atomic Age';
+  font-family: "Atomic Age";
   background: #ccc;
   color: #000;
   line-height: 70px;
@@ -245,7 +274,7 @@
 
 .stepLabel {
   font-size: 16px;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-weight: bold;
   white-space: nowrap;
   color: #000;
@@ -253,7 +282,7 @@
 
 .instepLabel {
   font-size: 16px;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-weight: bold;
   white-space: nowrap;
   color: #e22012;
@@ -270,6 +299,23 @@
   display: none;
 }
 
+.confirmValue {
+  padding: 0.75rem 0;
+  font-family: "Inter", sans-serif;
+}
+
+.completionContainer {
+  text-align: center;
+  padding: 2rem;
+}
+
+.completionText {
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
 /* Mobile View (below 900px) */
 @media (max-width: 900px) {
   .container {
@@ -277,13 +323,11 @@
     max-width: 100%;
   }
 
-  
-.image {
-  width: 35px;
-  height: 35px;
-  vertical-align: baseline;
-}
-
+  .image {
+    width: 35px;
+    height: 35px;
+    vertical-align: baseline;
+  }
 
   .title {
     font-size: 2rem;
@@ -298,14 +342,18 @@
   .formWrapper {
     grid-template-columns: 1fr;
     border-radius: 20px;
-    padding: 0rem;
+    padding: 1rem;
     margin-bottom: 50px;
     max-width: 100%;
     max-height: none;
+    position: relative;
+    z-index: 1;
   }
 
   .formContainer {
     padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .mailSection {
@@ -324,38 +372,48 @@
 
   .form {
     max-width: 100%;
-    padding: 1rem;
+    padding: 0;
+    width: 100%;
   }
 
   .formGroup {
     grid-template-columns: 1fr;
     gap: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
   }
 
   .formGroup1 {
     margin-left: 0;
     text-align: center;
+    margin-top: 30px;
   }
 
   .labelField {
     text-align: left;
     font-size: 0.875rem;
+    width: 100%;
+    display: block;
   }
 
   .inputField,
   .textareaField,
-  .selectAreaField {
-    width: 100%;
-    font-size: 0.875rem;
-    padding: 0.5rem;
-    padding-left: 9px;
-  }
-
+  .selectAreaField,
   .inputFields {
     width: 100%;
     font-size: 0.875rem;
-    padding: 0.5rem;
+    padding: 0.75rem 0.5rem;
+    padding-left: 9px;
+    box-sizing: border-box;
+    max-width: 100%;
+    border-radius: 10px;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .inputFields {
+    background-position: right 10px center;
+    padding-right: 30px;
   }
 
   .textareaField {
@@ -366,10 +424,14 @@
     width: 100%;
     padding: 0.75rem;
     font-size: 1rem;
+    border-radius: 10px;
   }
 
-
-
+  .errorMessage {
+    grid-column: 1;
+    margin-top: 0.25rem;
+    width: 100%;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -412,7 +474,6 @@
     /* Show line after the last step if needed, adjust as per design */
   }
 
-
   .stepLabel {
     font-size: 14px;
     margin-top: 0.25rem;
@@ -434,3 +495,6 @@
     margin: 0;
   }
 }
+
+
+

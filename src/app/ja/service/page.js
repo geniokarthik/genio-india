@@ -8,10 +8,10 @@ import DesktopImg from "src/assets/images/service/desktop.png";
 import AppDevelopmentImg from "src/assets/images/service/appdevelopment.png";
 import LanguageTeachingImg from "src/assets/images/service/languageteaching.png";
 import MySqlImg from "src/assets/images/service/mysql.png";
-import Header from "src/app/en/components/Header";
-import Footer from "src/app/en/components/Footer";
+import Header from "src/app/ja/components/Header";
+import Footer from "src/app/ja/components/Footer";
 import Link from "next/link";
-import styles from "src/app/common/styles/Service.module.css"
+import styles from "src/app/common/styles/Service.module.css";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 
 export default function Service() {
@@ -32,15 +32,15 @@ export default function Service() {
         >
             <div className={styles.hero__contents}>
               <div className={styles.hero__text}>
-                <p className={`${styles.web_single__text} ${styles.subtitle}`}>WHAT WE DO</p>
-                <h1 className={styles.hero__title}>
-                  WE BUILD YOUR WEBSITE, APP,
+                <p className={`${styles.web_single__text} ${styles.subtitle}`}>事業内容</p>
+                <h1 className={styles.hero__tittle}>
+                  ウェブサイト、アプリ、
                 </h1>
-                <h1 className={styles.hero__title}>
-                  AND DATABASE FROM
+                <h1 className={styles.hero__tittle}>
+                  データベースを
                 </h1>
-                <h1 className={styles.hero__title}>
-                  SCRATCH!
+                <h1 className={styles.hero__tittle}>
+                  ゼロから構築します！
                 </h1>
                 <span align="center">
                   <Image
@@ -63,14 +63,14 @@ export default function Service() {
           className={styles.services}
         >
           <div className={styles.services__container}>
-            <h2 className={styles.services__title}>SERVICE</h2>
+            <h2 className={styles.services__title}>サービス</h2>
             <h1 className={styles.services__background}>S</h1>
           </div>
           <div className={styles.services__grid}>
             <div className={styles.service_card__content}>
               <Link href="#webdev">
                 <h3 className={styles.service_card__title}>
-                  Web Development
+                  ウェブ開発
                   <Image
                     src={DownArrowImg}
                     alt="Team collaboration illustration"
@@ -86,7 +86,7 @@ export default function Service() {
             <div className={styles.service_card__content}>
               <Link href="#appdev">
                 <h3 className={styles.service_card__title}>
-                  App Development
+                  アプリ開発
                   <Image
                     src={DownArrowImg}
                     alt="Team collaboration illustration"
@@ -102,7 +102,7 @@ export default function Service() {
             <div className={styles.service_card__content}>
               <Link href="#mysql">
                 <h3 className={styles.service_card__title}>
-                  MySQL Database
+                  MySQLデータベース
                   <Image
                     src={DownArrowImg}
                     alt="Team collaboration illustration"
@@ -118,7 +118,7 @@ export default function Service() {
             <div className={styles.service_card__content}>
               <Link href="#jplanguage">
                 <h3 className={styles.service_card__title}>
-                  Japanese Language
+                  日本語教育
                   <Image
                     src={DownArrowImg}
                     alt="Team collaboration illustration"
@@ -142,12 +142,12 @@ export default function Service() {
           className={styles.web_dev}
         >
           <h2 className={styles.web_dev__title}>
-            <span className={styles.web_single__text}>W</span>EB DEVELOPMENT
+            <span className={styles.web_single__text}>ウ</span>ェブ開発
           </h2>
           <div className={styles.web_dev__content}>
             <div className={styles.web_dev__text}>
               <p className={styles.web_dev__description}>
-                We Provide Custom Web Development Solutions, Including Responsive Design, E-Commerce, CMS Integration, And More. Our Solutions Are Fast, Secure, And User-Friendly, Ensuring Superior Performance Across All Devices.
+                レスポンシブデザイン、E-コマース、CMS統合など、カスタムウェブ開発ソリューションを提供しています。当社のソリューションは、すべてのデバイスで優れたパフォーマンスを発揮する、高速で安全、かつユーザーフレンドリーなものです。
               </p>
             </div>
             <div className={styles.hero}>
@@ -169,12 +169,12 @@ export default function Service() {
           className={styles.app_dev}
         >
           <h2 className={styles.app_dev__title}>
-            <span className={styles.web_single__text}>A</span>PP DEVELOPMENT
+            <span className={styles.web_single__text}>ア</span>プリ開発
           </h2>
           <div className={styles.app_dev__content}>
             <div className={styles.app_dev__text}>
               <p className={styles.app_dev__description}>
-                Whether you need a custom iOS, Android, or cross-platform application, our expert team ensures a seamless and high-performance experience. From MVP design to deployment, we build secure, scalable, and user-friendly applications.
+                iOS、Android、またはクロスプラットフォームアプリケーションなど、お客様のニーズに合わせて、専門チームが優れたユーザー体験を提供します。MVPの設計から展開まで、安全で拡張性が高く、使いやすいアプリケーションを構築します。
               </p>
             </div>
             <div className={styles.app_dev__images}>
@@ -196,12 +196,12 @@ export default function Service() {
           className={styles.app_dev}
         >
           <h2 className={styles.app_dev__title}>
-            <span className={styles.web_single__text}>M</span>YSQL DATABASE
+            <span className={styles.web_single__text}>M</span>ySQLデータベース
           </h2>
           <div className={styles.app_dev__content}>
             <div className={styles.app_dev__text}>
               <p className={styles.app_dev__description}>
-                We Provide MySQL Document Reading And Data Processing Solutions To Help You Efficiently Retrieve, Analyze, And Manage Structrued Data. Our Services Include Query Optimization, Data Extraction, Report Generation, And Seamless Integration With Web And Mobile Applications.
+                構造化データの効率的な取得、分析、管理を支援するMySQLドキュメント読み取りとデータ処理ソリューションを提供しています。クエリの最適化、データ抽出、レポート生成、ウェブ・モバイルアプリケーションとのシームレスな統合などのサービスを提供します。
               </p>
             </div>
             <div className={styles.app_dev__images}>
@@ -222,12 +222,12 @@ export default function Service() {
           className={styles.app_dev}
         >
           <h2 className={styles.app_dev__title}>
-            <span className={styles.web_single__text}>J</span>APANESE LANGUAGE
+            <span className={styles.web_single__text}>日</span>本語教育
           </h2>
           <div className={styles.app_dev__content}>
             <div className={styles.app_dev__text}>
               <p className={styles.app_dev__description}>
-                We Offer Japanese Language Training For All Levels, From Beginners To Advanced Learners. Our Courses Focus On Speaking, Reading, Writing, And Listening Skills, Covering Essential Grammer, Vocabulary, And Kanji.
+                初級から上級まで、あらゆるレベルの日本語教育を提供しています。会話、読解、作文、聴解の能力を養成し、基本的な文法、語彙、漢字をカバーする授業を行っています。
               </p>
             </div>
             <div className={styles.app_dev__images}>

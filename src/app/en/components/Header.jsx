@@ -2,28 +2,46 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation"; // Import usePathname
-import styles from "src/app/en/styles/Header.module.css"
+import { usePathname, useRouter } from "next/navigation";
+import styles from "src/app/common/styles/Header.module.css";
 import logo from "src/assets/images/logo.png";
 import logoMob from "src/assets/images/logoMob.png";
 import IndFlgIcon from "src/assets/images/indflag.png";
 import JpFlgIcon from "src/assets/images/jpflag.png";
 import Sidebar from "react-sidebar";
+import { SUPPORTED_LANGUAGES } from 'src/config/languages';
 
 export default function Header() {
-  const [flag, setFlag] = useState(JpFlgIcon);
+  const router = useRouter();
+  const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const pathname = usePathname(); // Get current pathname
-  const router = useRouter();
 
-  // Handle flag toggle
+  // Initialize flag based on current path - show IndFlgIcon when in English mode
+  const [flag, setFlag] = useState(() => pathname.startsWith('/en') ? IndFlgIcon : JpFlgIcon);
+
+  // Handle flag toggle with language switch
   const handleFlagClick = () => {
-    setFlag(flag === IndFlgIcon ? JpFlgIcon : IndFlgIcon);
-    if(localStorage.getItem("lang") === 'JpFlgIcon') {
-      localStorage.setItem("lang", "IndFlgIcon");
-      router.push('/');
-    }
+    const newLang = pathname.startsWith('/en') ? 'ja' : 'en';
+    const newFlag = newLang === 'en' ? IndFlgIcon : JpFlgIcon;
+    
+    setFlag(newFlag);
+    localStorage.setItem("lang", newLang);
+    
+    // Get current path segments and create new path
+    const segments = pathname.split('/').filter(Boolean);
+    const newPath = segments.length > 1 
+      ? `/${newLang}/${segments.slice(1).join('/')}`
+      : `/${newLang}`;
+      
+    router.push(newPath);
+  };
+
+  const handleHomePage = (e) => {
+    e.preventDefault();
+    const defaultLang = Object.values(SUPPORTED_LANGUAGES).find(lang => lang.default)?.code || 'en';
+    const currentLang = localStorage.getItem("lang") || defaultLang;
+    router.push(`/${currentLang}`);
   };
 
   // Handle sidebar toggle
@@ -33,7 +51,6 @@ export default function Header() {
 
   // Check screen size
   useEffect(() => {
-    localStorage.setItem("lang", "IndFlgIcon");
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -49,11 +66,6 @@ export default function Header() {
       window.location.href = href;
   };   
   
-  const handleHomePage = (e, href) => {
-    e.preventDefault();
-    router.push(href);
-  }
-
   // Sidebar content
   const sidebarContent = (
     <div className={styles.sidebarContent}>
@@ -109,16 +121,15 @@ export default function Header() {
     <header className={styles.header}>
       <title>Genio India</title>
       <div className={styles.logoContainer}>
-        <a href="/">
+        <Link href={`/${localStorage.getItem("lang") || "en"}`} onClick={handleHomePage}>
           <Image
             src={isMobile ? logoMob : logo}
             alt="Genio India Logo"
             width={180}
             height={100}
             className={styles.logo}
-            onClick={(e) => { handleHomePage(e, "/"); }}
           />
-        </a>
+        </Link>
       </div>
 
       {isMobile ? (
@@ -152,17 +163,6 @@ export default function Header() {
         </Sidebar>
       ) : (
         <div className={styles.rightSection}>
-          {/* <div className={styles.logoicon}>
-            <Link href="/" className={styles.link}>
-              <Image
-                src={logoicon}
-                alt="Genio India Logo"
-                width={55}
-                height={55}
-                style={{marginTop: 7}}
-              />
-            </Link>
-          </div> */}
           <nav className={styles.nav}>
             <Link 
               href="/en/service" 

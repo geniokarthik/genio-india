@@ -60,7 +60,17 @@
   position: absolute;
   left: 20px;
   width: 3px;
-  height: 76%;
+  height: 75%;
+  background-color: #333;
+}
+
+.timeLine::before {
+  content: "";
+  top: 60px;
+  position: absolute;
+  left: 20px;
+  width: 3px;
+  height: 75%;
   background-color: #333;
 }
 
@@ -139,6 +149,13 @@
     height: 75%;
   }
 
+  .timeLine::before {
+    left: 7px;
+    top: 25px;
+    height: 78%;
+  }
+
+
   .timelineItem {
     margin-left: 0;
   }
@@ -155,6 +172,7 @@
   .year {
     font-size: 1.5rem;
   }
+
   .text {
     font-size: 1rem;
     vertical-align: text-bottom;

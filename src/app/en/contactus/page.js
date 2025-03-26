@@ -77,7 +77,7 @@ export default function ContactForm() {
                     const apiKey = "genio-india-secret-key-123";
                     const secretKey = "user-defined-secret"; 
                     const encryptedKey = CryptoJS.AES.encrypt(apiKey, secretKey).toString();
-                    const response = await fetch("/api/sendmail", {
+                    const response = await fetch("/api/sendmail/englishmail", {
                         method: "POST",
                         headers: { 
                             "Content-Type": "application/json",

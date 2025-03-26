@@ -2,29 +2,48 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Import usePathname
-import styles from "src/app/ja/styles/Header.module.css";
+import { usePathname } from "next/navigation";
+import styles from "src/app/common/styles/Header.module.css";
 import logo from "src/assets/images/logo.png";
-import IndFlgIcon from "src/assets/images/india.png";
-import JpFlgIcon from "src/assets/images/japan.png";
+import IndFlgIcon from "src/assets/images/indflag.png";
+import JpFlgIcon from "src/assets/images/jpflag.png";
 import Sidebar from "react-sidebar";
 import { useRouter } from 'next/navigation';
+import { SUPPORTED_LANGUAGES } from 'src/config/languages';
 
 export default function Header() {
   const { push } = useRouter();
-  const [flag, setFlag] = useState(IndFlgIcon);
+  const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const pathname = usePathname(); // Get current pathname
+  
+  // Initialize flag based on current path - show JpFlgIcon when in Japanese mode
+  const [flag, setFlag] = useState(() => pathname.startsWith('/ja') ? JpFlgIcon : IndFlgIcon);
 
-  // Handle flag toggle
+  // Handle flag toggle with language switch
   const handleFlagClick = () => {
-    setFlag(flag === IndFlgIcon ? JpFlgIcon : IndFlgIcon);
-    if(localStorage.getItem("lang") === 'EnFlgIcon') {
-      localStorage.setItem("lang", "JpFlgIcon");
-    }
-    push('/');
+    const newLang = pathname.startsWith('/ja') ? 'en' : 'ja';
+    const newFlag = newLang === 'ja' ?  JpFlgIcon : IndFlgIcon;
+    
+    setFlag(newFlag);
+    localStorage.setItem("lang", newLang);
+    
+    // Get current path segments and create new path
+    const segments = pathname.split('/').filter(Boolean);
+    const newPath = segments.length > 1 
+      ? `/${newLang}/${segments.slice(1).join('/')}`
+      : `/${newLang}`;
+      
+    push(newPath);
   };
+
+  const handleHomePage = (e) => {
+    e.preventDefault();
+    const defaultLang = Object.values(SUPPORTED_LANGUAGES).find(lang => lang.default)?.code || 'en';
+    const currentLang = localStorage.getItem("lang") || defaultLang;
+    push(`/${currentLang}`);
+  };
+
   // Handle sidebar toggle
   const onSetSidebarOpen = (open) => {
     setSidebarOpen(open);
@@ -95,7 +114,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.logoContainer}>
-        <Link href="/" >
+        <Link href={`/${localStorage.getItem("lang") || "ja"}`} onClick={handleHomePage}>
           <Image
             src={logo}
             alt="Genio India Logo"

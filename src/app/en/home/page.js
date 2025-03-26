@@ -14,7 +14,7 @@ import sloganicon from "src/assets/images/home/sloganicon.png";
 import sloganicon2 from "src/assets/images/home/sloganicon2.png";
 import sidelogo from "src/assets/images/home/sidelogo.png";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
-import styles from "src/app/en/styles/Home.module.css";
+import styles from "src/app/common/styles/Home.module.css";
 
 export default function Home() {
   const [imageSrc, setImageSrc] = useState(sloganicon);

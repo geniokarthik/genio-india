@@ -18,73 +18,72 @@ import linkedin from "src/assets/images/our_team/linkedin.png";
 
 const teamMembers = [
   {
-    name: "Takuya Yoneda",
-    role: "Managing Director",
+    name: "米田 拓也",
+    role: "会社の社長",
     image: takuyayoneda,
     description: "",
     linkedin: "",
   },
   {
-    name: "Karthik",
-    role: "Manager",
+    name: "カルティク",
+    role: "マネージャー",
     image: karthik,
-    description: "The strength of the team is each individual member. The strength of each member is the team.",
+    description: "チームの強さは各メンバーにあり、各メンバーの強さはチームにあります。",
     linkedin: "https://www.linkedin.com/in/karthik-seerangan-7b6058356",
   },
   {
-    name: "Deivaraj",
-    role: "Team Lead",
+    name: "デイバラジ",
+    role: "チームリーダー",
     image: deivaraj,
-    description: "Code smart, build fast, innovate always—efficient in front, powerful in back, full-stack expertise.",
+    description: "スマートにコーディング、迅速に構築、常に革新—フロントエンドでは効率的に、バックエンドでは強力に、フルスタックの専門知識を活かして。",
     linkedin: "https://www.linkedin.com/in/deivaraj-p-a67023146",
   },
   {
-    name: "Dhanasekaran",
-    role: "Senior Developer",
+    name: "ダナセカラン",
+    role: "先輩開発者",
     image: dhanasekaran,
-    description: "Software Developer proficient in developing robust web applications, optimizing performance, and collaborating with teams to deliver scalable and secure solutions.",
+    description: "堅牢なWebアプリケーションの開発、パフォーマンスの最適化、チームと協力してスケーラブルで安全なソリューションを提供することに長けたソフトウェア開発者です。",
     linkedin: "https://www.linkedin.com/in/dhanes-sekar-2a6981345/",
   },
   {
-    name: "Sivaraj",
-    role: "Junior Software Developer",
+    name: "シバラジ",
+    role: "ジュニアソフトウェアデベロッパー",
     image: sivaraj,
-    description: "Write, Debug, Learn, Grow, Succeed.",
+    description: "コードを書き、デバッグし、学び、成長し、成功する。",
     linkedin: "https://www.linkedin.com/in/sivaraj-c-a956a8283",
   },
   {
-    name: "Ajith",
-    role: "Bilingual Full Stack Developer",
+    name: "アジット",
+    role: "バイリンガルフルスタックデベロッパー",
     image: ajith,
-    description: "Bringing ideas to life through lines of code and endless cups of coffee.",
+    description: "コードと無限のコーヒーを通じてアイデアを形にします。",
     linkedin: "https://www.linkedin.com/in/ajith-r-21a377266/",
   },
   {
-    name: "Naveen",
-    role: "Bilingual Full Stack Developer",
+    name: "ナヴィーン",
+    role: "バイリンガルフルスタックデベロッパー",
     image: naveen,
-    description: "Creating seamless, efficient, and innovative digital experiences with precision.",
+    description: "シームレスで効率的、革新的なデジタル体験を正確に創造します。",
     linkedin: "https://www.linkedin.com/in/naveen-kumar-8816a11b9",
   },
   {
-    name: "Kavinesh",
-    role: "Junior Software Developer",
+    name: "カビネーシュ",
+    role: "ジュニアソフトウェアデベロッパー",
     image: kavinesh,
-    description: "A single bug can break a system; a single fix can change the world.",
+    description: "一つのバグがシステムを壊すことがありますが、一つの修正で世界を変えることもできます。",
     linkedin: "https://www.linkedin.com/in/kavinesh-annadurai-a6a439267/",
   },
   {
-    name: "Elavarasan",
-    role: "App Developer",
+    name: "エラバラサン",
+    role: "アプリ開発者",
     image: elavarasan,
-    description: "Great apps aren’t just built with code; they’re crafted with passion, innovation, and a vision for the future.",
+    description: "優れたアプリはコードだけでなく、情熱とイノベーション、そして未来へのビジョンで作られます。",
     linkedin: "https://www.linkedin.com/in/elavarasan-m-0260a527a/",
   },
 ];
 
 export default function TeamSection() {
   return (
- 
     <motion.section
       id="team"
       initial={{ opacity: 0, y: 50 }}
@@ -95,10 +94,10 @@ export default function TeamSection() {
     >
       <div className={styles.container}>
         <h2 className={styles.heroTitle}>
-          <span className={styles.heroRedText}>Our Team</span>
+          <span className={styles.heroRedText}>私たちのチーム</span>
         </h2>
         <h2 className={styles.heroSubtitle}>
-          Our team is the heart of our success and the core of our vision
+          チームは私たちの成功の心臓部であり、ビジョンの核心です
         </h2>
         <div className={`${styles.teamGrid} ${styles.teamContent}`}>
           {teamMembers.map((member, index) => (

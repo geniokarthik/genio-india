@@ -1,0 +1,419 @@
+.container {
+  clear: both;
+  box-sizing: content-box;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.home {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-family: "Belanosima", sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.redText {
+  color: #e22012;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+}
+
+.intotext {
+  font-size: 1rem;
+  font-weight: 200;
+  line-height: 1.2;
+  font-family: "Courier New", Courier, monospace;
+  color: #1f1c1c;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.formWrapper {
+  position: relative;
+  background: #f5f5f5;
+  border-radius: 10px;
+  padding: 3rem 2rem;
+  margin-bottom: 4rem;
+  max-width: 1000px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.formContainer {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.labelField {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  padding-top: 0.5rem;
+  font-family: "Inter", sans-serif;
+}
+
+.required {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e22012;
+  color: white;
+  font-size: 12px;
+  padding: 0px 8px;
+  border-radius: 2px;
+  margin-left: auto;
+  margin-right: 20px;
+  font-weight: normal;
+  width: 40px;
+  height: 20px;
+}
+
+@media (max-width: 768px) {
+  .required {
+    transform: translateY(-5px);
+    /* Moves up by 5px on mobile */
+  }
+}
+
+/* Move up only on larger screens (above 768px width) */
+@media (min-width: 769px) {
+  .required {
+    transform: translateY(-20px);
+    /* Moves up slightly for desktop */
+  }
+}
+
+.inputField,
+.textareaField {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: white;
+  transition: border-color 0.2s ease;
+  font-family: "Inter", sans-serif;
+}
+
+.inputFields {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  font-size: 16px;
+  /* Prevents zoom on iOS */
+  min-height: 45px;
+  /* Better touch target size */
+  background-position: right 8px center;
+  background-size: 20px;
+}
+
+.inputField:focus,
+.textareaField:focus,
+.inputFields:focus {
+  outline: none;
+  border-color: #e22012;
+}
+
+.inputFieldWrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap; /* Allow wrapping on very small screens */
+}
+
+/* Add specific styling for phone number inputs */
+.inputFieldWrapper input {
+  flex: 1;
+  min-width: 60px; /* Ensure minimum width */
+}
+
+.textareaField {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.error {
+  border: 2px solid red !important;
+}
+
+.errorMessage {
+  grid-column: 2;
+  color: #e22012;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.divider {
+  height: 3px; /* Increase thickness */
+  background-color: rgb(112, 110, 110);
+  width: 8%;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.submitButton {
+  background: #e22012;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  min-width: 200px;
+}
+
+.backButton {
+  background: #666;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  min-width: 120px;
+}
+
+.submitButton:hover {
+  background: #cc0000;
+}
+
+.backButton:hover {
+  background: #555;
+}
+
+.progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.stepNumber {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  background: #ccc;
+  color: white;
+}
+
+.stepNumber.active {
+  background: #e22012;
+}
+
+.stepLabel {
+  font-size: 0.875rem;
+  color: #e22012;
+  font-weight: bold;
+}
+
+.instepLabel {
+  font-size: 0.875rem;
+  color: #666;
+  font-weight: bold;
+}
+
+.line {
+  height: 2px;
+  width: 60%;
+  background-color: #ccc;
+  margin-top: -25px;
+}
+
+.confirmValue {
+  padding: 0.75rem 0;
+  font-family: "Inter", sans-serif;
+}
+
+.completionContainer {
+  text-align: center;
+  padding: 2rem;
+}
+
+.completionText {
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+
+  .formWrapper {
+    padding: 2rem 1rem;
+  }
+
+  .formContainer {
+    padding: 1.5rem 1rem;
+  }
+
+  .formGroup {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .labelField {
+    padding-top: 0;
+  }
+
+  .progress {
+    flex-direction: row;
+    margin-bottom: 2rem;
+    overflow-x: auto;
+    padding: 0 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .line {
+    width: 50px;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .submitButton,
+  .backButton {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .backButton {
+    order: 2;
+  }
+
+  .submitButton {
+    order: 1;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Improve mobile view */
+@media (max-width: 768px) {
+  .formGroup {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .labelField {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .required {
+    transform: none;
+    margin-right: 0;
+    margin-left: 10px;
+  }
+
+  .inputFieldWrapper {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .inputFieldWrapper input {
+    flex: 1;
+    min-width: 28%;
+    max-width: 30%;
+  }
+
+  .divider {
+    width: 5%;
+  }
+
+  /* Fix error message alignment */
+  .errorMessage {
+    grid-column: 1;
+    margin-top: 0.25rem;
+  }
+}
+
+/* Keep desktop view as is but improve alignment */
+@media (min-width: 769px) {
+  .required {
+    transform: translateY(-20px);
+  }
+
+  .inputFieldWrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .inputFieldWrapper input {
+    flex: 1;
+    max-width: 30%;
+  }
+}
+
