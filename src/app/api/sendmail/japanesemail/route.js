@@ -40,7 +40,7 @@ export async function POST(req) {
         // 🔹 Email Content
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: "kavinesh@genioindia.co.in",
+            to: "info@genioindia.co.in",
             subject: inquiryCategory,
             text: `
             新しいお問い合わせを受け取りました

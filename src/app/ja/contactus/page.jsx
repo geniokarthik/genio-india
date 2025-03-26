@@ -220,11 +220,7 @@ export default function ContactForm() {
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ duration: 1 }}
                         >
-                            <p className={styles.intotext}>
-                                この度は株式会社GENIOINDIAにお問い合わせいただき誠にありがとうございます。<br />
-                                お問い合わせいただきました内容を確認後、<br />
-                                ご記入していただきましたメールアドレス宛に２営業日以内にご連絡致します。
-                            </p>
+                           
                             <div className={styles.formContainer}>
                                 {currentStep === 3 ? (
                                     <div className={styles.completionContainer}>

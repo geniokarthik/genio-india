@@ -28,7 +28,7 @@ export async function POST(req) {
         
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: "kavinesh@genioindia.co.in",
+            to: "info@genioindia.co.in",
             subject: inquiryCategory,
             text: `
             New Inquiry Received

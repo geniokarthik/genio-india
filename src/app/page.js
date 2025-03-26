@@ -10,7 +10,6 @@ export default function Main() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       let currentLang = localStorage.getItem("lang");
-      console.log("current language is:"+currentLang);
       // Set default language if none is selected
       if (!currentLang) {
         const defaultLang = Object.values(SUPPORTED_LANGUAGES).find(lang => lang.default)?.code || 'en';
