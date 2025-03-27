@@ -16,24 +16,24 @@ export default function Header() {
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  
+
   // Initialize flag based on current path - show JpFlgIcon when in Japanese mode
   const [flag, setFlag] = useState(() => pathname.startsWith('/ja') ? JpFlgIcon : IndFlgIcon);
 
   // Handle flag toggle with language switch
   const handleFlagClick = () => {
     const newLang = pathname.startsWith('/ja') ? 'en' : 'ja';
-    const newFlag = newLang === 'ja' ?  JpFlgIcon : IndFlgIcon;
-    
+    const newFlag = newLang === 'ja' ? JpFlgIcon : IndFlgIcon;
+
     setFlag(newFlag);
     localStorage.setItem("lang", newLang);
-    
+
     // Get current path segments and create new path
     const segments = pathname.split('/').filter(Boolean);
-    const newPath = segments.length > 1 
+    const newPath = segments.length > 1
       ? `/${newLang}/${segments.slice(1).join('/')}`
       : `/${newLang}`;
-      
+
     push(newPath);
   };
 
@@ -63,47 +63,47 @@ export default function Header() {
   // Sidebar content
   const sidebarContent = (
     <div className={styles.sidebarContent}>
-      <button 
+      <button
         className={styles.closeButton}
         onClick={() => setSidebarOpen(false)}
       >
         ✕
       </button>
       <div className={styles.sidebarNav}>
-        <Link 
-          href="/" 
-          className={`${styles.sidebarLink} ${pathname === "/" ? styles.active : ""}`} 
+        <Link
+          href="/"
+          className={`${styles.sidebarLink} ${pathname === "/" ? styles.active : ""}`}
           onClick={() => setSidebarOpen(false)}
         >
           ホーム
         </Link>
-        <Link 
-          href="/ja/service" 
-          className={`${styles.sidebarLink} ${pathname === "/ja/service" ? styles.active : ""}`} 
+        <Link
+          href="/ja/service"
+          className={`${styles.sidebarLink} ${pathname === "/ja/service" ? styles.active : ""}`}
           onClick={() => setSidebarOpen(false)}
         >
           サービス
         </Link>
-        <Link 
-          href="/ja/aboutus" 
-          className={`${styles.sidebarLink} ${pathname === "/ja/aboutus" ? styles.active : ""}`} 
+        <Link
+          href="/ja/aboutus"
+          className={`${styles.sidebarLink} ${pathname === "/ja/aboutus" ? styles.active : ""}`}
           onClick={() => setSidebarOpen(false)}
         >
           会社情報
         </Link>
-        <Link 
-          href="/ja/contactus" 
-          className={`${styles.sidebarLink} ${pathname === "/ja/contactus" ? styles.active : ""}`} 
+        <Link
+          href="/ja/contactus"
+          className={`${styles.sidebarLink} ${pathname === "/ja/contactus" ? styles.active : ""}`}
           onClick={() => setSidebarOpen(false)}
         >
           お問い合わせ
         </Link>
         <div className={styles.sidebarFlagContainer} onClick={handleFlagClick}>
-          <Image 
-            src={flag} 
-            alt={flag === IndFlgIcon ? "India Flag" : "Japan Flag"} 
-            width={30} 
-            height={30} 
+          <Image
+            src={flag}
+            alt={flag === IndFlgIcon ? "India Flag" : "Japan Flag"}
+            width={30}
+            height={30}
           />
           <span className={styles.flagtext}>{flag === IndFlgIcon ? "IN" : "JP"}</span>
         </div>
@@ -113,6 +113,7 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
+      <title>Genioインド</title>
       <div className={styles.logoContainer}>
         <Link href={`/${localStorage.getItem("lang") || "ja"}`} onClick={handleHomePage}>
           <Image
@@ -131,8 +132,8 @@ export default function Header() {
           open={sidebarOpen}
           onSetOpen={onSetSidebarOpen}
           pullRight={true}
-          styles={{ 
-            sidebar: { 
+          styles={{
+            sidebar: {
               background: "white",
               width: "250px",
               position: "fixed",
@@ -146,7 +147,7 @@ export default function Header() {
           }}
         >
           <div className={styles.mobileMenu}>
-            <button 
+            <button
               className={`${styles.hamburger} ${sidebarOpen ? styles.open : ""}`}
               onClick={() => setSidebarOpen(!sidebarOpen)}
             >
@@ -157,37 +158,37 @@ export default function Header() {
       ) : (
         <div className={styles.rightSection}>
           <nav className={styles.nav}>
-            <Link 
-              href="/ja/service" 
+            <Link
+              href="/ja/service"
               className={`${styles.link} ${pathname === "/ja/service" ? styles.active : ""}`}
             >
               サービス
             </Link>
-            <Link 
-              href="/ja/aboutus" 
+            <Link
+              href="/ja/aboutus"
               className={`${styles.link} ${pathname === "/ja/aboutus" ? styles.active : ""}`}
             >
               会社情報
             </Link>
-            <Link 
-              href="/ja/contactus" 
+            <Link
+              href="/ja/contactus"
               className={`${styles.link} ${pathname === "/ja/contactus" ? styles.active : ""}`}
             >
               お問い合わせ
             </Link>
           </nav>
           <div className={styles.flagContainer} onClick={handleFlagClick}>
-            <Image 
-              src={flag} 
-              alt={flag === IndFlgIcon ? "India Flag" : "Japan Flag"} 
-              width={30} 
-              height={30} 
+            <Image
+              src={flag}
+              alt={flag === IndFlgIcon ? "India Flag" : "Japan Flag"}
+              width={30}
+              height={30}
             />
             <span className={styles.flagtext}>{flag === IndFlgIcon ? "IN" : "JP"}</span>
           </div>
         </div>
       )}
-      <hr/>
+      <hr />
     </header>
   );
 }
