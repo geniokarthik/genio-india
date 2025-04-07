@@ -56,18 +56,27 @@ export default function Home() {
             transition={{ duration: 1 }}
           >
             <div className={styles.heroContent}>
-              <h1 className={styles.heroTittle}>
-                <span>
-                  <span className={styles.heroRedText}>共</span>に、{" "}</span>
-                <span className={styles.heroThinkWrapper} style={{ marginLeft: 9 }}>
-                  <span className={styles.heroRedText} style={{ marginLeft: 9 }}>私たちは </span>
-                  <span style={{ marginRight: 4 }}>{heroText}</span>
-                  <span className={styles.heroThinkBorder}></span>
-                  <span className={styles.heroIconWrapper}>
-                    <Image src={imageSrc} alt="スローガンアイコン" width={80} height={80} />
-                  </span>
+            <h1 className={styles.heroTittle}>
+              <span>
+                <span className={styles.heroRedText}>共</span>に、{" "}
+              </span>
+              <span className={styles.heroThinkWrapper} style={{ marginLeft: 9 }}>
+                <span className={styles.heroRedText} style={{ marginLeft: 9 }}>
+                  私たちは{" "}
                 </span>
-              </h1>
+                <span style={{ marginRight: 4 }}>{heroText}</span>
+                <span className={styles.heroThinkBorder}></span>
+                <span className={styles.heroIconWrapper}>
+                  <Image
+                    src={imageSrc}
+                    alt="スローガンアイコン"
+                    width={80}
+                    height={80}
+                    className={styles.heroIconImage}
+                  />
+                </span>
+              </span>
+            </h1>
               {/* <div style={{ paddingBottom: 12, paddingTop: 12 }} className={styles.heroContent}>
                 <div className={styles.heroSubtitleBox}>
                   <p className={styles.heroSubtitle}>高品質なウェブサイト</p>
@@ -79,12 +88,12 @@ export default function Home() {
                 </div>
               </div> */}
               <p className={styles.heroDescription}>
-                  私たちは、お客様が抱える課題の本質に向き合い、<br />
-                  「あっ！」と驚く発想と、確かなシステム開発技術で、<br />
-                  お客様の価値向上につながるサービスを提供します。<br />
-                  「誰も思いつかなかった」アイディアで、関わる全ての人が「笑顔」になれる<br />
-                  「誰もがつかいやすい」サービスを追い求め続けます。
+               あらゆる企業向けに高品質なWebサイトをご提供します。<br/>
+               2022年から、革新的なWeb・アプリ・データベースのソリューションを高い品質で提供しています。<br/>
+              「誰も思いつかなかった」アイディアで、関わる全ての人が「笑顔」になれる。<br/>
+              「誰もがつかいやすい」サービスを追い求め続けます。
               </p>
+              
             </div>
             <div>
               <Image src={sidelogo} alt="スローガンアイコン" className={styles.heroBackgroundGradient} />
@@ -102,7 +111,7 @@ export default function Home() {
             <header className={styles.header}>
               <h2 className={styles.title}>事業内容</h2>
               <h4 className={styles.subtitle}>
-                <div className={styles.businessTittle}>お客様の課題に向き合い、関わる全ての人々に笑顔をもたらすサービスを提供します。</div>
+                <div className={styles.businessTittle}>私たちはお客様の課題に真摯に向き合い、関わるすべての人々に笑顔をもたらすサービスを提供しています。</div>
               </h4>
             </header>
             <motion.section
@@ -209,18 +218,19 @@ export default function Home() {
               </div>
               <div className={styles.profileRow}>
                 <div className={styles.profileLabel}>代表者</div>
-                <div className={styles.profileValue}>米田 拓哉</div>
+                <div className={styles.profileValue}>米田 卓也</div>
               </div>
               <div className={styles.profileRow}>
                 <div className={styles.profileLabel}>グループ会社</div>
-                <div className={styles.profileValue}>株式会社Genio</div>
+                <div className={styles.profileValue}>株式会社ジェニオ</div>
               </div>
               <div className={styles.profileRow}>
                 <div className={styles.profileLabel}>事業内容</div>
                   <div>
-                    <div>• アプリケーション開発</div>
+                    <div>• ウェブシステム開発</div>
+                    <div>• アプリ開発</div>
                     <div>• ウェブサイト開発</div>
-                    <div>• MySQLデータベース開発</div>
+                    <div>• MySQLデータベースの構築</div>
                   </div>
               </div>
               <div className={styles.profileRow}>

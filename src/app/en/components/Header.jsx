@@ -6,9 +6,8 @@ import { usePathname, useRouter } from "next/navigation";
 import styles from "src/app/common/styles/Header.module.css";
 import logo from "src/assets/images/logo.png";
 import logoMob from "src/assets/images/logoMob.png";
-import IndFlgIcon from "src/assets/images/indflag.png";
-import JpFlgIcon from "src/assets/images/jpflag.png";
 import Sidebar from "react-sidebar";
+import LanguageSwitcher from "src/app/common/lan_swit/LanguageSwitcher";  
 import { SUPPORTED_LANGUAGES } from 'src/config/languages';
 
 export default function Header() {
@@ -16,26 +15,6 @@ export default function Header() {
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-
-  // Initialize flag based on current path - show IndFlgIcon when in English mode
-  const [flag, setFlag] = useState(() => pathname.startsWith('/en') ? IndFlgIcon : JpFlgIcon);
-
-  // Handle flag toggle with language switch
-  const handleFlagClick = () => {
-    const newLang = pathname.startsWith('/en') ? 'ja' : 'en';
-    const newFlag = newLang === 'en' ? IndFlgIcon : JpFlgIcon;
-    
-    setFlag(newFlag);
-    localStorage.setItem("lang", newLang);
-    
-    // Get current path segments and create new path
-    const segments = pathname.split('/').filter(Boolean);
-    const newPath = segments.length > 1 
-      ? `/${newLang}/${segments.slice(1).join('/')}`
-      : `/${newLang}`;
-      
-    router.push(newPath);
-  };
 
   const handleHomePage = (e) => {
     e.preventDefault();
@@ -104,15 +83,7 @@ export default function Header() {
         >
           Contact Us
         </Link>
-        <div className={styles.sidebarFlagContainer} onClick={handleFlagClick}>
-          <Image 
-            src={flag} 
-            alt={flag === IndFlgIcon ? "India Flag" : "Japan Flag"} 
-            width={30} 
-            height={30} 
-          />
-          <span className={styles.flagtext}>{flag === IndFlgIcon ? "IN" : "JP"}</span>
-        </div>
+       <LanguageSwitcher/>
       </div>
     </div>
   );
@@ -184,15 +155,7 @@ export default function Header() {
               Contact Us
             </Link>
           </nav>
-          <div className={styles.flagContainer} onClick={handleFlagClick}>
-            <Image 
-              src={flag} 
-              alt={flag === IndFlgIcon ? "India Flag" : "Japan Flag"} 
-              width={30} 
-              height={30} 
-            />
-            <span className={styles.flagtext}>{flag === IndFlgIcon ? "IN" : "JP"}</span>
-          </div>
+          <LanguageSwitcher/>
         </div>
       )}
     </header>

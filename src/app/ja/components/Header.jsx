@@ -5,8 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "src/app/common/styles/Header.module.css";
 import logo from "src/assets/images/logo.png";
-import IndFlgIcon from "src/assets/images/indflag.png";
-import JpFlgIcon from "src/assets/images/jpflag.png";
+import LanguageSwither from "src/app/common/lan_swit/LanguageSwitcher";
 import Sidebar from "react-sidebar";
 import { useRouter } from 'next/navigation';
 import { SUPPORTED_LANGUAGES } from 'src/config/languages';
@@ -17,25 +16,7 @@ export default function Header() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Initialize flag based on current path - show JpFlgIcon when in Japanese mode
-  const [flag, setFlag] = useState(() => pathname.startsWith('/ja') ? JpFlgIcon : IndFlgIcon);
 
-  // Handle flag toggle with language switch
-  const handleFlagClick = () => {
-    const newLang = pathname.startsWith('/ja') ? 'en' : 'ja';
-    const newFlag = newLang === 'ja' ? JpFlgIcon : IndFlgIcon;
-
-    setFlag(newFlag);
-    localStorage.setItem("lang", newLang);
-
-    // Get current path segments and create new path
-    const segments = pathname.split('/').filter(Boolean);
-    const newPath = segments.length > 1
-      ? `/${newLang}/${segments.slice(1).join('/')}`
-      : `/${newLang}`;
-
-    push(newPath);
-  };
 
   const handleHomePage = (e) => {
     e.preventDefault();
@@ -98,15 +79,7 @@ export default function Header() {
         >
           お問い合わせ
         </Link>
-        <div className={styles.sidebarFlagContainer} onClick={handleFlagClick}>
-          <Image
-            src={flag}
-            alt={flag === IndFlgIcon ? "India Flag" : "Japan Flag"}
-            width={30}
-            height={30}
-          />
-          <span className={styles.flagtext}>{flag === IndFlgIcon ? "IN" : "JP"}</span>
-        </div>
+        <LanguageSwither/>
       </div>
     </div>
   );
@@ -177,15 +150,7 @@ export default function Header() {
               お問い合わせ
             </Link>
           </nav>
-          <div className={styles.flagContainer} onClick={handleFlagClick}>
-            <Image
-              src={flag}
-              alt={flag === IndFlgIcon ? "India Flag" : "Japan Flag"}
-              width={30}
-              height={30}
-            />
-            <span className={styles.flagtext}>{flag === IndFlgIcon ? "IN" : "JP"}</span>
-          </div>
+          <LanguageSwither/>
         </div>
       )}
       <hr />

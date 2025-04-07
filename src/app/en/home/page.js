@@ -78,7 +78,7 @@ export default function Home() {
                   <p className={styles.heroSubtitle}>for all Companies</p>
                 </div>
               </div>
-              <p className={styles.heroDescription}>
+              <p className={styles.businessTittle}>
                 Since 2022, we've been crafting innovative web, app, and database solutions with excellence!
               </p>
             </div>

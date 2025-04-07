@@ -1,7 +1,7 @@
 export const SUPPORTED_LANGUAGES = {
   en: {
     code: 'en',
-    name: 'English',
+    name: 'ENG',
     flag: 'indflag.png',
     direction: 'ltr',
     default: true

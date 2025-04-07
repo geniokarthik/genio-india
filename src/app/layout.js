@@ -3,8 +3,8 @@ import { headers } from 'next/headers';
 import { SUPPORTED_LANGUAGES } from 'src/config/languages';
 
 
-export default function Layout({ children }) {
-  const headersList = headers();
+export default async function Layout({ children }) {
+  const headersList = await headers();
   const pathname = headersList.get('x-pathname') || '';
   const currentLang = Object.keys(SUPPORTED_LANGUAGES).find(lang => pathname.startsWith(`/${lang}`)) || 'en';
 

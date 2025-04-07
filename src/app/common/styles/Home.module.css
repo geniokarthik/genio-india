@@ -67,6 +67,7 @@
   position: absolute;
   right: -3rem;
   top: -2.5rem;
+  z-index: 2;
 }
 
 .heroIconCircle {
@@ -128,6 +129,24 @@
   font-size: 1.25rem;
   font-weight: 50;
   color: #00060c;
+  line-height: 1.6;
+}
+
+/* Japanese specific styles */
+html[lang="ja"] .heroTitle,
+html[lang="ja"] .heroTittle {
+  font-size: 3.8rem;
+  line-height: 2;
+}
+
+html[lang="ja"] .heroDescription {
+  line-height: 1.8;
+}
+
+html[lang="ja"] .businessTitle,
+html[lang="ja"] .businessTittle {
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 .heroBackgroundGradient {
@@ -351,7 +370,15 @@
   }
 
   .businessTittle {
-    font-size: 0.7rem !important;
+    font-size: 0.9rem !important;
+    line-height: 1.4;
+    margin: 0.5rem auto;
+    max-width: 90%;
+  }
+
+  html[lang="ja"] .businessTittle {
+    font-size: 0.85rem !important;
+    line-height: 1.5;
   }
 
   .heroBackgroundGradient {
@@ -363,13 +390,23 @@
     line-height: 1.6;
     display: block;
     white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 
   .heroTittle {
-    font-size: 2rem;
+    font-size: 2.2rem;
     line-height: 1.6;
     display: block;
     white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  html[lang="ja"] .heroTitle,
+  html[lang="ja"] .heroTittle {
+    font-size: 2.1rem;
+    line-height: 1.5;
   }
 
   .heroContent {
@@ -377,11 +414,26 @@
   }
 
   .heroSubtitle {
-    font-size: 23px;
+    font-size: 26px;
+  }
+
+  html[lang="ja"] .heroSubtitle {
+    font-size: 24px;
+  }
+
+  .heroDescription {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  html[lang="ja"] .heroDescription {
+    font-size: 1rem;
+    line-height: 1.8;
   }
 
   .heroThinkWrapper {
     height: auto;
+    display: inline-block;
   }
 
   .heroThinkBorder {
@@ -405,11 +457,12 @@
     height: auto;
   }
 
-  .heroIconWrapper {
+  /* .heroIconWrapper {
     transform: scale(0.8);
-    right: -3.7rem;
-    top: -3.5rem;
-  }
+    right: -2.5rem;
+    top: -2.5rem;
+    z-index: 2;
+  } */
 
   .heroSubtitleWrapper {
     display: flex;
@@ -491,7 +544,11 @@
 
 @media (max-width: 508px) {
   .hero {
-    padding: 0rem 0rem;
+    padding: 1rem 1rem;
+  }
+
+  html[lang="ja"] .hero {
+    padding: 1.5rem 1rem;
   }
 }
 
@@ -515,6 +572,125 @@
     margin-top: 10px;
     width: 100%;
     display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .serviceSection {
+    padding: 1rem;
+  }
+
+  .header {
+    margin-bottom: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .subtitle {
+    font-size: 0.7rem;
+  }
+
+  .serviceCard {
+    max-width: 250px;
+    padding: 1rem;
+  }
+
+  .serviceImage {
+    max-height: 150px;
+  }
+
+  .serviceTitle {
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+  }
+
+  .businessTitle {
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+    line-height: 1.5;
+  }
+
+  .heroTittle {
+    font-size: 1.9rem;
+    line-height: 1.5;
+  }
+
+  html[lang="ja"] .heroTitle,
+  html[lang="ja"] .heroTittle {
+    font-size: 1.8rem;
+    line-height: 1.4;
+  }
+
+  .heroIconWrapper {
+    transform: scale(0.7);
+    right: -2rem;
+    top: -2rem;
+  }
+
+  .heroDescription {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  html[lang="ja"] .heroDescription {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .businessTittle {
+    font-size: 0.8rem !important;
+  }
+
+  html[lang="ja"] .businessTittle {
+    font-size: 0.75rem !important;
+  }
+}
+
+@media (max-width: 344px) {
+  /* For Galaxy Z Fold 5 */
+  .heroTitle {
+    font-size: 1.8rem;
+    line-height: 1.4;
+  }
+
+  .heroTittle {
+    font-size: 1.7rem;
+    line-height: 1.4;
+  }
+
+  html[lang="ja"] .heroTitle,
+  html[lang="ja"] .heroTittle {
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+
+  .heroIconWrapper {
+    transform: scale(0.6);
+    right: -1.5rem;
+    top: -1.5rem;
+  }
+
+  .heroDescription {
+    font-size: 0.9rem;
+  }
+
+  html[lang="ja"] .heroDescription {
+    font-size: 0.85rem;
+  }
+
+  .serviceCard {
+    max-width: 220px;
+    padding: 0.8rem;
   }
 }
 
@@ -616,7 +792,7 @@
 
 .businessTittle {
   color: white;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   font-family: "Belanosima";
   margin-top: 1rem;
   line-height: 1.2;
@@ -656,44 +832,11 @@
   }
 }
 
-@media (max-width: 480px) {
-  .container {
-    padding: 1rem;
-  }
-
-  .serviceSection {
-    padding: 1rem;
-  }
-
-  .header {
-    margin-bottom: 1.5rem;
-  }
-
-  .title {
-    font-size: 1.2rem;
-  }
-
-  .subtitle {
-    font-size: 0.7rem;
-  }
-
-  .serviceCard {
-    max-width: 250px;
-    padding: 1rem;
-  }
-
-  .serviceImage {
-    max-height: 150px;
-  }
-
-  .serviceTitle {
-    font-size: 0.9rem;
-    margin-top: 0.75rem;
-  }
-
-  .businessTitle {
-    font-size: 0.9rem;
-    margin-top: 0.75rem;
+@media (max-width: 769px) { /* For Galaxy Z Fold 5 or very narrow screens */
+  .heroIconWrapper {
+    transform: scale(0.6); /* Keep the same scale */
+    right: -2rem; /* Adjust horizontal position */
+    top: -4rem; /* Adjust vertical position to prevent it from going down */
   }
 }
 

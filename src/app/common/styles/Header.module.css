@@ -98,13 +98,13 @@
   color: #e22110; /* Active link color in sidebar */
 }
 
-.sidebarFlagContainer {
+/* .sidebarFlagContainer {
   display: flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
   padding: 10px 0;
-}
+} */
 
 .mobileMenu {
   display: flex;
@@ -183,6 +183,42 @@
   color: #e0655a;
 }
 
+.langSelector {
+  position: relative;
+  display: inline-block;
+}
+
+.langSelector {
+  position: relative;
+  display: inline-block;
+}
+
+.langDropdown {
+  position: absolute;
+  top: 100%; 
+  left: 50%;
+  transform: translateX(-50%);
+   z-index: 999;
+  min-width: 120px;
+  margin-top: 8px;
+  padding: 4px 0; 
+}
+
+.langOption {
+  padding: 10px 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
+  text-align: center;
+  cursor: pointer;
+}
+
+.activeLang {
+  
+  font-weight: bold;
+  color: #ec1717;
+}
+
 @media (max-width: 768px) {
   .header {
     justify-content: space-between;
@@ -195,6 +231,23 @@
 
   .mobileMenu {
     display: flex;
+  }
+
+  .langDropdown {
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    position: absolute;
+    top: -50%; 
+    left: 50%;
+  }
+
+  .langOption{
+    text-align: left;
+  }
+
+  .langOption:hover {
+    background-color: #ee2424;
   }
 }
 

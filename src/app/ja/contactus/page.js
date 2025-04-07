@@ -225,7 +225,7 @@ export default function ContactForm() {
                                 {currentStep === 3 ? (
                                     <div className={styles.completionContainer}>
                                         <p className={styles.completionText}>
-                                            この度は株式会社GENIOINDIAにお問い合わせいただき誠にありがとうございます。
+                                            この度は株式会社ジェニオINDIAにお問い合わせいただき誠にありがとうございます。
                                             <br />
                                             <br />
                                             お問い合わせいただきました内容を確認後、

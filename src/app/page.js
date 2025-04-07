@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useRouter, usePathname } from 'next/navigation';
 import { SUPPORTED_LANGUAGES } from 'src/config/languages';
 
