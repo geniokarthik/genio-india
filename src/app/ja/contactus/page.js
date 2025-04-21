@@ -288,7 +288,7 @@ export default function ContactForm() {
                                                             name="phoneNumber1"
                                                             value={formData.phoneNumber1}
                                                             onChange={handleChange}
-                                                            maxLength={2}
+                                                            maxLength={3}
                                                             placeholder="例) 06"
                                                             className={`${styles.inputField} ${(errors.phoneNumber || errors.phoneNumber1) ? styles.error : ""}`}
                                                         />
