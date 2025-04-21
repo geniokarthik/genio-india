@@ -269,6 +269,7 @@ export default function ContactForm() {
                                                         name="name"
                                                         value={formData.name}
                                                         onChange={handleChange}
+                                                        maxLength={100}
                                                         className={`${styles.inputField} ${errors.name ? styles.error : ""}`}
                                                         placeholder="例) 山田 太郎"
                                                     />
@@ -287,6 +288,7 @@ export default function ContactForm() {
                                                             name="phoneNumber1"
                                                             value={formData.phoneNumber1}
                                                             onChange={handleChange}
+                                                            maxLength={2}
                                                             placeholder="例) 06"
                                                             className={`${styles.inputField} ${(errors.phoneNumber || errors.phoneNumber1) ? styles.error : ""}`}
                                                         />
@@ -298,6 +300,7 @@ export default function ContactForm() {
                                                             value={formData.phoneNumber2}
                                                             onChange={handleChange}
                                                             placeholder="例) 6949"
+                                                            maxLength={4}
                                                             className={`${styles.inputField} ${(errors.phoneNumber || errors.phoneNumber2) ? styles.error : ""}`}
                                                         />
                                                         {errors.phoneNumber2 && <span className={styles.errorMessage}>{errors.phoneNumber2}</span>}
@@ -307,6 +310,7 @@ export default function ContactForm() {
                                                             name="phoneNumber3"
                                                             value={formData.phoneNumber3}
                                                             onChange={handleChange}
+                                                            maxLength={4}
                                                             placeholder="例) 6949"
                                                             className={`${styles.inputField} ${(errors.phoneNumber || errors.phoneNumber3) ? styles.error : ""}`}
                                                         />
@@ -330,6 +334,7 @@ export default function ContactForm() {
                                                         name="emailAddress"
                                                         value={formData.emailAddress}
                                                         onChange={handleChange}
+                                                        maxLength={250}
                                                         className={`${styles.inputField} ${errors.emailAddress ? styles.error : ""}`}
                                                         placeholder="例) example@genioindia.in"
                                                     />
@@ -345,6 +350,7 @@ export default function ContactForm() {
                                                         name="inquiryContent"
                                                         value={formData.inquiryContent}
                                                         onChange={handleChange}
+                                                        maxLength={1000}
                                                         className={`${styles.textareaField} ${errors.inquiryContent ? styles.error : ""}`}
                                                         rows={5}
                                                         placeholder="具体的なお問い合わせ内容をご記入ください"
