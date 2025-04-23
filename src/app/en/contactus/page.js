@@ -6,6 +6,7 @@ import Footer from "src/app/en/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "src/app/en/styles/Contactus.module.css";
+import "../../globals.css";
 import emailicon from "src/assets/images/contactus/email.png";
 import returnhomeicon from "src/assets/images/contactus/returnhome.png";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
@@ -234,7 +235,7 @@ export default function ContactForm() {
                                                 <label className={styles.labelField}>
                                                     Email Address<span className={styles.required}>*</span>
                                                 </label>
-                                                <input disabled={buttonFlg} type="email" name="emailAddress" value={formData.emailAddress} onChange={handleChange} className={`${styles.inputField} ${errors.emailAddress ? styles.error : ""}`} />
+                                                <input disabled={buttonFlg} type="text" name="emailAddress" value={formData.emailAddress} onChange={handleChange} className={`${styles.inputField} ${errors.emailAddress ? styles.error : ""}`} />
                                                 {errors.emailAddress && <span className={styles.errorMessage}>{errors.emailAddress}</span>}
                                             </div>
 

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import styles from "src/app/common/styles/Header.module.css";
+import "../../globals.css";
 import logo from "src/assets/images/logo.png";
 import logoMob from "src/assets/images/logoMob.png";
 import Sidebar from "react-sidebar";

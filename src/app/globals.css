@@ -106,3 +106,14 @@ html {
   transform: translateY(0);
   pointer-events: auto;
 }
+
+input, textarea, select {
+  background-color: white !important;
+  color: black !important;
+}
+@media (prefers-color-scheme: dark) {
+  input, textarea, select {
+    background-color: white !important;
+    color:  #1E1E1E !important;
+  }
+}

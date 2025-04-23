@@ -4,6 +4,7 @@ import Link from "next/link"
 import styles from "src/app/common/styles/Footer.module.css"
 import logo from "src/assets/images/footerlogo.png";
 import xicon from "src/assets/images/twitter.png";
+import "../../globals.css";
 import instagramicon from "src/assets/images/instagram.png";
 import linkedinicon from "src/assets/images/linkedin.png";
 import facebookicon from "src/assets/images/facebook.png";

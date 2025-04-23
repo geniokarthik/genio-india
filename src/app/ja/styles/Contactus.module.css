@@ -188,7 +188,6 @@
   cursor: pointer;
   font-family: "Inter", sans-serif;
   font-weight: bold;
-  min-width: 200px;
 }
 
 .backButton {
@@ -270,6 +269,10 @@
 .confirmValue {
   padding: 0.75rem 0;
   font-family: "Inter", sans-serif;
+  width: 100%;      
+  max-width: 600px;  
+  word-break: break-word;  
+  white-space: pre-wrap;  
 }
 
 .completionContainer {
@@ -332,7 +335,7 @@
 
   .submitButton,
   .backButton {
-    width: 100%;
+    width: 100% !important;
     max-width: 300px;
   }
 
@@ -374,8 +377,8 @@
 
   .inputFieldWrapper input {
     flex: 1;
-    min-width: 28%;
-    max-width: 30%;
+    min-width: 37%;
+    max-width: 40%;
   }
 
   .divider {
@@ -394,7 +397,7 @@
   .required {
     transform: translateY(-20px);
   }
-
+  
   .inputFieldWrapper {
     display: flex;
     align-items: center;

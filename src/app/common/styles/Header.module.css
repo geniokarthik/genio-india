@@ -188,11 +188,6 @@
   display: inline-block;
 }
 
-.langSelector {
-  position: relative;
-  display: inline-block;
-}
-
 .langDropdown {
   position: absolute;
   top: 100%; 

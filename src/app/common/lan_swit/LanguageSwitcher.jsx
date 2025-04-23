@@ -49,7 +49,7 @@ export default function LanguageSwitcher() {
         width={30}
         height={30}
         onClick={() => setDropdownOpen(prev => !prev)}
-        style={{ cursor: "pointer" }}
+        style={{ cursor: "pointer", verticalAlign: 'bottom' }}
       />
       {dropdownOpen && (
         <div className={styles.langDropdown}>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "src/app/common/styles/Header.module.css";
+import "../../globals.css";
 import logo from "src/assets/images/logo.png";
 import LanguageSwither from "src/app/common/lan_swit/LanguageSwitcher";
 import Sidebar from "react-sidebar";

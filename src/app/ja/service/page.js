@@ -64,7 +64,7 @@ export default function Service() {
         >
           <div className={styles.services__container}>
             <h2 className={styles.services__title}>サービス</h2>
-            <h1 className={styles.services__background}>S</h1>
+            <h1 className={styles.services__background}>サ</h1>
           </div>
           <div className={styles.services__grid}>
             <div className={styles.service_card__content}>
