@@ -35,7 +35,7 @@ const ScrollTop = () => {
             className={`pagetop ${isVisible ? "show" : "hide"}`} 
             onClick={handleScrollToTop}
         >
-            <Image src={DownArrowImg} alt="PageTop" priority />
+            <Image src={DownArrowImg} width={100}  height="auto"  alt="PageTop" priority />
         </a>
     );
 };

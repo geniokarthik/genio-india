@@ -21,10 +21,10 @@ export default function Header() {
 
   const handleHomePage = (e) => {
     e.preventDefault();
-    const defaultLang = Object.values(SUPPORTED_LANGUAGES).find(lang => lang.default)?.code || 'en';
+    const defaultLang = Object.values(SUPPORTED_LANGUAGES).find(lang => lang.default)?.code || 'ja'; 
     const currentLang = localStorage.getItem("lang") || defaultLang;
     push(`/${currentLang}`);
-  };
+  };  
 
   // Handle sidebar toggle
   const onSetSidebarOpen = (open) => {

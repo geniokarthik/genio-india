@@ -16,9 +16,8 @@ import kavinesh from "src/assets/images/our_team/kavinesh.png";
 import linkedin from "src/assets/images/our_team/linkedin.png";
 
 
-const teamMembers = [
-  {
-    name: "米田 拓也",
+const teamMembers = [  {
+    name: "米田 卓也",
     role: "会社の社長",
     image: takuyayoneda,
     description: "",
@@ -35,7 +34,7 @@ const teamMembers = [
     name: "デイバラジ",
     role: "チームリーダー",
     image: deivaraj,
-    description: "スマートにコーディング、迅速に構築、常に革新—フロントエンドでは効率的に、バックエンドでは強力に、フルスタックの専門知識を活かして。",
+    description: "スマートにコーディング、迅速に構築、常に革新。フロントエンドでは効率的に、バックエンドでは強力に、フルスタックの専門知識を活かして。",
     linkedin: "https://www.linkedin.com/in/deivaraj-p-a67023146",
   },
   {
@@ -95,9 +94,8 @@ export default function TeamSection() {
       <div className={styles.container}>
         <h2 className={styles.heroTitle}>
           <span className={styles.heroRedText}>私たちのチーム</span>
-        </h2>
-        <h2 className={styles.heroSubtitle}>
-          チームは私たちの成功の心臓部であり、ビジョンの核心です
+        </h2>        <h2 className={styles.heroSubtitle}>
+          私たちのチームは、当社の成功を支える原動力であり、ビジョン達成に向けた中心的役割を担っております。
         </h2>
         <div className={`${styles.teamGrid} ${styles.teamContent}`}>
           {teamMembers.map((member, index) => (

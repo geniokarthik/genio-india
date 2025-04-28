@@ -51,7 +51,7 @@ export default function AboutUs() {
               <span className={styles.heroRedText}>企業沿革</span>
             </h1>
             <h2 className={styles.heroSubtitle}>
-              これまでの成長と主なマイルストーンの歩み
+              当社の成長とこれまでの歩み
             </h2>
           </div>
         </motion.section>
@@ -67,15 +67,15 @@ export default function AboutUs() {
             <div className={styles.timelineItem}>
               <div className={styles.timelineContent}>
                 <span className={styles.year}>2025年</span>
-                <span className={styles.text}> - 日本語教育の拡充とグローバル人材支援</span>
-                <p className={styles.description}>
-                   エンジニア向けの日本語教育に加え、日本語を学びたい大学生や卒業生を対象とした研修プログラムを開始しました 
-                </p>
+                <span className={styles.text}> - 日本語教育の拡充とグローバル人材支援</span> 
+                <p className={styles.description} style={{ fontSize: "1.1rem" }}>
+                  エンジニア向けの日本語教育に加え、日本語を学びたい大学生や卒業生を対象とした研修プログラムを開始しました。
+                </p>    
                 <p className={styles.description}>
                    特に建設業界に注力し、業界に特化した日本語研修の提供と、優秀な人材と日本企業をつなぐ新たなマッチングサービスを展開しました。
                 </p>
                 <p className={styles.description}>
-                   IT業界にとどまらず、さまざまな業種の企業との連携を引き続き強化しています。
+                   IT業界にとどまらず、さまざまな業種の企業との連携を引き続き強化していきます。
                 </p>
               </div>
               <div className={styles.timelineDot}></div>
@@ -84,10 +84,10 @@ export default function AboutUs() {
             <div className={styles.timelineItem}>
               <div className={styles.timelineContent}>
                 <span className={styles.year}>2024年</span>
-                <span className={styles.text}> -  新拠点の開設と人材育成</span>
-                <p className={styles.description}>
-                   日本市場向けのプロジェクトをより効果的に支援するため、エンジニア向けの日本語教育を開始しました
-                </p>
+                <span className={styles.text}> -  新拠点の開設と人材育成</span>               
+                 <p className={styles.description}>
+                   日本市場向けのプロジェクトをより効果的に支援するため、エンジニア向けの日本語教育を開始しました。
+                 </p>
                 <p className={styles.description}>
                    新卒エンジニアの採用も開始し、社内研修制度を導入しました。
                 </p>
@@ -103,13 +103,13 @@ export default function AboutUs() {
                 <span className={styles.year}>2023年</span>
                 <span className={styles.text}> - 事業拡大と開発領域の拡張</span>
                 <p className={styles.description}>
-                    日本企業との提携を拡大し、Webシステムおよびモバイルアプリ開発サービスを正式に開始しました。
+                  日本企業との提携を拡大し、Webシステムおよびモバイルアプリ開発サービスを正式に開始しました。
+                </p>               
+                <p className={styles.description}>
+                  アジャイル開発手法を導入することで、迅速かつ柔軟な開発プロセスを確立しました。
                 </p>
                 <p className={styles.description}>
-                    アジャイル開発手法を導入することで、迅速かつ柔軟な開発プロセスを確立しました
-                </p>
-                <p className={styles.description}>
-                    さらに、さまざまな業界のクライアントと連携しながら、プロジェクトマネジメント体制を強化しました
+                  さらに、さまざまな業界のクライアントと連携しながら、プロジェクトマネジメント体制を強化しました。
                 </p>
               </div>
               <div className={styles.timelineDot}></div>
@@ -123,7 +123,7 @@ export default function AboutUs() {
                    当社は2022年に設立され、インドでのオフショア開発を主軸に事業を開始しました。
                 </p>
                 <p className={styles.description}>
-                   日本企業のデジタルトランスフォーメーション（DX）を支援するため、高品質かつコスト効率の高いIT開発サービスの提供を目指しています
+                   日本企業のデジタルトランスフォーメーション（DX）を支援するため、高品質かつコスト効率の高いIT開発サービスの提供を目指しています。
                 </p>
               </div>
               <div className={styles.timelineDot}></div>

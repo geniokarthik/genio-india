@@ -137,6 +137,58 @@
   font-size: 1.5rem;
   color: #000;
 }
+@media (max-width: 1024px) {
+  .timeline {
+    margin-left: 20px;
+  }
+
+  .timeline::before {
+    left: 7px;
+    height: 75%;
+  }
+
+  .timeLine::before {
+    left: 7px;
+    top: 25px;
+    height: 80%;
+  }
+
+
+  .timelineItem {
+    margin-left: 0;
+  }
+
+  .timelineDot {
+    left: 8px;
+    top: 20px;
+  }
+
+  .timelineContent {
+    margin-left: 30px;
+  }
+
+  .year {
+    font-size: 1.5rem;
+  }
+
+  .text {
+    font-size: 1rem;
+    vertical-align: text-bottom;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .heroBackgroundGradient {
+    position: absolute;
+    right: 100px;
+    top: 100px;
+    height: 60%;
+    width: 30%;
+  }
+
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -152,7 +204,7 @@
   .timeLine::before {
     left: 7px;
     top: 25px;
-    height: 78%;
+    height: 79%;
   }
 
 
