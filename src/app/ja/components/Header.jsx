@@ -6,24 +6,25 @@ import { usePathname } from "next/navigation";
 import styles from "src/app/common/styles/Header.module.css";
 import "../../globals.css";
 import logo from "src/assets/images/logo.png";
+import logoMob from "src/assets/images/logoMob.png";
 import LanguageSwither from "src/app/common/lan_swit/LanguageSwitcher";
 import Sidebar from "react-sidebar";
 import { useRouter } from 'next/navigation';
 import { SUPPORTED_LANGUAGES } from 'src/config/languages';
 
 export default function Header() {
-  const { push } = useRouter();
+  const {push} = useRouter();
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
 
 
-  const handleHomePage = (e) => {
+const handleHomePage = (e) => {
     e.preventDefault();
-    const defaultLang = Object.values(SUPPORTED_LANGUAGES).find(lang => lang.default)?.code || 'ja'; 
-    const currentLang = localStorage.getItem("lang") || defaultLang;
-    push(`/${currentLang}`);
+     // Get language from current path, fallback to 'ja'
+     const lang = pathname.split('/')[1] || 'ja';
+     push(`/${lang}`);
   };  
 
   // Handle sidebar toggle
@@ -88,17 +89,19 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <title>Genioインド</title>
-      <div className={styles.logoContainer}>
-        <Link href={`/${localStorage.getItem("lang") || "ja"}`} onClick={handleHomePage}>
+     <div className={styles.logoContainer}>
+        <Link href={`/${pathname.split('/')[1] || "ja"}`} onClick={handleHomePage}>
           <Image
-            src={logo}
+            src={isMobile ? logoMob : logo}       
             alt="Genio India Logo"
             width={180}
             height={100}
             className={styles.logo}
+            priority
+            style={{ height: "auto" }} // To avoid Next.js image warning
           />
         </Link>
-      </div>
+     </div>
 
       {isMobile ? (
         <Sidebar

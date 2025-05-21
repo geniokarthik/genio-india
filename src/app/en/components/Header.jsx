@@ -12,16 +12,16 @@ import LanguageSwitcher from "src/app/common/lan_swit/LanguageSwitcher";
 import { SUPPORTED_LANGUAGES } from 'src/config/languages';
 
 export default function Header() {
-  const router = useRouter();
+  const {push} = useRouter();
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   const handleHomePage = (e) => {
     e.preventDefault();
-    const defaultLang = Object.values(SUPPORTED_LANGUAGES).find(lang => lang.default)?.code || 'en';
-    const currentLang = localStorage.getItem("lang") || defaultLang;
-    router.push(`/${currentLang}`);
+     // Get language from current path, fallback to 'en'
+     const lang = pathname.split('/')[1] || 'en';
+     push(`/${lang}`);
   };
 
   // Handle sidebar toggle
@@ -93,16 +93,18 @@ export default function Header() {
     <header className={styles.header}>
       <title>Genio India</title>
       <div className={styles.logoContainer}>
-        <Link href={`/${localStorage.getItem("lang") || "en"}`} onClick={handleHomePage}>
+        <Link href={`/${pathname.split('/')[1] || "ja"}`} onClick={handleHomePage}>
           <Image
             src={isMobile ? logoMob : logo}
             alt="Genio India Logo"
             width={180}
             height={100}
             className={styles.logo}
+            priority
+            style={{ height: "auto" }} // To avoid Next.js image warning
           />
         </Link>
-      </div>
+     </div>
 
       {isMobile ? (
         <Sidebar

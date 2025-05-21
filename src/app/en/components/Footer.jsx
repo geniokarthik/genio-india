@@ -28,9 +28,9 @@ export default function Footer() {
 
     {/* Footer Links - Column 1 */}
     <div className={styles.footerLinks}>
-      <Link href="/aboutus">About Genio India</Link>
-      <Link href="/#companyprofile">Company Profile</Link>
-      <Link href="/contactus">Contact Us</Link>
+      <Link href="/en/aboutus">About Genio India</Link>
+      <Link href="/en#companyprofile">Company Profile</Link>
+      <Link href="/en/contactus">Contact Us</Link>
     </div>
 
   </div>

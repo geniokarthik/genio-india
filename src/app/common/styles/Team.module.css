@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Roboto:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 
 .team {
   padding: 4rem 2rem;
@@ -118,7 +118,7 @@
   font-weight: bold;
   margin-bottom: 0.3rem;
   color: rgb(4, 4, 4);
-  font-family: 'Otomanopee One', sans-serif;
+  font-family: 'Noto Sans JP';
 }
 
 .memberRole {
