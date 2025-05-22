@@ -54,8 +54,8 @@ const handleHomePage = (e) => {
       </button>
       <div className={styles.sidebarNav}>
         <Link
-          href="/"
-          className={`${styles.sidebarLink} ${pathname === "/" ? styles.active : ""}`}
+          href="/ja"
+          className={`${styles.sidebarLink} ${pathname === "/ja" ? styles.active : ""}`}
           onClick={() => setSidebarOpen(false)}
         >
           ホーム

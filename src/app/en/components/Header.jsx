@@ -57,8 +57,8 @@ export default function Header() {
       </button>
       <div className={styles.sidebarNav}>
         <Link 
-          href="/" 
-          className={`${styles.sidebarLink} ${pathname === "/" ? styles.active : ""}`} 
+          href="/en" 
+          className={`${styles.sidebarLink} ${pathname === "/en" ? styles.active : ""}`} 
           onClick={() => setSidebarOpen(false)}
         >
           Home
@@ -77,13 +77,13 @@ export default function Header() {
         >
           About Us
         </Link>
-        <Link 
+       <Link 
           href="/en/contactus" 
           className={`${styles.sidebarLink} ${pathname === "/en/contactus" ? styles.active : ""}`} 
-          onClick={(e) => handleReload(e, "/en/contactus")}
+          onClick={() => setSidebarOpen(false)}
         >
-          Contact Us
-        </Link>
+         Contact Us
+      </Link>
        <LanguageSwitcher/>
       </div>
     </div>
