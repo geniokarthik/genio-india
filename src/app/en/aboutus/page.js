@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Header from "src/app/en/components/Header";
 import Footer from "src/app/en/components/Footer";
 import TeamSection from "src/app/en/aboutus/TeamSection";
+import Jlpt from "src/app/en/aboutus/Jlpt";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import styles from "src/app/common/styles/Aboutus.module.css";
 import sidelogo from "src/assets/images/aboutus/sidelogo.png";
@@ -66,6 +67,23 @@ export default function AboutUs() {
           className={styles.timelineSection}
         >
           <div className={styles.timeline} ref={timelineRef}>
+            <div className={styles.timelineItem}>
+              <div className={styles.timelineContent}>
+                <span className={styles.year}>2026</span>
+                <span className={styles.text}> - Become a Trusted Long-Term Partner for Japanese Companies</span>
+                <p className={styles.description}>
+                  Standardize a development framework that ensures security, quality, and efficiency, going beyond simply accepting projects from Japanese companies.
+                </p>
+                <p className={styles.description}>
+                  Build long-term, trust-based relationships that lead to continuous contracts and referrals・
+                </p>
+                <p className={styles.description}>
+                  Establish a talent development model that balances technical skills, Japanese language.
+                </p>
+              </div>
+              <div className={styles.timelineDot}></div>
+            </div>
+
             <div className={styles.timelineItem}>
               <div className={styles.timelineContent}>
                 <span className={styles.year}>2025</span>
@@ -138,6 +156,7 @@ export default function AboutUs() {
           />
         </motion.section>
         <TeamSection />
+        <Jlpt />
       </div>
       <ScrollTop />
       <Footer />

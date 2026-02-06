@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
+.container {
+    max-width: 1400px;
+    margin: 2rem;
+}
+
+.heroTitle {
+    font-size: 2.5rem;
+    color: #050505;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+.heroRedText {
+    color: #e22110;
+    font-weight: bold;
+}
+
+.jlptLevel {
+  margin-bottom: 3rem;   /* 👈 spacing after each loop item */
+}
+
+
+.noteText {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.noteLabel {
+    color: #e22110;
+    font-weight: bold;
+    margin-right: 6px;
+    white-space: nowrap;
+}   
+
+.noteContent {
+    display: block;
+}
+
+.noteWarning{
+    display: block;
+}
+
+.heroSubtitle {
+    font-size: 1.25rem;
+    color: #666;
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.jlptContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.levelHeader {
+    margin-bottom: 0.5rem;
+    border-bottom: 3px solid #e22110;
+    padding-bottom: 0.8rem;
+}
+
+.levelTitle {
+    font-size: 1.8rem;
+    color: #050505;
+    margin: 0;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+}
+
+.levelSubtitle {
+    color: #0a0a0a;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+
+    white-space: pre-line;
+}
+
+.membersList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    padding: 0;
+}
+
+.memberCard {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.memberImageWrapper {
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jlptmemberImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.memberImageWrapper:hover .jlptmemberImage {
+    transform: scale(1.05);
+}
+
+.memberCard {
+  display: flex;
+  align-items: center;   /* 👈 THIS is the KEY (vertical middle) */
+  gap: 24px;
+}
+
+.memberName {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #050505;
+    margin: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.memberRole {
+    font-size: 0.9rem;
+    color: #1ABC9C;
+    font-weight: 600;
+    margin: 0 0 0.8rem 0;
+}
+
+.memberDescription {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #0a0a0a;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 20px;
+}
+
+.linkedinLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: transparent;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin-top: 0.5rem;
+}
+
+.linkedinLink:hover {
+    background: #e22110;
+    transform: scale(1.1);
+}
+
+.linkedinIcon {
+    width: 24px;
+    height: 24px;
+    transition: filter 0.3s ease;
+}
+
+.linkedinLink:hover .linkedinIcon {
+    filter: brightness(0) invert(1);
+}
+
+
+/* FLIP CARD STYLES FOR OTHERS SECTION */
+.memberCardWithFlip {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.flipCardContainer {
+    perspective: 1000px;
+    width: 180px;
+    height: 180px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.flipCardOthers {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: transform 0.6s ease-in-out;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.flipCardInnerOthers {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s ease-in-out;
+    transform-style: preserve-3d;
+    border-radius: inherit;
+}
+
+.flipCardContainer:hover .flipCardInnerOthers {
+    transform: rotateY(180deg);
+}
+
+.flipCardFrontOthers,
+.flipCardBackOthers {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: inherit;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flipCardFrontOthers {
+    background-color: white;
+    border: none;
+}
+
+.flipCardBackOthers {
+    background-color: #f0f0f0;
+    color: #050505;
+    transform: rotateY(180deg);
+    flex-direction: column;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.flipMemberName {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0;
+    color: #050505;
+    text-align: center;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.flipMemberRole {
+    font-size: 0.8rem;
+    color: #1ABC9C;
+    margin: 0;
+    font-weight: 600;
+    text-align: center;
+}
+
+.flipPhotoContainer {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 0.5rem;
+}
+
+.flipCardPhoto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.memberDetailsFlip {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.flipLinkedinLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: white;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.flipLinkedinLink:hover {
+    background: #e22110;
+    transform: scale(1.1);
+}
+
+.flipLinkedinLink img {
+    width: 32px;
+    height: 32px;
+}
+
+.noMembers {
+    text-align: center;
+    padding: 2rem;
+    color: #999;
+    font-size: 1rem;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .heroTitle {
+        font-size: 1.75rem;
+    }
+
+    .heroSubtitle {
+        font-size: 1.1rem;
+    }
+
+    .membersList {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .memberCard {
+        gap: 1.5rem;
+    }
+
+    .memberImageWrapper {
+        width: 150px;
+        height: 150px;
+    }
+
+    .memberName {
+        font-size: 1.1rem;
+    }
+
+    .memberDescription {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .heroTitle {
+        font-size: 1.5rem;
+    }
+
+    .heroSubtitle {
+        font-size: 1rem;
+    }
+
+    .membersList {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .memberCard {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .memberImageWrapper {
+        width: 140px;
+        height: 140px;
+    }
+
+    .memberName {
+        font-size: 1rem;
+    }
+
+    .memberDescription {
+        font-size: 0.85rem;
+    }
+}

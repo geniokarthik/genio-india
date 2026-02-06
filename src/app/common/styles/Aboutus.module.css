@@ -60,7 +60,7 @@
   position: absolute;
   left: 20px;
   width: 3px;
-  height: 75%;
+  height: 81%;
   background-color: #333;
 }
 
@@ -70,9 +70,10 @@
   position: absolute;
   left: 20px;
   width: 3px;
-  height: 75%;
+  height: 80%;
   background-color: #333;
 }
+
 
 .timelineItem {
   position: relative;
@@ -144,13 +145,13 @@
 
   .timeline::before {
     left: 7px;
-    height: 75%;
+    height: 80%;
   }
 
   .timeLine::before {
     left: 7px;
     top: 25px;
-    height: 80%;
+    height: 84%;
   }
 
 
@@ -198,13 +199,13 @@
 
   .timeline::before {
     left: 7px;
-    height: 75%;
+    height: 80%;
   }
 
   .timeLine::before {
     left: 7px;
     top: 25px;
-    height: 79%;
+    height: 84%;
   }
 
 
@@ -250,7 +251,7 @@
 
   .timeline::before {
     left: 5px;
-    height: 75%;
+    height: 80%;
   }
 
   .timelineDot {

@@ -22,6 +22,8 @@ export default function Footer() {
         <div className={styles.address}>
           <p>Genio India Software Pvt. Ltd.</p>
           <p>営業時間 09:00～18:00</p>
+          <p>メールアドレス : info@genioindia.co.in</p>
+          <p>電話番号 : +91 93636 06223</p>
           <p>No. 171/3/1, Narikkal karadu, Vennandur, Rasipuram, Namakkal,</p>
           <p>Tamil Nadu, India - 637505.</p>
         </div>
