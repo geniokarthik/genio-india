@@ -42,9 +42,9 @@ const others = [
     {
         jlpt: "N5",
         name: "プレム・クマール",
-        role: "CADオペレーター（建築CADオペレーター）",
+        role: "メカニカルデザイナー",
         image: premkumar,
-        linkedin: "https://www.linkedin.com/in/premkumar-m-0260a527a/",
+        linkedin: "https://www.linkedin.com/in/premkumar-s-174896249",
     },
 ];
 
@@ -96,7 +96,7 @@ export default function JapaneseClear() {
     const groupedOthers = groupOthersByJLPT();
 
     return (
-         <motion.section
+        <motion.section
       id="team"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}

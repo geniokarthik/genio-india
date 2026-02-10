@@ -42,9 +42,9 @@ const others = [
     {
         jlpt: "N5",
         name: "Premkumar",
-        role: "CAD Operator (Architectural CAD Operator)",
+        role: "Mechanical Designer",
         image: premkumar,
-        linkedin: "https://www.linkedin.com/in/premkumar-m-0260a527a/",
+        linkedin: "https://www.linkedin.com/in/premkumar-s-174896249",
     },
 ];
 
@@ -52,11 +52,11 @@ const jlptLevels = ["N1", "N2", "N3", "N4", "N5"];
 
 const getSubtitleText = (level) => {
     const subtitles = {
-        "N5": "These members have a basic understanding of Japanese and are able tounderstand daily conversations and simple work instructions.Note: This section introduces our internal company members.",
-        "N4": "These members have a basic understanding of Japanese and are able tounderstand daily conversations as well as work-related instructions.",
-        "N3": "These members have an intermediate level of Japanese proficiency and canunderstand everyday conversations, commonly used expressions, and basicwork-related communication in Japanese.",
+        "N5": "These members have a basic understanding of Japanese and are able to understand daily conversations and simple work instructions.Note: This section introduces our internal company members.",
+        "N4": "These members have a basic understanding of Japanese and are able to understand daily conversations as well as work-related instructions.",
+        "N3": "These members have an intermediate level of Japanese proficiency and can understand everyday conversations, commonly used expressions, and basic work-related communication in Japanese.",
         "N2": "These members are capable of professional communication in Japanese,including requirement confirmation, specification understanding,and email correspondence in Japanese.",
-        "N1": "These members possess near-native Japanese proficiency and are capable ofhandling advanced professional communication, including complex negotiations,technical discussions, documentation, and business-level presentations in Japanese.",
+        "N1": "These members possess near-native Japanese proficiency and are capable of handling advanced professional communication, including complex negotiations, technical discussions, documentation, and business-level presentations in Japanese.",
     };
     return subtitles[level] || "";
 };

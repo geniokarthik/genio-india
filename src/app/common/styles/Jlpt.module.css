@@ -20,7 +20,7 @@
 }
 
 .jlptLevel {
-  margin-bottom: 3rem;   /* 👈 spacing after each loop item */
+  margin-bottom: 1.5rem;  
 }
 
 
@@ -73,7 +73,6 @@
 
 .levelSubtitle {
     color: #0a0a0a;
-    font-weight: 500;
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     font-size: 1.2rem;
@@ -118,7 +117,7 @@
 
 .memberCard {
   display: flex;
-  align-items: center;   /* 👈 THIS is the KEY (vertical middle) */
+  align-items: center;   
   gap: 24px;
 }
 
@@ -144,44 +143,6 @@
     margin: 0;
 }
 
-.description {
-  font-size: 1.2rem;
-  color: #0a0a0a;
-  line-height: 1.5;
-  position: relative;
-  padding-left: 20px;
-}
-
-.linkedinLink {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: transparent;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    margin-top: 0.5rem;
-}
-
-.linkedinLink:hover {
-    background: #e22110;
-    transform: scale(1.1);
-}
-
-.linkedinIcon {
-    width: 24px;
-    height: 24px;
-    transition: filter 0.3s ease;
-}
-
-.linkedinLink:hover .linkedinIcon {
-    filter: brightness(0) invert(1);
-}
-
-
-/* FLIP CARD STYLES FOR OTHERS SECTION */
 .memberCardWithFlip {
     display: flex;
     gap: 2rem;
@@ -303,13 +264,11 @@
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: white;
     transition: all 0.3s ease;
     text-decoration: none;
 }
 
 .flipLinkedinLink:hover {
-    background: #e22110;
     transform: scale(1.1);
 }
 
@@ -357,6 +316,11 @@
     .memberDescription {
         font-size: 0.9rem;
     }
+
+    .memberCardWithFlip {
+        gap: 1.5rem;
+        align-items: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -391,6 +355,14 @@
 
     .memberDescription {
         font-size: 0.85rem;
+    }
+
+    .memberCardWithFlip {
+        flex-direction: column;   /* Important */
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+        width: 100%;
     }
 }
 
