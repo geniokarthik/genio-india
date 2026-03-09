@@ -199,8 +199,8 @@ export default function Service() {
                         <Image
                           src={DownArrowImg}
                           alt="scroll down"
-                          width={16}
-                          height={11}
+                          width={20}
+                          height={20}
                         />
                       </span>
                     </div>

@@ -196,7 +196,7 @@ export default function ServiceEn() {
                     <div className={styles.icon_card__sub_row}>
                       <p className={styles.icon_card__sub}>{item.sub}</p>
                       <span className={styles.icon_card__arrow}>
-                        <Image src={DownArrowImg} alt="scroll down" width={16} height={11} />
+                        <Image src={DownArrowImg} alt="scroll down" width={20} height={20} />
                       </span>
                     </div>
                   </button>
