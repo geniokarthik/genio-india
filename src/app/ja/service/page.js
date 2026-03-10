@@ -1,8 +1,9 @@
-"use client";
+﻿"use client";
 import Image from "next/image";
 import "../../globals.css";
+import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import TeamMbersImg from "src/assets/images/service/teammembers.png";
+import TeamMbersImg from "src/assets/images/service/lab_development.png";
 import DownArrowImg from "src/assets/images/service/downarrow.png";
 import DesktopImg from "src/assets/images/service/desktop.png";
 import AppDevelopmentImg from "src/assets/images/service/appdevelopment.png";
@@ -17,12 +18,119 @@ import pt1 from "src/assets/images/service/ja/pattern1.png";
 import pt2 from "src/assets/images/service/ja/pattern2.png";
 
 const SERVICES = [
-  { id: "lab",             icon: "🏭", label: "ラボ型開発",   sub: "専任チーム・月額固定"},
-  { id: "web-development", icon: "🌐", label: "ウェブ開発",   sub: "企業サイト・業務システム" },
-  { id: "app-development", icon: "📱", label: "アプリ開発",   sub: "iOS / Android"},
-  { id: "sql-database",    icon: "🗄️", label: "データベース", sub: "MySQL 設計・運用"},
-  { id: "japanese-study",  icon: "🇯🇵", label: "日本語教育",  sub: "エンジニア向け日本語"},
+  { id: "lab", icon: "🏭", label: "ラボ型開発", sub: "専任チーム・月額固定" },
+  { id: "web-development", icon: "🌐", label: "ウェブ開発", sub: "企業サイト・業務システム" },
+  { id: "app-development", icon: "📱", label: "アプリ開発", sub: "iOS / Android" },
+  { id: "sql-database", icon: "🗄️", label: "データベース", sub: "MySQL 設計・運用" },
+  { id: "japanese-study", icon: "🇯🇵", label: "日本語教育", sub: "エンジニア向け日本語" },
 ];
+
+const techAreas = [
+  {
+    category: "OS",
+    items: [
+      { name: "Windows", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" },
+      { name: "Linux", logo: "https://cdn.simpleicons.org/linux/FCC624" },
+      { name: "iOS", logo: "https://cdn.simpleicons.org/apple/111111" },
+      { name: "Android", logo: "https://cdn.simpleicons.org/android/3DDC84" },
+    ],
+  },
+  {
+    category: "Languages",
+    items: [
+      { name: "PHP", logo: "https://cdn.simpleicons.org/php/777BB4" },
+      { name: "Firebase", logo: "https://cdn.simpleicons.org/firebase/FFCA28" },
+      { name: "JAVA", logo: "https://cdn.simpleicons.org/openjdk/ED8B00" },
+      { name: "C#", logo: "https://cdn.simpleicons.org/sharp/99CC00" },
+      { name: "HTML5", logo: "https://cdn.simpleicons.org/html5/E34F26" },
+      { name: "CSS3", logo: "https://cdn.simpleicons.org/css/1572B6" },
+      { name: "Javascript", logo: "https://cdn.simpleicons.org/javascript/F7DF1E" },
+      { name: "JQuery", logo: "https://cdn.simpleicons.org/jquery/0769AD" },
+      { name: "ReactNative", logo: "https://cdn.simpleicons.org/react/61DAFB" },
+      { name: "Objective-C", logo: "https://cdn.simpleicons.org/apple/111111" },
+      { name: "node.js", logo: "https://cdn.simpleicons.org/nodedotjs/339933" },
+      { name: "React", logo: "https://cdn.simpleicons.org/react/61DAFB" },
+      { name: "nuxt.js", logo: "https://cdn.simpleicons.org/nuxtjs/00C58E" },
+      { name: "next.js", logo: "https://cdn.simpleicons.org/nuxtjs/00C58E" },
+      { name: "vue.js", logo: "https://cdn.simpleicons.org/vuedotjs/42B883" },
+
+    ],
+  },
+  {
+    category: "Frameworks",
+    items: [
+      { name: "Laravel", logo: "https://cdn.simpleicons.org/laravel/FF2D20" },
+      { name: "Symfony", logo: "https://cdn.simpleicons.org/symfony/111111" },
+      { name: "CakePHP", logo: "https://cdn.simpleicons.org/cakephp/D33C43" },
+      { name: "Smarty", logo: "" },
+      { name: "bootstrap", logo: "https://cdn.simpleicons.org/bootstrap/7952B3" },
+      { name: "Spring", logo: "https://cdn.simpleicons.org/spring/6DB33F" },
+      { name: "Django", logo: "https://cdn.simpleicons.org/django/092E20" },
+    ],
+  },
+  {
+    category: "Databases",
+    items: [
+      { name: "PostgreSQL", logo: "https://cdn.simpleicons.org/postgresql/4169E1" },
+      { name: "MySQL", logo: "https://cdn.simpleicons.org/mysql/4479A1" },
+      { name: "MaruaDB", logo: "https://cdn.simpleicons.org/mariadb/003545" },
+      { name: "Oracle", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" },
+      { name: "SQL Server", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" },
+      { name: "AWS Aurora", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+      { name: "Airtable", logo: "https://cdn.simpleicons.org/airtable" },
+    ],
+  },
+  {
+    category: "CMS",
+    items: [
+      { name: "WordPress", logo: "https://cdn.simpleicons.org/wordpress/21759B" },
+    ],
+  },
+  {
+    category: "Development Environment (IDE)",
+    items: [
+      { name: "phpStrom", logo: "https://cdn.simpleicons.org/phpstorm/000000" },
+      { name: "Eclipse", logo: "https://cdn.simpleicons.org/eclipseide/2C2255" },
+      { name: "Visual Studio", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" },
+      { name: "Adobe XD", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-plain.svg" },
+      { name: "AndroidSDK", logo: "https://cdn.simpleicons.org/androidstudio/3DDC84" },
+      { name: "XCode", logo: "https://cdn.simpleicons.org/xcode/147EFB" },
+    ],
+  },
+  {
+    category: "Middleware",
+    items: [
+      { name: "Apache", logo: "https://cdn.simpleicons.org/apache/D22128" },
+      { name: "Tomcat", logo: "https://cdn.simpleicons.org/apachetomcat/F8DC75" },
+      { name: "nginx", logo: "https://cdn.simpleicons.org/nginx/009639" },
+    ],
+  },
+  {
+    category: "AWS Services",
+    items: [
+      { name: "EC2", logo: "https://img.icons8.com/color/48/amazon-web-services.png" },
+      { name: "RDS", logo: "https://img.icons8.com/color/48/amazon-web-services.png" },
+      { name: "S3", logo: "https://img.icons8.com/color/48/amazon-web-services.png" },
+      { name: "Lambda", logo: "https://img.icons8.com/color/48/amazon-web-services.png" }
+    ],
+  },
+];
+
+const SINGLE_COL_CATEGORIES = [
+  "Frameworks",
+  "OS",
+  "Databases",
+  "IDEs & Design Tools",
+  "Middleware",
+  "AWS Services",
+];
+
+const sectionFade = {
+  initial: { opacity: 0, y: 40 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.7 },
+  viewport: { once: true, amount: 0.1 },
+};
 
 const DETAILS = [
   {
@@ -87,9 +195,47 @@ WebアプリケーションやモバイルアプリとのMySQLデータ連携も
 ];
 
 export default function Service() {
- const scrollTo = (id) => {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-};
+  const techSliderRef = useRef(null);
+
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const scrollTech = (direction) => {
+    const track = techSliderRef.current;
+    if (!track) return;
+
+    const firstCard = track.querySelector(`.${styles.techFeatureCard}`);
+    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 320;
+    const gap = parseFloat(getComputedStyle(track).columnGap || "16") || 16;
+    const offset = cardWidth + gap;
+    const delta = direction === "next" ? offset : -offset;
+
+    if (typeof track.scrollBy === "function") {
+      track.scrollBy({ left: delta, behavior: "smooth" });
+    } else {
+      track.scrollLeft += delta;
+    }
+  };
+
+  useEffect(() => {
+    const track = techSliderRef.current;
+    if (!track) return;
+
+    const timer = setInterval(() => {
+      const firstCard = track.querySelector(`.${styles.techFeatureCard}`);
+      const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 320;
+      const nearEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - cardWidth;
+
+      if (nearEnd) {
+        track.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        scrollTech("next");
+      }
+    }, 3800);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <>
@@ -110,8 +256,9 @@ export default function Service() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <p className={styles.hero__label}>事業内容</p>
-              <h1 className={styles.hero__title}>
-                インド発、<span>高品質・低コスト</span>の<br />オフショア開発
+              <h1 className={`${styles.hero__title} ${styles.firstLetterRed}`}>
+                インド発、<br />高品質、低コストの<br />オフショア開発
+
               </h1>
               <p className={styles.hero__desc}>
                 ウェブシステム・アプリ・MySQLデータベースをゼロから構築。
@@ -175,7 +322,7 @@ export default function Service() {
           >
             <div className={styles.section_head}>
               <p className={styles.section_label}>私たちが提供するサービス</p>
-              <h2 className={styles.section_title}>サービス一覧</h2>
+              <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>サービス一覧</h2>
             </div>
 
             <div className={styles.icon_grid}>
@@ -222,7 +369,7 @@ export default function Service() {
             >
               <div className={`${styles.detail_section__inner} ${i % 2 !== 0 ? styles.detail_section__reverse : ""}`}>
                 <div className={styles.detail_section__text}>
-                  <h2 className={styles.detail_section__title}>{d.title}</h2>
+                  <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>{d.title}</h2>
                   {d.text.split("\n\n").map((para, j) => (
                     <p key={j} className={styles.detail_section__para}>{para}</p>
                   ))}
@@ -283,15 +430,15 @@ export default function Service() {
               <div className={styles.process__steps}>
                 <div className={styles.section_head} style={{ textAlign: "left", marginBottom: "1.5rem" }}>
                   <p className={styles.section_label}>開発プロセス</p>
-                  <h2 className={styles.section_title}>ご依頼の流れ</h2>
+                  <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>ご依頼の流れ</h2>
                 </div>
                 {[
-                  { n: "01", t: "情報収集",       b: "ヒアリング・要件定義・分析" },
-                  { n: "02", t: "設計",           b: "システム設計・UI/UX設計" },
+                  { n: "01", t: "情報収集", b: "ヒアリング・要件定義・分析" },
+                  { n: "02", t: "設計", b: "システム設計・UI/UX設計" },
                   { n: "03", t: "プログラミング", b: "実装・コーディング・単体テスト" },
-                  { n: "04", t: "確認",           b: "結合テスト・クライアント確認" },
-                  { n: "05", t: "リリース",       b: "本番環境デプロイ・納品" },
-                  { n: "06", t: "運保",           b: "保守・運用・継続サポート" },
+                  { n: "04", t: "確認", b: "結合テスト・クライアント確認" },
+                  { n: "05", t: "リリース", b: "本番環境デプロイ・納品" },
+                  { n: "06", t: "運保", b: "保守・運用・継続サポート" },
                 ].map((s, i) => (
                   <motion.div
                     key={i}
@@ -307,6 +454,62 @@ export default function Service() {
                       <p className={styles.step__body}>{s.b}</p>
                     </div>
                   </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.section>
+
+          <motion.section {...sectionFade} className={styles.tech}>
+            <div className={styles.sectionHead}>
+              <p>技術対応範囲</p>
+              <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>技術領域のご紹介</h2>
+            </div>
+            <p className={styles.techLead}>カテゴリ別に当社が対応できる技術スタックをカード形式でまとめました。</p>
+
+            <div className={styles.techCarouselWrap}>
+              <button type="button" className={`${styles.techArrow} ${styles.techArrowLeft}`} onClick={() => scrollTech("prev")} aria-label="前へ">
+                ‹
+              </button>
+              <button type="button" className={`${styles.techArrow} ${styles.techArrowRight}`} onClick={() => scrollTech("next")} aria-label="次へ">
+                ›
+              </button>
+
+              <div className={styles.techCardTrack} ref={techSliderRef}>
+                {techAreas.map((area, idx) => (
+                  <motion.article
+                    key={area.category}
+                    className={styles.techFeatureCard}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.45, delay: idx * 0.03 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                  >
+                    <div className={styles.techFeatureMedia}>
+                      <h3>{area.category}</h3>
+                    </div>
+                    <div className={styles.techFeatureBody}>
+                      <div
+                        className={
+                          `${styles.techMiniList} ${
+                            SINGLE_COL_CATEGORIES.includes(area.category)
+                              ? styles.techSingleColumn
+                              : ""
+                          }`
+                        }
+                      >
+                        {area.items.map((item) => (
+                          <div className={styles.techMiniItem} key={`${area.category}-${item.name}`}>
+                            {item.logo ? (
+                              <img src={item.logo} alt={`${item.name} logo`} loading="lazy" />
+                            ) : (
+                              <span className={styles.techLogoFallback}>{item.name.slice(0, 2).toUpperCase()}</span>
+                            )}
+                            <span>{item.name}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.article>
                 ))}
               </div>
             </div>

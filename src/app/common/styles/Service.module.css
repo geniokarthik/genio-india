@@ -20,7 +20,7 @@
   margin-bottom: 0.4rem;
   font-family: "Belanosima";
 }
-.section_title { font-size: 2rem; letter-spacing: 0.06em; color: #0f172a; }
+.section_title { font-size: 2rem; letter-spacing: 0.06em; color: #0f172a; font-family: "ADLaM Display"; }
 
 /* ══════════════════════════════════════
    HERO
@@ -53,6 +53,7 @@
   margin-bottom: 1rem;
 }
 .hero__title span { color: #e02311; }
+.firstLetterRed::first-letter { color: #e02311; }
 
 .hero__desc {
   font-size: 1rem;
@@ -441,3 +442,163 @@
   .app_dev__content { grid-template-columns: 1fr 1fr; align-items: center; }
 }
 @media (max-width: 945px) { .service_card__content { text-align: center; } }
+       
+.techLead {
+  margin: 0.8rem 0 0;
+  color: #303030;
+  line-height: 1.7;
+}
+
+.techCarouselWrap {
+  position: relative;
+  margin-top: 1.1rem;
+}
+
+.techCardTrack {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(320px, 360px);
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0.35rem 0.2rem 0.95rem;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.techCardTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.techFeatureCard {
+  scroll-snap-align: start;
+  background: #ffffff;
+  border: 2px solid #d1d0cf;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(19, 54, 90, 0.12);
+}
+
+.techFeatureMedia {
+  min-height: 60px;
+  background: #e02311;
+  display: grid;
+  place-items: center;
+  padding: 0.8rem;
+  border-bottom: 1px solid #d1d0cf;
+}
+
+.techFeatureMedia h3 {
+  margin: 0;
+  font-size: 1.45rem;
+  color: #ffffff;
+}
+
+.techFeatureBody {
+  padding: 0.95rem 1rem 1.05rem;
+  background: #ffffff;
+}
+
+.techMiniList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(140px, 1fr));
+  column-gap: 0.9rem;
+  row-gap: 0.4rem;
+  align-items: start;
+  grid-auto-flow: row;
+}
+
+.techColumns {
+  display: block;
+  column-count: 2;
+  column-gap: 1rem;
+}
+
+.techMiniItem {
+  break-inside: auto;
+  -webkit-column-break-inside: auto;
+}
+
+.techSingleColumn {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 0.35rem;
+}
+
+@media (max-width: 640px) {
+  .techCardTrack { grid-auto-columns: minmax(260px, 1fr); }
+  .techMiniList {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+}
+
+.techMiniItem {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #1f1f1f;
+  min-height: 23px;
+}
+
+.techMiniItem img {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.techMiniItem span {
+  font-weight: 700;
+  font-size: 0.89rem;
+  line-height: 1.3;
+}
+
+.techOverflow {
+  margin-top: 0.25rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.techLogoFallback {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #3a3a3a;
+  color: #f3f3f3;
+  font-size: 0.55rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.techArrow {
+  position: absolute;
+  top: 44%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: none;
+  background: #2a2a2a;
+  color: #f7f7f7;
+  font-size: 2rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.techArrowLeft {
+  left: -22px;
+}
+
+.techArrowRight {
+  right: -22px;
+}
+
+.techArrow:hover {
+  background: #3a3a3a;
+}

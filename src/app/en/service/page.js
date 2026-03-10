@@ -1,8 +1,9 @@
-"use client";
+﻿"use client";
 import Image from "next/image";
 import "../../globals.css";
+import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import TeamMbersImg from "src/assets/images/service/teammembers.png";
+import TeamMbersImg from "src/assets/images/service/lab_development.png";
 import pt1 from "src/assets/images/service/en/pattern1.png";
 import pt2 from "src/assets/images/service/en/pattern2.png";
 import DownArrowImg from "src/assets/images/service/downarrow.png";
@@ -24,6 +25,114 @@ const SERVICES = [
   { id: "sql-database",    icon: "🗄️", label: "Database",           sub: "MySQL design & operations" },
   { id: "japanese-study",  icon: "🇯🇵", label: "Japanese Education", sub: "Japanese for engineers" },
 ];
+
+const techAreas = [
+  {
+    category: "OS",
+    items: [
+      { name: "Windows", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" },
+      { name: "Linux", logo: "https://cdn.simpleicons.org/linux/FCC624" },
+      { name: "iOS", logo: "https://cdn.simpleicons.org/apple/111111" },
+      { name: "Android", logo: "https://cdn.simpleicons.org/android/3DDC84" },
+    ],
+  },
+  {
+    category: "Languages",
+    items: [
+      { name: "PHP", logo: "https://cdn.simpleicons.org/php/777BB4" },
+      { name: "Firebase", logo: "https://cdn.simpleicons.org/firebase/FFCA28" },
+      { name: "JAVA", logo: "https://cdn.simpleicons.org/openjdk/ED8B00" },
+      { name: "C#", logo: "https://cdn.simpleicons.org/sharp/99CC00" },
+      { name: "HTML5", logo: "https://cdn.simpleicons.org/html5/E34F26" },
+      { name: "CSS3", logo: "https://cdn.simpleicons.org/css/1572B6" },
+      { name: "Javascript", logo: "https://cdn.simpleicons.org/javascript/F7DF1E" },
+      { name: "JQuery", logo: "https://cdn.simpleicons.org/jquery/0769AD" },
+      { name: "ReactNative", logo: "https://cdn.simpleicons.org/react/61DAFB" },
+      { name: "Objective-C", logo: "https://cdn.simpleicons.org/apple/111111" },
+      { name: "node.js", logo: "https://cdn.simpleicons.org/nodedotjs/339933" },
+      { name: "React", logo: "https://cdn.simpleicons.org/react/61DAFB" },
+      { name: "Nuxt.js", logo: "https://cdn.simpleicons.org/nuxt/00DC82" },
+      { name: "Next.js", logo: "https://cdn.simpleicons.org/nextdotjs/000000" },
+      { name: "vue.js", logo: "https://cdn.simpleicons.org/vuedotjs/42B883" },
+
+    ],
+  },
+  {
+    category: "Frameworks",
+    items: [
+      { name: "Laravel", logo: "https://cdn.simpleicons.org/laravel/FF2D20" },
+      { name: "Symfony", logo: "https://cdn.simpleicons.org/symfony/111111" },
+      { name: "CakePHP", logo: "https://cdn.simpleicons.org/cakephp/D33C43" },
+      { name: "Smarty", logo: "" },
+      { name: "bootstrap", logo: "https://cdn.simpleicons.org/bootstrap/7952B3" },
+      { name: "Spring", logo: "https://cdn.simpleicons.org/spring/6DB33F" },
+      { name: "Django", logo: "https://cdn.simpleicons.org/django/092E20" },
+    ],
+  },
+  {
+    category: "Databases",
+    items: [
+      { name: "PostgreSQL", logo: "https://cdn.simpleicons.org/postgresql/4169E1" },
+      { name: "MySQL", logo: "https://cdn.simpleicons.org/mysql/4479A1" },
+      { name: "MaruaDB", logo: "https://cdn.simpleicons.org/mariadb/003545" },
+      { name: "Oracle", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" },
+      { name: "SQL Server", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" },
+      { name: "AWS Aurora", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+      { name: "Airtable", logo: "https://cdn.simpleicons.org/airtable" },
+    ],
+  },
+  {
+    category: "CMS",
+    items: [
+      { name: "WordPress", logo: "https://cdn.simpleicons.org/wordpress/21759B" },
+    ],
+  },
+  {
+    category: "IDEs & Design Tools",
+    items: [
+      { name: "phpStrom", logo: "https://cdn.simpleicons.org/phpstorm/000000" },
+      { name: "Eclipse", logo: "https://cdn.simpleicons.org/eclipseide/2C2255" },
+      { name: "Visual Studio", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" },
+      { name: "Adobe XD", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-plain.svg" },
+      { name: "AndroidSDK", logo: "https://cdn.simpleicons.org/androidstudio/3DDC84" },
+      { name: "XCode", logo: "https://cdn.simpleicons.org/xcode/147EFB" },
+    ],
+  },
+  {
+    category: "Middleware",
+    items: [
+      { name: "Apache", logo: "https://cdn.simpleicons.org/apache/D22128" },
+      { name: "Tomcat", logo: "https://cdn.simpleicons.org/apachetomcat/F8DC75" },
+      { name: "nginx", logo: "https://cdn.simpleicons.org/nginx/009639" },
+    ],
+  },
+  {
+    category: "AWS Services",
+    items: [
+      { name: "EC2", logo: "https://img.icons8.com/color/48/amazon-web-services.png" },
+      { name: "RDS", logo: "https://img.icons8.com/color/48/amazon-web-services.png" },
+      { name: "S3", logo: "https://img.icons8.com/color/48/amazon-web-services.png" },
+      { name: "Lambda", logo: "https://img.icons8.com/color/48/amazon-web-services.png" }
+    ],
+  },
+];
+
+
+const SINGLE_COL_CATEGORIES = [
+  "Frameworks",
+  "OS",
+  "Databases",
+  "IDEs & Design Tools",
+  "Middleware",
+  "AWS Services",
+];
+
+const sectionFade = {
+  initial: { opacity: 0, y: 40 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.7 },
+  viewport: { once: true, amount: 0.1 },
+};
 
 const DETAILS = [
   {
@@ -88,9 +197,47 @@ Whether for travel, work, academics, or personal enrichment, experienced instruc
 ];
 
 export default function ServiceEn() {
+  const techSliderRef = useRef(null);
+
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
+  const scrollTech = (direction) => {
+    const track = techSliderRef.current;
+    if (!track) return;
+
+    const firstCard = track.querySelector(`.${styles.techFeatureCard}`);
+    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 320;
+    const gap = parseFloat(getComputedStyle(track).columnGap || "16") || 16;
+    const offset = cardWidth + gap;
+    const delta = direction === "next" ? offset : -offset;
+
+    if (typeof track.scrollBy === "function") {
+      track.scrollBy({ left: delta, behavior: "smooth" });
+    } else {
+      track.scrollLeft += delta;
+    }
+  };
+
+  useEffect(() => {
+    const track = techSliderRef.current;
+    if (!track) return;
+
+    const timer = setInterval(() => {
+      const firstCard = track.querySelector(`.${styles.techFeatureCard}`);
+      const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 320;
+      const nearEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - cardWidth;
+
+      if (nearEnd) {
+        track.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        scrollTech("next");
+      }
+    }, 3800);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <>
@@ -111,8 +258,8 @@ export default function ServiceEn() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <p className={styles.hero__label}>Our Services</p>
-              <h1 className={styles.hero__title}>
-                India-Based <span>High Quality,<br />Low Cost</span> Offshore Development
+              <h1 className={`${styles.hero__title} ${styles.firstLetterRed}`}>
+                India-Based<br/> High Quality,Low Cost <br/>Offshore Development
               </h1>
               <p className={styles.hero__desc}>
                 We build web systems, apps, and MySQL databases from scratch.
@@ -176,7 +323,7 @@ export default function ServiceEn() {
           >
             <div className={styles.section_head}>
               <p className={styles.section_label}>What We Offer</p>
-              <h2 className={styles.section_title}>Our Services</h2>
+              <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>Our Services</h2>
             </div>
             <div className={styles.icon_grid}>
               {SERVICES.map((item, i) => (
@@ -217,7 +364,7 @@ export default function ServiceEn() {
             >
               <div className={`${styles.detail_section__inner} ${i % 2 !== 0 ? styles.detail_section__reverse : ""}`}>
                 <div className={styles.detail_section__text}>
-                  <h2 className={styles.detail_section__title}>{d.title}</h2>
+                  <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>{d.title}</h2>
                   {d.text.split("\n\n").map((para, j) => (
                     <p key={j} className={styles.detail_section__para}>{para}</p>
                   ))}
@@ -278,7 +425,7 @@ export default function ServiceEn() {
               <div className={styles.process__steps}>
                 <div className={styles.section_head} style={{ textAlign: "left", marginBottom: "1.5rem" }}>
                   <p className={styles.section_label}>Development Process</p>
-                  <h2 className={styles.section_title}>How We Work</h2>
+                  <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>How We Work</h2>
                 </div>
                 {[
                   { n: "01", t: "Requirements Gathering", b: "Interviews · requirement definition · analysis" },
@@ -306,6 +453,62 @@ export default function ServiceEn() {
               </div>
             </div>
           </motion.section>
+
+          <motion.section {...sectionFade} className={styles.tech}>
+          <div className={styles.sectionHead}>
+            <p>Technical Coverage</p>
+            <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>Technology Areas We Support</h2>
+          </div>
+          <p className={styles.techLead}>Browse our technology stack by category in a card format.</p>
+
+          <div className={styles.techCarouselWrap}>
+            <button type="button" className={`${styles.techArrow} ${styles.techArrowLeft}`} onClick={() => scrollTech("prev")} aria-label="Previous">
+              ‹
+            </button>
+            <button type="button" className={`${styles.techArrow} ${styles.techArrowRight}`} onClick={() => scrollTech("next")} aria-label="Next">
+              ›
+            </button>
+
+            <div className={styles.techCardTrack} ref={techSliderRef}>
+              {techAreas.map((area, idx) => (
+                <motion.article
+                  key={area.category}
+                  className={styles.techFeatureCard}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: idx * 0.03 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                >
+                  <div className={styles.techFeatureMedia}>
+                    <h3>{area.category}</h3>
+                  </div>
+                    <div className={styles.techFeatureBody}>
+                      <div
+                        className={
+                          `${styles.techMiniList} ${
+                            SINGLE_COL_CATEGORIES.includes(area.category)
+                              ? styles.techSingleColumn
+                              : ""
+                          }`
+                        }
+                      >
+                      {area.items.map((item) => (
+                        <div className={styles.techMiniItem} key={`${area.category}-${item.name}`}>
+                          {item.logo ? (
+                            <img src={item.logo} alt={`${item.name} logo`} loading="lazy" />
+                          ) : (
+                            <span className={styles.techLogoFallback}>{item.name.slice(0, 2).toUpperCase()}</span>
+                          )}
+                          <span>{item.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </motion.section>
 
           <motion.section
             className={styles.cta}
