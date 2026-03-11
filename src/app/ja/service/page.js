@@ -314,6 +314,61 @@ export default function Service() {
           </section>
 
           <motion.section
+            className={styles.process}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.05 }}
+          >
+            <div className={styles.process__layout}>
+              <motion.div
+                className={styles.process__img}
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7 }}
+                viewport={{ once: true, amount: 0.05 }}
+              >
+                <Image
+                  src={TeamMbersImg}
+                  alt="開発プロセス"
+                  width={480}
+                  height={420}
+                  style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
+                />
+              </motion.div>
+              <div className={styles.process__steps}>
+                <div className={styles.section_head} style={{ textAlign: "left", marginBottom: "1.5rem" }}>
+                  <p className={styles.section_label}>開発プロセス</p>
+                  <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>ご依頼の流れ</h2>
+                </div>
+                {[
+                  { n: "01", t: "情報収集", b: "ヒアリング・要件定義・分析" },
+                  { n: "02", t: "設計", b: "システム設計・UI/UX設計" },
+                  { n: "03", t: "プログラミング", b: "実装・コーディング・単体テスト" },
+                  { n: "04", t: "確認", b: "結合テスト・クライアント確認" },
+                  { n: "05", t: "リリース", b: "本番環境デプロイ・納品" },
+                  { n: "06", t: "運保", b: "保守・運用・継続サポート" },
+                ].map((s, i) => (
+                  <motion.div
+                    key={i}
+                    className={styles.step}
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.45, delay: i * 0.07 }}
+                    viewport={{ once: true, amount: 0.05 }}
+                  >
+                    <div className={styles.step__num}>{s.n}</div>
+                    <div className={styles.step__content}>
+                      <p className={styles.step__title}>{s.t}</p>
+                      <p className={styles.step__body}>{s.b}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.section>
+
+          <motion.section
             className={styles.services}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -404,60 +459,7 @@ export default function Service() {
             </motion.section>
           ))}
 
-          <motion.section
-            className={styles.process}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true, amount: 0.05 }}
-          >
-            <div className={styles.process__layout}>
-              <motion.div
-                className={styles.process__img}
-                initial={{ opacity: 0, x: -40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7 }}
-                viewport={{ once: true, amount: 0.05 }}
-              >
-                <Image
-                  src={TeamMbersImg}
-                  alt="開発プロセス"
-                  width={480}
-                  height={420}
-                  style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
-                />
-              </motion.div>
-              <div className={styles.process__steps}>
-                <div className={styles.section_head} style={{ textAlign: "left", marginBottom: "1.5rem" }}>
-                  <p className={styles.section_label}>開発プロセス</p>
-                  <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>ご依頼の流れ</h2>
-                </div>
-                {[
-                  { n: "01", t: "情報収集", b: "ヒアリング・要件定義・分析" },
-                  { n: "02", t: "設計", b: "システム設計・UI/UX設計" },
-                  { n: "03", t: "プログラミング", b: "実装・コーディング・単体テスト" },
-                  { n: "04", t: "確認", b: "結合テスト・クライアント確認" },
-                  { n: "05", t: "リリース", b: "本番環境デプロイ・納品" },
-                  { n: "06", t: "運保", b: "保守・運用・継続サポート" },
-                ].map((s, i) => (
-                  <motion.div
-                    key={i}
-                    className={styles.step}
-                    initial={{ opacity: 0, x: 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.45, delay: i * 0.07 }}
-                    viewport={{ once: true, amount: 0.05 }}
-                  >
-                    <div className={styles.step__num}>{s.n}</div>
-                    <div className={styles.step__content}>
-                      <p className={styles.step__title}>{s.t}</p>
-                      <p className={styles.step__body}>{s.b}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.section>
+          
 
           <motion.section {...sectionFade} className={styles.tech}>
             <div className={styles.sectionHead}>

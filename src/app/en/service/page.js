@@ -315,6 +315,61 @@ export default function ServiceEn() {
           </section>
 
           <motion.section
+            className={styles.process}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.05 }}
+          >
+            <div className={styles.process__layout}>
+              <motion.div
+                className={styles.process__img}
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7 }}
+                viewport={{ once: true, amount: 0.05 }}
+              >
+                <Image
+                  src={TeamMbersImg}
+                  alt="Development process"
+                  width={480}
+                  height={420}
+                  style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
+                />
+              </motion.div>
+              <div className={styles.process__steps}>
+                <div className={styles.section_head} style={{ textAlign: "left", marginBottom: "1.5rem" }}>
+                  <p className={styles.section_label}>Development Process</p>
+                  <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>How We Work</h2>
+                </div>
+                {[
+                  { n: "01", t: "Requirements Gathering", b: "Interviews · requirement definition · analysis" },
+                  { n: "02", t: "Design",                  b: "System architecture · UI/UX design" },
+                  { n: "03", t: "Programming",             b: "Implementation · coding · unit testing" },
+                  { n: "04", t: "Review",                  b: "Integration testing · client review" },
+                  { n: "05", t: "Release",                 b: "Production deployment · delivery" },
+                  { n: "06", t: "Maintenance",             b: "Ongoing support · operations" },
+                ].map((s, i) => (
+                  <motion.div
+                    key={i}
+                    className={styles.step}
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.45, delay: i * 0.07 }}
+                    viewport={{ once: true, amount: 0.05 }}
+                  >
+                    <div className={styles.step__num}>{s.n}</div>
+                    <div className={styles.step__content}>
+                      <p className={styles.step__title}>{s.t}</p>
+                      <p className={styles.step__body}>{s.b}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.section>
+
+          <motion.section
             className={styles.services}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -398,61 +453,6 @@ export default function ServiceEn() {
               )}
             </motion.section>
           ))}
-
-          <motion.section
-            className={styles.process}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true, amount: 0.05 }}
-          >
-            <div className={styles.process__layout}>
-              <motion.div
-                className={styles.process__img}
-                initial={{ opacity: 0, x: -40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7 }}
-                viewport={{ once: true, amount: 0.05 }}
-              >
-                <Image
-                  src={TeamMbersImg}
-                  alt="Development process"
-                  width={480}
-                  height={420}
-                  style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
-                />
-              </motion.div>
-              <div className={styles.process__steps}>
-                <div className={styles.section_head} style={{ textAlign: "left", marginBottom: "1.5rem" }}>
-                  <p className={styles.section_label}>Development Process</p>
-                  <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>How We Work</h2>
-                </div>
-                {[
-                  { n: "01", t: "Requirements Gathering", b: "Interviews · requirement definition · analysis" },
-                  { n: "02", t: "Design",                  b: "System architecture · UI/UX design" },
-                  { n: "03", t: "Programming",             b: "Implementation · coding · unit testing" },
-                  { n: "04", t: "Review",                  b: "Integration testing · client review" },
-                  { n: "05", t: "Release",                 b: "Production deployment · delivery" },
-                  { n: "06", t: "Maintenance",             b: "Ongoing support · operations" },
-                ].map((s, i) => (
-                  <motion.div
-                    key={i}
-                    className={styles.step}
-                    initial={{ opacity: 0, x: 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.45, delay: i * 0.07 }}
-                    viewport={{ once: true, amount: 0.05 }}
-                  >
-                    <div className={styles.step__num}>{s.n}</div>
-                    <div className={styles.step__content}>
-                      <p className={styles.step__title}>{s.t}</p>
-                      <p className={styles.step__body}>{s.b}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.section>
 
           <motion.section {...sectionFade} className={styles.tech}>
           <div className={styles.sectionHead}>
