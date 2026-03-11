@@ -64,6 +64,13 @@ export default function Header() {
           Home
         </Link>
         <Link 
+          href="/en/offshore_service" 
+          className={`${styles.sidebarLink} ${pathname === "/en/offshore_service" ? styles.active : ""}`} 
+          onClick={() => setSidebarOpen(false)}
+        >
+          Offshore Service
+        </Link>
+        <Link 
           href="/en/service" 
           className={`${styles.sidebarLink} ${pathname === "/en/service" ? styles.active : ""}`} 
           onClick={() => setSidebarOpen(false)}
@@ -138,6 +145,12 @@ export default function Header() {
       ) : (
         <div className={styles.rightSection}>
           <nav className={styles.nav}>
+            <Link 
+              href="/en/offshore_service" 
+              className={`${styles.link} ${pathname === "/en/offshore_service" ? styles.active : ""}`}
+            >
+              Offshore Service
+            </Link>
             <Link 
               href="/en/service" 
               className={`${styles.link} ${pathname === "/en/service" ? styles.active : ""}`}

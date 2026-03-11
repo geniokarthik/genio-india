@@ -61,15 +61,15 @@ const handleHomePage = (e) => {
           ホーム
         </Link>
         <Link
-          href="/ja/service"
-          className={`${styles.sidebarLink} ${pathname === "/ja/service" ? styles.active : ""}`}
+          href="/ja/offshore_service"
+          className={`${styles.sidebarLink} ${pathname === "/ja/offshore_service" ? styles.active : ""}`}
           onClick={() => setSidebarOpen(false)}
         >
           オフショアサービス
         </Link>
         <Link
-          href="/ja/service_details"
-          className={`${styles.sidebarLink} ${pathname === "/ja/service_details" ? styles.active : ""}`}
+          href="/ja/service"
+          className={`${styles.sidebarLink} ${pathname === "/ja/service" ? styles.active : ""}`}
           onClick={() => setSidebarOpen(false)}
         >
           サービス
@@ -143,14 +143,14 @@ const handleHomePage = (e) => {
         <div className={styles.rightSection}>
           <nav className={styles.nav}>
             <Link
-              href="/ja/service"
-              className={`${styles.link} ${pathname === "/ja/service" ? styles.active : ""}`}
+              href="/ja/offshore_service"
+              className={`${styles.link} ${pathname === "/ja/offshore_service" ? styles.active : ""}`}
             >
               オフショアサービス
             </Link>
             <Link
-              href="/ja/service_details"
-              className={`${styles.link} ${pathname === "/ja/service_details" ? styles.active : ""}`}
+              href="/ja/service"
+              className={`${styles.link} ${pathname === "/ja/service" ? styles.active : ""}`}
             >
               サービス
             </Link>

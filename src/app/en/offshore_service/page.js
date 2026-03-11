@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import Image from "next/image";
 import "../../globals.css";
 import { useRef, useEffect } from "react";
@@ -19,10 +19,7 @@ import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 
 
 const SERVICES = [
-  { id: "web-development", icon: "🌐", label: "Web Development",    sub: "Corporate sites · Business systems" },
-  { id: "app-development", icon: "📱", label: "App Development",    sub: "iOS / Android" },
-  { id: "sql-database",    icon: "🗄️", label: "Database",           sub: "MySQL design & operations" },
-  { id: "japanese-study",  icon: "🇯🇵", label: "Japanese Education", sub: "Japanese for engineers" },
+  { id: "lab",             icon: "🏭", label: "Lab Development",    sub: "Dedicated team · Monthly fixed" },
 ];
 
 const techAreas = [
@@ -135,48 +132,19 @@ const sectionFade = {
 
 const DETAILS = [
   {
-    id: "web-development",
-    title: "Web Development",
-    img: DesktopImg,
-    imgAlt: "Web Development",
-    text: `We provide end-to-end web site and system development services tailored to each client's needs — from design through development to ongoing operations.
+    id: "lab",
+    title: "Lab Development",
+    img: TeamMbersImg,
+    imgAlt: "Lab Development",
+    text: `Our Lab-type offshore development service provides you with a dedicated development team at a fixed monthly cost. Rather than per-project outsourcing, a dedicated engineer team works continuously as your own resource.
 
-Our services include fully responsive web design for all devices, feature-rich e-commerce site construction, and seamless CMS integration for intuitive management.
+The team deeply understands your business and tech stack, minimizing communication overhead while delivering fast, high-quality development.
 
-On every project we prioritize speed, security, and usability — delivering excellent performance and a comfortable experience across all screen sizes, from desktop to smartphone.`,
-  },
-  {
-    id: "app-development",
-    title: "App Development",
-    img: AppDevelopmentImg,
-    imgAlt: "App Development",
-    text: `We handle iOS, Android, and cross-platform app development. Our experienced team turns your ideas and vision into reality with solid engineering.
-
-From early-stage idea organization and MVP design through development, release, and post-launch support, we work closely with you at every step.
-
-We prioritize security, scalability, and intuitive UI/UX design — delivering smooth user experiences that work great on every device.`,
-  },
-  {
-    id: "sql-database",
-    title: "MySQL Database",
-    img: MySqlImg,
-    imgAlt: "MySQL Database",
-    text: `We provide comprehensive solutions for MySQL document reading and data processing, supporting efficient retrieval, analysis, and management of structured data.
-
-Our services include advanced query optimization to improve performance and reduce load times, plus high-precision data extraction technology to pull exactly the information you need, when you need it.
-
-We enable smooth MySQL data integration with web and mobile applications for real-time data access — providing comprehensive support to maximize your enterprise data infrastructure.`,
-  },
-  {
-    id: "japanese-study",
-    title: "Japanese Education",
-    img: LanguageTeachingImg,
-    imgAlt: "Japanese Education",
-    text: `We offer Japanese language learning programs suitable for beginners through advanced learners. Our level-appropriate courses develop all four core skills — speaking, reading, writing, and listening — for practical communication ability.
-
-All courses include foundational grammar instruction, practical vocabulary acquisition, and kanji study — building a solid learning foundation while helping you gain confidence in everyday conversation.
-
-Whether for travel, work, academics, or personal enrichment, experienced instructors provide personalized guidance with engaging materials that make learning enjoyable.`,
+From startups to mid-sized enterprises, this model is ideal for any company that needs continuous development and improvement.`,
+    patterns: [
+      { img: pt1, alt: "Pattern 1", label: "Pattern 1", desc: "The client and the Bridge SE (BrSE) work together directly." },
+      { img: pt2, alt: "Pattern 2", label: "Pattern 2", desc: "The bridge SE will visit the client and set up a dedicated development team in India." },
+    ],
   },
 ];
 
@@ -241,13 +209,15 @@ export default function ServiceEn() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <p className={styles.hero__label}>Our Services</p>
+              <p className={styles.hero__label}>Offshore Services</p>
               <h1 className={`${styles.hero__title} ${styles.firstLetterRed}`}>
-                India-Based<br/> High Quality,Low Cost <br/>Offshore Development
+                Offshore generally refers to outsourcing part of a business's operations to overseas companies where labor costs and prices are lower, with the aim of reducing costs.
+              </h1>
+              <h1 className={`${styles.hero__title} ${styles.firstLetterRed}`}>
+                What are the benefits of offshore?
               </h1>
               <p className={styles.hero__desc}>
-                We build web systems, apps, and MySQL databases from scratch.
-                Our dedicated team meets Japanese market quality standards.
+                Problems that cannot be solved with internal resources → Problems that require time for implementation and processing due to personnel or technical aspects can be solved by moving to offshore. Want to reduce costs → Offshore can significantly reduce costs compared to doing everything in-house or hiring personnel in the country. Want to focus on core business → Offshore low-priority work can be offshored, allowing the company to devote sufficient resources to core business that creates value. Want to prioritize speed → Many startups are moving to offshore in search of fast and inexpensive services.
               </p>
             </motion.div>
 
@@ -299,40 +269,57 @@ export default function ServiceEn() {
           </section>
 
           <motion.section
-            className={styles.services}
+            className={styles.process}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            viewport={{ once: true, amount: 0.1 }}
+            viewport={{ once: true, amount: 0.05 }}
           >
-            <div className={styles.section_head}>
-              <p className={styles.section_label}>What We Offer</p>
-              <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>Our Services</h2>
-            </div>
-            <div className={styles.icon_grid}>
-              {SERVICES.map((item, i) => (
-                <motion.div
-                  key={item.id}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  viewport={{ once: true, amount: 0.1 }}
-                >
-                  <button
-                    onClick={() => scrollTo(`section-${item.id}`)}
-                    className={styles.icon_card}
+            <div className={styles.process__layout}>
+              <motion.div
+                className={styles.process__img}
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7 }}
+                viewport={{ once: true, amount: 0.05 }}
+              >
+                <Image
+                  src={TeamMbersImg}
+                  alt="Development process"
+                  width={480}
+                  height={420}
+                  style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
+                />
+              </motion.div>
+              <div className={styles.process__steps}>
+                <div className={styles.section_head} style={{ textAlign: "left", marginBottom: "1.5rem" }}>
+                  <p className={styles.section_label}>Development Process</p>
+                  <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>How We Work</h2>
+                </div>
+                {[
+                  { n: "01", t: "Requirements Gathering", b: "Interviews · requirement definition · analysis" },
+                  { n: "02", t: "Design & Documentation",                  b: "System architecture · UI/UX design" },
+                  { n: "03", t: "Programming",             b: "Implementation · coding · unit testing" },
+                  { n: "04", t: "Review",                  b: "Integration testing · client review" },
+                  { n: "05", t: "Release",                 b: "Production deployment · delivery" },
+                  { n: "06", t: "Maintenance",             b: "Ongoing support · operations" },
+                ].map((s, i) => (
+                  <motion.div
+                    key={i}
+                    className={styles.step}
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.45, delay: i * 0.07 }}
+                    viewport={{ once: true, amount: 0.05 }}
                   >
-                    <div className={styles.icon_card__emoji}>{item.icon}</div>
-                    <p className={styles.icon_card__label}>{item.label}</p>
-                    <div className={styles.icon_card__sub_row}>
-                      <p className={styles.icon_card__sub}>{item.sub}</p>
-                      <span className={styles.icon_card__arrow}>
-                        <Image src={DownArrowImg} alt="scroll down" width={20} height={20} />
-                      </span>
+                    <div className={styles.step__num}>{s.n}</div>
+                    <div className={styles.step__content}>
+                      <p className={styles.step__title}>{s.t}</p>
+                      <p className={styles.step__body}>{s.b}</p>
                     </div>
-                  </button>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.section>
 
@@ -382,62 +369,6 @@ export default function ServiceEn() {
               )}
             </motion.section>
           ))}
-
-          <motion.section {...sectionFade} className={styles.tech}>
-          <div className={styles.sectionHead}>
-            <p>Technical Coverage</p>
-            <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>Technology Areas We Support</h2>
-          </div>
-          <p className={styles.techLead}>Browse our technology stack by category in a card format.</p>
-
-          <div className={styles.techCarouselWrap}>
-            <button type="button" className={`${styles.techArrow} ${styles.techArrowLeft}`} onClick={() => scrollTech("prev")} aria-label="Previous">
-              ‹
-            </button>
-            <button type="button" className={`${styles.techArrow} ${styles.techArrowRight}`} onClick={() => scrollTech("next")} aria-label="Next">
-              ›
-            </button>
-
-            <div className={styles.techCardTrack} ref={techSliderRef}>
-              {techAreas.map((area, idx) => (
-                <motion.article
-                  key={area.category}
-                  className={styles.techFeatureCard}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: idx * 0.03 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                >
-                  <div className={styles.techFeatureMedia}>
-                    <h3>{area.category}</h3>
-                  </div>
-                    <div className={styles.techFeatureBody}>
-                      <div
-                        className={
-                          `${styles.techMiniList} ${
-                            SINGLE_COL_CATEGORIES.includes(area.category)
-                              ? styles.techSingleColumn
-                              : ""
-                          }`
-                        }
-                      >
-                      {area.items.map((item) => (
-                        <div className={styles.techMiniItem} key={`${area.category}-${item.name}`}>
-                          {item.logo ? (
-                            <img src={item.logo} alt={`${item.name} logo`} loading="lazy" />
-                          ) : (
-                            <span className={styles.techLogoFallback}>{item.name.slice(0, 2).toUpperCase()}</span>
-                          )}
-                          <span>{item.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
-          </div>
-        </motion.section>
 
           <motion.section
             className={styles.cta}
