@@ -379,7 +379,7 @@ export default function ServiceEn() {
           >
             <h2 className={styles.cta__title}>Contact Us</h2>
             <p className={styles.cta__body}>For inquiries and estimates, please reach out via the link below.</p>
-            <Link href="/en/contact" className={styles.cta__btn}>Get in Touch →</Link>
+            <Link href="/en/contactus" className={styles.cta__btn}>Get in Touch →</Link>
           </motion.section>
 
         </div>
