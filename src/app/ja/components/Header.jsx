@@ -65,6 +65,13 @@ const handleHomePage = (e) => {
           className={`${styles.sidebarLink} ${pathname === "/ja/service" ? styles.active : ""}`}
           onClick={() => setSidebarOpen(false)}
         >
+          オフショアサービス
+        </Link>
+        <Link
+          href="/ja/service_details"
+          className={`${styles.sidebarLink} ${pathname === "/ja/service_details" ? styles.active : ""}`}
+          onClick={() => setSidebarOpen(false)}
+        >
           サービス
         </Link>
         <Link
@@ -138,6 +145,12 @@ const handleHomePage = (e) => {
             <Link
               href="/ja/service"
               className={`${styles.link} ${pathname === "/ja/service" ? styles.active : ""}`}
+            >
+              オフショアサービス
+            </Link>
+            <Link
+              href="/ja/service_details"
+              className={`${styles.link} ${pathname === "/ja/service_details" ? styles.active : ""}`}
             >
               サービス
             </Link>
