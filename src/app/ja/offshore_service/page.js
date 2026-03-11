@@ -101,7 +101,7 @@ export default function Service() {
                 オフショアとは一般的に、コスト削減を目的として、人件費や物価の安い海外企業に業務の一部を委託することです。
 
               </h1>
-              <h1 className={`${styles.hero__title} ${styles.firstLetterRed}`}>
+              <h1 className={`${styles.firstLetterRed}`}>
               オフショアのメリットは?
               </h1>
               <p className={styles.hero__desc}>

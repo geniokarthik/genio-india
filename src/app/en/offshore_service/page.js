@@ -213,7 +213,7 @@ export default function ServiceEn() {
               <h1 className={`${styles.hero__title} ${styles.firstLetterRed}`}>
                 Offshore generally refers to outsourcing part of a business's operations to overseas companies where labor costs and prices are lower, with the aim of reducing costs.
               </h1>
-              <h1 className={`${styles.hero__title} ${styles.firstLetterRed}`}>
+              <h1 className={`${styles.firstLetterRed}`}>
                 What are the benefits of offshore?
               </h1>
               <p className={styles.hero__desc}>
