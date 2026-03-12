@@ -419,7 +419,7 @@
    RESPONSIVE
 ══════════════════════════════════════ */
 @media (max-width: 768px) {
-  .hero           { flex-direction: column; padding: 2.2rem 1.2rem 2rem; gap: 1.6rem; flex-wrap: wrap; }
+  .hero           { flex-direction: column; padding: 1.8rem 1.2rem 1.6rem; gap: 1.2rem; flex-wrap: wrap; }
   .hero__text     { max-width: 100%; padding-left: 0; }
   .hero__collage  { padding: 24px 0; }
   .hero__staticImg { width: min(560px, 96vw); }
@@ -431,7 +431,7 @@
 }
 
 @media (max-width: 480px) {
-  .hero           { gap: 1.2rem; }
+  .hero           { padding: 1.6rem 1rem 1.4rem; gap: 1rem; }
   .hero__title    { font-size: clamp(1.35rem, 4.5vw, 1.55rem); line-height: 1.35; }
   .hero__desc     { font-size: 0.93rem; }
   .hero__text     { max-width: 100%; padding: 0 6px; margin-right: 0; }
