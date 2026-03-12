@@ -394,7 +394,7 @@ export default function Service_Details() {
                             <p>技術対応範囲</p>
                             <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>技術領域のご紹介</h2>
                         </div>
-                        <p className={styles.techLead}>カテゴリ別に当社が対応できる技術スタックをカード形式でまとめました。</p>
+                        <p className={styles.techLead}>サポート可能なテクノロジースタックをカテゴリ別にリスト形式でまとめました。</p>
 
                         <div className={styles.techCarouselWrap}>
                             <button type="button" className={`${styles.techArrow} ${styles.techArrowLeft}`} onClick={() => scrollTech("prev")} aria-label="前へ">

@@ -3,14 +3,11 @@ import Image from "next/image";
 import "../../globals.css";
 import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import TeamMbersImg from "src/assets/images/service/lab_development.png";
+import OffShoreImg from "src/assets/images/service/en/offshore.png";
+import LabDevImg from "src/assets/images/service/lab_development.png";
+import TeamMbersImg from "src/assets/images/service/teammembers.png";
 import pt1 from "src/assets/images/service/en/pattern1.png";
 import pt2 from "src/assets/images/service/en/pattern2.png";
-import DownArrowImg from "src/assets/images/service/downarrow.png";
-import DesktopImg from "src/assets/images/service/desktop.png";
-import AppDevelopmentImg from "src/assets/images/service/appdevelopment.png";
-import LanguageTeachingImg from "src/assets/images/service/languageteaching.png";
-import MySqlImg from "src/assets/images/service/mysql.png";
 import Header from "src/app/en/components/Header";
 import Footer from "src/app/en/components/Footer";
 import Link from "next/link";
@@ -223,47 +220,24 @@ export default function ServiceEn() {
 
             <motion.div
               className={styles.hero__collage}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1, y: [0, -6, 0] }}
+              whileHover={{ scale: 1.02 }}
+              transition={{
+                opacity: { duration: 0.9, ease: "easeOut", delay: 0.2 },
+                scale: { duration: 0.9, ease: "easeOut", delay: 0.2 },
+                y: { duration: 6, ease: "easeInOut", repeat: Infinity, repeatType: "mirror", delay: 0.6 },
+              }}
             >
-              <div className={styles.collage__ring}>
-                <div className={styles.circle__center}>
-                  <Image src={TeamMbersImg} alt="Team members" fill style={{ objectFit: "cover" }} priority />
-                </div>
-                <div className={styles.orbit__ring}>
-                  <div className={styles.orbit__top}>
-                    <div className={styles.orbit__counter}>
-                      <div className={styles.orbit__img}>
-                        <Image src={DesktopImg} alt="Web development" fill style={{ objectFit: "cover" }} />
-                      </div>
-                    </div>
-                  </div>
-                  <div className={styles.orbit__right}>
-                    <div className={styles.orbit__counter}>
-                      <div className={styles.orbit__img}>
-                        <Image src={AppDevelopmentImg} alt="App development" fill style={{ objectFit: "cover" }} />
-                      </div>
-                    </div>
-                  </div>
-                  <div className={styles.orbit__bottom}>
-                    <div className={styles.orbit__counter}>
-                      <div className={styles.orbit__img}>
-                        <Image src={MySqlImg} alt="Database" fill style={{ objectFit: "cover" }} />
-                      </div>
-                    </div>
-                  </div>
-                  <div className={styles.orbit__left}>
-                    <div className={styles.orbit__counter}>
-                      <div className={styles.orbit__img}>
-                        <Image src={LanguageTeachingImg} alt="Japanese education" fill style={{ objectFit: "cover" }} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <span className={`${styles.dot} ${styles.dot__red}`} />
-                <span className={`${styles.dot} ${styles.dot__blue}`} />
-                <span className={`${styles.dot} ${styles.dot__sm}`} />
+              <div className={styles.hero__staticImg}>
+                <Image
+                  src={OffShoreImg}
+                  alt="Offshore services infographic"
+                  fill
+                  sizes="(min-width: 1100px) 900px, 95vw"
+                  style={{ objectFit: "contain" }}
+                  priority
+                />
               </div>
             </motion.div>
           </section>
@@ -284,7 +258,7 @@ export default function ServiceEn() {
                 viewport={{ once: true, amount: 0.05 }}
               >
                 <Image
-                  src={TeamMbersImg}
+                  src={LabDevImg}
                   alt="Development process"
                   width={480}
                   height={420}
