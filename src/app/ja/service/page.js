@@ -33,7 +33,7 @@ const techAreas = [
         ],
     },
     {
-        category: "Languages",
+        category: "開発言語",
         items: [
             { name: "PHP", logo: "https://cdn.simpleicons.org/php/777BB4" },
             { name: "Firebase", logo: "https://cdn.simpleicons.org/firebase/FFCA28" },
@@ -54,7 +54,7 @@ const techAreas = [
         ],
     },
     {
-        category: "Frameworks",
+        category: "フレームワーク",
         items: [
             { name: "Laravel", logo: "https://cdn.simpleicons.org/laravel/FF2D20" },
             { name: "Symfony", logo: "https://cdn.simpleicons.org/symfony/111111" },
@@ -66,7 +66,7 @@ const techAreas = [
         ],
     },
     {
-        category: "Databases",
+        category: "データベース",
         items: [
             { name: "PostgreSQL", logo: "https://cdn.simpleicons.org/postgresql/4169E1" },
             { name: "MySQL", logo: "https://cdn.simpleicons.org/mysql/4479A1" },
@@ -84,7 +84,7 @@ const techAreas = [
         ],
     },
     {
-        category: "Development Environment (IDE)",
+        category: "IDE等",
         items: [
             { name: "phpStrom", logo: "https://cdn.simpleicons.org/phpstorm/000000" },
             { name: "Eclipse", logo: "https://cdn.simpleicons.org/eclipseide/2C2255" },
@@ -95,7 +95,7 @@ const techAreas = [
         ],
     },
     {
-        category: "Middleware",
+        category: "ミドルウェア",
         items: [
             { name: "Apache", logo: "https://cdn.simpleicons.org/apache/D22128" },
             { name: "Tomcat", logo: "https://cdn.simpleicons.org/apachetomcat/F8DC75" },
@@ -103,7 +103,7 @@ const techAreas = [
         ],
     },
     {
-        category: "AWS Services",
+        category: "AWSサービス",
         items: [
             { name: "EC2", logo: "https://img.icons8.com/color/48/amazon-web-services.png" },
             { name: "RDS", logo: "https://img.icons8.com/color/48/amazon-web-services.png" },
