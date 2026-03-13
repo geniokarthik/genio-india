@@ -204,12 +204,14 @@
 /* sub + arrow on same row */
 .icon_card__sub_row {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
+  gap: 0.2rem;
+  text-align: center;
 }
 
-.icon_card__sub { font-size: 0.8rem; color: #64748b; line-height: 1.2; margin: 0; }
+.icon_card__sub { font-size: 0.8rem; color: #64748b; line-height: 1.2; margin: 0; text-align: center; }
 
 /* Arrow hidden by default, shows on hover/active */
 .icon_card__arrow {
@@ -324,6 +326,8 @@
   .orbit__img     { width: 70px; height: 70px; }
   .orbit__counter { margin-top: -35px; margin-left: -35px; }
   .icon_grid > div { flex: 0 0 calc(50% - 0.6rem); max-width: calc(50% - 0.6rem); }
+  .icon_card { min-height: 130px; justify-content: center; }
+  .icon_card__sub { font-size: 0.72rem; word-break: keep-all; text-align: center; }
   .process__layout { flex-direction: column; }
   .detail_section__inner,
   .detail_section__reverse { flex-direction: column; }
@@ -336,7 +340,12 @@
   .circle__center { width: 110px; height: 110px; }
   .orbit__img     { width: 58px; height: 58px; }
   .orbit__counter { margin-top: -29px; margin-left: -29px; }
-  .icon_grid > div { flex: 0 0 calc(50% - 0.4rem); max-width: calc(50% - 0.4rem); }
+  .icon_grid      { gap: 0.6rem; }
+  .icon_grid > div { flex: 0 0 calc(50% - 0.3rem); max-width: calc(50% - 0.3rem); }
+  .icon_card      { padding: 1rem 0.6rem 0.8rem; min-height: 120px; }
+  .icon_card__emoji { font-size: 2rem; }
+  .icon_card__label { font-size: 0.88rem; }
+  .icon_card__sub { font-size: 0.68rem; }
   .section_title  { font-size: 1.6rem; }
 }
 
@@ -437,10 +446,13 @@
 }
 
 @media (max-width: 640px) {
-  .techCardTrack { grid-auto-columns: minmax(260px, 1fr); }
+  .techCardTrack { grid-auto-columns: minmax(260px, 300px); }
   .techMiniList {
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    column-gap: 0.5rem;
+  }
+  .techSingleColumn {
     grid-template-columns: 1fr;
-    column-gap: 0;
   }
 }
 
@@ -500,6 +512,28 @@
   place-items: center;
   cursor: pointer;
   z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.techCarouselWrap:hover .techArrow {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.techArrow:hover {
+  background: #3a3a3a;
+}
+
+@media (max-width: 768px) {
+  .techArrow { display: none !important; }
+  .techCardTrack {
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 .techArrowLeft {
