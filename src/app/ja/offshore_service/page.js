@@ -67,7 +67,7 @@ export default function Service() {
             <motion.div
               className={styles.hero__collage}
               initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1, y: [0, -6, 0] }}
+              animate={{ opacity: 1, scale: 1, y: [0, -30, 0] }}
               whileHover={{ scale: 1.02 }}
               transition={{
                 opacity: { duration: 0.9, ease: "easeOut", delay: 0.2 },

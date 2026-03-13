@@ -52,7 +52,7 @@ export default function ServiceEn() {
             >
               <p className={styles.hero__label}>Offshore Services</p>
               <h1 className={`${styles.hero__title} ${styles.firstLetterRed}`}>
-                Offshore generally refers to outsourcing part of a business's operations to overseas companies where labor costs and prices are lower, with the aim of reducing costs.
+                Offshoring means giving some work to a company in another country where labor costs are lower to save money.
               </h1>
               <h1 className={`${styles.firstLetterRed}`}>
                 What are the benefits of offshore?
@@ -65,7 +65,7 @@ export default function ServiceEn() {
             <motion.div
               className={styles.hero__collage}
               initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1, y: [0, -6, 0] }}
+              animate={{ opacity: 1, scale: 1, y: [0, -30, 0] }}
               whileHover={{ scale: 1.02 }}
               transition={{
                 opacity: { duration: 0.9, ease: "easeOut", delay: 0.2 },
