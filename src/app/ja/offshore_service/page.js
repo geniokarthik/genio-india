@@ -79,9 +79,9 @@ export default function Service() {
                 <Image
                   src={OffShoreImg}
                   alt="オフショア インフォグラフィック"
-                  fill
-                  sizes="(min-width: 1100px) 900px, 95vw"
-                  style={{ objectFit: "contain" }}
+                  width={520}
+                  height={480}
+                  style={{ width: "100%", height: "auto", objectFit: "contain" }}
                   priority
                 />
               </div>

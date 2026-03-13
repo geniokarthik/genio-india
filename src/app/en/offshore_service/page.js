@@ -73,16 +73,14 @@ export default function ServiceEn() {
                 y: { duration: 6, ease: "easeInOut", repeat: Infinity, repeatType: "mirror", delay: 0.6 },
               }}
             >
-              <div className={styles.hero__staticImg}>
-                <Image
-                  src={OffShoreImg}
-                  alt="Offshore services infographic"
-                  fill
-                  sizes="(min-width: 1100px) 900px, 95vw"
-                  style={{ objectFit: "contain" }}
-                  priority
-                />
-              </div>
+              <Image
+                src={OffShoreImg}
+                alt="Offshore services infographic"
+                width={520}
+                height={480}
+                style={{ width: "100%", height: "auto", objectFit: "contain" }}
+                priority
+              />
             </motion.div>
           </section>
 

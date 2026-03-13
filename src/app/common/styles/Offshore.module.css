@@ -23,17 +23,17 @@
 .section_title { font-size: 2rem; letter-spacing: 0.06em; color: #0f172a; font-family: "ADLaM Display"; }
 
 /* ══════════════════════════════════════
-   HERO
+   HERO — true 50/50 grid
 ══════════════════════════════════════ */
 .hero {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* exact 50-50 */
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
   padding: 4rem 0 3rem;
-  flex-wrap: wrap;
 }
 
-.hero__text { flex: 1 1 340px; }
+.hero__text { min-width: 0; }
 
 .hero__label {
   font-size: 0.85rem;
@@ -46,7 +46,7 @@
 
 .hero__title {
   font-family: "ADLaM Display";
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-size: clamp(1.2rem, 2vw, 2rem);
   font-weight: 700;
   line-height: 1.35;
   color: #0f172a;
@@ -56,26 +56,24 @@
 .firstLetterRed::first-letter { color: #e02311; }
 
 .hero__desc {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #475569;
   line-height: 1.7;
   margin-bottom: 1.4rem;
-  max-width: 34rem;
 }
 
 /* ══════════════════════════════════════
-   ORBIT COLLAGE
+   HERO COLLAGE — fills its 50% column
 ══════════════════════════════════════ */
 .hero__collage {
-  flex: 1 1 320px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 64px;
 }
 
 /* ══════════════════════════════════════
-   SERVICE DETAIL SECTIONS (always visible)
+   SERVICE DETAIL SECTIONS
 ══════════════════════════════════════ */
 .detail_section {
   padding: 3rem 2rem;
@@ -83,13 +81,11 @@
   margin-bottom: 1rem;
 }
 
-/* Even sections — light blue tint */
 .detail_section:nth-child(even) {
   background: #f0f7ff;
   border: 1px solid rgba(37, 99, 235, 0.08);
 }
 
-/* Odd sections — light warm tint */
 .detail_section:nth-child(odd) {
   background: #fdf8f7;
   border: 1px solid rgba(224, 35, 17, 0.07);
@@ -102,14 +98,9 @@
   flex-wrap: wrap;
 }
 
-/* Alternate layout — odd sections flip image to right */
-.detail_section__reverse {
-  flex-direction: row-reverse;
-}
+.detail_section__reverse { flex-direction: row-reverse; }
 
-.detail_section__text {
-  flex: 1 1 300px;
-}
+.detail_section__text { flex: 1 1 300px; }
 
 .detail_section__title {
   font-family: "Cherry Bomb";
@@ -132,11 +123,9 @@
 }
 
 /* ══════════════════════════════════════
-   PATTERN CARDS (Lab section)
+   PATTERN CARDS
 ══════════════════════════════════════ */
-.pattern_section {
-  margin-top: 2rem;
-}
+.pattern_section { margin-top: 2rem; }
 
 .pattern_section__heading {
   font-family: "ADLaM Display";
@@ -253,19 +242,53 @@
 .cta__btn:hover { background: #f1f5f9; transform: translateY(-2px); }
 
 /* ══════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — MOBILE
 ══════════════════════════════════════ */
 @media (max-width: 768px) {
-  .hero           { flex-direction: column; padding: 2.5rem 0 2rem; gap: 2rem; }
-  .hero__collage  { padding: 52px; }
-  .process__layout { flex-direction: column; }
+  .hero {
+    grid-template-columns: 1fr;   /* single column on mobile */
+    padding: 2rem 0 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .hero__collage {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .hero__title {
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
+  }
+
+  .process__layout {
+    flex-direction: column;
+    padding: 1.2rem;
+    gap: 1.5rem;
+  }
+
+  .detail_section { padding: 2rem 1.2rem; }
+
   .detail_section__inner,
-  .detail_section__reverse { flex-direction: column; }
+  .detail_section__reverse { flex-direction: column; gap: 1.5rem; }
+
+  .detail_section__img { max-width: 100%; width: 100%; }
+
+  .pattern_grid { flex-direction: column; gap: 1rem; }
+
+  .pattern_card { flex: 1 1 100%; }
+
+  .section_title { font-size: 1.6rem; }
+
+  .cta { padding: 2rem 1.2rem; border-radius: 16px; }
+  .cta__title { font-size: 1.6rem; }
 }
 
 @media (max-width: 480px) {
-  .hero__collage  { padding: 44px; }
-  .section_title  { font-size: 1.6rem; }
+  .section_title { font-size: 1.4rem; }
+  .step { padding: 0.4rem 0.6rem; }
+  .step__title { font-size: 0.8rem; }
+  .step__body  { font-size: 0.7rem; }
 }
 
 @keyframes stack-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
