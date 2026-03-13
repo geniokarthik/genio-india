@@ -1,7 +1,6 @@
 ﻿"use client";
 import Image from "next/image";
 import "../../globals.css";
-import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import OffShoreImg from "src/assets/images/service/ja/offshore.png";
 import LabDevImg from "src/assets/images/service/lab_development.png";
@@ -9,14 +8,11 @@ import TeamMbersImg from "src/assets/images/service/teammembers.png";
 import Header from "src/app/ja/components/Header";
 import Footer from "src/app/ja/components/Footer";
 import Link from "next/link";
-import styles from "src/app/common/styles/Service.module.css";
+import styles from "src/app/common/styles/Offshore.module.css";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import pt1 from "src/assets/images/service/ja/pattern1.png";
 import pt2 from "src/assets/images/service/ja/pattern2.png";
 
-const SERVICES = [
-  { id: "lab", icon: "🏭", label: "ラボ型開発", sub: "専任チーム・月額固定" },
-];
 
 const DETAILS = [
   {
@@ -37,44 +33,6 @@ const DETAILS = [
 ];
 
 export default function Service() {
-  const techSliderRef = useRef(null);
-
-  const scrollTech = (direction) => {
-    const track = techSliderRef.current;
-    if (!track) return;
-
-    const firstCard = track.querySelector(`.${styles.techFeatureCard}`);
-    const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 320;
-    const gap = parseFloat(getComputedStyle(track).columnGap || "16") || 16;
-    const offset = cardWidth + gap;
-    const delta = direction === "next" ? offset : -offset;
-
-    if (typeof track.scrollBy === "function") {
-      track.scrollBy({ left: delta, behavior: "smooth" });
-    } else {
-      track.scrollLeft += delta;
-    }
-  };
-
-  useEffect(() => {
-    const track = techSliderRef.current;
-    if (!track) return;
-
-    const timer = setInterval(() => {
-      const firstCard = track.querySelector(`.${styles.techFeatureCard}`);
-      const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 320;
-      const nearEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - cardWidth;
-
-      if (nearEnd) {
-        track.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        scrollTech("next");
-      }
-    }, 3800);
-
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <>
       <main className={styles.main}>

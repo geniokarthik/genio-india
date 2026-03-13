@@ -1,0 +1,271 @@
+.main { width: 100%; overflow-x: hidden; }
+
+.home {
+  clear: both;
+  box-sizing: content-box;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+/* ── Section heading ── */
+.section_head  { text-align: center; margin-bottom: 2.5rem; }
+.section_label {
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #e02311;
+  margin-bottom: 0.4rem;
+  font-family: "Belanosima";
+}
+.section_title { font-size: 2rem; letter-spacing: 0.06em; color: #0f172a; font-family: "ADLaM Display"; }
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 4rem 0 3rem;
+  flex-wrap: wrap;
+}
+
+.hero__text { flex: 1 1 340px; }
+
+.hero__label {
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #e02311;
+  margin-bottom: 0.6rem;
+  font-family: "Belanosima";
+}
+
+.hero__title {
+  font-family: "ADLaM Display";
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+.hero__title span { color: #e02311; }
+.firstLetterRed::first-letter { color: #e02311; }
+
+.hero__desc {
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 1.4rem;
+  max-width: 34rem;
+}
+
+/* ══════════════════════════════════════
+   ORBIT COLLAGE
+══════════════════════════════════════ */
+.hero__collage {
+  flex: 1 1 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 64px;
+}
+
+/* ══════════════════════════════════════
+   SERVICE DETAIL SECTIONS (always visible)
+══════════════════════════════════════ */
+.detail_section {
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+/* Even sections — light blue tint */
+.detail_section:nth-child(even) {
+  background: #f0f7ff;
+  border: 1px solid rgba(37, 99, 235, 0.08);
+}
+
+/* Odd sections — light warm tint */
+.detail_section:nth-child(odd) {
+  background: #fdf8f7;
+  border: 1px solid rgba(224, 35, 17, 0.07);
+}
+
+.detail_section__inner {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Alternate layout — odd sections flip image to right */
+.detail_section__reverse {
+  flex-direction: row-reverse;
+}
+
+.detail_section__text {
+  flex: 1 1 300px;
+}
+
+.detail_section__title {
+  font-family: "Cherry Bomb";
+  font-size: 2rem;
+  color: #0f172a;
+  margin-bottom: 1rem;
+  letter-spacing: 0.06em;
+}
+
+.detail_section__para {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.8;
+  margin-bottom: 0.9rem;
+}
+
+.detail_section__img {
+  flex: 1 1 280px;
+  max-width: 480px;
+}
+
+/* ══════════════════════════════════════
+   PATTERN CARDS (Lab section)
+══════════════════════════════════════ */
+.pattern_section {
+  margin-top: 2rem;
+}
+
+.pattern_section__heading {
+  font-family: "ADLaM Display";
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 1rem;
+  padding-left: 0.8rem;
+  border-left: 4px solid #e02311;
+}
+
+.pattern_grid {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.pattern_card {
+  flex: 1 1 280px;
+  background: #f1f5f9;
+  border-radius: 16px;
+  padding: 1.2rem 1.4rem 1rem;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.pattern_card__label {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #0f172a;
+  margin-bottom: 0.3rem;
+  font-family: "ADLaM Display";
+}
+
+.pattern_card__desc {
+  font-size: 0.85rem;
+  color: #475569;
+  margin-bottom: 0.9rem;
+  line-height: 1.6;
+}
+
+.pattern_card__img {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+/* ══════════════════════════════════════
+   PROCESS
+══════════════════════════════════════ */
+.process {
+  padding: 3.5rem 0;
+  background: #f8fafc;
+  border-radius: 24px;
+  margin: 2rem 0;
+}
+
+.process__layout {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  padding: 2rem;
+  flex-wrap: wrap;
+}
+
+.process__img   { flex: 1 1 300px; }
+.process__steps { flex: 1 1 300px; }
+
+.step {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  background: #020617;
+  color: #e5e7eb;
+}
+.step__num     { font-family: "Belanosima"; font-size: 1.1rem; color: #38bdf8; min-width: 2rem; flex-shrink: 0; }
+.step__content { flex: 1; }
+.step__title   { font-weight: 600; font-size: 0.85rem; margin-bottom: 0; }
+.step__body    { font-size: 0.75rem; color: #94a3b8; }
+
+/* ══════════════════════════════════════
+   CTA
+══════════════════════════════════════ */
+.cta {
+  margin: 2rem 0 4rem;
+  border-radius: 24px;
+  background: linear-gradient(120deg, #0f172a 0%, #1e3a5f 50%, #e02311 100%);
+  color: #f9fafb;
+  padding: 3rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.cta__title { font-family: "Cherry Bomb"; font-size: 2rem; letter-spacing: 0.08em; }
+.cta__body  { font-size: 1rem; color: #e2e8f0; max-width: 32rem; }
+.cta__btn {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.75rem 2rem;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+.cta__btn:hover { background: #f1f5f9; transform: translateY(-2px); }
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .hero           { flex-direction: column; padding: 2.5rem 0 2rem; gap: 2rem; }
+  .hero__collage  { padding: 52px; }
+  .process__layout { flex-direction: column; }
+  .detail_section__inner,
+  .detail_section__reverse { flex-direction: column; }
+}
+
+@media (max-width: 480px) {
+  .hero__collage  { padding: 44px; }
+  .section_title  { font-size: 1.6rem; }
+}
+
+@keyframes stack-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
