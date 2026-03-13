@@ -153,6 +153,7 @@ export default function AboutUs() {
             src={sidelogo}
             alt="sloganicon"
             className={styles.heroBackgroundGradient}
+            style={{ width: "auto", height: "auto" }}
           />
         </motion.section>
         <TeamSection />

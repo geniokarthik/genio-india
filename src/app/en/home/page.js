@@ -64,7 +64,13 @@ export default function Home() {
                   <span style={{ marginRight: 9 }}>{heroText}</span>
                   <span className={styles.heroThinkBorder}></span>
                   <span className={styles.heroIconWrapper}>
-                    <Image src={imageSrc} alt="sloganicon" width={80} height={80} />
+                    <Image
+                      src={imageSrc}
+                      alt="sloganicon"
+                      width={80}
+                      height={80}
+                      style={{ width: "auto", height: "auto" }}
+                    />
                   </span>
                 </span>
               </h1>
@@ -83,7 +89,12 @@ export default function Home() {
               </p>
             </div>
             <div>
-              <Image src={sidelogo} alt="sloganicon" className={styles.heroBackgroundGradient} />
+              <Image
+                src={sidelogo}
+                alt="sloganicon"
+                className={styles.heroBackgroundGradient}
+                style={{ width: "auto", height: "auto" }}
+              />
             </div>
           </motion.section>
 
@@ -117,6 +128,7 @@ export default function Home() {
                       width={200}
                       height={200}
                       className={styles.serviceImage}
+                      style={{ width: "auto", height: "auto" }}
                     />
                   </div>
                   <h3 className={styles.serviceTitle}>WEB DEVELOPMENT</h3>
@@ -129,6 +141,7 @@ export default function Home() {
                       width={200}
                       height={200}
                       className={styles.serviceImage}
+                      style={{ width: "auto", height: "auto" }}
                     />
                   </div>
                   <h3 className={styles.serviceTitle}>APP DEVELOPMENT</h3>
@@ -141,6 +154,7 @@ export default function Home() {
                       width={200}
                       height={200}
                       className={styles.serviceImage}
+                      style={{ width: "auto", height: "auto" }}
                     />
                   </div>
                   <h3 className={styles.serviceTitle}>MYSQL DATABASE</h3>

@@ -108,7 +108,7 @@ export default function Header() {
             height={100}
             className={styles.logo}
             priority
-            style={{ height: "auto" }} // To avoid Next.js image warning
+            style={{ height: "auto", width: "auto" }} // Keep aspect ratio when CSS overrides one dimension
           />
         </Link>
      </div>
