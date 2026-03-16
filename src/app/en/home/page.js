@@ -69,7 +69,6 @@ export default function Home() {
                       alt="sloganicon"
                       width={80}
                       height={80}
-                      style={{ width: "auto", height: "auto" }}
                     />
                   </span>
                 </span>
@@ -93,7 +92,6 @@ export default function Home() {
                 src={sidelogo}
                 alt="sloganicon"
                 className={styles.heroBackgroundGradient}
-                style={{ width: "auto", height: "auto" }}
               />
             </div>
           </motion.section>
