@@ -2,7 +2,7 @@
 import Image from "next/image";
 import "../../globals.css";
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import TeamMbersImg from "src/assets/images/service/lab_development.png";
 import DownArrowImg from "src/assets/images/service/downarrow.png";
 import DesktopImg from "src/assets/images/service/desktop.png";
@@ -180,6 +180,167 @@ Whether for travel, work, academics, or personal enrichment, experienced instruc
   },
 ];
 
+const PROJECTS = [
+  {
+    id: "sl", type: "built", no: "01",
+    title: "Sales Ledger",
+    img: DesktopImg,
+    tagline: "A ledger management system built for sales teams. Centralizes revenue, deals, and customer data to dramatically improve operational efficiency.",
+    info: [
+      { label: "Client",    val: "GENIO INDIA" },
+      { label: "Category",  val: "Business System" },
+      { label: "Year",      val: "2024" },
+      { label: "Role",      val: "Design / Development / Operations" },
+    ],
+    outline: "We designed and built a ledger system from scratch for sales staff to log and manage daily activities. Features include real-time sales visualization, deal status tracking, and centralized customer management — all via an intuitive dashboard UI that boosts efficiency for both managers and frontline staff.",
+    tags: ["Business System", "Data Management", "Next.js", "MySQL", "REST API", "Dashboard"],
+  },
+  {
+    id: "cb", type: "built", no: "02",
+    title: "Chatbot",
+    img: AppDevelopmentImg,
+    tagline: "An AI-powered customer support automation bot. Delivers instant 24/7 responses to inquiries.",
+    info: [
+      { label: "Client",    val: "GENIO INDIA" },
+      { label: "Category",  val: "AI / Automation" },
+      { label: "Year",      val: "2024" },
+      { label: "Role",      val: "Design / Development / Model Tuning" },
+    ],
+    outline: "We built an automated inquiry response system leveraging NLP technology. Equipped with FAQ learning, escalation logic, and an admin conversation log dashboard. Achieved significant reductions in response time and improved customer satisfaction.",
+    tags: ["AI / NLP", "Automation", "Node.js", "Customer Support", "WebSocket", "Chat UI"],
+  },
+  {
+    id: "ta", type: "involved", no: "03",
+    title: "Tarte",
+    img: LanguageTeachingImg,
+    tagline: "A user-experience-first service. We played a central role in feature design and frontend implementation.",
+    info: [
+      { label: "Client",       val: "External Client" },
+      { label: "Category",     val: "Web App / UI" },
+      { label: "Involvement",  val: "2023–2024" },
+      { label: "Role",         val: "UI Design / Frontend Implementation" },
+    ],
+    outline: "We handled the full frontend — from building the design system to component implementation. Delivered responsive design, accessibility improvements, and performance optimization. Iteratively refined the product based on user testing feedback.",
+    tags: ["UI/UX", "React", "Frontend", "Design System", "Responsive", "Accessibility"],
+  },
+  {
+    id: "eap", type: "involved", no: "04",
+    title: "EAP",
+    img: MySqlImg,
+    tagline: "An enterprise-grade application platform. We provide ongoing development, maintenance, and feature expansion.",
+    info: [
+      { label: "Client",       val: "External Client" },
+      { label: "Category",     val: "Enterprise / SaaS" },
+      { label: "Involvement",  val: "2022–Present" },
+      { label: "Role",         val: "Backend / API Design / DB Optimization" },
+    ],
+    outline: "We handle backend development and maintenance for a large-scale enterprise platform. Responsibilities include RESTful API design, database optimization, and microservice integration. We also streamlined the CI/CD pipeline to shorten release cycles.",
+    tags: ["Enterprise", "Backend", "API", "MySQL", "CI/CD", "Microservices"],
+  },
+  {
+    id: "mh", type: "involved", no: "05",
+    title: "Memory Hint",
+    img: DesktopImg,
+    tagline: "An EdTech app designed to support learning and memory retention. Proud work in the education technology space.",
+    info: [
+      { label: "Client",       val: "External Client" },
+      { label: "Category",     val: "EdTech / Mobile App" },
+      { label: "Involvement",  val: "2023" },
+      { label: "Role",         val: "Mobile App Development / QA" },
+    ],
+    outline: "We contributed to a mobile app designed to scientifically support memory retention. Implemented a spaced-repetition algorithm, progress visualization, and a notification system. Built with React Native for cross-platform support on both iOS and Android.",
+    tags: ["EdTech", "React Native", "Mobile App", "Learning Support", "iOS", "Android"],
+  },
+  {
+    id: "tcc", type: "involved", no: "06",
+    title: "TCC",
+    img: AppDevelopmentImg,
+    tagline: "A communication and business management system for enterprises. We contributed to the SaaS architecture design and build.",
+    info: [
+      { label: "Client",       val: "External Client" },
+      { label: "Category",     val: "SaaS / Communication" },
+      { label: "Involvement",  val: "2023–2024" },
+      { label: "Role",         val: "Full Stack / Cloud Infrastructure" },
+    ],
+    outline: "We participated in building a SaaS platform integrating corporate communications and business management. Implemented real-time messaging, task management, and file sharing. Designed a scalable AWS infrastructure to support large user bases.",
+    tags: ["SaaS", "Communication", "Cloud", "AWS", "WebSocket", "Full Stack"],
+  },
+];
+
+const PROJECT_FILTERS = [
+  { key: "all",      label: "All" },
+  { key: "built",    label: "Built by Us" },
+  { key: "involved", label: "Contributed" },
+];
+
+// ADDED: Detail Drawer (English)
+function DetailDrawer({ project, onClose }) {
+  const isBuilt = project?.type === "built";
+
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
+  useEffect(() => {
+    document.body.style.overflow = project ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [project]);
+
+  return (
+    <AnimatePresence>
+      {project && (
+        <div className={styles.detailPanel}>
+          <motion.div className={styles.detailBackdrop} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.28 }} onClick={onClose} />
+          <motion.div className={styles.detailDrawer} initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ duration: 0.38, ease: [0.22, 0.68, 0, 1.05] }}>
+            <div className={styles.drawerHero}>
+              <Image src={project.img} alt={project.title} fill style={{ objectFit: "cover" }} priority />
+              <div className={styles.drawerHeroGradient} />
+              <span className={styles.drawerHeroNo}>No.{project.no}</span>
+              <button className={styles.drawerClose} onClick={onClose} aria-label="Close">✕</button>
+            </div>
+            <div className={styles.drawerBody}>
+              <div className={styles.drawerMeta}>
+                <span className={`${styles.drawerBadge} ${isBuilt ? styles.badgeBuilt : styles.badgeInvolved}`}>
+                  <span className={styles.bdot} />
+                  {isBuilt ? "Built by Us" : "Contributed"}
+                </span>
+              </div>
+              <h2 className={styles.drawerTitle}>{project.title}</h2>
+              <p className={styles.drawerTagline}>{project.tagline}</p>
+              <div className={styles.drawerDivider} />
+              <div className={styles.drawerGrid}>
+                <div className={styles.infoBox}>
+                  <h4 className={styles.infoBoxHead}>Information</h4>
+                  {project.info.map((row, i) => (
+                    <div key={i} className={styles.infoRow}>
+                      <p className={styles.infoLabel}>{row.label}</p>
+                      <p className={styles.infoVal}>{row.val}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className={styles.outlineBox}>
+                  <h4 className={styles.outlineBoxHead}>Outline</h4>
+                  <p className={styles.outlineText}>{project.outline}</p>
+                </div>
+              </div>
+              <div className={styles.tagsSection}>
+                <h4 className={styles.tagsSectionHead}>Tags</h4>
+                <div className={styles.tagList}>
+                  {project.tags.map((t) => <span key={t} className={styles.dtag}>{t}</span>)}
+                </div>
+              </div>
+              <button className={styles.drawerBack} onClick={onClose}>← Back to List</button>
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+
 export default function ServiceEn() {
   const techSliderRef = useRef(null);
   const isTechDraggingRef = useRef(false);
@@ -187,6 +348,11 @@ export default function ServiceEn() {
   const techDragStartScrollRef = useRef(0);
   const techPauseUntilRef = useRef(0);
   const [activeTechDot, setActiveTechDot] = useState(0);
+
+  const [activeFilter,  setActiveFilter]  = useState("all");
+  const [activeProject, setActiveProject] = useState(null);
+
+  const filteredProjects = activeFilter === "all" ? PROJECTS : PROJECTS.filter((p) => p.type === activeFilter);
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -445,6 +611,55 @@ export default function ServiceEn() {
             </motion.section>
           ))}
 
+          <motion.section
+            className={styles.projects}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            <div className={styles.projects__head}>
+              <p className={styles.section_label}>Works · Projects</p>
+              <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>Our Project Portfolio</h2>
+              <p className={styles.projects__lead}>Projects built directly by GENIO, alongside services we've contributed to.</p>
+            </div>
+            <div className={styles.projects__filters}>
+              {PROJECT_FILTERS.map((f) => (
+                <button key={f.key} className={`${styles.projects__filter_btn} ${activeFilter === f.key ? styles.projects__filter_btn_active : ""}`} onClick={() => setActiveFilter(f.key)}>{f.label}</button>
+              ))}
+            </div>
+            <motion.div className={styles.projects__grid} layout>
+              <AnimatePresence mode="popLayout">
+                {filteredProjects.map((p, i) => (
+                  <motion.article
+                    key={p.id}
+                    className={`${styles.project_card} ${p.type === "built" ? styles.project_card__built : styles.project_card__involved}`}
+                    initial={{ opacity: 0, y: 20, scale: 0.97 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.96 }}
+                    transition={{ duration: 0.32, delay: i * 0.04 }}
+                    layout
+                    onClick={() => setActiveProject(p)}
+                  >
+                    <div className={styles.cardImg}>
+                      <Image src={p.img} alt={p.title} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw" />
+                      <div className={`${styles.cardAccentLine} ${p.type === "built" ? styles.cardAccentBuilt : styles.cardAccentInvolved}`} />
+                      <div className={styles.cardImgGradient} />
+                      <div className={styles.cardOverlay}><div className={styles.overlayPill}>View Details →</div></div>
+                    </div>
+                    <div className={styles.cardFoot}>
+                      <span className={`${styles.cardBadge} ${p.type === "built" ? styles.badgeBuilt : styles.badgeInvolved}`}>
+                        <span className={styles.bdot} />
+                        {p.type === "built" ? "Built by Us" : "Contributed"}
+                      </span>
+                      <h3 className={styles.cardTitle}>{p.title}</h3>
+                    </div>
+                  </motion.article>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          </motion.section>
+
           <motion.section {...sectionFade} className={styles.tech}>
             <div className={styles.sectionHead}>
               <p>Technical Coverage</p>
@@ -521,6 +736,7 @@ export default function ServiceEn() {
         <ScrollTop />
         <Footer />
       </main>
+      <DetailDrawer project={activeProject} onClose={() => setActiveProject(null)} />
     </>
   );
 }
