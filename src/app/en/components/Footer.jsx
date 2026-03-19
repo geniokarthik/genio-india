@@ -23,8 +23,8 @@ export default function Footer() {
       <p>Genio India Software Pvt. Ltd.</p>
       <p>Business hours 09:00 to 18:00</p>
       <p>Mail ID : info@genioindia.co.in</p>
-      <p>Cell No : +91 93636 06223</p>
-      <p>No. 171/3/1, Narikkal karadu, Vennandur, Rasipuram, Namakkal,</p>
+      <p>Cell No : +91 93636 06223, +91 9942736770</p>
+      <p>No. 19/2, Main Road, Vennandur, Rasipuram, Namakkal,</p>
       <p>Tamil Nadu, India - 637505.</p>
     </div>
 
