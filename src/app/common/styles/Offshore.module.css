@@ -37,11 +37,11 @@
 
 .hero__label {
   font-size: 0.85rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #e02311;
-  margin-bottom: 0.6rem;
-  font-family: "Belanosima";
+  color: #e22012;
+  margin-bottom: .5rem;
+  font-family: Belanosima;
+  font-size: 3rem;
+  font-weight: bold;
 }
 
 .hero__title {
