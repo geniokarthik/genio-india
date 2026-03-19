@@ -369,6 +369,38 @@
   line-height: 1.7;
 }
 
+.techDots {
+  display: flex;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+}
+
+.techDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c6c6c6;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  flex: 0 0 auto;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.techDot:hover {
+  transform: scale(1.08);
+}
+
+.techDot:focus-visible {
+  outline: 2px solid rgba(224, 35, 17, 0.35);
+  outline-offset: 3px;
+}
+
+.techDotActive {
+  background: #e02311;
+}
+
 .techCarouselWrap {
   position: relative;
   margin-top: 1.1rem;
@@ -384,6 +416,9 @@
   padding: 0.35rem 0.2rem 0.95rem;
   scrollbar-width: none;
   scroll-behavior: smooth;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-x;
 }
 
 .techCardTrack::-webkit-scrollbar {
@@ -496,38 +531,7 @@
   flex-shrink: 0;
 }
 
-.techArrow {
-  position: absolute;
-  top: 44%;
-  transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  border-radius: 999px;
-  border: none;
-  background: #2a2a2a;
-  color: #f7f7f7;
-  font-size: 2rem;
-  line-height: 1;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  z-index: 3;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
-}
-
-.techCarouselWrap:hover .techArrow {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.techArrow:hover {
-  background: #3a3a3a;
-}
-
 @media (max-width: 768px) {
-  .techArrow { display: none !important; }
   .techCardTrack {
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
@@ -535,15 +539,155 @@
     padding-right: 1rem;
   }
 }
-
-.techArrowLeft {
-  left: -22px;
+/* ══════════════════════════════════════
+   PORTFOLIO CAROUSEL
+══════════════════════════════════════ */
+.portfolio {
+  padding: 4rem 0 3rem;
 }
 
-.techArrowRight {
-  right: -22px;
+.portfolioCarouselWrap {
+  position: relative;
+  margin-top: 2rem;
 }
 
-.techArrow:hover {
-  background: #3a3a3a;
+.portfolioTrack {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 0.5rem;
+}
+.portfolioTrack::-webkit-scrollbar { display: none; }
+
+.portfolioCard {
+  scroll-snap-align: start;
+  flex: 0 0 300px;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1.5px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.portfolioCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.14);
+}
+.portfolioCard__active {
+  border-color: #e02311;
+  box-shadow: 0 12px 32px rgba(224, 35, 17, 0.18);
+}
+
+.portfolioCard__imgWrap {
+  position: relative;
+  height: 200px;
+  background: #f1f5f9;
+  overflow: hidden;
+}
+.portfolioCard__imgWrap img {
+  border-radius: 0 !important;
+}
+
+.portfolioCard__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  background: rgba(15, 23, 42, 0.65);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(4px);
+}
+
+.portfolioCard__body {
+  padding: 1.1rem 1.2rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.portfolioCard__title {
+  font-family: "ADLaM Display";
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+.portfolioCard__sub {
+  font-size: 0.83rem;
+  color: #64748b;
+  margin: 0;
+}
+.portfolioCard__detail {
+  font-size: 0.83rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0.4rem 0 0;
+}
+.portfolioCard__btn {
+  margin-top: 0.85rem;
+  padding: 0.52rem 1.25rem;
+  border-radius: 999px;
+  background: #e02311;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.83rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  align-self: flex-start;
+}
+.portfolioCard__btn:hover {
+  background: #c41c0d;
+  transform: translateY(-2px);
+}
+
+.portfolioArrow {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.portfolioArrow:hover { background: #e02311; color: #ffffff; }
+.portfolioArrowLeft  { left: -20px; }
+.portfolioArrowRight { right: -20px; }
+
+.portfolioDots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.portfolioDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  display: inline-block;
+  transition: background 0.2s ease;
+}
+.portfolioDot__active { background: #e02311; }
+
+@media (max-width: 768px) {
+  .portfolioArrowLeft  { left: -10px; }
+  .portfolioArrowRight { right: -10px; }
+  .portfolioCard { flex: 0 0 260px; }
 }

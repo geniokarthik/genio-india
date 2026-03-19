@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import "../../globals.css";
-import { useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import TeamMbersImg from "src/assets/images/service/lab_development.png";
 import DownArrowImg from "src/assets/images/service/downarrow.png";
@@ -131,6 +131,8 @@ const sectionFade = {
   viewport: { once: true, amount: 0.1 },
 };
 
+const TECH_DOT_COUNT = 5;
+
 const DETAILS = [
   {
     id: "web-development",
@@ -180,6 +182,11 @@ Whether for travel, work, academics, or personal enrichment, experienced instruc
 
 export default function ServiceEn() {
   const techSliderRef = useRef(null);
+  const isTechDraggingRef = useRef(false);
+  const techDragStartXRef = useRef(0);
+  const techDragStartScrollRef = useRef(0);
+  const techPauseUntilRef = useRef(0);
+  const [activeTechDot, setActiveTechDot] = useState(0);
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -202,23 +209,97 @@ export default function ServiceEn() {
     }
   };
 
+  const pauseTechAutoScroll = () => {
+    techPauseUntilRef.current = Date.now() + 6000;
+  };
+
+  const scrollTechToDot = (index) => {
+    const track = techSliderRef.current;
+    if (!track) return;
+
+    const maxScroll = Math.max(track.scrollWidth - track.clientWidth, 0);
+    const nextLeft = TECH_DOT_COUNT > 1
+      ? (maxScroll * index) / (TECH_DOT_COUNT - 1)
+      : 0;
+
+    track.scrollTo({ left: nextLeft, behavior: "smooth" });
+    setActiveTechDot(index);
+  };
+
   useEffect(() => {
     const track = techSliderRef.current;
     if (!track) return;
 
+    const syncActiveDot = () => {
+      const maxScroll = Math.max(track.scrollWidth - track.clientWidth, 0);
+      if (maxScroll === 0) {
+        setActiveTechDot(0);
+        return;
+      }
+
+      const ratio = track.scrollLeft / maxScroll;
+      setActiveTechDot(Math.min(TECH_DOT_COUNT - 1, Math.round(ratio * (TECH_DOT_COUNT - 1))));
+    };
+
+    syncActiveDot();
+    track.addEventListener("scroll", syncActiveDot, { passive: true });
+
+    const handleMouseDown = (event) => {
+      if (event.button !== 0) return;
+
+      isTechDraggingRef.current = true;
+      techDragStartXRef.current = event.clientX;
+      techDragStartScrollRef.current = track.scrollLeft;
+      track.style.cursor = "grabbing";
+      pauseTechAutoScroll();
+    };
+
+    const handleMouseMove = (event) => {
+      if (!isTechDraggingRef.current) return;
+
+      const deltaX = event.clientX - techDragStartXRef.current;
+      track.scrollLeft = techDragStartScrollRef.current - deltaX;
+    };
+
+    const stopDragging = () => {
+      if (!isTechDraggingRef.current) return;
+
+      isTechDraggingRef.current = false;
+      track.style.cursor = "";
+    };
+
+    const handleWheel = () => {
+      pauseTechAutoScroll();
+    };
+
+    track.addEventListener("mousedown", handleMouseDown);
+    track.addEventListener("wheel", handleWheel, { passive: true });
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseup", stopDragging);
+
     const timer = setInterval(() => {
+      if (Date.now() < techPauseUntilRef.current) return;
+
       const firstCard = track.querySelector(`.${styles.techFeatureCard}`);
       const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 320;
       const nearEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - cardWidth;
 
       if (nearEnd) {
         track.scrollTo({ left: 0, behavior: "smooth" });
+        setActiveTechDot(0);
       } else {
         scrollTech("next");
       }
     }, 3800);
 
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(timer);
+      track.removeEventListener("scroll", syncActiveDot);
+      track.removeEventListener("mousedown", handleMouseDown);
+      track.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", stopDragging);
+    };
   }, []);
 
   return (
@@ -365,33 +446,26 @@ export default function ServiceEn() {
           ))}
 
           <motion.section {...sectionFade} className={styles.tech}>
-          <div className={styles.sectionHead}>
-            <p>Technical Coverage</p>
-            <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>Technology Areas We Support</h2>
-          </div>
-          <p className={styles.techLead}>Browse our technology stack by category in a card format.</p>
+            <div className={styles.sectionHead}>
+              <p>Technical Coverage</p>
+              <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>Technology Areas We Support</h2>
+            </div>
+            <p className={styles.techLead}>Browse our technology stack by category in a card format.</p>
 
-          <div className={styles.techCarouselWrap}>
-            <button type="button" className={`${styles.techArrow} ${styles.techArrowLeft}`} onClick={() => scrollTech("prev")} aria-label="Previous">
-              ‹
-            </button>
-            <button type="button" className={`${styles.techArrow} ${styles.techArrowRight}`} onClick={() => scrollTech("next")} aria-label="Next">
-              ›
-            </button>
-
-            <div className={styles.techCardTrack} ref={techSliderRef}>
-              {techAreas.map((area, idx) => (
-                <motion.article
-                  key={area.category}
-                  className={styles.techFeatureCard}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: idx * 0.03 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                >
-                  <div className={styles.techFeatureMedia}>
-                    <h3>{area.category}</h3>
-                  </div>
+            <div className={styles.techCarouselWrap}>
+              <div className={styles.techCardTrack} ref={techSliderRef}>
+                {techAreas.map((area, idx) => (
+                  <motion.article
+                    key={area.category}
+                    className={styles.techFeatureCard}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.45, delay: idx * 0.03 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                  >
+                    <div className={styles.techFeatureMedia}>
+                      <h3>{area.category}</h3>
+                    </div>
                     <div className={styles.techFeatureBody}>
                       <div
                         className={
@@ -402,23 +476,34 @@ export default function ServiceEn() {
                           }`
                         }
                       >
-                      {area.items.map((item) => (
-                        <div className={styles.techMiniItem} key={`${area.category}-${item.name}`}>
-                          {item.logo ? (
-                            <img src={item.logo} alt={`${item.name} logo`} loading="lazy" />
-                          ) : (
-                            <span className={styles.techLogoFallback}>{item.name.slice(0, 2).toUpperCase()}</span>
-                          )}
-                          <span>{item.name}</span>
-                        </div>
-                      ))}
+                        {area.items.map((item) => (
+                          <div className={styles.techMiniItem} key={`${area.category}-${item.name}`}>
+                            {item.logo ? (
+                              <img src={item.logo} alt={`${item.name} logo`} loading="lazy" />
+                            ) : (
+                              <span className={styles.techLogoFallback}>{item.name.slice(0, 2).toUpperCase()}</span>
+                            )}
+                            <span>{item.name}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                </motion.article>
+                  </motion.article>
+                ))}
+              </div>
+            </div>
+            <div className={styles.techDots}>
+              {Array.from({ length: TECH_DOT_COUNT }, (_, n) => (
+                <button
+                  type="button"
+                  key={n}
+                  className={`${styles.techDot} ${n === activeTechDot ? styles.techDotActive : ""}`}
+                  onClick={() => scrollTechToDot(n)}
+                  aria-label={`Go to technology slide ${n + 1}`}
+                />
               ))}
             </div>
-          </div>
-        </motion.section>
+          </motion.section>
 
           <motion.section
             className={styles.cta}

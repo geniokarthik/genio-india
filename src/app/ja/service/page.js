@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import "../../globals.css";
-import { useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import TeamMbersImg from "src/assets/images/service/lab_development.png";
 import DownArrowImg from "src/assets/images/service/downarrow.png";
@@ -43,13 +43,13 @@ const techAreas = [
             { name: "CSS3", logo: "https://cdn.simpleicons.org/css/1572B6" },
             { name: "Javascript", logo: "https://cdn.simpleicons.org/javascript/F7DF1E" },
             { name: "JQuery", logo: "https://cdn.simpleicons.org/jquery/0769AD" },
-            { name: "ReactNative", logo: "https://cdn.simpleicons.org/react/61DAFB" },
+            { name: "React Native", logo: "https://cdn.simpleicons.org/react/61DAFB" },
             { name: "Objective-C", logo: "https://cdn.simpleicons.org/apple/111111" },
-            { name: "node.js", logo: "https://cdn.simpleicons.org/nodedotjs/339933" },
+            { name: "Node.js", logo: "https://cdn.simpleicons.org/nodedotjs/339933" },
             { name: "React", logo: "https://cdn.simpleicons.org/react/61DAFB" },
-            { name: "nuxt.js", logo: "https://cdn.simpleicons.org/nuxtjs/00C58E" },
-            { name: "next.js", logo: "https://cdn.simpleicons.org/nuxtjs/00C58E" },
-            { name: "vue.js", logo: "https://cdn.simpleicons.org/vuedotjs/42B883" },
+            { name: "Nuxt.js", logo: "https://cdn.simpleicons.org/nuxt/00DC82" },
+            { name: "Next.js", logo: "https://cdn.simpleicons.org/nextdotjs/000000" },
+            { name: "Vue.js", logo: "https://cdn.simpleicons.org/vuedotjs/42B883" },
 
         ],
     },
@@ -59,8 +59,8 @@ const techAreas = [
             { name: "Laravel", logo: "https://cdn.simpleicons.org/laravel/FF2D20" },
             { name: "Symfony", logo: "https://cdn.simpleicons.org/symfony/111111" },
             { name: "CakePHP", logo: "https://cdn.simpleicons.org/cakephp/D33C43" },
-            { name: "Smarty", logo: "" },
-            { name: "bootstrap", logo: "https://cdn.simpleicons.org/bootstrap/7952B3" },
+            { name: "Smarty", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/smarty/smarty-original.svg" },
+            { name: "Bootstrap", logo: "https://cdn.simpleicons.org/bootstrap/7952B3" },
             { name: "Spring", logo: "https://cdn.simpleicons.org/spring/6DB33F" },
             { name: "Django", logo: "https://cdn.simpleicons.org/django/092E20" },
         ],
@@ -70,7 +70,7 @@ const techAreas = [
         items: [
             { name: "PostgreSQL", logo: "https://cdn.simpleicons.org/postgresql/4169E1" },
             { name: "MySQL", logo: "https://cdn.simpleicons.org/mysql/4479A1" },
-            { name: "MaruaDB", logo: "https://cdn.simpleicons.org/mariadb/003545" },
+            { name: "MariaDB", logo: "https://cdn.simpleicons.org/mariadb/003545" },
             { name: "Oracle", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" },
             { name: "SQL Server", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" },
             { name: "AWS Aurora", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
@@ -86,11 +86,11 @@ const techAreas = [
     {
         category: "IDE等",
         items: [
-            { name: "phpStrom", logo: "https://cdn.simpleicons.org/phpstorm/000000" },
+            { name: "PhpStorm", logo: "https://cdn.simpleicons.org/phpstorm/000000" },
             { name: "Eclipse", logo: "https://cdn.simpleicons.org/eclipseide/2C2255" },
             { name: "Visual Studio", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" },
             { name: "Adobe XD", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-plain.svg" },
-            { name: "AndroidSDK", logo: "https://cdn.simpleicons.org/androidstudio/3DDC84" },
+            { name: "Android SDK", logo: "https://cdn.simpleicons.org/androidstudio/3DDC84" },
             { name: "XCode", logo: "https://cdn.simpleicons.org/xcode/147EFB" },
         ],
     },
@@ -114,12 +114,12 @@ const techAreas = [
 ];
 
 const SINGLE_COL_CATEGORIES = [
-    "Frameworks",
+    "フレームワーク",
     "OS",
-    "Databases",
-    "IDEs & Design Tools",
-    "Middleware",
-    "AWS Services",
+    "データベース",
+    "IDE等",
+    "ミドルウェア",
+    "AWSサービス",
 ];
 
 const sectionFade = {
@@ -128,6 +128,8 @@ const sectionFade = {
     transition: { duration: 0.7 },
     viewport: { once: true, amount: 0.1 },
 };
+
+const TECH_DOT_COUNT = 5;
 
 const DETAILS = [
     {
@@ -177,6 +179,11 @@ WebアプリケーションやモバイルアプリとのMySQLデータ連携も
 ];
 export default function Service_Details() {
     const techSliderRef = useRef(null);
+    const isTechDraggingRef = useRef(false);
+    const techDragStartXRef = useRef(0);
+    const techDragStartScrollRef = useRef(0);
+    const techPauseUntilRef = useRef(0);
+    const [activeTechDot, setActiveTechDot] = useState(0);
 
     const scrollTo = (id) => {
         document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -199,23 +206,97 @@ export default function Service_Details() {
         }
     };
 
+    const pauseTechAutoScroll = () => {
+        techPauseUntilRef.current = Date.now() + 6000;
+    };
+
+    const scrollTechToDot = (index) => {
+        const track = techSliderRef.current;
+        if (!track) return;
+
+        const maxScroll = Math.max(track.scrollWidth - track.clientWidth, 0);
+        const nextLeft = TECH_DOT_COUNT > 1
+            ? (maxScroll * index) / (TECH_DOT_COUNT - 1)
+            : 0;
+
+        track.scrollTo({ left: nextLeft, behavior: "smooth" });
+        setActiveTechDot(index);
+    };
+
     useEffect(() => {
         const track = techSliderRef.current;
         if (!track) return;
 
+        const syncActiveDot = () => {
+            const maxScroll = Math.max(track.scrollWidth - track.clientWidth, 0);
+            if (maxScroll === 0) {
+                setActiveTechDot(0);
+                return;
+            }
+
+            const ratio = track.scrollLeft / maxScroll;
+            setActiveTechDot(Math.min(TECH_DOT_COUNT - 1, Math.round(ratio * (TECH_DOT_COUNT - 1))));
+        };
+
+        syncActiveDot();
+        track.addEventListener("scroll", syncActiveDot, { passive: true });
+
+        const handleMouseDown = (event) => {
+            if (event.button !== 0) return;
+
+            isTechDraggingRef.current = true;
+            techDragStartXRef.current = event.clientX;
+            techDragStartScrollRef.current = track.scrollLeft;
+            track.style.cursor = "grabbing";
+            pauseTechAutoScroll();
+        };
+
+        const handleMouseMove = (event) => {
+            if (!isTechDraggingRef.current) return;
+
+            const deltaX = event.clientX - techDragStartXRef.current;
+            track.scrollLeft = techDragStartScrollRef.current - deltaX;
+        };
+
+        const stopDragging = () => {
+            if (!isTechDraggingRef.current) return;
+
+            isTechDraggingRef.current = false;
+            track.style.cursor = "";
+        };
+
+        const handleWheel = () => {
+            pauseTechAutoScroll();
+        };
+
+        track.addEventListener("mousedown", handleMouseDown);
+        track.addEventListener("wheel", handleWheel, { passive: true });
+        window.addEventListener("mousemove", handleMouseMove);
+        window.addEventListener("mouseup", stopDragging);
+
         const timer = setInterval(() => {
+            if (Date.now() < techPauseUntilRef.current) return;
+
             const firstCard = track.querySelector(`.${styles.techFeatureCard}`);
             const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 320;
             const nearEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - cardWidth;
 
             if (nearEnd) {
                 track.scrollTo({ left: 0, behavior: "smooth" });
+                setActiveTechDot(0);
             } else {
                 scrollTech("next");
             }
         }, 3800);
 
-        return () => clearInterval(timer);
+        return () => {
+            clearInterval(timer);
+            track.removeEventListener("scroll", syncActiveDot);
+            track.removeEventListener("mousedown", handleMouseDown);
+            track.removeEventListener("wheel", handleWheel);
+            window.removeEventListener("mousemove", handleMouseMove);
+            window.removeEventListener("mouseup", stopDragging);
+        };
     }, []);
 
     return (
@@ -378,13 +459,6 @@ export default function Service_Details() {
                         <p className={styles.techLead}>サポート可能なテクノロジースタックをカテゴリ別にリスト形式でまとめました。</p>
 
                         <div className={styles.techCarouselWrap}>
-                            <button type="button" className={`${styles.techArrow} ${styles.techArrowLeft}`} onClick={() => scrollTech("prev")} aria-label="前へ">
-                                ‹
-                            </button>
-                            <button type="button" className={`${styles.techArrow} ${styles.techArrowRight}`} onClick={() => scrollTech("next")} aria-label="次へ">
-                                ›
-                            </button>
-
                             <div className={styles.techCardTrack} ref={techSliderRef}>
                                 {techAreas.map((area, idx) => (
                                     <motion.article
@@ -422,6 +496,17 @@ export default function Service_Details() {
                                     </motion.article>
                                 ))}
                             </div>
+                        </div>
+                        <div className={styles.techDots}>
+                            {Array.from({ length: TECH_DOT_COUNT }, (_, n) => (
+                                <button
+                                    type="button"
+                                    key={n}
+                                    className={`${styles.techDot} ${n === activeTechDot ? styles.techDotActive : ""}`}
+                                    onClick={() => scrollTechToDot(n)}
+                                    aria-label={`技術スライド ${n + 1} へ移動`}
+                                />
+                            ))}
                         </div>
                     </motion.section>
 
