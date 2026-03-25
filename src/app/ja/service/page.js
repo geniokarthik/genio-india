@@ -337,7 +337,6 @@ function DetailDrawer({ project, onClose }) {
                                     {project.tags.map((t) => <span key={t} className={styles.dtag}>{t}</span>)}
                                 </div>
                             </div>
-                            <button className={styles.drawerBack} onClick={onClose}>← 一覧に戻る</button>
                         </div>
                     </motion.div>
                 </div>
@@ -661,7 +660,6 @@ export default function Service_Details() {
                                             <Image src={p.img} alt={p.title} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw" />
                                             <div className={`${styles.cardAccentLine} ${p.type === "built" ? styles.cardAccentBuilt : styles.cardAccentInvolved}`} />
                                             <div className={styles.cardImgGradient} />
-                                            <div className={styles.cardOverlay}><div className={styles.overlayPill}>詳細を見る →</div></div>
                                         </div>
                                         <div className={styles.cardFoot}>
                                             <span className={`${styles.cardBadge} ${p.type === "built" ? styles.badgeBuilt : styles.badgeInvolved}`}>
@@ -669,6 +667,7 @@ export default function Service_Details() {
                                                 {p.type === "built" ? "開発・構築" : "参画・貢献"}
                                             </span>
                                             <h3 className={styles.cardTitle}>{p.title}</h3>
+                                            <div className={styles.overlayPill}>詳細を見る →</div>
                                         </div>
                                     </motion.article>
                                 ))}

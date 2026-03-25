@@ -331,7 +331,6 @@ function DetailDrawer({ project, onClose }) {
                   {project.tags.map((t) => <span key={t} className={styles.dtag}>{t}</span>)}
                 </div>
               </div>
-              <button className={styles.drawerBack} onClick={onClose}>← Back to List</button>
             </div>
           </motion.div>
         </div>
@@ -645,7 +644,6 @@ export default function ServiceEn() {
                       <Image src={p.img} alt={p.title} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw" />
                       <div className={`${styles.cardAccentLine} ${p.type === "built" ? styles.cardAccentBuilt : styles.cardAccentInvolved}`} />
                       <div className={styles.cardImgGradient} />
-                      <div className={styles.cardOverlay}><div className={styles.overlayPill}>View Details →</div></div>
                     </div>
                     <div className={styles.cardFoot}>
                       <span className={`${styles.cardBadge} ${p.type === "built" ? styles.badgeBuilt : styles.badgeInvolved}`}>
@@ -653,6 +651,7 @@ export default function ServiceEn() {
                         {p.type === "built" ? "Built by Us" : "Contributed"}
                       </span>
                       <h3 className={styles.cardTitle}>{p.title}</h3>
+                       <div className={styles.overlayPill}>View Details →</div>
                     </div>
                   </motion.article>
                 ))}
