@@ -3,6 +3,7 @@ import Image from "next/image";
 import "../../globals.css";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 import TeamMbersImg from "src/assets/images/service/lab_development.png";
 import DownArrowImg from "src/assets/images/service/downarrow.png";
 import DesktopImg from "src/assets/images/service/desktop.png";
@@ -347,6 +348,7 @@ function DetailDrawer({ project, onClose }) {
 
 
 export default function Service_Details() {
+    const searchParams = useSearchParams();
     const techSliderRef = useRef(null);
     const isTechDraggingRef = useRef(false);
     const techDragStartXRef = useRef(0);
@@ -364,6 +366,28 @@ export default function Service_Details() {
     const scrollTo = (id) => {
         document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
     };
+
+    useEffect(() => {
+        const requestedFilter = searchParams.get("projectFilter");
+        const nextFilter = PROJECT_FILTERS.some((filter) => filter.key === requestedFilter)
+            ? requestedFilter
+            : "all";
+
+        setActiveFilter(nextFilter);
+
+        if (typeof window === "undefined" || window.location.hash !== "#projects") {
+            return;
+        }
+
+        const frameId = window.requestAnimationFrame(() => {
+            document.getElementById("projects")?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+            });
+        });
+
+        return () => window.cancelAnimationFrame(frameId);
+    }, [searchParams]);
 
     const scrollTech = (direction) => {
         const track = techSliderRef.current;
@@ -627,6 +651,7 @@ export default function Service_Details() {
 
                     {/* ADDED: Projects section */}
                     <motion.section
+                        id="projects"
                         className={styles.projects}
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}

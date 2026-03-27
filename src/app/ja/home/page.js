@@ -1,264 +1,359 @@
-'use client';
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
+﻿"use client";
+
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import "../../globals.css";
 import Header from "../components/Header";
 import Footer from "src/app/ja/components/Footer";
-
-import webdevelopment from "src/assets/images/home/webdevelopment.png";
-import appdevelopment from "src/assets/images/home/appdevelopment.png";
-import mysqldatabase from "src/assets/images/home/mysqldatabase.png";
-import sloganicon from "src/assets/images/home/sloganicon.png";
-import sloganicon2 from "src/assets/images/home/sloganicon2.png";
-import sidelogo from "src/assets/images/home/sidelogo.png";
+import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
-import styles from "src/app/common/styles/Home.module.css";
+import styles from "src/app/common/styles/HomeRedesign.module.css";
 
+const IMG = {
+  hero: "/images/home/hero-team.jpg",
+  heroTwo: "/images/home/hero-team-jp.jpg",
+  heroThree: "/images/home/hero-collaboration.jpg",
+  webDev: "/images/home/service-web.jpg",
+  appDev: "/images/home/service-app.jpg",
+  mysql: "/images/home/service-mysql.jpg",
+  japanese: "/images/home/service-japanese.jpg",
+  case2: "/images/home/project-case2.jpg",
+  case3: "/images/home/project-case3.jpg",
+};
+
+const heroImages = [
+  { src: IMG.hero, alt: "チームコラボレーション" },
+  { src: IMG.heroTwo, alt: "開発チームの打ち合わせ" },
+  { src: IMG.heroThree, alt: "共同作業を行うチーム" },
+];
+
+const services = [
+  {
+    title: "ウェブ開発",
+    description:
+      "企業サイトから業務システムまで、使いやすく成果につながるWeb開発を行います。",
+    image: IMG.webDev,
+    alt: "ウェブ開発",
+    href: "/ja/service#section-web-development",
+  },
+  {
+    title: "アプリ開発",
+    description:
+      "企画段階から運用まで伴走し、現場で役立つモバイル体験を形にします。",
+    image: IMG.appDev,
+    alt: "アプリ開発",
+    href: "/ja/service#section-app-development",
+  },
+  {
+    title: "MySQLデータベース",
+    description:
+      "安定したデータ基盤の設計、最適化、連携まで一貫して対応します。",
+    image: IMG.mysql,
+    alt: "MySQLデータベース",
+    href: "/ja/service#section-sql-database",
+  },
+  {
+    title: "日本語教育",
+    description:
+      "初心者から実務まで、使える日本語を段階的に学べます。",
+    image: IMG.japanese,
+    alt: "日本語教育",
+    href: "/ja/service#section-japanese-study",
+  },
+];
+
+const projectGroups = [
+  {
+    title: "GENIO INDIAが作っているサービス",
+    description:
+      "自社で企画・開発を進めているサービスや、継続的に改善しているプロダクトです。",
+    image: IMG.case2,
+    alt: "GENIO INDIAが作っているサービス",
+    projects: ["Sales Ledger", "Chatbot"],
+    href: "/ja/service?projectFilter=built#projects",
+  },
+  {
+    title: "GENIO INDIAが関わっているサービス",
+    description:
+      "開発支援、保守、運用などを通して、お客様やパートナーと一緒に取り組んでいるサービスです。",
+    image: IMG.case3,
+    alt: "GENIO INDIAが関わっているサービス",
+    projects: ["Tarte", "EAP", "Memory Hint", "TCC"],
+    href: "/ja/service?projectFilter=involved#projects",
+  },
+];
+
+const stats = [
+  { value: "8", label: "開発者数", icon: "👥" },
+  { value: "5", label: "進行中のプロジェクト", icon: "📊" },
+  { value: "5", label: "納品プロジェクト", icon: "✅" },
+];
+
+const profile = [
+  ["会社名", "Genio India Software Pvt. Ltd."],
+  ["設立", "2022年7月28日"],
+  ["代表者", "米田 卓也"],
+  ["所在地", "Namakkal"],
+  ["納品実績", "5"],
+  ["グループ会社", "株式会社ジェニオ"],
+];
 
 export default function Home() {
-  const [imageSrc, setImageSrc] = useState(sloganicon);
-  const [heroText, setHeroText] = useState("考える");
+  const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setImageSrc((prevImage) =>
-        prevImage === sloganicon ? sloganicon2 : sloganicon
-      );
-      setHeroText((prevText) =>
-        prevText === "考える" ? "創造する" : "考える"
-      );
+    const intervalId = window.setInterval(() => {
+      setCurrentHeroIndex((index) => (index + 1) % heroImages.length);
     }, 3000);
 
-    return () => clearInterval(interval);
+    return () => window.clearInterval(intervalId);
   }, []);
 
   return (
     <>
-      <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet"></link>
-      <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"></link>
-      <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet"></link>
-      <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'></link>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&display=swap"
+        rel="stylesheet"
+      />
       <Header />
-      <motion.div
-        className={styles.home}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
+      <main className={styles.homeShell}>
         <div className={styles.container}>
-
-          {/* Hero Section */}
           <motion.section
             className={styles.hero}
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
           >
+            <AnimatedHeroBackdrop className={styles.heroMotionCanvas} />
             <div className={styles.heroContent}>
-            <h1 className={styles.heroTittle}>
-              <span>
-                <span className={styles.heroRedText}>共</span>に、{" "}
-              </span>
-              <span className={styles.heroThinkWrapper} style={{ marginLeft: 9 }}>
-                <span className={styles.heroRedText} style={{ marginLeft: 9 }}>
-                  私たちは{" "}
-                </span>
-                <span style={{ marginRight: 4 }}>{heroText}</span>
-                <span className={styles.heroThinkBorder}></span>
-                <span className={styles.heroIconWrapper}>
-                  <Image
-                    src={imageSrc}
-                    alt="スローガンアイコン"
-                    width={80}
-                    height={80}
-                    className={styles.heroIconImage}
-                  />
-                </span>
-              </span>
-            </h1>
-              {/* <div style={{ paddingBottom: 12, paddingTop: 12 }} className={styles.heroContent}>
-                <div className={styles.heroSubtitleBox}>
-                  <p className={styles.heroSubtitle}>高品質なウェブサイト</p>
-                </div>
-              </div> */}
-              {/* <div className={styles.heroContent}>
-                <div className={styles.heroSubtitleBox}>
-                  <p className={styles.heroSubtitle}>すべての企業のために</p>
-                </div>
-              </div> */}
+              <p className={styles.eyebrow}>共に考え、共に形にする</p>
+              <h1 className={styles.heroTitle}>
+                あらゆる企業のための高品質なWebサイト制作
+              </h1>
               <p className={styles.heroDescription}>
-               あらゆる企業向けに高品質なWebサイトを提供<br/><br/>          
-               2022年から、革新的なWeb、アプリ、データベースのソリューションを、常に高い品質で提供しています。<br/>
-               私たちは、「誰も思いつかなかった」アイデアを実現し、関わる全ての人々が「笑顔」になれるサービスを作り上げます。
-               また、「誰もが使いやすい」ことを最優先に、誰もが簡単に利用できるサービスを追求し続けています。<br/>          
+                課題整理から設計、開発、改善まで一貫して対応します。成果につながるWeb、
+                アプリ、データベースのソリューションを、実装品質まで含めて丁寧に提供します。
               </p>
-              
-            </div>
-            <div>
-              <Image src={sidelogo} alt="スローガンアイコン" className={styles.heroBackgroundGradient} />
-            </div>
-          </motion.section>
-
-          {/* Business Content Section */}
-          <motion.section
-            className={styles.businessContent}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <header className={styles.header}>
-              <h2 className={styles.title}>事業内容</h2>
-              <h4 className={styles.subtitle}>
-                <div className={styles.businessTittle}>私たちはお客様の課題に真摯に向き合い、関わるすべての人々に笑顔をもたらすサービスを提供しています。</div>
-              </h4>
-            </header>
-            <motion.section
-              className={styles.funFacts}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className={styles.servicesGrid}>
-                <div className={styles.serviceItem}>
-                  <div className={styles.serviceCard}>
-                    <Image
-                      src={webdevelopment}
-                      alt="ウェブ開発"
-                      width={200}
-                      height={200}
-                      className={styles.serviceImage}
-                    />
-                  </div>
-                  <h3 className={styles.serviceTitle}>ウェブ開発</h3>
-                </div>
-                <div className={styles.serviceItem}>
-                  <div className={styles.serviceCard}>
-                    <Image
-                      src={appdevelopment}
-                      alt="アプリ開発"
-                      width={200}
-                      height={200}
-                      className={styles.serviceImage}
-                    />
-                  </div>
-                  <h3 className={styles.serviceTitle}>アプリ開発</h3>
-                </div>
-                <div className={styles.serviceItem}>
-                  <div className={styles.serviceCard}>
-                    <Image
-                      src={mysqldatabase}
-                      alt="MySQLデータベース"
-                      width={200}
-                      height={200}
-                      className={styles.serviceImage}
-                    />
-                  </div>
-                  <h3 className={styles.serviceTitle}>MySQLデータベース</h3>
-                </div>
+              <div className={styles.heroActions}>
+                <Link href="/ja/contactus" className={styles.primaryButton}>
+                  お問い合わせ
+                </Link>
               </div>
-            </motion.section>
+            </div>
+
+            <div className={styles.heroVisual}>
+              <div className={styles.heroArtBackdrop} />
+              <div className={styles.heroImageFrame}>
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={heroImages[currentHeroIndex].src}
+                    src={heroImages[currentHeroIndex].src}
+                    alt={heroImages[currentHeroIndex].alt}
+                    className={styles.heroImage}
+                    loading="eager"
+                    initial={{ opacity: 0, scale: 1.04 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                  />
+                </AnimatePresence>
+              </div>
+              <div className={styles.heroIndicators}>
+                {heroImages.map((image, index) => (
+                  <button
+                    key={`${image.src}-${index}`}
+                    type="button"
+                    className={`${styles.heroIndicator} ${index === currentHeroIndex ? styles.heroIndicatorActive : ""}`}
+                    onClick={() => setCurrentHeroIndex(index)}
+                    aria-label={`${index + 1}枚目の画像を表示`}
+                  />
+                ))}
+              </div>
+              <Link href="/ja/aboutus" className={styles.heroFloatingCard}>
+                <span className={styles.heroBadge}>N</span>
+                <div>
+                  <p className={styles.heroFloatingLabel}>会社情報</p>
+                  <p className={styles.heroFloatingTitle}>一緒に見つける</p>
+                </div>
+                <span className={styles.heroFloatingArrow}>↗</span>
+              </Link>
+            </div>
           </motion.section>
 
-          {/* Fun Facts Section */}
           <motion.section
-            className={styles.funFacts}
-            initial={{ opacity: 0, y: 50 }}
+            className={styles.section}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
           >
-            <h2 className={styles.funFactsTitle}>実績</h2>
-            <div className={styles.funFactsContainer}>
-              {[
-                { number: "8", text: "開発者数" },
-                { number: "4", text: "進行中のプロジェクト" },
-                { number: "5", text: "完了したプロジェクト" },
-              ].map((fact, index) => (
+            <div className={styles.sectionHeader}>
+              <p className={styles.sectionEyebrow}>事業内容</p>
+            </div>
+            <div className={styles.servicesGrid}>
+              {services.map((service, index) => (
                 <motion.div
-                  key={index}
-                  className={styles.funFact}
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  key={service.title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45, delay: index * 0.08 }}
                 >
-                  <div className={styles.factNumber}>{fact.number}</div>
-                  <div className={styles.factText}>{fact.text}</div>
+                  <Link href={service.href} className={styles.serviceCardLink}>
+                    <article className={styles.serviceCard}>
+                      <div className={styles.serviceIconWrap}>
+                        <img
+                          src={service.image}
+                          alt={service.alt}
+                          className={styles.serviceImage}
+                          loading="lazy"
+                        />
+                      </div>
+                      <h2 className={styles.serviceTitle}>{service.title}</h2>
+                      <p className={styles.serviceDescription}>{service.description}</p>
+                    </article>
+                  </Link>
                 </motion.div>
+              ))}
+            </div>
+            <p className={styles.sectionSummary}>
+              私たちはお客様の課題に向き合い、関わるすべての人が笑顔になれるサービスを目指します。
+            </p>
+          </motion.section>
+
+          <motion.section
+            className={styles.section}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className={styles.sectionHeader}>
+              <p className={styles.sectionEyebrow}>Projects</p>
+            </div>
+            <div className={styles.projectShowcaseGrid}>
+              {projectGroups.map((group, index) => (
+                <motion.div
+                  key={group.title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45, delay: index * 0.08 }}
+                >
+                  <Link href={group.href} className={styles.projectShowcaseLink}>
+                    <article className={styles.projectShowcaseCard}>
+                      <div className={styles.projectShowcaseMedia}>
+                        <img
+                          src={group.image}
+                          alt={group.alt}
+                          className={styles.projectShowcaseImage}
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className={styles.projectShowcaseBody}>
+                        <p className={styles.projectShowcaseLabel}>
+                          {group.projects.length}件のプロジェクト
+                        </p>
+                        <h3 className={styles.projectShowcaseTitle}>{group.title}</h3>
+                        <p className={styles.projectShowcaseDescription}>
+                          {group.description}
+                        </p>
+                        <div className={styles.projectTagList}>
+                          {group.projects.map((project) => (
+                            <span key={project} className={styles.projectTag}>
+                              {project}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </article>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+            <div className={styles.caseStudyFooter}>
+              <Link
+                href="/ja/service?projectFilter=all#projects"
+                className={styles.caseStudyLink}
+              >
+                サービスを見る ↗
+              </Link>
+            </div>
+          </motion.section>
+
+          <motion.section
+            className={styles.section}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className={styles.sectionHeader}>
+              <p className={styles.sectionEyebrow}>実績</p>
+            </div>
+            <div className={styles.statsGrid}>
+              {stats.map((stat, index) => (
+                <motion.article
+                  key={stat.label}
+                  className={styles.statCard}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.4, delay: index * 0.08 }}
+                >
+                  <p className={styles.statLabel}>{stat.label}</p>
+                  <div className={styles.statRow}>
+                    <p className={styles.statValue}>{stat.value}</p>
+                    <span className={styles.statIcon}>{stat.icon}</span>
+                  </div>
+                </motion.article>
               ))}
             </div>
           </motion.section>
 
-          {/* Company Profile Section */}
           <motion.section
-            className={styles.companyProfile}
-            initial={{ opacity: 0, y: 50 }}
+            className={styles.profileSection}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
             id="companyprofile"
           >
-            <div className={styles.profileTitleWrapper}>
-              <h1 className={styles.profileTitle}>
-                <span className={styles.profileRedC}>会</span>社概要
-              </h1>
+            <div className={styles.sectionHeader}>
+              <p className={styles.sectionEyebrow}>会社概要</p>
             </div>
-            <div className={styles.profileContent}>
-              {/* Profile Content Rows */}
-              <div className={styles.profileRow}>
-                <div className={styles.profileLabel}>会社名</div>
-                <div className={styles.profileValue}>Genio India Software Pvt. Ltd.</div>
-              </div>
-              <div className={styles.profileRow}>
-                <div className={styles.profileLabel}>設立</div>
-                <div className={styles.profileValue}>2022年7月28日</div>
-              </div>
-              <div className={styles.profileRow}>
-                <div className={styles.profileLabel}>代表者</div>
-                <div className={styles.profileValue}>米田 卓也</div>
-              </div>
-              <div className={styles.profileRow}>
-                <div className={styles.profileLabel}>グループ会社</div>
-                <div className={styles.profileValue}>株式会社ジェニオ</div>
-              </div>
-              <div className={styles.profileRow}>
-                <div className={styles.profileLabel}>事業内容</div>
-                  <div>
-                    <div>• ウェブシステム開発</div>
-                    <div>• アプリ開発</div>
-                    <div>• ウェブサイト開発</div>
-                    <div>• MySQLデータベースの構築</div>
+            <div className={styles.profileCard}>
+              <div className={styles.profileDetails}>
+                {profile.map(([label, value]) => (
+                  <div key={label} className={styles.profileItem}>
+                    <p className={styles.profileLabel}>{label}</p>
+                    <p className={styles.profileValue}>{value}</p>
                   </div>
+                ))}
               </div>
-              <div className={styles.profileRow}>
-                <div className={styles.profileLabel}>所在地</div>
-                <div className={styles.profileValue}>
-                  <div className={styles.profileAddress}>
-                    No. 171/3/1, Narikkal karadu, Vennandur, Rasipuram, Namakkal, Tamil Nadu, India-637505.
-                  </div>
-                  <span className={styles.profileMapLink} target="_blank" >
-                    Googleマップ <span className={styles.profileArrow}>↘</span>
-                  </span>
-                  <iframe
-                    width="100%"
-                    height="100%"
-                    frameBorder="0"
-                    style={{ border: 0, borderRadius: "10px" }}
-                    src="https://www.google.com/maps?q=11.515406,78.091705&output=embed"
-                    target="_blank" 
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
-                </div>
+              <div className={styles.mapCard}>
+                <iframe
+                  title="Genio India location"
+                  className={styles.mapFrame}
+                  src="https://www.google.com/maps?q=11.515406,78.091705&output=embed"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                <p className={styles.mapCaption}>Googleマップで見る ↗</p>
               </div>
             </div>
           </motion.section>
         </div>
-      </motion.div>
+      </main>
       <ScrollTop />
       <Footer />
     </>
