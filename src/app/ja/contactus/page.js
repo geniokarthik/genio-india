@@ -3,13 +3,14 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Header from "src/app/ja/components/Header";
 import Footer from "src/app/ja/components/Footer";
-import styles from "src/app/ja/styles/Contactus.module.css";
+import styles from "src/app/common/styles/Contactus.module.css";
 import "../../globals.css";
 import Image from "next/image";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import CryptoJS from "crypto-js";
 import Link from "next/link";
 import returnhomeicon from "src/assets/images/contactus/returnhome.png";
+import emailicon from "src/assets/images/contactus/email.png";
 
 export default function ContactForm() {
   const [isClient, setIsClient] = useState(false);
@@ -186,396 +187,222 @@ export default function ContactForm() {
   if (!isClient) return null;
 
   return (
-    <>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap"
-        rel="stylesheet"
-      ></link>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
-        rel="stylesheet"
-      ></link>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Abel&display=swap"
-        rel="stylesheet"
-      ></link>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Atomic+Age&display=swap"
-        rel="stylesheet"
-      ></link>
-      <Header />
-      <div className={styles.container}>
-        <motion.div
-          className={styles.home}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          <h1 className={styles.title}>
-            <span className={styles.redText}>お</span>問い合わせ
-          </h1>
+  <>
+    <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Atomic+Age&display=swap" rel="stylesheet" />
+    <Header />
+    <div className={styles.container}>
+      <motion.div
+        className={styles.home}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <h1 className={styles.title}>CONTACT</h1>
+        <h2 className={styles.subtitle}>お問い合わせ</h2>
 
-          <div className={styles.formWrapper}>
-            <div className={styles.progress}>
-              <div className={styles.step}>
-                <span
-                  className={`${styles.stepNumber} ${
-                    currentStep >= 1 ? styles.active : styles.inactive
-                  }`}
-                >
-                  1
-                </span>
-                <span
-                  className={
-                    currentStep === 1 ? styles.stepLabel : styles.instepLabel
-                  }
-                >
-                  入力
-                </span>
-              </div>
-              <div className={styles.line}></div>
-              <div className={styles.step}>
-                <span
-                  className={`${styles.stepNumber} ${
-                    currentStep >= 2 ? styles.active : styles.inactive
-                  }`}
-                >
-                  2
-                </span>
-                <span
-                  className={
-                    currentStep === 2 ? styles.stepLabel : styles.instepLabel
-                  }
-                >
-                  確認
+        <div className={styles.formWrapper}>
+          <motion.section
+            className={styles.hero}
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <div className={styles.formContainer}>
+              <div className={styles.mailSection}>
+                <span className={styles.mailIcon}>
+                  <Image
+                    src={emailicon}
+                    alt="Mail Icon"
+                    className={styles.image}
+                  />
+                  <span className={styles.mailText}>MAIL</span>
                 </span>
               </div>
-              <div className={styles.line}></div>
-              <div className={styles.step}>
-                <span
-                  className={`${styles.stepNumber} ${
-                    currentStep >= 3 ? styles.active : styles.inactive
-                  }`}
-                >
-                  3
-                </span>
-                <span
-                  className={
-                    currentStep === 3 ? styles.stepLabel : styles.instepLabel
-                  }
-                >
-                  完了
-                </span>
-              </div>
-            </div>
 
-            <motion.section
-              className={styles.hero}
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1 }}
-            >
-              <div className={styles.formContainer}>
-                {currentStep === 3 ? (
-                  <div className={styles.completionContainer}>
-                    <p className={styles.completionText}>
+              <h3 className={styles.formTitle}>ご質問・ご相談フォーム</h3>
+
+              {currentStep === 3 ? (
+                <>
+                  <h1 className={styles.footerHead}>ありがとうございます！</h1>
+                  <div className={styles.formGroups}>
+                    <p>
                       この度は株式会社ジェニオINDIAにお問い合わせいただき誠にありがとうございます。
-                      <br />
-                      <br />
+                      <br /><br />
                       お問い合わせいただきました内容を確認後、
-                      <br />
                       ご記入していただきましたメールアドレス宛に２営業日以内にご連絡致します。
                     </p>
-                    <div style={{ paddingTop: 50, textAlign: "center" }}>
-                      <Link href="/" className={styles.formFooter}>
-                        <h3>
-                          ホームへ戻る
-                          <Image
-                            src={returnhomeicon}
-                            alt="Back to home"
-                            width={40}
-                            height={40}
-                            style={{ verticalAlign: "bottom", paddingLeft: 10 }}
-                          />
-                        </h3>
-                      </Link>
-                    </div>
                   </div>
-                ) : (
-                  <form className={styles.form} onSubmit={handleSubmit}>
-                    {currentStep === 1 && (
-                      <>
-                        <div className={styles.formGroup}>
-                          <label className={styles.labelField}>
-                            お問い合わせ種別
-                            <span className={styles.required}>必須</span>
-                          </label>
-                          <select
-                            name="inquiryCategory"
-                            value={formData.inquiryCategory}
-                            onChange={handleChange}
-                            className={`${styles.inputFields} ${
-                              errors.inquiryCategory ? styles.error : ""
-                            }`}
-                          >
-                            <option value="選択してください">
-                              選択してください
-                            </option>
-                            <option value="一般的なお問い合わせ">
-                              一般的なお問い合わせ
-                            </option>
-                            <option value="サービスに関するお問い合わせ">
-                              サービスに関するお問い合わせ
-                            </option>
-                            <option value="技術サポート">技術サポート</option>
-                            <option value="その他">その他</option>
-                          </select>
-                          {errors.inquiryCategory && (
-                            <span className={styles.errorMessage}>
-                              {errors.inquiryCategory}
-                            </span>
-                          )}
-                        </div>
-
-                        <div className={styles.formGroup}>
-                          <label className={styles.labelField}>
-                            氏名
-                            <span className={styles.required}>必須</span>
-                          </label>
-                          <input
-                            type="text"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            maxLength={100}
-                            className={`${styles.inputField} ${
-                              errors.name ? styles.error : ""
-                            }`}
-                            placeholder="例) 山田 太郎"
-                          />
-                          {errors.name && (
-                            <span className={styles.errorMessage}>
-                              {errors.name}
-                            </span>
-                          )}
-                        </div>
-
-                        <div className={styles.formGroup}>
-                          <label className={styles.labelField}>
-                            お電話番号
-                            <span className={styles.required}>必須</span>
-                          </label>
-
-                          <div className={styles.inputFieldWrapper}>
-                            <input
-                              type="text"
-                              name="phoneNumber1"
-                              value={formData.phoneNumber1}
-                              onChange={handleChange}
-                              maxLength={3}
-                              placeholder="例) 065"
-                              className={`${styles.inputField} ${
-                                errors.phoneNumber || errors.phoneNumber1
-                                  ? styles.error
-                                  : ""
-                              }`}
-                            />
-                            {errors.phoneNumber1 && (
-                              <span className={styles.errorMessage}>
-                                {errors.phoneNumber1}
-                              </span>
-                            )}
-                            <span className={styles.divider}></span>
-                            <input
-                              type="text"
-                              name="phoneNumber2"
-                              value={formData.phoneNumber2}
-                              onChange={handleChange}
-                              placeholder="例) 6949"
-                              maxLength={4}
-                              className={`${styles.inputField} ${
-                                errors.phoneNumber || errors.phoneNumber2
-                                  ? styles.error
-                                  : ""
-                              }`}
-                            />
-                            {errors.phoneNumber2 && (
-                              <span className={styles.errorMessage}>
-                                {errors.phoneNumber2}
-                              </span>
-                            )}
-                            <span className={styles.divider}></span>
-                            <input
-                              type="text"
-                              name="phoneNumber3"
-                              value={formData.phoneNumber3}
-                              onChange={handleChange}
-                              maxLength={4}
-                              placeholder="例) 6949"
-                              className={`${styles.inputField} ${
-                                errors.phoneNumber || errors.phoneNumber3
-                                  ? styles.error
-                                  : ""
-                              }`}
-                            />
-
-                            {errors.phoneNumber3 && (
-                              <span className={styles.errorMessage}>
-                                {errors.phoneNumber3}
-                              </span>
-                            )}
-                          </div>
-
-                          {/* Only show common error if it exists */}
-                          {errors.phoneNumber && (
-                            <span className={styles.errorMessage}>
-                              {errors.phoneNumber}
-                            </span>
-                          )}
-                        </div>
-
-                        <div className={styles.formGroup}>
-                          <label className={styles.labelField}>
-                            メールアドレス
-                            <span className={styles.required}>必須</span>
-                          </label>
-                          <input
-                            type="text"
-                            name="emailAddress"
-                            value={formData.emailAddress}
-                            onChange={handleChange}
-                            maxLength={250}
-                            className={`${styles.inputField} ${
-                              errors.emailAddress ? styles.error : ""
-                            }`}
-                            placeholder="例) example@genioindia.in"
-                          />
-                          {errors.emailAddress && (
-                            <span className={styles.errorMessage}>
-                              {errors.emailAddress}
-                            </span>
-                          )}
-                        </div>
-
-                        <div className={styles.formGroup}>
-                          <label className={styles.labelField}>
-                            お問い合わせ内容
-                            <span className={styles.required}>必須</span>
-                          </label>
-                          <textarea
-                            name="inquiryContent"
-                            value={formData.inquiryContent}
-                            onChange={handleChange}
-                            maxLength={1000}
-                            className={`${styles.textareaField} ${
-                              errors.inquiryContent ? styles.error : ""
-                            }`}
-                            rows={5}
-                            placeholder="具体的なお問い合わせ内容をご記入ください"
-                          />
-                          {errors.inquiryContent && (
-                            <span className={styles.errorMessage}>
-                              {errors.inquiryContent}
-                            </span>
-                          )}
-                        </div>
-                      </>
-                    )}
-
-                    {currentStep === 2 && (
-                      <>
-                        <div className={styles.formGroup}>
-                          <label className={styles.labelField}>
-                            お問い合わせ種別
-                            <span className={styles.required}>必須</span>
-                          </label>
-                          <div className={styles.confirmValue}>
-                            {formData.inquiryCategory}
-                          </div>
-                        </div>
-
-                        <div className={styles.formGroup}>
-                          <label className={styles.labelField}>
-                            氏名
-                            <span className={styles.required}>必須</span>
-                          </label>
-                          <div className={styles.confirmValue}>
-                            {formData.name}
-                          </div>
-                        </div>
-
-                        <div className={styles.formGroup}>
-                          <label className={styles.labelField}>
-                            お電話番号
-                            <span className={styles.required}>必須</span>
-                          </label>
-                          <div className={styles.confirmValue}>
-                            {formData.phoneNumber}
-                          </div>
-                        </div>
-
-                        <div className={styles.formGroup}>
-                          <label className={styles.labelField}>
-                            メールアドレス
-                            <span className={styles.required}>必須</span>
-                          </label>
-                          <div className={styles.confirmValue}>
-                            {formData.emailAddress}
-                          </div>
-                        </div>
-
-                        <div className={styles.formGroup}>
-                          <label className={styles.labelField}>
-                            お問い合わせ内容
-                            <span className={styles.required}>必須</span>
-                          </label>
-                          <div className={styles.confirmValue}>
-                            {formData.inquiryContent
-                              .split("\n")
-                              .map((line, i) => (
-                                <span key={i}>
-                                  {line}
-                                  <br />
-                                </span>
-                              ))}
-                          </div>
-                        </div>
-                      </>
-                    )}
-
-                    <div className={styles.buttonContainer}>
-                      {currentStep === 2 && (
-                        <button
-                          type="button"
-                          onClick={handleBack}
-                          disabled={disableFlg}
-                          className={styles.backButton}
+                  <div style={{ paddingTop: 50, textAlign: "center" }}>
+                    <Link href="/ja" className={styles.formFooter}>
+                      <h3>
+                        ホームへ戻る
+                        <Image
+                          src={returnhomeicon}
+                          alt="Back to home"
+                          width={40}
+                          height={40}
+                          style={{ verticalAlign: "middle", paddingLeft: 10 }}
+                        />
+                      </h3>
+                    </Link>
+                  </div>
+                </>
+              ) : (
+                <form className={styles.form} onSubmit={handleSubmit}>
+                  {currentStep === 1 && (
+                    <>
+                      <div className={styles.formGroup}>
+                        <label className={styles.labelField}>
+                          お問い合わせ種別<span className={styles.required}>*</span>
+                        </label>
+                        <select
+                          name="inquiryCategory"
+                          value={formData.inquiryCategory}
+                          onChange={handleChange}
+                          className={`${styles.inputFields} ${errors.inquiryCategory ? styles.error : ""}`}
                         >
-                          戻る
-                        </button>
-                      )}
-                      <button
-                        type="submit"
-                        className={styles.submitButton}
-                        disabled={disableFlg}
-                        style={{
-                          pointerEvents: disableFlg ? "none" : "auto",
-                          opacity: disableFlg ? 0.6 : 1,
-                          width: currentStep === 1 ? 200 : 120,
-                        }}
-                      >
-                        {currentStep === 1 ? "入力内容を確認" : "送信"}
+                          <option value="">-- 選択してください --</option>
+                          <option value="一般的なお問い合わせ">一般的なお問い合わせ</option>
+                          <option value="サービスに関するお問い合わせ">サービスに関するお問い合わせ</option>
+                          <option value="技術サポート">技術サポート</option>
+                          <option value="その他">その他</option>
+                        </select>
+                        {errors.inquiryCategory && <span className={styles.errorMessage}>{errors.inquiryCategory}</span>}
+                      </div>
+
+                      <div className={styles.formGroup}>
+                        <label className={styles.labelField}>会社名</label>
+                        <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} className={styles.inputField} />
+                      </div>
+
+                      <div className={styles.formGroup}>
+                        <label className={styles.labelField}>
+                          氏名<span className={styles.required}>*</span>
+                        </label>
+                        <input
+                          type="text" name="name" value={formData.name}
+                          onChange={handleChange} maxLength={100}
+                          placeholder="例) 山田 太郎"
+                          className={`${styles.inputField} ${errors.name ? styles.error : ""}`}
+                        />
+                        {errors.name && <span className={styles.errorMessage}>{errors.name}</span>}
+                      </div>
+
+                      <div className={styles.formGroup}>
+                        <label className={styles.labelField}>
+                          お電話番号<span className={styles.required}>*</span>
+                        </label>
+                        <div className={styles.inputFieldWrapper}>
+                          <input type="text" name="phoneNumber1" value={formData.phoneNumber1} onChange={handleChange} maxLength={3} placeholder="065"
+                            className={`${styles.inputField} ${errors.phoneNumber || errors.phoneNumber1 ? styles.error : ""}`} />
+                          <span className={styles.divider}></span>
+                          <input type="text" name="phoneNumber2" value={formData.phoneNumber2} onChange={handleChange} maxLength={4} placeholder="6949"
+                            className={`${styles.inputField} ${errors.phoneNumber || errors.phoneNumber2 ? styles.error : ""}`} />
+                          <span className={styles.divider}></span>
+                          <input type="text" name="phoneNumber3" value={formData.phoneNumber3} onChange={handleChange} maxLength={4} placeholder="6949"
+                            className={`${styles.inputField} ${errors.phoneNumber || errors.phoneNumber3 ? styles.error : ""}`} />
+                        </div>
+                        {errors.phoneNumber1 && <span className={styles.errorMessage}>{errors.phoneNumber1}</span>}
+                        {errors.phoneNumber2 && <span className={styles.errorMessage}>{errors.phoneNumber2}</span>}
+                        {errors.phoneNumber3 && <span className={styles.errorMessage}>{errors.phoneNumber3}</span>}
+                        {errors.phoneNumber && <span className={styles.errorMessage}>{errors.phoneNumber}</span>}
+                      </div>
+
+                      <div className={styles.formGroup}>
+                        <label className={styles.labelField}>
+                          メールアドレス<span className={styles.required}>*</span>
+                        </label>
+                        <input type="text" name="emailAddress" value={formData.emailAddress} onChange={handleChange} maxLength={250}
+                          placeholder="例) example@genioindia.in"
+                          className={`${styles.inputField} ${errors.emailAddress ? styles.error : ""}`} />
+                        {errors.emailAddress && <span className={styles.errorMessage}>{errors.emailAddress}</span>}
+                      </div>
+
+                      <div className={styles.formGroup}>
+                        <label className={styles.labelField}>
+                          お問い合わせ内容<span className={styles.required}>*</span>
+                        </label>
+                        <textarea name="inquiryContent" value={formData.inquiryContent} onChange={handleChange} maxLength={1000}
+                          placeholder="具体的なお問い合わせ内容をご記入ください"
+                          className={`${styles.textareaField} ${errors.inquiryContent ? styles.error : ""}`} rows={5} />
+                        {errors.inquiryContent && <span className={styles.errorMessage}>{errors.inquiryContent}</span>}
+                      </div>
+                    </>
+                  )}
+
+                  {currentStep === 2 && (
+                    <>
+                      <div className={styles.formGroup}>
+                        <label className={styles.labelField}>お問い合わせ種別</label>
+                        <input disabled type="text" value={formData.inquiryCategory} className={styles.inputField} />
+                      </div>
+                      <div className={styles.formGroup}>
+                        <label className={styles.labelField}>会社名</label>
+                        <input disabled type="text" value={formData.companyName} className={styles.inputField} />
+                      </div>
+                      <div className={styles.formGroup}>
+                        <label className={styles.labelField}>氏名</label>
+                        <input disabled type="text" value={formData.name} className={styles.inputField} />
+                      </div>
+                      <div className={styles.formGroup}>
+                        <label className={styles.labelField}>お電話番号</label>
+                        <input disabled type="text" value={formData.phoneNumber} className={styles.inputField} />
+                      </div>
+                      <div className={styles.formGroup}>
+                        <label className={styles.labelField}>メールアドレス</label>
+                        <input disabled type="text" value={formData.emailAddress} className={styles.inputField} />
+                      </div>
+                      <div className={styles.formGroup}>
+                        <label className={styles.labelField}>お問い合わせ内容</label>
+                        <textarea disabled value={formData.inquiryContent} className={styles.textareaField} rows={5} />
+                      </div>
+                    </>
+                  )}
+
+                  <div className={currentStep === 1 ? styles.formGroup1 : styles.buttonContainer}>
+                    {currentStep === 2 && (
+                      <button type="button" onClick={handleBack} disabled={disableFlg} className={styles.backButton}>
+                        戻る
                       </button>
-                    </div>
-                  </form>
-                )}
-              </div>
-            </motion.section>
+                    )}
+                    <button
+                      type="submit"
+                      className={styles.submitButton}
+                      disabled={disableFlg}
+                      style={{ pointerEvents: disableFlg ? "none" : "auto", opacity: disableFlg ? 0.6 : 1 }}
+                    >
+                      {currentStep === 1 ? "確認" : "送信"}
+                    </button>
+                  </div>
+                </form>
+              )}
+            </div>
+          </motion.section>
+
+          <div className={styles.progress}>
+            <div className={styles.step}>
+              <span className={`${styles.stepNumber} ${currentStep >= 1 ? styles.active : styles.inactive}`}>01</span>
+              <span className={currentStep === 1 ? styles.stepLabel : styles.instepLabel}>入力</span>
+            </div>
+            <div className={styles.line}></div>
+            <div className={styles.step}>
+              <span className={`${styles.stepNumber} ${currentStep >= 2 ? styles.active : styles.inactive}`}>02</span>
+              <span className={currentStep === 2 ? styles.stepLabel : styles.instepLabel}>確認</span>
+            </div>
+            <div className={styles.line}></div>
+            <div className={styles.step}>
+              <span className={`${styles.stepNumber} ${currentStep >= 3 ? styles.active : styles.inactive}`}>03</span>
+              <span className={currentStep === 3 ? styles.stepLabel : styles.instepLabel}>完了</span>
+            </div>
           </div>
-        </motion.div>
-      </div>
-      <ScrollTop />
-      <Footer />
-    </>
-  );
+        </div>
+      </motion.div>
+    </div>
+    <ScrollTop />
+    <Footer />
+  </>
+);
 }

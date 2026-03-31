@@ -197,8 +197,9 @@
 .buttonContainer {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 60px;
 }
 
 .submitButton {
@@ -221,8 +222,8 @@
   background: #666;
   color: white;
   border: none;
-  padding: 0.75rem 2rem;
-  border-radius: 5px;
+  padding: 1rem 2rem;
+  border-radius: 18px;
   font-size: 1rem;
   cursor: pointer;
   font-family: "Inter", sans-serif;
@@ -314,6 +315,36 @@
   font-weight: 500;
   line-height: 1.8;
   margin-bottom: 2rem;
+}
+
+.inputFieldWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  width: 100%;        /* ← wrapper full width */
+  max-width: 500px;   /* ← match other inputs */
+}
+
+.inputFieldWrapper .inputField {
+  width: 0 !important;     /* ← !important to override the 500px */
+  min-width: 0 !important;
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* 3-digit box smaller, 4-digit boxes equal */
+.inputFieldWrapper .inputField:nth-child(1) { flex: 3 !important; }
+.inputFieldWrapper .inputField:nth-child(3) { flex: 4 !important; }
+.inputFieldWrapper .inputField:nth-child(5) { flex: 4 !important; }
+
+.divider {
+  width: 14px;
+  height: 2px;
+  background-color: #555;
+  flex-shrink: 0;
 }
 
 /* Mobile View (below 900px) */
@@ -432,6 +463,20 @@
     margin-top: 0.25rem;
     width: 100%;
   }
+  .inputFieldWrapper {
+  flex-direction: row;      /* ← stay horizontal on mobile too */
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.inputFieldWrapper .inputField {
+  width: auto;
+  flex: 1;
+  min-width: 0;
+  max-width: none;
+  padding: 0.75rem 0.3rem;
+  font-size: 0.875rem;
+}
 }
 
 @media (max-width: 1200px) {

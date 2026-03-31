@@ -5,7 +5,7 @@ import Header from "src/app/en/components/Header";
 import Footer from "src/app/en/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "src/app/en/styles/Contactus.module.css";
+import styles from "src/app/common/styles/Contactus.module.css";
 import "../../globals.css";
 import emailicon from "src/assets/images/contactus/email.png";
 import returnhomeicon from "src/assets/images/contactus/returnhome.png";
@@ -141,6 +141,15 @@ export default function ContactForm() {
         }
     };
 
+    const handleBack = () => {
+        if (checkFlg) {
+            setCheckFlg(false);
+            setInputFlg(true);
+            setCompletedFlg(false);
+            setButtonFlg(false); 
+        }
+    };
+
     useEffect(() => {
         setIsClient(true);
     }, []);
@@ -253,15 +262,15 @@ export default function ContactForm() {
                                                 />
                                                 {errors.inquiryContent && <span className={styles.errorMessage}>{errors.inquiryContent}</span>}
                                             </div>
-
-                                            <div className={styles.formGroup1}>
-                                                <button type="submit" className={styles.submitButton} disabled={disableFlg}
-                                                style={{
-                                                    pointerEvents: disableFlg ? "none" : "auto",
-                                                    opacity: disableFlg ? 0.6 : 1
-                                                }}>
-                                                    {!buttonFlg ? 'Confirm' : 'Send'}
+                                            <div className={styles.buttonContainer}>
+                                            {checkFlg && (
+                                                <button type="button" onClick={handleBack} disabled={disableFlg}className={styles.backButton}>
+                                                    Back
                                                 </button>
+                                            )}
+                                            <button type="submit" className={styles.submitButton} disabled={disableFlg} style={{ pointerEvents: disableFlg ? "none" : "auto", opacity: disableFlg ? 0.6 : 1}}>
+                                                {inputFlg ? "Confirm" : "Send"}
+                                            </button>
                                             </div>
 
                                         </form> </>
