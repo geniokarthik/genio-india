@@ -173,11 +173,11 @@ export default function ServiceEn() {
                   <div className={styles.pattern_grid}>
                     {d.patterns.map((p, pi) => (
                       <div key={pi} className={styles.pattern_card}>
-                        <p className={styles.pattern_card__label}>{p.label}</p>
-                        <p className={styles.pattern_card__desc}>{p.desc}</p>
                         <div className={styles.pattern_card__img}>
                           <Image src={p.img} alt={p.alt} width={480} height={260} style={{ width: "100%", height: "auto", borderRadius: "10px", objectFit: "contain" }} />
                         </div>
+                        <p className={styles.pattern_card__label}>{p.label}</p>
+                        <p className={styles.pattern_card__desc}>{p.desc}</p>
                       </div>
                     ))}
                   </div>

@@ -17,11 +17,44 @@ import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 
 
 const SERVICES = [
-  { id: "web-development", icon: "🌐", label: "Web Development",    sub: "Corporate sites · Business systems" },
-  { id: "app-development", icon: "📱", label: "App Development",    sub: "iOS / Android" },
-  { id: "sql-database",    icon: "🗄️", label: "Database",           sub: "MySQL design & operations" },
-  { id: "japanese-study",  icon: "🇯🇵", label: "Japanese Education", sub: "Japanese for engineers" },
+  { id: "web-development", label: "Web Development",    sub: "Corporate sites · Business systems" },
+  { id: "app-development", label: "App Development",    sub: "iOS / Android" },
+  { id: "sql-database",    label: "Database",           sub: "MySQL design & operations" },
+  { id: "japanese-study",  label: "Japanese Education", sub: "Japanese for engineers" },
 ];
+
+const ServiceIcons = {
+  "web-development": (
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e02311" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M2 12h20"/>
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+    </svg>
+  ),
+  "app-development": (
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e02311" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="5" y="2" width="14" height="20" rx="2"/>
+      <path d="M9 6h6"/>
+      <circle cx="12" cy="17" r="1" fill="#e02311" stroke="none"/>
+    </svg>
+  ),
+  "sql-database": (
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e02311" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <ellipse cx="12" cy="5" rx="9" ry="3"/>
+      <path d="M3 5v4c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+      <path d="M3 9v4c0 1.66 4 3 9 3s9-1.34 9-3V9"/>
+      <path d="M3 13v4c0 1.66 4 3 9 3s9-1.34 9-3v-4"/>
+    </svg>
+  ),
+  "japanese-study": (
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e02311" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+      <line x1="9" y1="9" x2="15" y2="9"/>
+      <line x1="9" y1="13" x2="13" y2="13"/>
+    </svg>
+  ),
+};
 
 const techAreas = [
   {
@@ -566,7 +599,7 @@ export default function ServiceEn() {
                     onClick={() => scrollTo(`section-${item.id}`)}
                     className={styles.icon_card}
                   >
-                    <div className={styles.icon_card__emoji}>{item.icon}</div>
+                    <div className={styles.icon_card__emoji}>{ServiceIcons[item.id]}</div>
                     <p className={styles.icon_card__label}>{item.label}</p>
                     <div className={styles.icon_card__sub_row}>
                       <p className={styles.icon_card__sub}>{item.sub}</p>
