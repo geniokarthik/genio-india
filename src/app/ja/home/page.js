@@ -83,7 +83,7 @@ const projectGroups = [
       "開発支援、保守、運用などを通して、お客様やパートナーと一緒に取り組んでいるサービスです。",
     image: IMG.case3,
     alt: "GENIO INDIAが関わっているサービス",
-    projects: ["Tarte", "EAP", "Memory Hint", "TCC"],
+    projects: ["Tarte"],
     href: "/ja/service?projectFilter=involved#projects",
   },
 ];
