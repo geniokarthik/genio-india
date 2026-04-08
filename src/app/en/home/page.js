@@ -9,15 +9,19 @@ import Footer from "../components/Footer";
 import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import styles from "src/app/common/styles/HomeRedesign.module.css";
+import DesktopImg from "src/assets/images/service/desktop.png";
+import AppDevelopmentImg from "src/assets/images/service/appdevelopment.png";
+import MySqlImg from "src/assets/images/service/mysql.png";
+import LanguageTeachingImg from "src/assets/images/service/languageteaching.png";
 
 const IMG = {
   hero: "/images/home/hero-team.jpg",
   heroTwo: "/images/home/hero-team-en.jpg",
   heroThree: "/images/home/hero-collaboration.jpg",
-  webDev: "/images/home/service-web.jpg",
-  appDev: "/images/home/service-app.jpg",
-  mysql: "/images/home/service-mysql.jpg",
-  japanese: "/images/home/service-japanese.jpg",
+  webDev: DesktopImg.src,
+  appDev: AppDevelopmentImg.src,
+  mysql: MySqlImg.src,
+  japanese: LanguageTeachingImg.src,
   case1: "/images/home/project-case1.jpg",
   case2: "/images/home/project-case2.jpg",
   case3: "/images/home/project-case3.jpg",
@@ -79,7 +83,7 @@ const projectGroups = [
       "Projects where our team contributes development, maintenance, or operational support together with partners and clients.",
     image: IMG.case3,
     alt: "Services supported by Genio India",
-    projects: ["Tarte", "EAP", "Memory Hint", "TCC"],
+    projects: ["Tarte"],  
   },
 ];
 

@@ -9,6 +9,9 @@ import DownArrowImg from "src/assets/images/service/downarrow.png";
 import DesktopImg from "src/assets/images/service/desktop.png";
 import AppDevelopmentImg from "src/assets/images/service/appdevelopment.png";
 import LanguageTeachingImg from "src/assets/images/service/languageteaching.png";
+import SalesImg from "src/assets/images/service/Sales.png";
+import tarteImg from "src/assets/images/service/tarte.png";
+import chatbotImg from "src/assets/images/service/chatbot.png";
 import MySqlImg from "src/assets/images/service/mysql.png";
 import Header from "src/app/ja/components/Header";
 import Footer from "src/app/ja/components/Footer";
@@ -215,7 +218,9 @@ const PROJECTS = [
     {
         id: "sl", type: "built", no: "01",
         title: "Sales Ledger",
-        img: DesktopImg,
+        img: SalesImg,
+        cardImageFit: "contain",
+        drawerImageFit: "contain",
         tagline: "営業チームのための台帳管理システム。売上・案件・顧客情報を一元管理し、業務効率を大幅に向上させます。",
         info: [
             { label: "クライアント", val: "GENIO INDIA" },
@@ -229,7 +234,7 @@ const PROJECTS = [
     {
         id: "cb", type: "built", no: "02",
         title: "Chatbot",
-        img: AppDevelopmentImg,
+        img: chatbotImg,
         tagline: "AIを活用したカスタマーサポート自動化ボット。24時間365日の即時対応を実現します。",
         info: [
             { label: "クライアント", val: "GENIO INDIA" },
@@ -243,7 +248,9 @@ const PROJECTS = [
     {
         id: "ta", type: "involved", no: "03",
         title: "Tarte",
-        img: LanguageTeachingImg,
+        img: tarteImg,
+        cardImageFit: "contain",
+        drawerImageFit: "contain",
         tagline: "ユーザー体験を最優先に設計されたサービス。機能設計とフロントエンド実装フェーズで中核を担いました。",
         info: [
             { label: "クライアント", val: "外部クライアント" },
@@ -254,48 +261,48 @@ const PROJECTS = [
         outline: "デザインシステムの構築からコンポーネント実装まで、フロントエンド全般を担当しました。レスポンシブ対応、アクセシビリティ改善、パフォーマンス最適化を実施。ユーザーテストのフィードバックをもとに、反復的な改善を行いました。",
         tags: ["UI/UX", "React", "フロントエンド", "デザインシステム", "レスポンシブ", "アクセシビリティ"],
     },
-    {
-        id: "eap", type: "involved", no: "04",
-        title: "EAP",
-        img: MySqlImg,
-        tagline: "エンタープライズ向けアプリケーションプラットフォーム。開発・保守・機能拡張に継続参画しています。",
-        info: [
-            { label: "クライアント", val: "外部クライアント" },
-            { label: "カテゴリ",     val: "エンタープライズ / SaaS" },
-            { label: "参画期間",     val: "2022〜継続中" },
-            { label: "担当範囲",     val: "バックエンド / API設計 / DB最適化" },
-        ],
-        outline: "大規模なエンタープライズプラットフォームのバックエンド開発・保守を担当。RESTful API設計、データベース最適化、マイクロサービス間の連携実装を行いました。CI/CDパイプラインの整備によりリリースサイクルを短縮しました。",
-        tags: ["エンタープライズ", "バックエンド", "API", "MySQL", "CI/CD", "マイクロサービス"],
-    },
-    {
-        id: "mh", type: "involved", no: "05",
-        title: "Memory Hint",
-        img: DesktopImg,
-        tagline: "学習支援・記憶定着を目的とした教育テックアプリ。EdTech分野での実績を積みました。",
-        info: [
-            { label: "クライアント", val: "外部クライアント" },
-            { label: "カテゴリ",     val: "EdTech / モバイルアプリ" },
-            { label: "参画期間",     val: "2023" },
-            { label: "担当範囲",     val: "モバイルアプリ開発 / テスト" },
-        ],
-        outline: "学習者の記憶定着を科学的にサポートするモバイルアプリの開発に参画。間隔反復アルゴリズムの実装、進捗可視化機能、通知システムを構築しました。React Nativeによるクロスプラットフォーム対応でiOS・Android両方をサポート。",
-        tags: ["EdTech", "React Native", "モバイルアプリ", "学習支援", "iOS", "Android"],
-    },
-    {
-        id: "tcc", type: "involved", no: "06",
-        title: "TCC",
-        img: AppDevelopmentImg,
-        tagline: "企業向けコミュニケーション・業務管理システム。SaaSアーキテクチャの設計・構築に参画しました。",
-        info: [
-            { label: "クライアント", val: "外部クライアント" },
-            { label: "カテゴリ",     val: "SaaS / コミュニケーション" },
-            { label: "参画期間",     val: "2023〜2024" },
-            { label: "担当範囲",     val: "フルスタック / クラウドインフラ" },
-        ],
-        outline: "企業内コミュニケーションと業務管理を統合したSaaSプラットフォームの開発に参画。リアルタイムメッセージング、タスク管理、ファイル共有機能を実装。AWSを活用したスケーラブルなインフラ設計により大規模ユーザーへの対応を実現しました。",
-        tags: ["SaaS", "コミュニケーション", "クラウド", "AWS", "WebSocket", "フルスタック"],
-    },
+    // {
+    //     id: "eap", type: "involved", no: "04",
+    //     title: "EAP",
+    //     img: MySqlImg,
+    //     tagline: "エンタープライズ向けアプリケーションプラットフォーム。開発・保守・機能拡張に継続参画しています。",
+    //     info: [
+    //         { label: "クライアント", val: "外部クライアント" },
+    //         { label: "カテゴリ",     val: "エンタープライズ / SaaS" },
+    //         { label: "参画期間",     val: "2022〜継続中" },
+    //         { label: "担当範囲",     val: "バックエンド / API設計 / DB最適化" },
+    //     ],
+    //     outline: "大規模なエンタープライズプラットフォームのバックエンド開発・保守を担当。RESTful API設計、データベース最適化、マイクロサービス間の連携実装を行いました。CI/CDパイプラインの整備によりリリースサイクルを短縮しました。",
+    //     tags: ["エンタープライズ", "バックエンド", "API", "MySQL", "CI/CD", "マイクロサービス"],
+    // },
+    // {
+    //     id: "mh", type: "involved", no: "05",
+    //     title: "Memory Hint",
+    //     img: DesktopImg,
+    //     tagline: "学習支援・記憶定着を目的とした教育テックアプリ。EdTech分野での実績を積みました。",
+    //     info: [
+    //         { label: "クライアント", val: "外部クライアント" },
+    //         { label: "カテゴリ",     val: "EdTech / モバイルアプリ" },
+    //         { label: "参画期間",     val: "2023" },
+    //         { label: "担当範囲",     val: "モバイルアプリ開発 / テスト" },
+    //     ],
+    //     outline: "学習者の記憶定着を科学的にサポートするモバイルアプリの開発に参画。間隔反復アルゴリズムの実装、進捗可視化機能、通知システムを構築しました。React Nativeによるクロスプラットフォーム対応でiOS・Android両方をサポート。",
+    //     tags: ["EdTech", "React Native", "モバイルアプリ", "学習支援", "iOS", "Android"],
+    // },
+    // {
+    //     id: "tcc", type: "involved", no: "06",
+    //     title: "TCC",
+    //     img: AppDevelopmentImg,
+    //     tagline: "企業向けコミュニケーション・業務管理システム。SaaSアーキテクチャの設計・構築に参画しました。",
+    //     info: [
+    //         { label: "クライアント", val: "外部クライアント" },
+    //         { label: "カテゴリ",     val: "SaaS / コミュニケーション" },
+    //         { label: "参画期間",     val: "2023〜2024" },
+    //         { label: "担当範囲",     val: "フルスタック / クラウドインフラ" },
+    //     ],
+    //     outline: "企業内コミュニケーションと業務管理を統合したSaaSプラットフォームの開発に参画。リアルタイムメッセージング、タスク管理、ファイル共有機能を実装。AWSを活用したスケーラブルなインフラ設計により大規模ユーザーへの対応を実現しました。",
+    //     tags: ["SaaS", "コミュニケーション", "クラウド", "AWS", "WebSocket", "フルスタック"],
+    // },
 ];
 
 const PROJECT_FILTERS = [
@@ -334,7 +341,7 @@ function DetailDrawer({ project, onClose }) {
                         transition={{ duration: 0.38, ease: [0.22, 0.68, 0, 1.05] }}
                     >
                         <div className={styles.drawerHero}>
-                            <Image src={project.img} alt={project.title} fill style={{ objectFit: "cover" }} priority />
+                            <Image src={project.img} alt={project.title} fill style={{ objectFit: project.drawerImageFit || project.imageFit || "cover" }} priority />
                             <div className={styles.drawerHeroGradient} />
                             <span className={styles.drawerHeroNo}>No.{project.no}</span>
                             <button className={styles.drawerClose} onClick={onClose} aria-label="閉じる">✕</button>
@@ -714,7 +721,7 @@ export default function Service_Details() {
                                         onClick={() => setActiveProject(p)}
                                     >
                                         <div className={styles.cardImg}>
-                                            <Image src={p.img} alt={p.title} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw" />
+                                            <Image src={p.img} alt={p.title} fill style={{ objectFit: p.cardImageFit || p.imageFit || "cover" }} sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw" />
                                             <div className={`${styles.cardAccentLine} ${p.type === "built" ? styles.cardAccentBuilt : styles.cardAccentInvolved}`} />
                                             <div className={styles.cardImgGradient} />
                                         </div>

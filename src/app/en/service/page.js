@@ -8,6 +8,9 @@ import DownArrowImg from "src/assets/images/service/downarrow.png";
 import DesktopImg from "src/assets/images/service/desktop.png";
 import AppDevelopmentImg from "src/assets/images/service/appdevelopment.png";
 import LanguageTeachingImg from "src/assets/images/service/languageteaching.png";
+import SalesImg from "src/assets/images/service/Sales.png";
+import chatbotImg from "src/assets/images/service/chatbot.png";
+import tarteImg from "src/assets/images/service/tarte.png";
 import MySqlImg from "src/assets/images/service/mysql.png";
 import Header from "src/app/en/components/Header";
 import Footer from "src/app/en/components/Footer";
@@ -217,7 +220,9 @@ const PROJECTS = [
   {
     id: "sl", type: "built", no: "01",
     title: "Sales Ledger",
-    img: DesktopImg,
+    img: SalesImg,
+    cardImageFit: "contain",
+    drawerImageFit: "contain",
     tagline: "A ledger management system built for sales teams. Centralizes revenue, deals, and customer data to dramatically improve operational efficiency.",
     info: [
       { label: "Client",    val: "GENIO INDIA" },
@@ -231,7 +236,7 @@ const PROJECTS = [
   {
     id: "cb", type: "built", no: "02",
     title: "Chatbot",
-    img: AppDevelopmentImg,
+    img: chatbotImg,
     tagline: "An AI-powered customer support automation bot. Delivers instant 24/7 responses to inquiries.",
     info: [
       { label: "Client",    val: "GENIO INDIA" },
@@ -245,7 +250,9 @@ const PROJECTS = [
   {
     id: "ta", type: "involved", no: "03",
     title: "Tarte",
-    img: LanguageTeachingImg,
+    img: tarteImg,
+    cardImageFit: "contain",
+    drawerImageFit: "contain",
     tagline: "A user-experience-first service. We played a central role in feature design and frontend implementation.",
     info: [
       { label: "Client",       val: "External Client" },
@@ -256,48 +263,48 @@ const PROJECTS = [
     outline: "We handled the full frontend — from building the design system to component implementation. Delivered responsive design, accessibility improvements, and performance optimization. Iteratively refined the product based on user testing feedback.",
     tags: ["UI/UX", "React", "Frontend", "Design System", "Responsive", "Accessibility"],
   },
-  {
-    id: "eap", type: "involved", no: "04",
-    title: "EAP",
-    img: MySqlImg,
-    tagline: "An enterprise-grade application platform. We provide ongoing development, maintenance, and feature expansion.",
-    info: [
-      { label: "Client",       val: "External Client" },
-      { label: "Category",     val: "Enterprise / SaaS" },
-      { label: "Involvement",  val: "2022–Present" },
-      { label: "Role",         val: "Backend / API Design / DB Optimization" },
-    ],
-    outline: "We handle backend development and maintenance for a large-scale enterprise platform. Responsibilities include RESTful API design, database optimization, and microservice integration. We also streamlined the CI/CD pipeline to shorten release cycles.",
-    tags: ["Enterprise", "Backend", "API", "MySQL", "CI/CD", "Microservices"],
-  },
-  {
-    id: "mh", type: "involved", no: "05",
-    title: "Memory Hint",
-    img: DesktopImg,
-    tagline: "An EdTech app designed to support learning and memory retention. Proud work in the education technology space.",
-    info: [
-      { label: "Client",       val: "External Client" },
-      { label: "Category",     val: "EdTech / Mobile App" },
-      { label: "Involvement",  val: "2023" },
-      { label: "Role",         val: "Mobile App Development / QA" },
-    ],
-    outline: "We contributed to a mobile app designed to scientifically support memory retention. Implemented a spaced-repetition algorithm, progress visualization, and a notification system. Built with React Native for cross-platform support on both iOS and Android.",
-    tags: ["EdTech", "React Native", "Mobile App", "Learning Support", "iOS", "Android"],
-  },
-  {
-    id: "tcc", type: "involved", no: "06",
-    title: "TCC",
-    img: AppDevelopmentImg,
-    tagline: "A communication and business management system for enterprises. We contributed to the SaaS architecture design and build.",
-    info: [
-      { label: "Client",       val: "External Client" },
-      { label: "Category",     val: "SaaS / Communication" },
-      { label: "Involvement",  val: "2023–2024" },
-      { label: "Role",         val: "Full Stack / Cloud Infrastructure" },
-    ],
-    outline: "We participated in building a SaaS platform integrating corporate communications and business management. Implemented real-time messaging, task management, and file sharing. Designed a scalable AWS infrastructure to support large user bases.",
-    tags: ["SaaS", "Communication", "Cloud", "AWS", "WebSocket", "Full Stack"],
-  },
+  // {
+  //   id: "eap", type: "involved", no: "04",
+  //   title: "EAP",
+  //   img: MySqlImg,
+  //   tagline: "An enterprise-grade application platform. We provide ongoing development, maintenance, and feature expansion.",
+  //   info: [
+  //     { label: "Client",       val: "External Client" },
+  //     { label: "Category",     val: "Enterprise / SaaS" },
+  //     { label: "Involvement",  val: "2022–Present" },
+  //     { label: "Role",         val: "Backend / API Design / DB Optimization" },
+  //   ],
+  //   outline: "We handle backend development and maintenance for a large-scale enterprise platform. Responsibilities include RESTful API design, database optimization, and microservice integration. We also streamlined the CI/CD pipeline to shorten release cycles.",
+  //   tags: ["Enterprise", "Backend", "API", "MySQL", "CI/CD", "Microservices"],
+  // },
+  // {
+  //   id: "mh", type: "involved", no: "05",
+  //   title: "Memory Hint",
+  //   img: DesktopImg,
+  //   tagline: "An EdTech app designed to support learning and memory retention. Proud work in the education technology space.",
+  //   info: [
+  //     { label: "Client",       val: "External Client" },
+  //     { label: "Category",     val: "EdTech / Mobile App" },
+  //     { label: "Involvement",  val: "2023" },
+  //     { label: "Role",         val: "Mobile App Development / QA" },
+  //   ],
+  //   outline: "We contributed to a mobile app designed to scientifically support memory retention. Implemented a spaced-repetition algorithm, progress visualization, and a notification system. Built with React Native for cross-platform support on both iOS and Android.",
+  //   tags: ["EdTech", "React Native", "Mobile App", "Learning Support", "iOS", "Android"],
+  // },
+  // {
+  //   id: "tcc", type: "involved", no: "06",
+  //   title: "TCC",
+  //   img: AppDevelopmentImg,
+  //   tagline: "A communication and business management system for enterprises. We contributed to the SaaS architecture design and build.",
+  //   info: [
+  //     { label: "Client",       val: "External Client" },
+  //     { label: "Category",     val: "SaaS / Communication" },
+  //     { label: "Involvement",  val: "2023–2024" },
+  //     { label: "Role",         val: "Full Stack / Cloud Infrastructure" },
+  //   ],
+  //   outline: "We participated in building a SaaS platform integrating corporate communications and business management. Implemented real-time messaging, task management, and file sharing. Designed a scalable AWS infrastructure to support large user bases.",
+  //   tags: ["SaaS", "Communication", "Cloud", "AWS", "WebSocket", "Full Stack"],
+  // },
 ];
 
 const PROJECT_FILTERS = [
@@ -328,7 +335,7 @@ function DetailDrawer({ project, onClose }) {
           <motion.div className={styles.detailBackdrop} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.28 }} onClick={onClose} />
           <motion.div className={styles.detailDrawer} initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ duration: 0.38, ease: [0.22, 0.68, 0, 1.05] }}>
             <div className={styles.drawerHero}>
-              <Image src={project.img} alt={project.title} fill style={{ objectFit: "cover" }} priority />
+              <Image src={project.img} alt={project.title} fill style={{ objectFit: project.drawerImageFit || project.imageFit || "cover" }} priority />
               <div className={styles.drawerHeroGradient} />
               <span className={styles.drawerHeroNo}>No.{project.no}</span>
               <button className={styles.drawerClose} onClick={onClose} aria-label="Close">✕</button>
@@ -674,7 +681,7 @@ export default function ServiceEn() {
                     onClick={() => setActiveProject(p)}
                   >
                     <div className={styles.cardImg}>
-                      <Image src={p.img} alt={p.title} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw" />
+                      <Image src={p.img} alt={p.title} fill style={{ objectFit: p.cardImageFit || p.imageFit || "cover" }} sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw" />
                       <div className={`${styles.cardAccentLine} ${p.type === "built" ? styles.cardAccentBuilt : styles.cardAccentInvolved}`} />
                       <div className={styles.cardImgGradient} />
                     </div>

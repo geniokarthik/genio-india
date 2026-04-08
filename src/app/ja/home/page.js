@@ -9,15 +9,19 @@ import Footer from "src/app/ja/components/Footer";
 import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import styles from "src/app/common/styles/HomeRedesign.module.css";
+import DesktopImg from "src/assets/images/service/desktop.png";
+import AppDevelopmentImg from "src/assets/images/service/appdevelopment.png";
+import MySqlImg from "src/assets/images/service/mysql.png";
+import LanguageTeachingImg from "src/assets/images/service/languageteaching.png";
 
 const IMG = {
   hero: "/images/home/hero-team.jpg",
   heroTwo: "/images/home/hero-team-jp.jpg",
   heroThree: "/images/home/hero-collaboration.jpg",
-  webDev: "/images/home/service-web.jpg",
-  appDev: "/images/home/service-app.jpg",
-  mysql: "/images/home/service-mysql.jpg",
-  japanese: "/images/home/service-japanese.jpg",
+  webDev: DesktopImg.src,
+  appDev: AppDevelopmentImg.src,
+  mysql: MySqlImg.src,
+  japanese: LanguageTeachingImg.src,
   case2: "/images/home/project-case2.jpg",
   case3: "/images/home/project-case3.jpg",
 };
@@ -137,11 +141,11 @@ export default function Home() {
             <div className={styles.heroContent}>
               <p className={styles.eyebrow}>共に考え、共に形にする</p>
               <h1 className={styles.heroTitle}>
-                あらゆる企業のための高品質なWebサイト制作
+                あらゆる企業向けに高品質なWebサイトを提供
               </h1>
               <p className={styles.heroDescription}>
-                課題整理から設計、開発、改善まで一貫して対応します。成果につながるWeb、
-                アプリ、データベースのソリューションを、実装品質まで含めて丁寧に提供します。
+                2022年から、革新的なWeb、アプリ、データベースのソリューションを、常に高い品質で提供しています。
+                私たちは、「誰も思いつかなかった」アイデアを実現し、関わる全ての人々が「笑顔」になれるサービスを作り上げます。 また、「誰もが使いやすい」ことを最優先に、誰もが簡単に利用できるサービスを追求し続けています。
               </p>
               <div className={styles.heroActions}>
                 <Link href="/ja/contactus" className={styles.primaryButton}>
