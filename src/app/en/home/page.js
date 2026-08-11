@@ -89,8 +89,8 @@ const projectGroups = [
 
 const stats = [
   { value: "8", label: "Developers", icon: "👥" },
-  { value: "5", label: "Ongoing Projects", icon: "📊" },
-  { value: "5", label: "Delivered Projects", icon: "✅" },
+  { value: "4", label: "Ongoing Projects", icon: "📊" },
+  { value: "9", label: "Delivered Projects", icon: "✅" },
 ];
 
 const profile = [

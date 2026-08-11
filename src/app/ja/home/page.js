@@ -90,8 +90,8 @@ const projectGroups = [
 
 const stats = [
   { value: "8", label: "開発者数", icon: "👥" },
-  { value: "5", label: "進行中のプロジェクト", icon: "📊" },
-  { value: "5", label: "納品プロジェクト", icon: "✅" },
+  { value: "4", label: "進行中のプロジェクト", icon: "📊" },
+  { value: "9", label: "納品プロジェクト", icon: "✅" },
 ];
 
 const profile = [
