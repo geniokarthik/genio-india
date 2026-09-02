@@ -64,14 +64,14 @@ export default function AboutUs() {
           viewport={{ once: true }}
           className={styles.timelineSection}
         >
-          <div className={styles.timeLine} ref={timelineRef}>
+          <div className={styles.timeline} ref={timelineRef}>
             <div className={styles.timelineItem}>
               <div className={styles.timelineContent}>
                 <span className={styles.year}>2026年</span>
-                <span className={styles.text}> - 日本企業から継続的に選ばれる会社になる</span> 
+                <span className={styles.text}> - 日本企業から継続的に選ばれる会社になる</span>
                 <p className={styles.description} style={{ fontSize: "1.1rem" }}>
                   日本企業から仕事を受託するだけでなく、安全・品質・効率を兼ね備えた開発体制を標準化する。
-                </p>    
+                </p>
                 <p className={styles.description}>
                   継続契約や紹介につながる、長期的な信頼関係を構築する。
                 </p>
@@ -85,10 +85,10 @@ export default function AboutUs() {
             <div className={styles.timelineItem}>
               <div className={styles.timelineContent}>
                 <span className={styles.year}>2025年</span>
-                <span className={styles.text}> - 日本語教育の拡充とグローバル人材支援</span> 
+                <span className={styles.text}> - 日本語教育の拡充とグローバル人材支援</span>
                 <p className={styles.description} style={{ fontSize: "1.1rem" }}>
                   エンジニア向けの日本語教育に加え、日本語を学びたい大学生や卒業生を対象とした研修プログラムを開始しました。
-                </p>    
+                </p>
                 <p className={styles.description}>
                   特に建設業界に注力し、業界に特化した日本語研修の提供と、優秀な人材と日本企業をつなぐ新たなマッチングサービスを展開しました。
                 </p>
@@ -102,7 +102,7 @@ export default function AboutUs() {
             <div className={styles.timelineItem}>
               <div className={styles.timelineContent}>
                 <span className={styles.year}>2024年</span>
-                <span className={styles.text}> -  新拠点の開設と人材育成</span>               
+                <span className={styles.text}> -  新拠点の開設と人材育成</span>
                 <p className={styles.description}>
                   日本市場向けのプロジェクトをより効果的に支援するため、エンジニア向けの日本語教育を開始しました。
                 </p>
@@ -122,7 +122,7 @@ export default function AboutUs() {
                 <span className={styles.text}> - 事業拡大と開発領域の拡張</span>
                 <p className={styles.description}>
                   日本企業との提携を拡大し、Webシステムおよびモバイルアプリ開発サービスを正式に開始しました。
-                </p>               
+                </p>
                 <p className={styles.description}>
                   アジャイル開発手法を導入することで、迅速かつ柔軟な開発プロセスを確立しました。
                 </p>
@@ -151,6 +151,7 @@ export default function AboutUs() {
             src={sidelogo}
             alt="スローガンアイコン"
             className={styles.heroBackgroundGradient}
+            style={{ width: "auto", height: "auto" }}
           />
         </motion.section>
         <TeamSection />

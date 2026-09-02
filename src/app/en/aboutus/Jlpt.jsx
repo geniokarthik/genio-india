@@ -8,12 +8,13 @@ import karthik from "src/assets/images/our_team/karthik.png";
 import naveen from "src/assets/images/our_team/naveen.png";
 import ajith from "src/assets/images/our_team/ajith.png";
 import kavinesh from "src/assets/images/our_team/kavinesh.png";
+import sivaraj from "src/assets/images/our_team/sivaraj.png";
 import premkumar from "src/assets/images/jlpt/premkumar.jpg";
-import linkedin from "src/assets/images/our_team/linkedin.png";
+import joswa from "src/assets/images/jlpt/joswa.jpg";
 
 const teamMembers = [
     {
-        jlpt: "N2",
+        jlpt: "N1",
         name: "Karthik",
         role: "Project Manager / Bridge SE",
         image: karthik,
@@ -31,20 +32,33 @@ const teamMembers = [
         image: ajith,
     },
     {
-        jlpt: "N5",
+        jlpt: "N4",
         name: "Kavinesh",
         role: "Junior Software Developer",
         image: kavinesh,
+    },
+    {
+        jlpt: "N5",
+        name: "Sivaraj",
+        role: "Junior Software Developer",
+        image: sivaraj,
     },
 ];
 
 const others = [
     {
-        jlpt: "N5",
+        jlpt: "N4",
         name: "Premkumar",
         role: "Mechanical Designer",
         image: premkumar,
         linkedin: "https://www.linkedin.com/in/premkumar-s-174896249",
+    },
+    {
+        jlpt: "N5",
+        name: "Joswa",
+        role: "Japanese Language Program Participant",
+        image: joswa,
+        linkedin: "",
     },
 ];
 
@@ -102,15 +116,15 @@ export default function JapaneseClear() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.8 }}
             viewport={{ once: true }}
-            className={styles.hero}
+            className={styles.jlptSection}
             >
 
             <div className={styles.container}>
-                <h2 className={styles.heroTitle}>
-                    Our Commitment to Japanese Language Education
-                </h2>
-
-                <p className={styles.heroSubtitle}>
+                <div className={styles.secHead}>
+                  <p className={styles.secEyebrow}>Japanese Language Education</p>
+                  <h2 className={styles.secH2}>Our Commitment to <span>Japanese Language</span></h2>
+                </div>
+                <p className={styles.jlptIntro}>
                     In addition to our system development capabilities, we actively invest
                     in Japanese language education. To ensure smooth communication with
                     Japanese clients, we continuously provide Japanese language training
@@ -127,40 +141,27 @@ export default function JapaneseClear() {
                         if (!members || members.length === 0) return null;
 
                         return (
-                            <div key={level} className={styles.jlptLevel}>
-                                <div className={styles.levelHeader}>
-                                    <h3 className={styles.levelTitle}>
-                                        JLPT {level} Certified{" "}
-                                        {members.length === 1 ? "Member" : "Members"}
-                                    </h3>
+                            <div key={level} className={styles.jlptGroup}>
+                                <div className={styles.jlptGroupHead}>
+                                  <div className={`${styles.jlptBadge} ${styles[`jlptLevel${level}`]}`}>{level}</div>
+                                  <h3 className={styles.jlptGroupTitle}>
+                                      JLPT {level} Certified {members.length === 1 ? "Member" : "Members"}
+                                  </h3>
                                 </div>
-                                <p className={styles.levelSubtitle}>
+                                <p className={styles.jlptGroupSub}>
                                     {getSubtitleText(level)}
                                 </p>
 
-                                <div className={styles.membersList}>
+                                <div className={styles.jlptCards}>
                                     {members.map((member, index) => (
-                                        <div key={index} className={styles.memberCard}>
-                                            <div className={styles.memberImageWrapper}>
-                                                <Image
-                                                    src={member.image}
-                                                    alt={member.name}
-                                                    className={styles.jlptmemberImage}
-                                                    width={140}
-                                                    height={140}
-                                                />
+                                        <div key={index} className={styles.jlptCard}>
+                                            <div className={styles.jlptCardPhoto}>
+                                                <Image src={member.image} alt={member.name} width={72} height={72} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
                                             </div>
-
-                                            <div className={styles.memberDetails}>
-                                                <h4 className={styles.memberName}>{member.name}</h4>
-
-                                                {member.role && (
-                                                    <p className={styles.memberRole}>{member.role}</p>
-                                                )}
-
-                                                <p className={styles.memberDescription}>
-                                                    {member.description}
-                                                </p>
+                                            <div>
+                                                <p className={styles.jlptCardName}>{member.name}</p>
+                                                <p className={styles.jlptCardRole}>{member.role}</p>
+                                                <span className={`${styles.jlptPill} ${styles[`jlptPill${level}`]}`}>JLPT {level}</span>
                                             </div>
                                         </div>
                                     ))}
@@ -170,25 +171,16 @@ export default function JapaneseClear() {
                     })}
 
                     {/* OTHERS – EXTERNAL JAPANESE LANGUAGE PROGRAM PARTICIPANTS (Grouped by JLPT Level) */}
-                    <h2 className={styles.heroTitle}>
-                        JLPT Certified Members (Japanese Language Program Participants)
-                    </h2>
-                    <div style={{ marginBottom: "0.5rem" }}>
-                        <p className={`${styles.levelSubtitle} ${styles.noteText}`}>
-                            They have acquired a basic understanding of Japanese and are capable of simple daily conversations.
-                        </p>
-                        <p className={`${styles.levelSubtitle} ${styles.noteText}`}>
-                            <span className={styles.noteLabel}>Note:</span>
-                            <span className={styles.noteContent}>
-                                This section is provided as an introduction to our Japanese language education achievements.
-                                <span className={styles.noteWarning}>
-                                These individuals are not engaged in our software development projects.
-                                </span>
-                            </span>
-                        </p>
-
+                    <div className={styles.jlptGroupHead} style={{ marginTop: '2rem' }}>
+                      <h3 className={styles.jlptGroupTitle}>JLPT Certified Members (Japanese Language Program Participants)</h3>
+                      <span className={styles.jlptExtLabel}>External</span>
                     </div>
 
+                    <div className={styles.jlptExtNote}>
+                      They have acquired a basic understanding of Japanese and are capable of simple daily conversations.<br />
+                      <strong>Note:</strong> This section is provided as an introduction to our Japanese language education achievements.
+                      <span style={{ color: '#e22110', fontWeight: 600 }}> These individuals are not engaged in our software development projects.</span>
+                    </div>
 
                     {jlptLevels.map((level) => {
                         const othersAtLevel = groupedOthers[level];
@@ -196,64 +188,29 @@ export default function JapaneseClear() {
                         if (!othersAtLevel || othersAtLevel.length === 0) return null;
 
                         return (
-                            <div key={`others-${level}`} className={styles.jlptLevel}>
-                                <div className={styles.levelHeader}>
-                                    <h3 className={styles.levelTitle}>
-                                        JLPT {level} Certified{" "}
-                                        {othersAtLevel.length === 1 ? "Member" : "Members"}
-                                    </h3>
+                            <div key={`others-${level}`} className={styles.jlptGroup}>
+                                <div className={styles.jlptGroupHead}>
+                                  <div className={`${styles.jlptBadge} ${styles[`jlptLevel${level}`]}`}>{level}</div>
+                                  <h3 className={styles.jlptGroupTitle}>
+                                    JLPT {level} Certified {othersAtLevel.length === 1 ? "Member" : "Members"}
+                                  </h3>
                                 </div>
-                                <p className={styles.levelSubtitle}>
-                                    {getSubtitleText(level)}
-                                </p>
-
-                                <div className={styles.membersList}>
-                                    {othersAtLevel.map((member, index) => (
-                                        <div key={index} className={styles.memberCardWithFlip}>
-                                            <div className={styles.flipCardContainer}>
-                                                <div className={styles.flipCardOthers}>
-                                                    <div className={styles.flipCardInnerOthers}>
-                                                        {/* Front - Image */}
-                                                        <div className={styles.flipCardFrontOthers}>
-                                                            <Image
-                                                                src={member.image}
-                                                                alt={member.name}
-                                                                className={styles.jlptmemberImage}
-                                                                width={180}
-                                                                height={180}
-                                                            />
-                                                        </div>
-
-                                                        {/* Back - LinkedIn Icon Only */}
-                                                        <div className={styles.flipCardBackOthers}>
-                                                            {member.linkedin && (
-                                                                <a
-                                                                    href={member.linkedin}
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                    className={styles.flipLinkedinLink}
-                                                                >
-                                                                    <Image
-                                                                        src={linkedin}
-                                                                        alt="LinkedIn"
-                                                                        width={48}
-                                                                        height={48}
-                                                                    />
-                                                                </a>
-                                                            )}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className={styles.memberDetailsFlip}>
-                                                <h4 className={styles.memberName}>{member.name}</h4>
-                                                {member.role && (
-                                                    <p className={styles.memberRole}>{member.role}</p>
-                                                )}
-                                            </div>
-                                        </div>
-                                    ))}
+                                <div className={styles.jlptCards} style={{ paddingLeft: 0 }}>
+                                  {othersAtLevel.map((member, index) => (
+                                    <div key={index} className={styles.jlptCard}>
+                                      <div className={styles.jlptCardPhoto}>
+                                        <Image src={member.image} alt={member.name} width={72} height={72} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
+                                      </div>
+                                      <div>
+                                        <p className={styles.jlptCardName}>{member.name}</p>
+                                        <p className={styles.jlptCardRole}>{member.role}</p>
+                                        <span className={`${styles.jlptPill} ${styles[`jlptPill${member.jlpt}`]}`}>JLPT {member.jlpt}</span>
+                                        {member.linkedin && (
+                                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontSize: '0.78rem', fontWeight: 700, color: '#0077b5' }}>LinkedIn →</a>
+                                        )}
+                                      </div>
+                                    </div>
+                                  ))}
                                 </div>
                             </div>
                         );

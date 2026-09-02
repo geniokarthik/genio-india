@@ -1,49 +1,77 @@
-﻿"use client";
+"use client";
 import Image from "next/image";
 import "../../globals.css";
 import { motion } from "framer-motion";
-import OffShoreImg from "src/assets/images/service/en/offshore.png";
-import LabDevImg from "src/assets/images/service/lab_development.png";
 import TeamMbersImg from "src/assets/images/service/teammembers.png";
-import pt1 from "src/assets/images/service/en/pattern1.png";
-import pt2 from "src/assets/images/service/en/pattern2.png";
 import Header from "src/app/en/components/Header";
 import Footer from "src/app/en/components/Footer";
 import Link from "next/link";
 import styles from "src/app/common/styles/Offshore.module.css";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 
-const DETAILS = [
+const BENEFITS = [
   {
-    id: "lab",
-    title: "Lab Development",
-    img: TeamMbersImg,
-    imgAlt: "Lab Development",
-    text: `Our Lab-type offshore development service provides you with a dedicated development team at a fixed monthly cost. Rather than per-project outsourcing, a dedicated engineer team works continuously as your own resource.
-
-The team deeply understands your business and tech stack, minimizing communication overhead while delivering fast, high-quality development.
-
-From startups to mid-sized enterprises, this model is ideal for any company that needs continuous development and improvement.`,
-    patterns: [
-      { img: pt1, alt: "Pattern 1", label: "Pattern 1", desc: "The client and the Bridge SE (BrSE) work together directly." },
-      { img: pt2, alt: "Pattern 2", label: "Pattern 2", desc: "The bridge SE will visit the client and set up a dedicated development team in India." },
-    ],
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+    ),
+    title: "Problems with internal resources",
+    desc: "Problems that cannot be solved with internal resources can be resolved by moving offshore.",
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+      </svg>
+    ),
+    title: "Reduce Costs",
+    desc: "Offshore can significantly reduce costs compared to doing everything in-house or hiring locally.",
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+      </svg>
+    ),
+    title: "Focus on Core Business",
+    desc: "Offshore low-priority tasks and let your team devote resources to core business activities that create real value.",
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+      </svg>
+    ),
+    title: "Prioritize Speed",
+    desc: "Many startups move to offshore in search of fast and inexpensive services. We deliver fast without compromising quality.",
   },
 ];
 
-export default function ServiceEn() {
+const STEPS = [
+  { n: "01", t: "Requirements Gathering", b: "Interviews · requirement definition · analysis" },
+  { n: "02", t: "Design & Documentation", b: "System architecture · UI/UX design" },
+  { n: "03", t: "Programming",            b: "Implementation · coding · unit testing" },
+  { n: "04", t: "Review",                 b: "Integration testing · client review" },
+  { n: "05", t: "Release",                b: "Production deployment · delivery" },
+  { n: "06", t: "Maintenance",            b: "Ongoing support · operations" },
+];
+
+const PATTERNS = [
+  { num: "P1", label: "Pattern 1 — Direct Collaboration", desc: "The client and the Bridge SE (BrSE) work together directly. Ideal for clients who want close day-to-day involvement with their offshore team." },
+  { num: "P2", label: "Pattern 2 — Dedicated Setup", desc: "The bridge SE will visit the client and set up a dedicated development team in India. Best for larger teams requiring structured project management." },
+];
+
+export default function OffshoreServiceEn() {
   return (
     <>
       <main className={styles.main}>
-        <link href="https://fonts.googleapis.com/css?family=ADLaM+Display" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Cherry+Bomb" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Belanosima" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Oregano" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet" />
         <Header />
 
-        <div className={styles.home}>
-
-          <section className={styles.hero}>
+        {/* ── DARK HERO (full-width) ── */}
+        <section className={styles.hero}>
+          <div className={styles.heroInner}>
             <motion.div
               className={styles.hero__text}
               initial={{ opacity: 0, x: -50 }}
@@ -51,39 +79,61 @@ export default function ServiceEn() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <p className={styles.hero__label}>Offshore Services</p>
-              <h1 className={`${styles.hero__title} ${styles.firstLetterRed}`}>
+              <h1 className={styles.hero__title}>
                 Offshoring means giving some work to a company in another country where labor costs are lower to save money.
               </h1>
-              <h1 className={`${styles.firstLetterRed}`}>
-                What are the benefits of offshore?
-              </h1>
-              <p className={styles.hero__desc}>
-                Problems that cannot be solved with internal resources → Problems that require time for implementation and processing due to personnel or technical aspects can be solved by moving to offshore. Want to reduce costs → Offshore can significantly reduce costs compared to doing everything in-house or hiring personnel in the country. Want to focus on core business → Offshore low-priority work can be offshored, allowing the company to devote sufficient resources to core business that creates value. Want to prioritize speed → Many startups are moving to offshore in search of fast and inexpensive services.
-              </p>
             </motion.div>
 
             <motion.div
               className={styles.hero__collage}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1, y: [0, -30, 0] }}
-              whileHover={{ scale: 1.02 }}
-              transition={{
-                opacity: { duration: 0.9, ease: "easeOut", delay: 0.2 },
-                scale: { duration: 0.9, ease: "easeOut", delay: 0.2 },
-                y: { duration: 6, ease: "easeInOut", repeat: Infinity, repeatType: "mirror", delay: 0.6 },
-              }}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             >
-              <Image
-                src={OffShoreImg}
-                alt="Offshore services infographic"
-                width={520}
-                height={480}
-                style={{ width: "100%", height: "auto", objectFit: "contain" }}
-                priority
+              <img
+                src="/images/home/hero-real-team.png"
+                alt="Genio India development team"
+                className={styles.heroImg}
               />
             </motion.div>
-          </section>
+          </div>
+        </section>
 
+        {/* ── PAGE CONTENT (constrained) ── */}
+        <div className={styles.home}>
+
+          {/* BENEFITS */}
+          <motion.section
+            className={styles.benefits_section}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            <div className={styles.section_head}>
+              <p className={styles.section_label}>Why Offshore?</p>
+              <h2 className={styles.section_title}>What are the benefits of offshore?</h2>
+              <p className={styles.benefits_lead}>Problems that cannot be solved with internal resources can be resolved by moving offshore.</p>
+            </div>
+            <div className={styles.benefits_grid}>
+              {BENEFITS.map((b, i) => (
+                <motion.div
+                  key={b.title}
+                  className={styles.benefit_card}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: i * 0.08 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                >
+                  <div className={styles.benefit_icon}>{b.icon}</div>
+                  <p className={styles.benefit_title}>{b.title}</p>
+                  <p className={styles.benefit_desc}>{b.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
+
+          {/* DEVELOPMENT PROCESS */}
           <motion.section
             className={styles.process}
             initial={{ opacity: 0, y: 40 }}
@@ -99,27 +149,18 @@ export default function ServiceEn() {
                 transition={{ duration: 0.7 }}
                 viewport={{ once: true, amount: 0.05 }}
               >
-                <Image
-                  src={LabDevImg}
-                  alt="Development process"
-                  width={480}
-                  height={420}
-                  style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
+                <img
+                  src="/images/home/hero-real-team.png"
+                  alt="Development team at work"
+                  className={styles.processImg}
                 />
               </motion.div>
               <div className={styles.process__steps}>
                 <div className={styles.section_head} style={{ textAlign: "left", marginBottom: "1.5rem" }}>
                   <p className={styles.section_label}>Development Process</p>
-                  <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>How We Work</h2>
+                  <h2 className={styles.section_title} style={{ textAlign: "left" }}>How <span>We Work</span></h2>
                 </div>
-                {[
-                  { n: "01", t: "Requirements Gathering",  b: "Interviews · requirement definition · analysis" },
-                  { n: "02", t: "Design & Documentation",  b: "System architecture · UI/UX design" },
-                  { n: "03", t: "Programming",             b: "Implementation · coding · unit testing" },
-                  { n: "04", t: "Review",                  b: "Integration testing · client review" },
-                  { n: "05", t: "Release",                 b: "Production deployment · delivery" },
-                  { n: "06", t: "Maintenance",             b: "Ongoing support · operations" },
-                ].map((s, i) => (
+                {STEPS.map((s, i) => (
                   <motion.div
                     key={i}
                     className={styles.step}
@@ -139,53 +180,52 @@ export default function ServiceEn() {
             </div>
           </motion.section>
 
-          {DETAILS.map((d, i) => (
-            <motion.section
-              key={d.id}
-              id={`section-${d.id}`}
-              className={styles.detail_section}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              viewport={{ once: true, amount: 0.1 }}
-            >
-              <div className={`${styles.detail_section__inner} ${i % 2 !== 0 ? styles.detail_section__reverse : ""}`}>
-                <div className={styles.detail_section__text}>
-                  <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>{d.title}</h2>
-                  {d.text.split("\n\n").map((para, j) => (
-                    <p key={j} className={styles.detail_section__para}>{para}</p>
+          {/* LAB DEVELOPMENT */}
+          <motion.section
+            id="section-lab"
+            className={styles.detail_section}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            <div className={styles.detail_section__inner}>
+              <div className={styles.detail_section__text}>
+                <p className={styles.eyebrow}>Lab Development</p>
+                <h2 className={styles.labH2}>Dedicated Team,<br /><span>Fixed Monthly Cost</span></h2>
+                {`Our Lab-type offshore development service provides you with a dedicated development team at a fixed monthly cost. Rather than per-project outsourcing, a dedicated engineer team works continuously as your own resource.
+
+The team deeply understands your business and tech stack, minimizing communication overhead while delivering fast, high-quality development.
+
+From startups to mid-sized enterprises, this model is ideal for any company that needs continuous development and improvement.`.split("\n\n").map((para, j) => (
+                  <p key={j} className={styles.detail_section__para}>{para}</p>
+                ))}
+                <p className={styles.patternsHead}>Team Formation Patterns</p>
+                <div className={styles.patternCards}>
+                  {PATTERNS.map((p, pi) => (
+                    <div key={pi} className={styles.patternCard}>
+                      <div className={styles.patternNum}>{p.num}</div>
+                      <div>
+                        <p className={styles.patternLabel}>{p.label}</p>
+                        <p className={styles.patternDesc}>{p.desc}</p>
+                      </div>
+                    </div>
                   ))}
                 </div>
-                <div className={styles.detail_section__img}>
-                  <Image
-                    src={d.img}
-                    alt={d.imgAlt}
-                    width={520}
-                    height={420}
-                    style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
-                  />
-                </div>
               </div>
+              <div className={styles.detail_section__img}>
+                <Image
+                  src={TeamMbersImg}
+                  alt="Lab Development"
+                  width={520}
+                  height={420}
+                  style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
+                />
+              </div>
+            </div>
+          </motion.section>
 
-              {d.patterns && (
-                <div className={styles.pattern_section}>
-                  <p className={styles.pattern_section__heading}>Team Formation Patterns</p>
-                  <div className={styles.pattern_grid}>
-                    {d.patterns.map((p, pi) => (
-                      <div key={pi} className={styles.pattern_card}>
-                        <div className={styles.pattern_card__img}>
-                          <Image src={p.img} alt={p.alt} width={480} height={260} style={{ width: "100%", height: "auto", borderRadius: "10px", objectFit: "contain" }} />
-                        </div>
-                        <p className={styles.pattern_card__label}>{p.label}</p>
-                        <p className={styles.pattern_card__desc}>{p.desc}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </motion.section>
-          ))}
-
+          {/* CTA */}
           <motion.section
             className={styles.cta}
             initial={{ opacity: 0, y: 30 }}

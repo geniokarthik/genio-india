@@ -3,8 +3,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 
 .team {
-  padding: 4rem 2rem;
-  background-color: white;
+  padding: 90px 0;
+  background: #f9fafb;
+}
+
+.teamSection {
+  padding: 90px 0;
+  background: #f9fafb;
+}
+
+.secHead {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.secEyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e22110;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.secH2 {
+  font-family: 'Archivo', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 900;
+  color: #111827;
+  margin: 0;
+}
+
+.secH2 span { color: #e22110; }
+
+.secLead {
+  color: #6b7280;
+  font-size: 1rem;
+  margin-top: 12px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
 }
 
 .container {
@@ -31,17 +71,16 @@
 
 .teamGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 0rem;
-  padding: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  padding: 0;
 }
 
 .teamCard {
   perspective: 1000px;
-  padding: 1rem;
   position: relative;
-  overflow: hidden;  
-  height: 450px;
+  overflow: hidden;
+  height: 430px;
 }
 
 .flipCard {
@@ -85,14 +124,21 @@
 }
 
 .flipCardBack {
-  background-color: #f7f6f6;
-  color: rgb(8, 8, 8);
+  background: linear-gradient(160deg, #111827 0%, #1f2937 100%);
+  color: white;
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem;
+  padding: 28px 24px;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: inherit;
+  overflow: hidden;
 }
 
 .memberImage {
@@ -114,29 +160,30 @@
 }
 
 .memberName {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 0.3rem;
-  color: rgb(4, 4, 4);
-  font-family: 'Noto Sans JP';
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: #fff;
+  font-family: inherit;
 }
 
 .memberRole {
-  font-size: 1rem;
-  color: #1ABC9C;
-  /* color: green; */
-  margin-bottom: 3.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #e22110;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
   text-align: center;
-  font-weight: bold;
 }
 
 .memberDescription {
-  font-size: 1rem;
+  font-size: 0.84rem;
   line-height: 1.6;
   text-align: center;
-  margin-bottom: 3rem;
-  font-style: italic;
-  color: #333; 
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: normal;
 }
 
 .socialMedia {
@@ -162,65 +209,34 @@
   display: block;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .heroTitle {
-    font-size: 2rem;
-  }
-
-  .heroSubtitle {
-    font-size: 1.25rem;
-  }
-
-  .teamGrid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-
-  .flipCard {
-    height: 440px;
-  }
+.linkedinBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: #0077b5;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s;
 }
+.linkedinBtn:hover { transform: scale(1.05); }
 
-@media (max-width: 480px) {
-  .heroTitle {
-    font-size: 1.75rem;
-  }
-
-  .heroSubtitle {
-    font-size: 1rem;
-  }
-
-  .teamGrid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-
-  .flipCard {
-    height: 384px;
-  }
-
-  .teamCard {
-    height: 420px;
-  }
-
-  .memberName {
-    font-size: 1.2rem;
-  }
-
-  .memberRole {
-    font-size: 1rem;
-  }
-
-  .memberDescription {
-    font-size: 0.8rem;
-  }
-
+/* Responsive Design */
+@media (max-width: 900px) {
+  .teamGrid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .teamGrid { grid-template-columns: 1fr; }
 }
 
 
 .teamContent {
-  padding: 1rem 1rem;
-  color: white;
-  text-align: center;
-  border-radius: 3rem;
-  margin: 2rem 0;
+  padding: 0;
+  color: inherit;
+  text-align: left;
+  border-radius: 0;
+  margin: 0;
 }

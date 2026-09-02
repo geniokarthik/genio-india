@@ -13,9 +13,6 @@ import deivaraj from "src/assets/images/our_team/deivaraj.png";
 import dhanasekaran from "src/assets/images/our_team/dhanasekaran.png";
 import ajith from "src/assets/images/our_team/ajith.png";
 import kavinesh from "src/assets/images/our_team/kavinesh.png";
-import linkedin from "src/assets/images/our_team/linkedin.png";
-
-
 const teamMembers = [
   {
     name: "Takuya Yoneda",
@@ -91,15 +88,14 @@ export default function TeamSection() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.8 }}
       viewport={{ once: true }}
-      className={styles.hero}
+      className={styles.teamSection}
     >
       <div className={styles.container}>
-        <h2 className={styles.heroTitle}>
-          <span className={styles.heroRedText}>Our Team</span>
-        </h2>
-        <h2 className={styles.heroSubtitle}>
-          Our team is the heart of our success and the core of our vision
-        </h2>
+        <div className={styles.secHead}>
+          <p className={styles.secEyebrow}>Our Team</p>
+          <h2 className={styles.secH2}>The <span>People</span> Behind Genio India</h2>
+          <p className={styles.secLead}>Our team is the heart of our success and the core of our vision. Hover a card to learn more.</p>
+        </div>
         <div className={`${styles.teamGrid} ${styles.teamContent}`}>
           {teamMembers.map((member, index) => (
             <div key={index} className={styles.teamCard}>
@@ -126,21 +122,16 @@ export default function TeamSection() {
                     {member.description}
                     </p>
                     <div className={styles.socialMedia}>
-                      {/* LinkedIn Link */}
-                      <a
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.socialLink}
-                      >
-                        <Image
-                          src={linkedin}
-                          alt="LinkedIn"
-                          width={40}
-                          height={40}
-                          className={styles.socialIcon}
-                        />
-                      </a>
+                      {member.linkedin && (
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.linkedinBtn}
+                        >
+                          LinkedIn →
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>

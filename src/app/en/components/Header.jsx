@@ -99,42 +99,62 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <title>Genio India</title>
+
+      {/* Col 1 — Logo */}
       <div className={styles.logoContainer}>
-        <Link href={`/${pathname.split('/')[1] || "ja"}`} onClick={handleHomePage}>
+        <Link href={`/${pathname.split('/')[1] || 'en'}`} onClick={handleHomePage}>
           <Image
             src={isMobile ? logoMob : logo}
             alt="Genio India Logo"
-            width={180}
-            height={100}
+            width={160}
+            height={65}
             className={styles.logo}
             priority
-            style={{ height: "auto", width: "auto" }} // Keep aspect ratio when CSS overrides one dimension
           />
         </Link>
-     </div>
+      </div>
 
-      {isMobile ? (
+      {/* Col 2 — Nav (desktop) / empty (mobile) */}
+      {!isMobile ? (
+        <nav className={styles.nav}>
+          <Link href="/en/offshore_service" className={`${styles.link} ${pathname === "/en/offshore_service" ? styles.active : ""}`}>
+            Offshore Service
+          </Link>
+          <Link href="/en/service" className={`${styles.link} ${pathname === "/en/service" ? styles.active : ""}`}>
+            Service
+          </Link>
+          <Link href="/en/aboutus" className={`${styles.link} ${pathname === "/en/aboutus" ? styles.active : ""}`}>
+            About Us
+          </Link>
+          <Link href="/en/contactus" onClick={(e) => handleReload(e, "/en/contactus")} className={`${styles.link} ${pathname === "/en/contactus" ? styles.active : ""}`}>
+            Contact Us
+          </Link>
+        </nav>
+      ) : (
+        <span />
+      )}
+
+      {/* Col 3 — Actions (desktop) / Hamburger (mobile) */}
+      {!isMobile ? (
+        <div className={styles.rightSection}>
+          <LanguageSwitcher />
+          <Link href="/en/contactus" className={styles.btnJoin}>
+            Join With Us →
+          </Link>
+        </div>
+      ) : (
         <Sidebar
           sidebar={sidebarContent}
           open={sidebarOpen}
           onSetOpen={onSetSidebarOpen}
           pullRight={true}
-          styles={{ 
-            sidebar: { 
-              background: "white",
-              width: "250px",
-              position: "fixed",
-              zIndex: 999,
-              top: 0,
-              bottom: 0
-            },
-            overlay: {
-              zIndex: 998
-            }
+          styles={{
+            sidebar: { background: "white", width: "250px", position: "fixed", zIndex: 999, top: 0, bottom: 0 },
+            overlay: { zIndex: 998 },
           }}
         >
           <div className={styles.mobileMenu}>
-            <button 
+            <button
               className={`${styles.hamburger} ${sidebarOpen ? styles.open : ""}`}
               onClick={() => setSidebarOpen(!sidebarOpen)}
             >
@@ -142,37 +162,6 @@ export default function Header() {
             </button>
           </div>
         </Sidebar>
-      ) : (
-        <div className={styles.rightSection}>
-          <nav className={styles.nav}>
-            <Link 
-              href="/en/offshore_service" 
-              className={`${styles.link} ${pathname === "/en/offshore_service" ? styles.active : ""}`}
-            >
-              Offshore Service
-            </Link>
-            <Link 
-              href="/en/service" 
-              className={`${styles.link} ${pathname === "/en/service" ? styles.active : ""}`}
-            >
-              Service
-            </Link>
-            <Link 
-              href="/en/aboutus" 
-              className={`${styles.link} ${pathname === "/en/aboutus" ? styles.active : ""}`}
-            >
-              About Us
-            </Link>
-            <Link 
-              href="/en/contactus" 
-              onClick={(e) => handleReload(e, "/en/contactus")}
-              className={`${styles.link} ${pathname === "/en/contactus" ? styles.active : ""}`}
-            >
-              Contact Us
-            </Link>
-          </nav>
-          <LanguageSwitcher/>
-        </div>
       )}
     </header>
   );

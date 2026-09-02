@@ -1,50 +1,77 @@
-﻿"use client";
+"use client";
 import Image from "next/image";
 import "../../globals.css";
 import { motion } from "framer-motion";
-import OffShoreImg from "src/assets/images/service/ja/offshore.png";
-import LabDevImg from "src/assets/images/service/lab_development.png";
 import TeamMbersImg from "src/assets/images/service/teammembers.png";
 import Header from "src/app/ja/components/Header";
 import Footer from "src/app/ja/components/Footer";
 import Link from "next/link";
 import styles from "src/app/common/styles/Offshore.module.css";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
-import pt1 from "src/assets/images/service/ja/pattern1.png";
-import pt2 from "src/assets/images/service/ja/pattern2.png";
 
-
-const DETAILS = [
+const BENEFITS = [
   {
-    id: "lab",
-    title: "ラボ型開発",
-    img: TeamMbersImg,
-    imgAlt: "ラボ型開発",
-    text: `専任の開発チームを月額固定でご提供するラボ型オフショア開発サービスです。プロジェクト単位での発注ではなく、専任エンジニアチームがお客様専用のリソースとして継続的に稼働します。
-
-チームはお客様のビジネスや技術スタックを深く理解した上で業務に当たるため、コミュニケーションコストを最小化しながら、スピーディーかつ高品質な開発を実現します。
-
-スタートアップから中堅企業まで、継続的な開発・改善を必要とするあらゆる企業様に最適なモデルです。`,
-    patterns: [
-      { img: pt1, alt: "パターン1", label: "パターン 1", desc: "顧客とブリッジSE（BrSE） が直接連携して作業を行います。" },
-      { img: pt2, alt: "パターン2", label: "パターン 2", desc: "ブリッジSEが顧客側に出向き、インド側に専属の開発担当チームを立ち上げます。" },
-    ],
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+    ),
+    title: "内部リソースの課題を解決",
+    desc: "内部リソースでは対応が難しい課題も、オフショア移行によって解決できます。",
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+      </svg>
+    ),
+    title: "コスト削減",
+    desc: "自社で全て対応する場合や国内採用に比べ、オフショアは大幅にコストを削減できます。",
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+      </svg>
+    ),
+    title: "コア業務に集中",
+    desc: "優先度の低い業務をオフショア化し、価値を生み出すコア業務に十分なリソースを投入できます。",
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+      </svg>
+    ),
+    title: "スピードを重視",
+    desc: "多くのスタートアップが迅速かつ安価なサービスを求めてオフショアへ。品質を落とさず、速くお届けします。",
   },
 ];
 
-export default function Service() {
+const STEPS = [
+  { n: "01", t: "情報収集", b: "ヒアリング・要件定義・分析" },
+  { n: "02", t: "設計",     b: "システム設計・UI/UX設計" },
+  { n: "03", t: "プログラミング", b: "実装・コーディング・単体テスト" },
+  { n: "04", t: "確認",     b: "結合テスト・クライアント確認" },
+  { n: "05", t: "リリース", b: "本番環境デプロイ・納品" },
+  { n: "06", t: "運保",     b: "保守・運用・継続サポート" },
+];
+
+const PATTERNS = [
+  { num: "P1", label: "パターン 1 — 直接連携型", desc: "顧客とブリッジSE（BrSE）が直接連携して作業を行います。日常的に関与したいクライアントに最適です。" },
+  { num: "P2", label: "パターン 2 — 専属チーム型", desc: "ブリッジSEが顧客側に出向き、インド側に専属の開発担当チームを立ち上げます。大規模チームに最適です。" },
+];
+
+export default function OffshoreServiceJa() {
   return (
     <>
       <main className={styles.main}>
-        <link href="https://fonts.googleapis.com/css?family=ADLaM+Display" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Cherry+Bomb" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Belanosima" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Oregano" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet" />
         <Header />
 
-        <div className={styles.home}>
-
-          <section className={styles.hero}>
+        {/* ── ダークヒーロー（全幅）── */}
+        <section className={styles.hero}>
+          <div className={styles.heroInner}>
             <motion.div
               className={styles.hero__text}
               initial={{ opacity: 0, x: -50 }}
@@ -52,42 +79,61 @@ export default function Service() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <p className={styles.hero__label}>オフショアサービス</p>
-              <h1 className={`${styles.hero__title} ${styles.firstLetterRed}`}>
-                オフショアとは一般的に、コスト削減を目的として、人件費や物価の安い海外企業に業務の一部を委託することです。
-
+              <h1 className={styles.hero__title}>
+                オフショアとは、コスト削減を目的として人件費の安い海外企業に業務を委託することです。
               </h1>
-              <h1 className={`${styles.firstLetterRed}`}>
-              オフショアのメリットは?
-              </h1>
-              <p className={styles.hero__desc}>
-                内部リソースでは問題解決ができない→人員や技術面で、実施・処理に時間を要する問題はオフショア移行で解決します。コスト削減をしたい→オフショアは、自社ですべて手がける場合、または自国内で人員を雇用する場合に比べて、大幅にコストを削減できます。コア業務に集中したい→優先順位の低い仕事をオフショアし、価値を生み出すコア業務に自社の十分なリソースを投入することが可能になります。スピードを重視したい→多くのスタートアップ企業は、迅速かつ安価なサービスを求めてオフショアに移行しています。
-              </p>
             </motion.div>
 
             <motion.div
               className={styles.hero__collage}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1, y: [0, -30, 0] }}
-              whileHover={{ scale: 1.02 }}
-              transition={{
-                opacity: { duration: 0.9, ease: "easeOut", delay: 0.2 },
-                scale: { duration: 0.9, ease: "easeOut", delay: 0.2 },
-                y: { duration: 6, ease: "easeInOut", repeat: Infinity, repeatType: "mirror", delay: 0.6 },
-              }}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             >
-              <div className={styles.hero__staticImg}>
-                <Image
-                  src={OffShoreImg}
-                  alt="オフショア インフォグラフィック"
-                  width={520}
-                  height={480}
-                  style={{ width: "100%", height: "auto", objectFit: "contain" }}
-                  priority
-                />
-              </div>
+              <img
+                src="/images/home/hero-real-team.png"
+                alt="Genio India 開発チーム"
+                className={styles.heroImg}
+              />
             </motion.div>
-          </section>
+          </div>
+        </section>
 
+        {/* ── コンテンツ（制限幅）── */}
+        <div className={styles.home}>
+
+          {/* オフショアのメリット */}
+          <motion.section
+            className={styles.benefits_section}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            <div className={styles.section_head}>
+              <p className={styles.section_label}>オフショアとは？</p>
+              <h2 className={styles.section_title}>オフショアの<span>メリット</span></h2>
+              <p className={styles.benefits_lead}>内部リソースでは対応できない課題も、オフショア移行によって解決できます。</p>
+            </div>
+            <div className={styles.benefits_grid}>
+              {BENEFITS.map((b, i) => (
+                <motion.div
+                  key={b.title}
+                  className={styles.benefit_card}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: i * 0.08 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                >
+                  <div className={styles.benefit_icon}>{b.icon}</div>
+                  <p className={styles.benefit_title}>{b.title}</p>
+                  <p className={styles.benefit_desc}>{b.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
+
+          {/* 開発プロセス */}
           <motion.section
             className={styles.process}
             initial={{ opacity: 0, y: 40 }}
@@ -103,27 +149,18 @@ export default function Service() {
                 transition={{ duration: 0.7 }}
                 viewport={{ once: true, amount: 0.05 }}
               >
-                <Image
-                  src={LabDevImg}
-                  alt="開発プロセス"
-                  width={480}
-                  height={420}
-                  style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
+                <img
+                  src="/images/home/hero-real-team.png"
+                  alt="開発チームの様子"
+                  className={styles.processImg}
                 />
               </motion.div>
               <div className={styles.process__steps}>
                 <div className={styles.section_head} style={{ textAlign: "left", marginBottom: "1.5rem" }}>
                   <p className={styles.section_label}>開発プロセス</p>
-                  <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>ご依頼の流れ</h2>
+                  <h2 className={styles.section_title} style={{ textAlign: "left" }}>ご依頼の<span>流れ</span></h2>
                 </div>
-                {[
-                  { n: "01", t: "情報収集", b: "ヒアリング・要件定義・分析" },
-                  { n: "02", t: "設計", b: "システム設計・UI/UX設計" },
-                  { n: "03", t: "プログラミング", b: "実装・コーディング・単体テスト" },
-                  { n: "04", t: "確認", b: "結合テスト・クライアント確認" },
-                  { n: "05", t: "リリース", b: "本番環境デプロイ・納品" },
-                  { n: "06", t: "運保", b: "保守・運用・継続サポート" },
-                ].map((s, i) => (
+                {STEPS.map((s, i) => (
                   <motion.div
                     key={i}
                     className={styles.step}
@@ -143,54 +180,52 @@ export default function Service() {
             </div>
           </motion.section>
 
-           {DETAILS.map((d, i) => (
-                        <motion.section
-                            key={d.id}
-                            id={`section-${d.id}`}
-                            className={styles.detail_section}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.7 }}
-                            viewport={{ once: true, amount: 0.1 }}
-                        >
-                            <div className={`${styles.detail_section__inner} ${i % 2 !== 0 ? styles.detail_section__reverse : ""}`}>
-                                <div className={styles.detail_section__text}>
-                                    <h2 className={`${styles.section_title} ${styles.firstLetterRed}`}>{d.title}</h2>
-                                    {d.text.split("\n\n").map((para, j) => (
-                                        <p key={j} className={styles.detail_section__para}>{para}</p>
-                                    ))}
-                                </div>
-                                <div className={styles.detail_section__img}>
-                                    <Image
-                                        src={d.img}
-                                        alt={d.imgAlt}
-                                        width={520}
-                                        height={420}
-                                        style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
-                                    />
-                                </div>
-                            </div>
+          {/* ラボ型開発 */}
+          <motion.section
+            id="section-lab"
+            className={styles.detail_section}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            <div className={styles.detail_section__inner}>
+              <div className={styles.detail_section__text}>
+                <p className={styles.eyebrow}>ラボ型開発</p>
+                <h2 className={styles.labH2}>専任チームで、<br /><span>月額固定の安心感</span></h2>
+                {`専任の開発チームを月額固定でご提供するラボ型オフショア開発サービスです。プロジェクト単位での発注ではなく、専任エンジニアチームがお客様専用のリソースとして継続的に稼働します。
 
-                            {d.patterns && (
-                                <div className={styles.pattern_section}>
-                                    <p className={styles.pattern_section__heading}>チームの構成パターン</p>
-                                    <div className={styles.pattern_grid}>
-                                        {d.patterns.map((p, pi) => (
-                                            <div key={pi} className={styles.pattern_card}>
-                                                <div className={styles.pattern_card__img}>
-                                                    <Image src={p.img} alt={p.alt} width={480} height={260} style={{ width: "100%", height: "auto", borderRadius: "10px", objectFit: "contain" }} />
-                                                </div>
-                                                <p className={styles.pattern_card__label}>{p.label}</p>
-                                                <p className={styles.pattern_card__desc}>{p.desc}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                        </motion.section>
-                    ))}
+チームはお客様のビジネスや技術スタックを深く理解した上で業務に当たるため、コミュニケーションコストを最小化しながら、スピーディーかつ高品質な開発を実現します。
 
-          {/* ── CTA ── */}
+スタートアップから中堅企業まで、継続的な開発・改善を必要とするあらゆる企業様に最適なモデルです。`.split("\n\n").map((para, j) => (
+                  <p key={j} className={styles.detail_section__para}>{para}</p>
+                ))}
+                <p className={styles.patternsHead}>チームの構成パターン</p>
+                <div className={styles.patternCards}>
+                  {PATTERNS.map((p, pi) => (
+                    <div key={pi} className={styles.patternCard}>
+                      <div className={styles.patternNum}>{p.num}</div>
+                      <div>
+                        <p className={styles.patternLabel}>{p.label}</p>
+                        <p className={styles.patternDesc}>{p.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className={styles.detail_section__img}>
+                <Image
+                  src={TeamMbersImg}
+                  alt="ラボ型開発"
+                  width={520}
+                  height={420}
+                  style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
+                />
+              </div>
+            </div>
+          </motion.section>
+
+          {/* CTA */}
           <motion.section
             className={styles.cta}
             initial={{ opacity: 0, y: 30 }}

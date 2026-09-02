@@ -1,383 +1,216 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+.jlptSection {
+  padding: 90px 0;
+}
 
 .container {
-    max-width: 1400px;
-    margin: 2rem;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 40px;
 }
 
-.heroTitle {
-    font-size: 2.5rem;
-    color: #050505;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-    text-align: left;
+.secHead {
+  text-align: center;
+  margin-bottom: 2.5rem;
 }
 
-.heroRedText {
-    color: #e22110;
-    font-weight: bold;
+.secEyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e22110;
+  margin-bottom: 12px;
+  display: block;
 }
 
-.jlptLevel {
-  margin-bottom: 1.5rem;  
+.secH2 {
+  font-family: 'Archivo', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 900;
+  color: #111827;
+  margin: 0;
 }
 
+.secH2 span { color: #e22110; }
 
-.noteText {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.noteLabel {
-    color: #e22110;
-    font-weight: bold;
-    margin-right: 6px;
-    white-space: nowrap;
-}   
-
-.noteContent {
-    display: block;
-}
-
-.noteWarning{
-    display: block;
-}
-
-.heroSubtitle {
-    font-size: 1.25rem;
-    color: #666;
-    text-align: left;
-    margin-bottom: 1.5rem;
+.jlptIntro {
+  max-width: 760px;
+  margin: 0 auto 60px;
+  text-align: center;
+  font-size: 0.97rem;
+  color: #6b7280;
+  line-height: 1.75;
 }
 
 .jlptContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.levelHeader {
-    margin-bottom: 0.5rem;
-    border-bottom: 3px solid #e22110;
-    padding-bottom: 0.8rem;
-}
-
-.levelTitle {
-    font-size: 1.8rem;
-    color: #050505;
-    margin: 0;
-    font-weight: bold;
-    font-family: 'Inter', sans-serif;
-}
-
-.levelSubtitle {
-    color: #0a0a0a;
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    font-size: 1.2rem;
-    white-space: pre-line;
-    margin-bottom: 1.0rem;
-}
-
-.membersList {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-    padding: 0;
-}
-
-.memberCard {
-    display: flex;
-    gap: 2rem;
-    align-items: flex-start;
-}
-
-.memberImageWrapper {
-    width: 180px;
-    height: 180px;
-    flex-shrink: 0;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.jlptmemberImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.memberImageWrapper:hover .jlptmemberImage {
-    transform: scale(1.05);
-}
-
-.memberCard {
   display: flex;
-  align-items: center;   
-  gap: 24px;
+  flex-direction: column;
+  gap: 0;
 }
 
-.memberName {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #050505;
-    margin: 0;
-    font-family: 'Noto Sans JP', sans-serif;
+.jlptGroup {
+  margin-bottom: 52px;
 }
 
-.memberRole {
-    font-size: 0.9rem;
-    color: #1ABC9C;
-    font-weight: 600;
-    margin: 0 0 0.8rem 0;
+.jlptGroupHead {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
 }
 
-.memberDescription {
-    font-size: 0.95rem;
-    color: #555;
-    line-height: 1.6;
-    margin: 0;
+.jlptGroupTitle {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: #111827;
+  margin: 0;
 }
 
-.memberCardWithFlip {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
+.jlptExtLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6b7280;
+  background: #e5e7eb;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-left: auto;
 }
 
-.flipCardContainer {
-    perspective: 1000px;
-    width: 180px;
-    height: 180px;
-    position: relative;
-    flex-shrink: 0;
+.jlptGroupSub {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.65;
+  margin-bottom: 24px;
+  padding-left: 68px;
 }
 
-.flipCardOthers {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    transition: transform 0.6s ease-in-out;
-    border-radius: 12px;
-    background-color: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+.jlptCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-left: 68px;
 }
 
-.flipCardInnerOthers {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s ease-in-out;
-    transform-style: preserve-3d;
-    border-radius: inherit;
+.jlptCard {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px 24px;
+  border: 1px solid #e5e7eb;
+  min-width: 240px;
+  flex: 1;
+  max-width: 320px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.flipCardContainer:hover .flipCardInnerOthers {
-    transform: rotateY(180deg);
+.jlptCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-.flipCardFrontOthers,
-.flipCardBackOthers {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: inherit;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.jlptCardPhoto {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
-.flipCardFrontOthers {
-    background-color: white;
-    border: none;
+.jlptCardName {
+  font-weight: 800;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  color: #111827;
 }
 
-.flipCardBackOthers {
-    background-color: #f0f0f0;
-    color: #050505;
-    transform: rotateY(180deg);
-    flex-direction: column;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
+.jlptCardRole {
+  font-size: 0.8rem;
+  color: #6b7280;
+  line-height: 1.4;
+  margin-bottom: 10px;
 }
 
-.flipMemberName {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin: 0;
-    color: #050505;
-    text-align: center;
-    font-family: 'Noto Sans JP', sans-serif;
+.jlptPill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
 }
 
-.flipMemberRole {
-    font-size: 0.8rem;
-    color: #1ABC9C;
-    margin: 0;
-    font-weight: 600;
-    text-align: center;
+/* JLPT badge squares */
+.jlptBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: #fff;
+  flex-shrink: 0;
 }
 
-.flipPhotoContainer {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 0.5rem;
+.jlptLevelN1 { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+.jlptLevelN2 { background: linear-gradient(135deg, #1d4ed8, #3b82f6); }
+.jlptLevelN3 { background: linear-gradient(135deg, #047857, #10b981); }
+.jlptLevelN4 { background: linear-gradient(135deg, #c2410c, #f97316); }
+.jlptLevelN5 { background: linear-gradient(135deg, #4b5563, #9ca3af); }
+
+/* JLPT pill colors */
+.jlptPillN1 { background: rgba(168,85,247,0.12); color: #7c3aed; }
+.jlptPillN2 { background: rgba(59,130,246,0.12); color: #1d4ed8; }
+.jlptPillN3 { background: rgba(16,185,129,0.12); color: #047857; }
+.jlptPillN4 { background: rgba(249,115,22,0.12); color: #c2410c; }
+.jlptPillN5 { background: rgba(107,114,128,0.12); color: #374151; }
+
+.jlptExtNote {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  font-size: 0.84rem;
+  color: #6b7280;
+  line-height: 1.6;
 }
 
-.flipCardPhoto {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+.jlptExtNote strong { color: #111827; }
+
+/* Note text classes from old code - keep for compatibility */
+.noteText { margin: 0; }
+.noteLabel { color: #e22110; font-weight: bold; margin-right: 6px; }
+.noteContent { display: block; }
+.noteWarning { display: block; }
+.levelHeader { margin-bottom: 0.5rem; }
+.levelTitle { font-size: 1.2rem; color: #111827; font-weight: 800; }
+.levelSubtitle { color: #6b7280; font-size: 0.875rem; line-height: 1.65; margin-bottom: 1rem; }
+.memberCard { display: flex; align-items: center; gap: 24px; }
+.memberImageWrapper { width: 72px; height: 72px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
+.jlptmemberImage { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.memberName { font-weight: 800; font-size: 1rem; color: #111827; margin: 0; }
+.memberRole { font-size: 0.8rem; color: #6b7280; margin: 0 0 0.5rem; }
+.memberDescription { font-size: 0.875rem; color: #6b7280; line-height: 1.6; margin: 0; }
+.membersList { display: flex; flex-direction: column; gap: 1rem; }
+.memberCardWithFlip { display: flex; gap: 2rem; align-items: center; }
+.flipCardContainer { perspective: 1000px; width: 72px; height: 72px; border-radius: 50%; }
+.flipCardOthers { width: 100%; height: 100%; }
+.flipCardInnerOthers { width: 100%; height: 100%; transform-style: preserve-3d; }
+.flipCardFrontOthers, .flipCardBackOthers { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; }
+.flipCardBackOthers { transform: rotateY(180deg); }
+.memberDetailsFlip { flex: 1; }
+.flipLinkedinLink { display: inline-flex; align-items: center; gap: 4px; text-decoration: none; }
+
+@media (max-width: 700px) {
+  .jlptCards { padding-left: 0; }
+  .jlptGroupSub { padding-left: 0; }
+  .jlptCard { min-width: 100%; max-width: 100%; }
 }
-
-.memberDetailsFlip {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    flex: 1;
-}
-
-.flipLinkedinLink {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    text-decoration: none;
-}
-
-.flipLinkedinLink:hover {
-    transform: scale(1.1);
-}
-
-.flipLinkedinLink img {
-    width: 32px;
-    height: 32px;
-}
-
-.noMembers {
-    text-align: center;
-    padding: 2rem;
-    color: #999;
-    font-size: 1rem;
-    font-style: italic;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .heroTitle {
-        font-size: 1.75rem;
-    }
-
-    .heroSubtitle {
-        font-size: 1.1rem;
-    }
-
-    .membersList {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .memberCard {
-        gap: 1.5rem;
-    }
-
-    .memberImageWrapper {
-        width: 150px;
-        height: 150px;
-    }
-
-    .memberName {
-        font-size: 1.1rem;
-    }
-
-    .memberDescription {
-        font-size: 0.9rem;
-    }
-
-    .memberCardWithFlip {
-        gap: 1.5rem;
-        align-items: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .heroTitle {
-        font-size: 1.5rem;
-    }
-
-    .heroSubtitle {
-        font-size: 1rem;
-    }
-
-    .membersList {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .memberCard {
-        gap: 1rem;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .memberImageWrapper {
-        width: 140px;
-        height: 140px;
-    }
-
-    .memberName {
-        font-size: 1rem;
-    }
-
-    .memberDescription {
-        font-size: 0.85rem;
-    }
-
-    .memberCardWithFlip {
-        flex-direction: column;   /* Important */
-        align-items: center;
-        text-align: center;
-        gap: 1rem;
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .memberDetailsFlip {
-        width: 100%;
-        padding: 0.75rem;
-    }
-
-    .memberName {
-        font-size: 1rem;
-    }
-
-    .memberRole {
-        font-size: 0.85rem;
-    }
-}
-

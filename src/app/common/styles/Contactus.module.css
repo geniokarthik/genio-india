@@ -1,545 +1,363 @@
-.container {
-  clear: both;
-  box-sizing: content-box;
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 5%;
-  padding-right: 5%;
-}
-
-.title {
-  color: #e22012;
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  font-family: "Belanosima";
-}
-
-.footerHead {
-  color: #e22012;
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  font-family: "Belanosima";
+/* ── PAGE HERO ─────────────────────────────────── */
+.pageHero {
+  padding: 80px 0 60px;
   text-align: center;
+  background: linear-gradient(160deg, #fff 0%, #fef2f2 100%);
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.subtitle {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  font-family: "Inter";
-}
-
-.intotext {
-  font-size: 1rem;
-  font-weight: 200;
-  line-height: 1.2;
-  font-family: "Courier New", Courier, monospace;
-  color: #1f1c1c;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.formWrapper {
-  display: grid;
-  gap: 2rem;
-  background: #f5f5f5;
-  border-radius: 0 100px 100px 0px;
-  padding: 2rem;
-  margin-bottom: 100px;
-  max-width: 850px;
-  max-height: 1040px;
-}
-
-.formContainer {
-  padding: 2rem;
-  border-radius: 15px;
-}
-
-.mailSection {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #e22012;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  font-family: "Belanosima";
-  font-size: 3rem;
-}
-
-.mailIcon {
-  color: #e22012;
-}
-
-.mailText {
-  margin-left: 10px;
-}
-
-.formTitle {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  font-family: "Inter";
-}
-
-.form {
-  max-width: 800px;
+.heroWrap {
+  max-width: 1160px;
   margin: 0 auto;
-  padding: 0.5rem;
-  border-radius: 8px;
+  padding: 0 40px;
 }
 
-.formGroup {
-  margin-bottom: 1.5rem;
-  grid-template-columns: 200px 1fr;
-  gap: 1rem;
-  display: grid;
-  align-items: flex-start;
+.heroEyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e22110;
+  margin-bottom: 12px;
+  display: block;
 }
 
-.formGroups {
-  margin-bottom: 1.5rem;
-  grid-template-columns: 200px 1fr;
-  gap: 1rem;
-  align-items: flex-start;
+.heroH1 {
+  font-family: 'Archivo', sans-serif;
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 900;
+  margin-bottom: 14px;
+  color: #111827;
 }
 
-.formGroup1 {
-  margin-left: 300px;
-  margin-top: 60px;
+.heroH1 span { color: #e22110; }
+
+.heroSub {
+  font-size: 1.05rem;
+  color: #6b7280;
+  max-width: 500px;
+  margin: 0 auto 48px;
+  line-height: 1.65;
 }
 
-.labelField {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #333;
-  padding-top: 0.5rem;
-  font-family: "Inter";
-  text-align: left;
-}
-
-.required {
-  color: #e22012;
-  margin-left: 4px;
-}
-
-.inputField,
-.textareaField,
-.selectAreaField {
-  width: 500px;
-  padding: 0.75rem 1rem;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  font-size: 1rem;
-  background-color: white;
-  transition: border-color 0.2s ease;
-  font-family: "Inter";
-  padding-left: 18px;
-}
-
-.inputFields {
-  width: 500px;
-  padding: 0.75rem 1rem;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  font-size: 1rem;
-  background-color: white;
-  transition: border-color 0.2s ease;
-  font-family: "Inter";
-  appearance: none; /* Default arrow remove pannudhu */
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'><path fill='red' d='M7 10l5 5 5-5z'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right 10px center; /* Right-la irunthu konjam left-ku shift */
-  background-size: 24px; /* Arrow size increase pannudhu */
-  padding-right: 40px; /* Text overlap aagama irukka */
-}
-
-.inputField::placeholder,
-.textareaField::placeholder {
-  color: #999;
-}
-
-.inputField:focus,
-.textareaField:focus,
-.selectAreaField:focus {
-  outline: none;
-  border-color: #e22012;
-}
-
-.textareaField {
-  resize: vertical;
-  min-height: 120px;
-}
-
-.image {
-  width: 50px;
-  height: 50px;
-  vertical-align: sub;
-}
-
-.error {
-  border-color: #e22012;
-}
-
-.errorMessage {
-  grid-column: 2;
-  color: #e22012;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-}
-
-.divider {
-  height: 3px; /* Increase thickness */
-  background-color: rgb(112, 110, 110);
-  width: 8%;
-}
-
-.buttonContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  margin-top: 60px;
-}
-
-.submitButton {
-  background: #e22012;
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 18px;
-  font-size: 1rem;
-  cursor: pointer;
-  font-family: "Inter";
-  font-weight: bold;
-}
-
-.submitButton:hover {
-  background: #cc0000;
-}
-
-.backButton {
-  background: #666;
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 18px;
-  font-size: 1rem;
-  cursor: pointer;
-  font-family: "Inter", sans-serif;
-  font-weight: bold;
-  min-width: 120px;
-}
-
-.backButton:hover {
-  background: #555;
-}
-
+/* ── PROGRESS ─────────────────────────────────── */
 .progress {
-  position: absolute;
-  right: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-top: 0;
 }
 
 .step {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .stepNumber {
-  width: 70px;
-  height: 70px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  font-size: 30px;
-  font-weight: bold;
-  font-family: "Atomic Age";
-  background: #ccc;
-  color: #000;
-  line-height: 70px;
-  text-align: center;
-  flex-shrink: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+  background: #e5e7eb;
+  color: #6b7280;
+  transition: background 0.3s, color 0.3s;
 }
 
-.stepNumber.active {
-  background: #e22012;
-  color: white;
-}
-
-.stepNumber.inactive {
-  background-color: #ccc;
-  color: #000;
-}
+.stepNumber.active { background: #e22110; color: #fff; }
+.stepNumber.inactive { background: #e5e7eb; color: #6b7280; }
 
 .stepLabel {
-  font-size: 16px;
-  font-family: "Inter";
-  font-weight: bold;
-  white-space: nowrap;
-  color: #000;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #6b7280;
 }
 
 .instepLabel {
-  font-size: 16px;
-  font-family: "Inter";
-  font-weight: bold;
-  white-space: nowrap;
-  color: #e22012;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #e22110;
 }
 
 .line {
-  width: 3px;
-  height: 100px;
-  background-color: #000;
-  margin-left: 35px;
-}
-
-.step:last-child .line {
-  display: none;
-}
-
-.confirmValue {
-  padding: 0.75rem 0;
-  font-family: "Inter", sans-serif;
-}
-
-.completionContainer {
-  text-align: center;
-  padding: 2rem;
-}
-
-.completionText {
-  font-size: 1.1rem;
-  font-weight: 500;
-  line-height: 1.8;
-  margin-bottom: 2rem;
-}
-
-.inputFieldWrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: nowrap;
-  width: 100%;        /* ← wrapper full width */
-  max-width: 500px;   /* ← match other inputs */
-}
-
-.inputFieldWrapper .inputField {
-  width: 0 !important;     /* ← !important to override the 500px */
-  min-width: 0 !important;
-  padding: 0.75rem 0.5rem;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-/* 3-digit box smaller, 4-digit boxes equal */
-.inputFieldWrapper .inputField:nth-child(1) { flex: 3 !important; }
-.inputFieldWrapper .inputField:nth-child(3) { flex: 4 !important; }
-.inputFieldWrapper .inputField:nth-child(5) { flex: 4 !important; }
-
-.divider {
-  width: 14px;
+  width: 80px;
   height: 2px;
-  background-color: #555;
+  background: #e5e7eb;
+  margin: 0 8px;
+  margin-bottom: 22px;
   flex-shrink: 0;
 }
 
-/* Mobile View (below 900px) */
-@media (max-width: 900px) {
-  .container {
-    padding: 1rem;
-    max-width: 100%;
-  }
+/* ── CONTACT MAIN ─────────────────────────────── */
+.contactMain {
+  padding: 80px 0 100px;
+  background: #fff;
+}
 
-  .image {
-    width: 35px;
-    height: 35px;
-    vertical-align: baseline;
-  }
+.contactInner {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 60px;
+  align-items: start;
+}
 
-  .title {
-    font-size: 2rem;
-    text-align: center;
-  }
+/* ── FORM CARD ────────────────────────────────── */
+.formCard {
+  background: #fff;
+  border-radius: 24px;
+  padding: 48px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+}
 
-  .subtitle {
-    font-size: 1.25rem;
-    text-align: center;
-  }
+.formCardTitle {
+  font-family: 'Archivo', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+  color: #111827;
+}
 
-  .formWrapper {
-    grid-template-columns: 1fr;
-    border-radius: 20px;
-    padding: 1rem;
-    margin-bottom: 50px;
-    max-width: 100%;
-    max-height: none;
-    position: relative;
-    z-index: 1;
-  }
+.formCardSub {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 36px;
+}
 
-  .formContainer {
-    padding: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .mailSection {
-    flex-direction: column;
-    text-align: center;
-    font-size: 2rem;
-  }
-
-  .mailIcon {
-    margin-bottom: 0.5rem;
-  }
-
-  .mailText {
-    vertical-align: text-bottom;
-  }
-
-  .form {
-    max-width: 100%;
-    padding: 0;
-    width: 100%;
-  }
-
-  .formGroup {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-    width: 100%;
-  }
-
-  .formGroup1 {
-    margin-left: 0;
-    text-align: center;
-    margin-top: 30px;
-  }
-
-  .labelField {
-    text-align: left;
-    font-size: 0.875rem;
-    width: 100%;
-    display: block;
-  }
-
-  .inputField,
-  .textareaField,
-  .selectAreaField,
-  .inputFields {
-    width: 100%;
-    font-size: 0.875rem;
-    padding: 0.75rem 0.5rem;
-    padding-left: 9px;
-    box-sizing: border-box;
-    max-width: 100%;
-    border-radius: 10px;
-    -webkit-appearance: none;
-    appearance: none;
-  }
-
-  .inputFields {
-    background-position: right 10px center;
-    padding-right: 30px;
-  }
-
-  .textareaField {
-    min-height: 100px;
-  }
-
-  .submitButton {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    border-radius: 10px;
-  }
-
-  .errorMessage {
-    grid-column: 1;
-    margin-top: 0.25rem;
-    width: 100%;
-  }
-  .inputFieldWrapper {
-  flex-direction: row;      /* ← stay horizontal on mobile too */
-  flex-wrap: nowrap;
+.form {
   width: 100%;
 }
 
-.inputFieldWrapper .inputField {
-  width: auto;
-  flex: 1;
-  min-width: 0;
-  max-width: none;
-  padding: 0.75rem 0.3rem;
-  font-size: 0.875rem;
-}
+.formGroup {
+  margin-bottom: 24px;
 }
 
-@media (max-width: 1200px) {
-  .progress {
-    width: 100%;
-    margin-top: 1rem;
-    margin-bottom: 20px;
-    padding: 0;
-    display: flex;
-    /* Ensure flex layout */
-    justify-content: center;
-    /* Center the steps */
-    align-items: baseline;
-    /* Vertically center items */
-    flex-wrap: nowrap;
-    /* Prevent wrapping */
-    position: static;
-    /* Remove absolute positioning for mobile */
-  }
-
-  .line {
-    width: 40px;
-    /* Adjust length to connect steps horizontally */
-    height: 2px;
-    /* Make it a horizontal line */
-    margin-left: 0;
-    /* Remove vertical margin */
-    margin-top: -20px;
-    /* Adjust to align with the center of steps */
-    background-color: #000;
-  }
-
-  .step:first-child .line {
-    display: none;
-    /* Hide line before the first step */
-  }
-
-  .step:last-child .line {
-    display: block;
-    /* Show line after the last step if needed, adjust as per design */
-  }
-
-  .stepLabel {
-    font-size: 14px;
-    margin-top: 0.25rem;
-  }
-
-  .step {
-    flex-direction: column;
-    /* Keep number and label stacked vertically within each step */
-    align-items: center;
-    margin: 0 1rem;
-    /* Spacing between steps */
-  }
-
-  .stepNumber {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-    line-height: 40px;
-    margin: 0;
-  }
+.formLabel {
+  display: block;
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 8px;
+  color: #111827;
 }
 
+.required {
+  color: #e22110;
+  margin-left: 2px;
+}
 
+.formInput,
+.formSelect,
+.formTextarea {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  color: #111827;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
 
+.formInput:focus,
+.formSelect:focus,
+.formTextarea:focus {
+  border-color: #e22110;
+  box-shadow: 0 0 0 3px rgba(226, 33, 16, 0.1);
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.formInput::placeholder,
+.formTextarea::placeholder { color: #9ca3af; }
+
+.error { border-color: #ef4444 !important; }
+
+.errMsg {
+  font-size: 0.8rem;
+  color: #ef4444;
+  margin-top: 6px;
+  display: block;
+}
+
+.formActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.submitButton {
+  padding: 13px 36px;
+  border-radius: 999px;
+  border: none;
+  background: #e22110;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  font-family: 'Inter', sans-serif;
+}
+
+.submitButton:hover { background: #b81c0e; transform: translateY(-1px); }
+.submitButton:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.backButton {
+  padding: 13px 28px;
+  border-radius: 999px;
+  border: 2px solid #e5e7eb;
+  background: transparent;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  font-family: 'Inter', sans-serif;
+  color: #111827;
+}
+
+.backButton:hover { border-color: #111827; }
+
+/* ── THANK YOU ────────────────────────────────── */
+.thankyouWrap {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.thankyouIcon {
+  font-size: 4rem;
+  margin-bottom: 24px;
+}
+
+.thankyouTitle {
+  font-family: 'Archivo', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #e22110;
+  margin-bottom: 16px;
+}
+
+.thankyouMsg {
+  font-size: 0.95rem;
+  color: #6b7280;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.homeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: #e22110;
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+
+.homeBtn:hover { background: #b81c0e; }
+
+/* ── SIDEBAR ──────────────────────────────────── */
+.infoSidebar {
+  position: sticky;
+  top: 100px;
+}
+
+.infoCard {
+  background: #111827;
+  border-radius: 24px;
+  padding: 36px 32px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.infoCardTitle {
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+.infoItem {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.infoItem:last-child { margin-bottom: 0; }
+
+.infoIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #e22110;
+}
+
+.infoLabel {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 2px;
+  display: block;
+}
+
+.infoValue {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.mapCard {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+.mapFrame {
+  width: 100%;
+  height: 220px;
+  border: none;
+  display: block;
+}
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width: 900px) {
+  .heroWrap { padding: 0 20px; }
+  .pageHero { padding: 60px 0 40px; }
+  .contactMain { padding: 52px 0 60px; }
+  .contactInner { grid-template-columns: 1fr; }
+  .infoSidebar { position: static; }
+  .formCard { padding: 32px 24px; }
+  .line { width: 48px; }
+}
+
+@media (max-width: 600px) {
+  .heroH1 { font-size: 2.2rem; }
+  .formCard { padding: 24px 16px; }
+  .formActions { flex-direction: column; }
+  .submitButton, .backButton { width: 100%; text-align: center; justify-content: center; }
+}

@@ -13,10 +13,9 @@ import deivaraj from "src/assets/images/our_team/deivaraj.png";
 import dhanasekaran from "src/assets/images/our_team/dhanasekaran.png";
 import ajith from "src/assets/images/our_team/ajith.png";
 import kavinesh from "src/assets/images/our_team/kavinesh.png";
-import linkedin from "src/assets/images/our_team/linkedin.png";
 
-
-const teamMembers = [  {
+const teamMembers = [
+  {
     name: "米田 卓也",
     role: "会社の社長",
     image: takuyayoneda,
@@ -89,20 +88,20 @@ export default function TeamSection() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.8 }}
       viewport={{ once: true }}
-      className={styles.hero}
+      className={styles.teamSection}
     >
       <div className={styles.container}>
-        <h2 className={styles.heroTitle}>
-          <span className={styles.heroRedText}>私たちのチーム</span>
-        </h2>        <h2 className={styles.heroSubtitle}>
-          私たちのチームは、当社の成功を支える原動力であり、ビジョン達成に向けた中心的役割を担っております。
-        </h2>
+        <div className={styles.secHead}>
+          <p className={styles.secEyebrow}>私たちのチーム</p>
+          <h2 className={styles.secH2}>Genio Indiaを支える<span>メンバー</span></h2>
+          <p className={styles.secLead}>チームは私たちの成功の中心であり、ビジョンの原動力です。カードにホバーして詳細をご覧ください。</p>
+        </div>
         <div className={`${styles.teamGrid} ${styles.teamContent}`}>
           {teamMembers.map((member, index) => (
             <div key={index} className={styles.teamCard}>
               <div className={styles.flipCard}>
                 <div className={styles.flipCardInner}>
-                  {/* Front of card */}
+                  {/* 表面 */}
                   <div className={styles.flipCardFront}>
                     <Image
                       src={member.image}
@@ -115,29 +114,22 @@ export default function TeamSection() {
                     />
                   </div>
 
-                  {/* Back of card */}
+                  {/* 裏面 */}
                   <div className={styles.flipCardBack}>
                     <h3 className={styles.memberName}>{member.name}</h3>
                     <p className={styles.memberRole}>{member.role}</p>
-                    <p className={styles.memberDescription}>
-                    {member.description}
-                    </p>
+                    <p className={styles.memberDescription}>{member.description}</p>
                     <div className={styles.socialMedia}>
-                      {/* LinkedIn Link */}
-                      <a
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.socialLink}
-                      >
-                        <Image
-                          src={linkedin}
-                          alt="LinkedIn"
-                          width={40}
-                          height={40}
-                          className={styles.socialIcon}
-                        />
-                      </a>
+                      {member.linkedin && (
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.linkedinBtn}
+                        >
+                          LinkedIn →
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
