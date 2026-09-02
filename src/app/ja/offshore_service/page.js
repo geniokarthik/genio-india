@@ -162,7 +162,7 @@ export default function OffshoreServiceJa() {
                 viewport={{ once: true, amount: 0.05 }}
               >
                 <img
-                  src="/images/home/hero-real-team.png"
+                  src="/images/home/hero_real_team2.png"
                   alt="開発チームの様子"
                   className={styles.processImg}
                 />
