@@ -42,59 +42,6 @@
   overflow: hidden;
 }
 
-.heroCanvasBackdrop {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.5;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.heroDecorRing {
-  position: absolute;
-  top: 26px;
-  right: 6%;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(226, 33, 16, 0.26);
-  pointer-events: none;
-  animation: svcDecorSpin 24s linear infinite;
-  z-index: 1;
-}
-
-.heroDecorDot {
-  position: absolute;
-  bottom: 34px;
-  left: 6%;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: rgba(226, 33, 16, 0.32);
-  pointer-events: none;
-  animation: svcDecorFloat 4.5s ease-in-out infinite;
-  z-index: 1;
-}
-
-@keyframes svcDecorSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes svcDecorFloat {
-  0%, 100% { transform: translateY(0); opacity: 0.35; }
-  50% { transform: translateY(-10px); opacity: 0.7; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .heroDecorRing,
-  .heroDecorDot {
-    animation: none;
-  }
-}
-
 .heroWrap {
   max-width: 1160px;
   margin: 0 auto;
@@ -284,51 +231,6 @@
   background: #f9fafb;
 }
 
-.sectionCanvasBackdrop {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 100vw;
-  height: 100%;
-  transform: translateX(-50%);
-  opacity: 0.6;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.sectionDecorRing {
-  position: absolute;
-  top: 28px;
-  left: 4%;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(226, 33, 16, 0.3);
-  pointer-events: none;
-  animation: svcDecorSpin 24s linear infinite;
-  z-index: 1;
-}
-
-.sectionDecorDot {
-  position: absolute;
-  bottom: 32px;
-  right: 4%;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: rgba(226, 33, 16, 0.42);
-  pointer-events: none;
-  animation: svcDecorFloat 4.5s ease-in-out infinite;
-  z-index: 1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .sectionDecorRing,
-  .sectionDecorDot {
-    animation: none;
-  }
-}
-
 .svcWrap {
   max-width: 1160px;
   margin: 0 auto;
@@ -468,36 +370,6 @@
   overflow: hidden;
 }
 
-.ctaDecorRing {
-  position: absolute;
-  top: 20px;
-  left: 5%;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(255, 255, 255, 0.25);
-  pointer-events: none;
-  animation: svcDecorSpin 22s linear infinite;
-}
-
-.ctaDecorDot {
-  position: absolute;
-  bottom: 26px;
-  right: 6%;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
-  pointer-events: none;
-  animation: svcDecorFloat 4s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ctaDecorRing,
-  .ctaDecorDot {
-    animation: none;
-  }
-}
 .cta__title {
   font-family: 'Archivo', sans-serif;
   font-size: clamp(1.6rem, 3vw, 2.2rem);
@@ -1118,12 +990,15 @@
   overflow: hidden;
   border: 1px solid #e5e7eb;
   background: #fff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* transform lives only in :hover's own transition — a base-rule
+   `transition: transform` would fight the mount/scroll entrance animation
+   framer-motion drives on this same element. */
 .projCard:hover {
   transform: translateY(-5px);
   box-shadow: 0 16px 50px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .projImg {

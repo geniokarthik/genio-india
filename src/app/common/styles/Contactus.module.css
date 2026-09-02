@@ -13,59 +13,6 @@
   z-index: 1;
 }
 
-.heroCanvasBackdrop {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.65;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.heroDecorRing {
-  position: absolute;
-  top: 26px;
-  right: 6%;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(226, 33, 16, 0.26);
-  pointer-events: none;
-  animation: cuDecorSpin 24s linear infinite;
-  z-index: 1;
-}
-
-.heroDecorDot {
-  position: absolute;
-  bottom: 34px;
-  left: 6%;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: rgba(226, 33, 16, 0.32);
-  pointer-events: none;
-  animation: cuDecorFloat 4.5s ease-in-out infinite;
-  z-index: 1;
-}
-
-@keyframes cuDecorSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes cuDecorFloat {
-  0%, 100% { transform: translateY(0); opacity: 0.35; }
-  50% { transform: translateY(-10px); opacity: 0.7; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .heroDecorRing,
-  .heroDecorDot {
-    animation: none;
-  }
-}
-
 .heroWrap {
   max-width: 1160px;
   margin: 0 auto;
@@ -162,77 +109,6 @@
   overflow: hidden;
 }
 
-.sectionCanvasBackdrop {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.7;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.mainDecorRing {
-  position: absolute;
-  top: 60px;
-  left: 3%;
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(226, 33, 16, 0.3);
-  pointer-events: none;
-  animation: cuDecorSpin 26s linear infinite;
-  z-index: 1;
-}
-
-.mainDecorDot {
-  position: absolute;
-  bottom: 70px;
-  right: 3%;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(226, 33, 16, 0.4);
-  pointer-events: none;
-  animation: cuDecorFloat 4.2s ease-in-out infinite;
-  z-index: 1;
-}
-
-.mainDecorRing2 {
-  position: absolute;
-  top: 90px;
-  right: 3%;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(226, 33, 16, 0.26);
-  pointer-events: none;
-  animation: cuDecorSpin 19s linear infinite reverse;
-  z-index: 1;
-}
-
-.mainDecorDot2 {
-  position: absolute;
-  bottom: 110px;
-  left: 3%;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: rgba(226, 33, 16, 0.36);
-  pointer-events: none;
-  animation: cuDecorFloat 3.6s ease-in-out infinite;
-  animation-delay: 0.8s;
-  z-index: 1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .mainDecorRing,
-  .mainDecorDot,
-  .mainDecorRing2,
-  .mainDecorDot2 {
-    animation: none;
-  }
-}
 
 .contactInner {
   display: grid;

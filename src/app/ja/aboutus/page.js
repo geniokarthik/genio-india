@@ -2,14 +2,14 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import "../../globals.css";
-import { motion } from "framer-motion";
 
 import Header from "src/app/ja/components/Header";
 import Footer from "src/app/ja/components/Footer";
 import Jlpt from "src/app/ja/aboutus/jlpt";
 import TeamSection from "src/app/ja/aboutus/TeamSection";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
-import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
+import Reveal from "src/app/common/components/Reveal";
+import SectionDecor from "src/app/common/components/SectionDecor";
 import styles from "src/app/common/styles/Aboutus.module.css";
 import sidelogo from "src/assets/images/aboutus/sidelogo.png";
 
@@ -41,17 +41,8 @@ export default function AboutUs() {
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet" />
       <Header />
       <div className={styles.home}>
-        <motion.section
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className={styles.hero}
-          id="corporatehistory"
-        >
-          <AnimatedHeroBackdrop className={styles.heroCanvasBackdrop} />
-          <div aria-hidden="true" className={styles.heroDecorRing} />
-          <div aria-hidden="true" className={styles.heroDecorDot} />
+        <Reveal as="section" y={50} duration={0.8} className={styles.hero} id="corporatehistory">
+          <SectionDecor variant="hero" />
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle}>
               <span className={styles.heroRedText}>企業沿革</span>
@@ -60,18 +51,10 @@ export default function AboutUs() {
               当社の成長とこれまでの歩み
             </h2>
           </div>
-        </motion.section>
+        </Reveal>
 
-        <motion.section
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          viewport={{ once: true }}
-          className={styles.timelineSection}
-        >
-          <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
-            <div aria-hidden="true" className={styles.sectionDecorRing} />
-            <div aria-hidden="true" className={styles.sectionDecorDot} />
+        <Reveal as="section" duration={0.8} delay={0.3} className={styles.timelineSection}>
+          <SectionDecor variant="section" />
           <div className={styles.timeline} ref={timelineRef}>
             <div className={styles.timelineItem}>
               <div className={styles.timelineContent}>
@@ -161,7 +144,7 @@ export default function AboutUs() {
             className={styles.heroBackgroundGradient}
             style={{ width: "auto", height: "auto" }}
           />
-        </motion.section>
+        </Reveal>
         <TeamSection />
         <Jlpt/>
       </div>

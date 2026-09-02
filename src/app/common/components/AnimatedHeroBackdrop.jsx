@@ -2,107 +2,151 @@
 
 import { useEffect, useRef } from "react";
 
-const TYPES = ["circle", "rect", "triangle", "pill", "square", "rect", "circle", "pill"];
+// A tech-flavored shape set: circles, dashed-ring circles, diamonds,
+// triangles, hexagons (matches the outlined hexagons already used in the
+// header), and a small isometric-cube wireframe — flat, crisp colors, no
+// blurred gradients.
+const TYPES = ["circle", "ring", "diamond", "triangle", "hexagon", "hexagon", "cube"];
 
-function createShape(width, height) {
-  const type = TYPES[Math.floor(Math.random() * TYPES.length)];
-  const edge = Math.floor(Math.random() * 4);
-  let x;
-  let y;
+// One color per shape, picked from a small curated palette so the backdrop
+// reads as a handful of distinct accents (red / gold / pink) instead of a
+// single monochrome haze.
+const BRAND_RGB = [
+  "226, 33, 16",   // brand red
+  "245, 158, 11",  // warm gold
+  "236, 72, 153",  // rose pink
+];
 
-  if (edge === 0) {
-    x = Math.random() * width;
-    y = -120;
-  } else if (edge === 1) {
-    x = width + 120;
-    y = Math.random() * height;
-  } else if (edge === 2) {
-    x = Math.random() * width;
-    y = height + 120;
-  } else {
-    x = -120;
-    y = Math.random() * height;
+const LIGHT_RGB = [
+  "255, 255, 255", // white
+  "255, 214, 140", // soft gold, for a little variety on dark/red backgrounds
+];
+
+function polygonPoints(sides, radius, rotation = 0) {
+  const pts = [];
+  for (let i = 0; i < sides; i += 1) {
+    const angle = rotation + (Math.PI * 2 * i) / sides;
+    pts.push([radius * Math.cos(angle), radius * Math.sin(angle)]);
   }
+  return pts;
+}
 
-  const size = 40 + Math.random() * 120;
-  const speed = 0.25 + Math.random() * 0.7;
+function tracePolygon(ctx, pts) {
+  ctx.beginPath();
+  ctx.moveTo(pts[0][0], pts[0][1]);
+  for (let i = 1; i < pts.length; i += 1) {
+    ctx.lineTo(pts[i][0], pts[i][1]);
+  }
+  ctx.closePath();
+}
+
+function createShape(width, height, tone) {
+  const type = TYPES[Math.floor(Math.random() * TYPES.length)];
+  const palette = tone === "light" ? LIGHT_RGB : BRAND_RGB;
+
+  // Spawn directly inside the visible area and let the fade-in (below)
+  // handle the "arriving" look. Spawning off-screen at the edges and
+  // relying on drift speed to bring it into view meant a respawned shape
+  // could take a very long time — sometimes over a minute — to become
+  // visible again, which read as the backdrop "hiding" for ages.
+  const x = Math.random() * width;
+  const y = Math.random() * height;
+
+  const size = 28 + Math.random() * 84;
+  const speed = 0.1 + Math.random() * 0.26;
   const angle = Math.random() * Math.PI * 2;
 
   return {
     type,
     x,
     y,
-    vx: Math.cos(angle) * speed * (Math.random() < 0.5 ? 1 : -1) * 0.6 + (width / 2 - x) * 0.0004,
-    vy: Math.sin(angle) * speed * (Math.random() < 0.5 ? 1 : -1) * 0.6 + (height / 2 - y) * 0.0004,
+    vx: Math.cos(angle) * speed * (Math.random() < 0.5 ? 1 : -1) * 0.5 + (width / 2 - x) * 0.0003,
+    vy: Math.sin(angle) * speed * (Math.random() < 0.5 ? 1 : -1) * 0.5 + (height / 2 - y) * 0.0003,
     rot: Math.random() * Math.PI * 2,
-    rotSpd: (Math.random() - 0.5) * 0.008,
+    rotSpd: (Math.random() - 0.5) * 0.006,
     size,
-    alpha: 0.4 + Math.random() * 0.35,
+    rgb: palette[Math.floor(Math.random() * palette.length)],
+    dashed: Math.random() < 0.55,
+    filled: Math.random() < 0.5,
+    alpha: 0.55 + Math.random() * 0.25,
     life: 0,
-    maxLife: 320 + Math.random() * 280,
+    maxLife: 420 + Math.random() * 320,
   };
 }
 
 function drawShape(ctx, shape) {
   const fade =
-    shape.life < 30
-      ? shape.life / 30
-      : shape.life > shape.maxLife - 30
-        ? (shape.maxLife - shape.life) / 30
+    shape.life < 40
+      ? shape.life / 40
+      : shape.life > shape.maxLife - 40
+        ? (shape.maxLife - shape.life) / 40
         : 1;
 
-  const alpha = shape.alpha * fade;
-  if (alpha <= 0.01) {
+  const alpha = Math.min(shape.alpha * fade, 0.85);
+  if (alpha <= 0.02) {
     return;
   }
 
   const size = shape.size;
-  const gradient = ctx.createLinearGradient(-size, -size, size, size);
-  gradient.addColorStop(0, `rgba(255, 90, 60, ${Math.min(alpha + 0.15, 0.85)})`);
-  gradient.addColorStop(0.5, `rgba(226, 33, 16, ${Math.min(alpha + 0.05, 0.8)})`);
-  gradient.addColorStop(1, `rgba(190, 20, 10, ${Math.max(alpha - 0.04, 0.12)})`);
+  const lineWidth = Math.max(1.3, size * 0.045);
+  const color = shape.rgb;
 
   ctx.save();
   ctx.translate(shape.x, shape.y);
   ctx.rotate(shape.rot);
-  ctx.fillStyle = gradient;
+
+  if (shape.dashed) {
+    ctx.setLineDash([size * 0.09, size * 0.075]);
+  }
 
   if (shape.type === "circle") {
     ctx.beginPath();
     ctx.arc(0, 0, size * 0.5, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${color}, ${Math.min(alpha, 0.7)})`;
     ctx.fill();
-  } else if (shape.type === "rect") {
-    const w = size * 0.28;
-    const h = size * 1.1;
+  } else if (shape.type === "ring") {
     ctx.beginPath();
-    ctx.roundRect(-w / 2, -h / 2, w, h, 6);
-    ctx.fill();
-  } else if (shape.type === "square") {
-    const w = size * 0.65;
+    ctx.arc(0, 0, size * 0.5, 0, Math.PI * 2);
+    ctx.lineWidth = lineWidth;
+    ctx.strokeStyle = `rgba(${color}, ${alpha})`;
+    ctx.stroke();
+  } else if (shape.type === "diamond" || shape.type === "triangle" || shape.type === "hexagon") {
+    const sides = shape.type === "diamond" ? 4 : shape.type === "triangle" ? 3 : 6;
+    const pts = polygonPoints(sides, size * 0.5, -Math.PI / 2);
+    tracePolygon(ctx, pts);
+    if (shape.filled) {
+      ctx.fillStyle = `rgba(${color}, ${Math.min(alpha, 0.7)})`;
+      ctx.fill();
+    } else {
+      ctx.lineWidth = lineWidth;
+      ctx.strokeStyle = `rgba(${color}, ${alpha})`;
+      ctx.stroke();
+    }
+  } else if (shape.type === "cube") {
+    // Isometric-cube wireframe: hexagon silhouette + 3 spokes to alternating
+    // vertices, forming the classic 3-visible-faces cube icon.
+    const pts = polygonPoints(6, size * 0.5, -Math.PI / 2);
+    ctx.lineWidth = Math.max(1.1, size * 0.032);
+    ctx.strokeStyle = `rgba(${color}, ${alpha})`;
+    tracePolygon(ctx, pts);
+    ctx.stroke();
     ctx.beginPath();
-    ctx.roundRect(-w / 2, -w / 2, w, w, 8);
-    ctx.fill();
-  } else if (shape.type === "triangle") {
-    const r = size * 0.55;
-    ctx.beginPath();
-    ctx.moveTo(0, -r);
-    ctx.lineTo(r * 0.866, r * 0.5);
-    ctx.lineTo(-r * 0.866, r * 0.5);
-    ctx.closePath();
-    ctx.fill();
-  } else if (shape.type === "pill") {
-    const w = size * 0.22;
-    const h = size * 0.85;
-    ctx.beginPath();
-    ctx.roundRect(-w / 2, -h / 2, w, h, w / 2);
-    ctx.fill();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(pts[0][0], pts[0][1]);
+    ctx.moveTo(0, 0);
+    ctx.lineTo(pts[2][0], pts[2][1]);
+    ctx.moveTo(0, 0);
+    ctx.lineTo(pts[4][0], pts[4][1]);
+    ctx.stroke();
   }
 
   ctx.restore();
 }
 
-export default function AnimatedHeroBackdrop({ className }) {
+export default function AnimatedHeroBackdrop({ className, tone = "brand" }) {
   const canvasRef = useRef(null);
+  const toneRef = useRef(tone);
+  toneRef.current = tone;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -131,8 +175,9 @@ export default function AnimatedHeroBackdrop({ className }) {
       canvas.height = height;
 
       if (shapes.length === 0) {
-        for (let i = 0; i < 24; i += 1) {
-          const shape = createShape(width, height);
+        const count = Math.max(9, Math.min(16, Math.round((width * height) / 85000)));
+        for (let i = 0; i < count; i += 1) {
+          const shape = createShape(width, height, toneRef.current);
           shape.x = Math.random() * width;
           shape.y = Math.random() * height;
           shape.life = Math.random() * shape.maxLife;
@@ -144,19 +189,6 @@ export default function AnimatedHeroBackdrop({ className }) {
     const draw = () => {
       context.clearRect(0, 0, width, height);
 
-      const warmGlow = context.createRadialGradient(
-        width * 0.78,
-        height * 0.18,
-        0,
-        width * 0.78,
-        height * 0.18,
-        width * 0.68,
-      );
-      warmGlow.addColorStop(0, "rgba(255,230,225,0.38)");
-      warmGlow.addColorStop(1, "rgba(255,255,255,0)");
-      context.fillStyle = warmGlow;
-      context.fillRect(0, 0, width, height);
-
       for (const shape of shapes) {
         shape.x += shape.vx;
         shape.y += shape.vy;
@@ -164,7 +196,7 @@ export default function AnimatedHeroBackdrop({ className }) {
         shape.life += 1;
 
         if (shape.life > shape.maxLife) {
-          Object.assign(shape, createShape(width, height));
+          Object.assign(shape, createShape(width, height, toneRef.current));
         }
 
         drawShape(context, shape);

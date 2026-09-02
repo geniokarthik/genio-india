@@ -12,9 +12,11 @@ import LanguageTeachingImg from "src/assets/images/service/languageteaching.png"
 import Header from "src/app/ja/components/Header";
 import Footer from "src/app/ja/components/Footer";
 import Link from "next/link";
-import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import styles from "src/app/common/styles/Service.module.css";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
+import Reveal from "src/app/common/components/Reveal";
+import SectionDecor from "src/app/common/components/SectionDecor";
+import { cardEntrance } from "src/app/common/motion/variants";
 
 const SERVICES = [
   { id: "web-development", label: "ウェブ開発" },
@@ -266,16 +268,9 @@ export default function ServiceJa() {
 
         {/* ── ヒーロー（全幅）── */}
         <section className={styles.hero}>
-          <AnimatedHeroBackdrop className={styles.heroCanvasBackdrop} />
-          <div aria-hidden="true" className={styles.heroDecorRing} />
-          <div aria-hidden="true" className={styles.heroDecorDot} />
+          <SectionDecor variant="hero" />
           <div className={styles.heroWrap}>
-            <motion.div
-              className={styles.hero__text}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
+            <Reveal as="div" y={30} duration={0.8} immediate className={styles.hero__text}>
               <p className={styles.hero__label}>事業内容</p>
               <h1 className={styles.hero__title}>
                 インド発、高品質・<span>低コスト</span>のオフショア開発
@@ -284,13 +279,8 @@ export default function ServiceJa() {
                 ウェブシステム・アプリ・MySQLデータベースをゼロから構築。
                 専任チームが日本市場の品質基準に応えます。
               </p>
-            </motion.div>
-            <motion.div
-              className={styles.svcTabs}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
+            </Reveal>
+            <Reveal as="div" y={20} duration={0.6} delay={0.3} immediate className={styles.svcTabs}>
               {SERVICES.map((item) => (
                 <a
                   key={item.id}
@@ -302,7 +292,7 @@ export default function ServiceJa() {
                   {item.label}
                 </a>
               ))}
-            </motion.div>
+            </Reveal>
           </div>
         </section>
 
@@ -311,18 +301,8 @@ export default function ServiceJa() {
 
           {/* サービス詳細セクション */}
           {DETAILS.map((d, i) => (
-            <motion.section
-              key={d.id}
-              id={`section-${d.id}`}
-              className={styles.svcSection}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              viewport={{ once: true, amount: 0.1 }}
-            >
-              <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
-            <div aria-hidden="true" className={styles.sectionDecorRing} />
-            <div aria-hidden="true" className={styles.sectionDecorDot} />
+            <Reveal as="section" key={d.id} id={`section-${d.id}`} y={40} className={styles.svcSection}>
+              <SectionDecor variant="section" />
               <div className={styles.svcWrap}>
                 <div className={`${styles.svcInner} ${i % 2 !== 0 ? styles.svcReverse : ""}`}>
                   <div className={styles.svcText}>
@@ -344,20 +324,12 @@ export default function ServiceJa() {
                   </div>
                 </div>
               </div>
-            </motion.section>
+            </Reveal>
           ))}
 
           {/* 開発実績 */}
-          <motion.section
-            className={styles.projects}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
-            <div aria-hidden="true" className={styles.sectionDecorRing} />
-            <div aria-hidden="true" className={styles.sectionDecorDot} />
+          <Reveal as="section" y={40} className={styles.projects}>
+            <SectionDecor variant="section" />
             <div className={styles.section_head}>
               <p className={styles.section_label}>実績 · Projects</p>
               <h2 className={styles.section_title}>開発<span>実績のご紹介</span></h2>
@@ -365,15 +337,15 @@ export default function ServiceJa() {
             </div>
             <div className={styles.projGrid}>
               {PROJECTS.map((p, i) => (
-                <motion.div
+                <Reveal
+                  as="div"
                   key={p.id}
+                  {...cardEntrance(i)}
+                  duration={0.45}
+                  delay={i * 0.08}
                   className={styles.projCard}
                   style={{ cursor: "pointer" }}
                   onClick={() => setSelectedProject(p)}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: i * 0.08 }}
-                  viewport={{ once: true, amount: 0.1 }}
                 >
                   <div className={styles.projImg} style={p.bg ? { background: p.bg } : {}}>
                     <Image
@@ -391,7 +363,7 @@ export default function ServiceJa() {
                     <p className={styles.projTitle}>{p.title}</p>
                     <p className={styles.projDesc}>{p.tagline}</p>
                   </div>
-                </motion.div>
+                </Reveal>
               ))}
             </div>
 
@@ -474,19 +446,11 @@ export default function ServiceJa() {
                 </motion.div>
               )}
             </AnimatePresence>
-          </motion.section>
+          </Reveal>
 
           {/* 技術スタック */}
-          <motion.section
-            className={styles.tech}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true, amount: 0.05 }}
-          >
-            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
-            <div aria-hidden="true" className={styles.sectionDecorRing} />
-            <div aria-hidden="true" className={styles.sectionDecorDot} />
+          <Reveal as="section" y={40} amount={0.05} className={styles.tech}>
+            <SectionDecor variant="section" />
             <div className={styles.section_head}>
               <p className={styles.section_label}>技術対応範囲</p>
               <h2 className={styles.section_title}>技術領域の<span>ご紹介</span></h2>
@@ -494,13 +458,13 @@ export default function ServiceJa() {
             </div>
             <div className={styles.techGrid}>
               {techAreas.map((area, idx) => (
-                <motion.div
+                <Reveal
+                  as="div"
                   key={area.category}
+                  {...cardEntrance(idx + 3)}
+                  duration={0.45}
+                  delay={idx * 0.05}
                   className={`${styles.techCard} ${SPAN2.includes(area.category) ? styles.techCardSpan2 : ""}`}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: idx * 0.05 }}
-                  viewport={{ once: true, amount: 0.1 }}
                 >
                   <h3 className={styles.techCardHead}>{area.category}</h3>
                   <div className={styles.techItems}>
@@ -515,25 +479,18 @@ export default function ServiceJa() {
                       </div>
                     ))}
                   </div>
-                </motion.div>
+                </Reveal>
               ))}
             </div>
-          </motion.section>
+          </Reveal>
 
           {/* CTA */}
-          <motion.section
-            className={styles.cta}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            <div aria-hidden="true" className={styles.ctaDecorRing} />
-            <div aria-hidden="true" className={styles.ctaDecorDot} />
+          <Reveal as="section" y={30} duration={0.6} className={styles.cta}>
+            <SectionDecor variant="cta" tone="light" canvas={false} />
             <h2 className={styles.cta__title}>お問い合わせ</h2>
             <p className={styles.cta__body}>ご依頼・お見積もりについて、こちらからお問い合わせください。</p>
             <Link href="/ja/contactus" className={styles.cta__btn}>お問い合わせはこちら →</Link>
-          </motion.section>
+          </Reveal>
 
         </div>
         <ScrollTop />

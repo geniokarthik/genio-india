@@ -1,0 +1,149 @@
+/*
+ * Shared decorative layer used by <SectionDecor/> on every hero/section/CTA
+ * across the whole site (both languages). One set of shapes, one set of
+ * keyframes, one reduced-motion rule — every page used to redefine all of
+ * this itself (down to duplicate @keyframes with a different prefix per
+ * page), which is why the shapes never quite matched from page to page.
+ */
+
+/* left:50% + width:100vw + translateX(-50%) breaks the canvas out to the
+   full viewport width even when the section sits inside a narrower
+   max-width content wrapper (most sections do) — otherwise the shapes
+   only span that narrow centered column instead of the whole screen. */
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 100%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.canvas--hero {
+  opacity: 0.9;
+  z-index: 0;
+}
+
+.canvas--section {
+  opacity: 0.85;
+  z-index: -1;
+}
+
+.canvas--cta {
+  opacity: 0.75;
+  z-index: 0;
+}
+
+/* Dashed outer ring + solid inner ring, slowly counter-rotating. */
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(226, 33, 16, 0.5);
+  pointer-events: none;
+  animation: decorSpin 28s linear infinite;
+  z-index: 1;
+}
+
+.ring::after {
+  content: "";
+  position: absolute;
+  inset: 18%;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  animation: decorSpin 19s linear infinite reverse;
+}
+
+.ring--light {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.ring--light::after {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.ring--hero {
+  top: 28px;
+  right: 6%;
+  width: 76px;
+  height: 76px;
+}
+
+.ring--section {
+  top: 28px;
+  left: 4%;
+  width: 64px;
+  height: 64px;
+}
+
+.ring--cta {
+  top: 20px;
+  left: 5%;
+  width: 56px;
+  height: 56px;
+}
+
+/* Second, smaller shape pair for sections that carry two orbiting rings
+   (e.g. the contact page's form section). */
+.ring--section2 {
+  top: 34px;
+  right: 3%;
+  width: 46px;
+  height: 46px;
+  animation-direction: reverse;
+}
+
+/* Small floating accent dot. */
+.dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(236, 72, 153, 0.65);
+  pointer-events: none;
+  animation: decorFloat 4.5s ease-in-out infinite;
+  z-index: 1;
+}
+
+.dot--light {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.dot--hero {
+  bottom: 34px;
+  left: 6%;
+}
+
+.dot--section {
+  bottom: 32px;
+  right: 4%;
+}
+
+.dot--cta {
+  bottom: 26px;
+  right: 6%;
+}
+
+.dot--section2 {
+  bottom: 40px;
+  left: 3%;
+  animation-delay: 0.8s;
+}
+
+@keyframes decorSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes decorFloat {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.55; }
+  50% { transform: translateY(-12px) scale(1.15); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring,
+  .ring::after,
+  .dot {
+    animation: none;
+  }
+}

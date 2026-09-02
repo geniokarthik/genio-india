@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
 import Header from "src/app/en/components/Header";
 import Footer from "src/app/en/components/Footer";
 import Image from "next/image";
@@ -9,7 +8,7 @@ import styles from "src/app/common/styles/Contactus.module.css";
 import "../../globals.css";
 import returnhomeicon from "src/assets/images/contactus/returnhome.png";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
-import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
+import SectionDecor from "src/app/common/components/SectionDecor";
 import CryptoJS from 'crypto-js';
 
 export default function ContactForm() {
@@ -109,9 +108,7 @@ export default function ContactForm() {
 
             {/* PAGE HERO */}
             <section className={styles.pageHero}>
-                <AnimatedHeroBackdrop className={styles.heroCanvasBackdrop} />
-                <div aria-hidden="true" className={styles.heroDecorRing} />
-                <div aria-hidden="true" className={styles.heroDecorDot} />
+                <SectionDecor variant="hero" />
                 <div className={styles.heroWrap}>
                     <p className={styles.heroEyebrow}>Get in Touch</p>
                     <h1 className={styles.heroH1}><span>Contact Us</span></h1>
@@ -137,11 +134,8 @@ export default function ContactForm() {
 
             {/* CONTACT MAIN */}
             <section className={styles.contactMain}>
-                <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
-                <div aria-hidden="true" className={styles.mainDecorRing} />
-                <div aria-hidden="true" className={styles.mainDecorDot} />
-                <div aria-hidden="true" className={styles.mainDecorRing2} />
-                <div aria-hidden="true" className={styles.mainDecorDot2} />
+                <SectionDecor variant="section" />
+                <SectionDecor variant="section2" canvas={false} />
                 <div className={styles.heroWrap}>
                     <div className={styles.contactInner}>
 

@@ -13,8 +13,10 @@ import Header from "src/app/en/components/Header";
 import Footer from "src/app/en/components/Footer";
 import Link from "next/link";
 import styles from "src/app/common/styles/Service.module.css";
-import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
+import Reveal from "src/app/common/components/Reveal";
+import SectionDecor from "src/app/common/components/SectionDecor";
+import { cardEntrance } from "src/app/common/motion/variants";
 
 const SERVICES = [
   { id: "web-development", label: "Web Development" },
@@ -266,16 +268,9 @@ export default function ServiceEn() {
 
         {/* ── PAGE HERO (full-width) ── */}
         <section className={styles.hero}>
-          <AnimatedHeroBackdrop className={styles.heroCanvasBackdrop} />
-          <div aria-hidden="true" className={styles.heroDecorRing} />
-          <div aria-hidden="true" className={styles.heroDecorDot} />
+          <SectionDecor variant="hero" />
           <div className={styles.heroWrap}>
-            <motion.div
-              className={styles.hero__text}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
+            <Reveal as="div" y={30} duration={0.8} immediate className={styles.hero__text}>
               <p className={styles.hero__label}>What We Offer</p>
               <h1 className={styles.hero__title}>
                 India-Based High Quality, <span>Low Cost</span> Offshore Development
@@ -284,13 +279,8 @@ export default function ServiceEn() {
                 We build web systems, apps, and MySQL databases from scratch.
                 Our dedicated team meets Japanese market quality standards.
               </p>
-            </motion.div>
-            <motion.div
-              className={styles.svcTabs}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
+            </Reveal>
+            <Reveal as="div" y={20} duration={0.6} delay={0.3} immediate className={styles.svcTabs}>
               {SERVICES.map((item) => (
                 <a
                   key={item.id}
@@ -302,7 +292,7 @@ export default function ServiceEn() {
                   {item.label}
                 </a>
               ))}
-            </motion.div>
+            </Reveal>
           </div>
         </section>
 
@@ -311,18 +301,8 @@ export default function ServiceEn() {
 
           {/* SERVICE DETAIL SECTIONS */}
           {DETAILS.map((d, i) => (
-            <motion.section
-              key={d.id}
-              id={`section-${d.id}`}
-              className={styles.svcSection}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              viewport={{ once: true, amount: 0.1 }}
-            >
-              <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
-            <div aria-hidden="true" className={styles.sectionDecorRing} />
-            <div aria-hidden="true" className={styles.sectionDecorDot} />
+            <Reveal as="section" key={d.id} id={`section-${d.id}`} y={40} className={styles.svcSection}>
+              <SectionDecor variant="section" />
               <div className={styles.svcWrap}>
                 <div className={`${styles.svcInner} ${i % 2 !== 0 ? styles.svcReverse : ""}`}>
                   <div className={styles.svcText}>
@@ -344,20 +324,12 @@ export default function ServiceEn() {
                   </div>
                 </div>
               </div>
-            </motion.section>
+            </Reveal>
           ))}
 
           {/* PROJECTS */}
-          <motion.section
-            className={styles.projects}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
-            <div aria-hidden="true" className={styles.sectionDecorRing} />
-            <div aria-hidden="true" className={styles.sectionDecorDot} />
+          <Reveal as="section" y={40} className={styles.projects}>
+            <SectionDecor variant="section" />
             <div className={styles.section_head}>
               <p className={styles.section_label}>Works · Projects</p>
               <h2 className={styles.section_title}>Our <span>Project Portfolio</span></h2>
@@ -365,15 +337,15 @@ export default function ServiceEn() {
             </div>
             <div className={styles.projGrid}>
               {PROJECTS.map((p, i) => (
-                <motion.div
+                <Reveal
+                  as="div"
                   key={p.id}
+                  {...cardEntrance(i)}
+                  duration={0.45}
+                  delay={i * 0.08}
                   className={styles.projCard}
                   style={{ cursor: "pointer" }}
                   onClick={() => setSelectedProject(p)}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: i * 0.08 }}
-                  viewport={{ once: true, amount: 0.1 }}
                 >
                   <div className={styles.projImg} style={p.bg ? { background: p.bg } : {}}>
                     <Image
@@ -391,7 +363,7 @@ export default function ServiceEn() {
                     <p className={styles.projTitle}>{p.title}</p>
                     <p className={styles.projDesc}>{p.tagline}</p>
                   </div>
-                </motion.div>
+                </Reveal>
               ))}
             </div>
 
@@ -476,19 +448,11 @@ export default function ServiceEn() {
                 </motion.div>
               )}
             </AnimatePresence>
-          </motion.section>
+          </Reveal>
 
           {/* TECH STACK */}
-          <motion.section
-            className={styles.tech}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true, amount: 0.05 }}
-          >
-            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
-            <div aria-hidden="true" className={styles.sectionDecorRing} />
-            <div aria-hidden="true" className={styles.sectionDecorDot} />
+          <Reveal as="section" y={40} amount={0.05} className={styles.tech}>
+            <SectionDecor variant="section" />
             <div className={styles.section_head}>
               <p className={styles.section_label}>Technical Coverage</p>
               <h2 className={styles.section_title}>Technology Areas <span>We Support</span></h2>
@@ -496,13 +460,13 @@ export default function ServiceEn() {
             </div>
             <div className={styles.techGrid}>
               {techAreas.map((area, idx) => (
-                <motion.div
+                <Reveal
+                  as="div"
                   key={area.category}
+                  {...cardEntrance(idx + 3)}
+                  duration={0.45}
+                  delay={idx * 0.05}
                   className={`${styles.techCard} ${SPAN2.includes(area.category) ? styles.techCardSpan2 : ""}`}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: idx * 0.05 }}
-                  viewport={{ once: true, amount: 0.1 }}
                 >
                   <h3 className={styles.techCardHead}>{area.category}</h3>
                   <div className={styles.techItems}>
@@ -517,25 +481,18 @@ export default function ServiceEn() {
                       </div>
                     ))}
                   </div>
-                </motion.div>
+                </Reveal>
               ))}
             </div>
-          </motion.section>
+          </Reveal>
 
           {/* CTA */}
-          <motion.section
-            className={styles.cta}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            <div aria-hidden="true" className={styles.ctaDecorRing} />
-            <div aria-hidden="true" className={styles.ctaDecorDot} />
+          <Reveal as="section" y={30} duration={0.6} className={styles.cta}>
+            <SectionDecor variant="cta" tone="light" canvas={false} />
             <h2 className={styles.cta__title}>Contact Us</h2>
             <p className={styles.cta__body}>For inquiries and estimates, please reach out via the link below. We respond within 2 business days.</p>
             <Link href="/en/contactus" className={styles.cta__btn}>Get in Touch →</Link>
-          </motion.section>
+          </Reveal>
 
         </div>
         <ScrollTop />

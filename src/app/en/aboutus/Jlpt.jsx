@@ -3,8 +3,10 @@
 import Image from "next/image";
 import "../../globals.css";
 import { motion } from "framer-motion";
+import Reveal from "src/app/common/components/Reveal";
+import SectionDecor from "src/app/common/components/SectionDecor";
+import { stagger, cardEntrance } from "src/app/common/motion/variants";
 import styles from "src/app/common/styles/Jlpt.module.css";
-import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import karthik from "src/assets/images/our_team/karthik.png";
 import naveen from "src/assets/images/our_team/naveen.png";
 import ajith from "src/assets/images/our_team/ajith.png";
@@ -83,20 +85,10 @@ const levelCounts = jlptLevels.reduce((acc, level) => {
     return acc;
 }, {});
 
-const grid = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.07 } },
-};
-
-const cardIn = {
-    hidden: { opacity: 0, y: 22 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.45 } },
-};
-
-function MemberCard({ member, dashed }) {
+function MemberCard({ member, dashed, index = 0 }) {
     return (
         <motion.div
-            variants={cardIn}
+            variants={{ hidden: { opacity: 0, ...cardEntrance(index) }, show: { opacity: 1, x: 0, y: 0, scale: 1, transition: { duration: 0.45 } } }}
             className={`${styles.jlptMemberCard} ${dashed ? styles.jlptMemberCardExt : ""}`}
         >
             <div className={`${styles.jlptMemberPhoto} ${styles[`jlptRing${member.jlpt}`]}`}>
@@ -131,17 +123,8 @@ export default function JapaneseClear() {
     const totalCertified = teamMembers.length;
 
     return (
-        <motion.section
-            id="team"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true, amount: 0.05 }}
-            className={styles.jlptSection}
-        >
-            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
-            <div aria-hidden="true" className={styles.sectionDecorRing} />
-            <div aria-hidden="true" className={styles.sectionDecorDot} />
+        <Reveal as="section" id="team" y={50} duration={0.8} amount={0.05} className={styles.jlptSection}>
+            <SectionDecor variant="section" />
             <div className={styles.container}>
                 <div className={styles.secHead}>
                     <p className={styles.secEyebrow}>Japanese Language Education</p>
@@ -209,10 +192,10 @@ export default function JapaneseClear() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true, amount: 0.1 }}
-                    variants={grid}
+                    variants={stagger(0.07)}
                 >
-                    {sortedTeam.map((member) => (
-                        <MemberCard key={member.name} member={member} />
+                    {sortedTeam.map((member, i) => (
+                        <MemberCard key={member.name} member={member} index={i} />
                     ))}
                 </motion.div>
 
@@ -231,13 +214,13 @@ export default function JapaneseClear() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true, amount: 0.1 }}
-                    variants={grid}
+                    variants={stagger(0.07)}
                 >
-                    {sortedOthers.map((member) => (
-                        <MemberCard key={member.name} member={member} dashed />
+                    {sortedOthers.map((member, i) => (
+                        <MemberCard key={member.name} member={member} dashed index={i} />
                     ))}
                 </motion.div>
             </div>
-        </motion.section>
+        </Reveal>
     );
 }

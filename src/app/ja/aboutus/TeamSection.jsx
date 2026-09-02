@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import "../../globals.css";
-import { motion } from "framer-motion";
+import Reveal from "src/app/common/components/Reveal";
+import SectionDecor from "src/app/common/components/SectionDecor";
+import { cardEntrance } from "src/app/common/motion/variants";
 import styles from "src/app/common/styles/Team.module.css";
-import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import karthik from "src/assets/images/our_team/karthik.png";
 import elavarasan from "src/assets/images/our_team/elavarasan.png";
 import naveen from "src/assets/images/our_team/naveen.png";
@@ -83,17 +84,8 @@ const teamMembers = [
 
 export default function TeamSection() {
   return (
-    <motion.section
-      id="team"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.8 }}
-      viewport={{ once: true }}
-      className={styles.teamSection}
-    >
-      <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
-            <div aria-hidden="true" className={styles.sectionDecorRing} />
-            <div aria-hidden="true" className={styles.sectionDecorDot} />
+    <Reveal as="section" id="team" y={50} duration={0.9} className={styles.teamSection}>
+      <SectionDecor variant="section" />
       <div className={styles.container}>
         <div className={styles.secHead}>
           <p className={styles.secEyebrow}>私たちのチーム</p>
@@ -102,7 +94,7 @@ export default function TeamSection() {
         </div>
         <div className={`${styles.teamGrid} ${styles.teamContent}`}>
           {teamMembers.map((member, index) => (
-            <div key={index} className={styles.teamCard}>
+            <Reveal as="div" key={index} {...cardEntrance(index)} duration={0.5} delay={index * 0.06} amount={0.15} className={styles.teamCard}>
               <div className={styles.flipCard}>
                 <div className={styles.flipCardInner}>
                   {/* 表面 */}
@@ -138,10 +130,10 @@ export default function TeamSection() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
-    </motion.section>
+    </Reveal>
   );
 }

@@ -1,16 +1,17 @@
 "use client";
 import Image from "next/image";
 import "../../globals.css";
-import { motion } from "framer-motion";
 import TeamMbersImg from "src/assets/images/service/teammembers.png";
 import Pattern1Img from "src/assets/images/service/ja/pattern1.png";
 import Pattern2Img from "src/assets/images/service/ja/pattern2.png";
-import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import Header from "src/app/ja/components/Header";
 import Footer from "src/app/ja/components/Footer";
 import Link from "next/link";
 import styles from "src/app/common/styles/Offshore.module.css";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
+import Reveal from "src/app/common/components/Reveal";
+import SectionDecor from "src/app/common/components/SectionDecor";
+import { cardEntrance } from "src/app/common/motion/variants";
 
 const BENEFITS = [
   {
@@ -74,34 +75,22 @@ export default function OffshoreServiceJa() {
 
         {/* ── ダークヒーロー（全幅）── */}
         <section className={styles.hero}>
-          <AnimatedHeroBackdrop className={styles.heroCanvasBackdrop} />
-          <div aria-hidden="true" className={styles.heroDecorRing} />
-          <div aria-hidden="true" className={styles.heroDecorDot} />
+          <SectionDecor variant="hero" tone="light" />
           <div className={styles.heroInner}>
-            <motion.div
-              className={styles.hero__text}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
+            <Reveal as="div" x={-50} duration={0.8} immediate className={styles.hero__text}>
               <p className={styles.hero__label}>オフショアサービス</p>
               <h1 className={styles.hero__title}>
                 オフショアとは、コスト削減を目的として人件費の安い海外企業に業務を委託することです。
               </h1>
-            </motion.div>
+            </Reveal>
 
-            <motion.div
-              className={styles.hero__collage}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            >
+            <Reveal as="div" x={50} duration={0.8} delay={0.2} immediate className={styles.hero__collage}>
               <img
                 src="/images/home/hero-real-team.png"
                 alt="Genio India 開発チーム"
                 className={styles.heroImg}
               />
-            </motion.div>
+            </Reveal>
           </div>
         </section>
 
@@ -109,16 +98,8 @@ export default function OffshoreServiceJa() {
         <div className={styles.home}>
 
           {/* オフショアのメリット */}
-          <motion.section
-            className={styles.benefits_section}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
-            <div aria-hidden="true" className={styles.sectionDecorRing} />
-            <div aria-hidden="true" className={styles.sectionDecorDot} />
+          <Reveal as="section" y={40} className={styles.benefits_section}>
+            <SectionDecor variant="section" />
             <div className={styles.section_head}>
               <p className={styles.section_label}>オフショアとは？</p>
               <h2 className={styles.section_title}>オフショアの<span>メリット</span></h2>
@@ -126,84 +107,47 @@ export default function OffshoreServiceJa() {
             </div>
             <div className={styles.benefits_grid}>
               {BENEFITS.map((b, i) => (
-                <motion.div
-                  key={b.title}
-                  className={styles.benefit_card}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: i * 0.08 }}
-                  viewport={{ once: true, amount: 0.1 }}
-                >
+                <Reveal as="div" key={b.title} {...cardEntrance(i)} duration={0.45} delay={i * 0.08} className={styles.benefit_card}>
                   <div className={styles.benefit_icon}>{b.icon}</div>
                   <p className={styles.benefit_title}>{b.title}</p>
                   <p className={styles.benefit_desc}>{b.desc}</p>
-                </motion.div>
+                </Reveal>
               ))}
             </div>
-          </motion.section>
+          </Reveal>
 
           {/* 開発プロセス */}
-          <motion.section
-            className={styles.process}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true, amount: 0.05 }}
-          >
-            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
-            <div aria-hidden="true" className={styles.sectionDecorRing} />
-            <div aria-hidden="true" className={styles.sectionDecorDot} />
+          <Reveal as="section" y={40} amount={0.05} className={styles.process}>
+            <SectionDecor variant="section" />
             <div className={styles.process__layout}>
-              <motion.div
-                className={styles.process__img}
-                initial={{ opacity: 0, x: -40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7 }}
-                viewport={{ once: true, amount: 0.05 }}
-              >
+              <Reveal as="div" x={-40} amount={0.05} className={styles.process__img}>
                 <img
                   src="/images/home/hero_real_team2.png"
                   alt="開発チームの様子"
                   className={styles.processImg}
                 />
-              </motion.div>
+              </Reveal>
               <div className={styles.process__steps}>
                 <div className={styles.section_head} style={{ textAlign: "left", marginBottom: "1.5rem" }}>
                   <p className={styles.section_label}>開発プロセス</p>
                   <h2 className={styles.section_title} style={{ textAlign: "left" }}>ご依頼の<span>流れ</span></h2>
                 </div>
                 {STEPS.map((s, i) => (
-                  <motion.div
-                    key={i}
-                    className={styles.step}
-                    initial={{ opacity: 0, x: 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.45, delay: i * 0.07 }}
-                    viewport={{ once: true, amount: 0.05 }}
-                  >
+                  <Reveal as="div" key={i} {...cardEntrance(i + 1)} duration={0.45} delay={i * 0.07} amount={0.05} className={styles.step}>
                     <div className={styles.step__num}>{s.n}</div>
                     <div className={styles.step__content}>
                       <p className={styles.step__title}>{s.t}</p>
                       <p className={styles.step__body}>{s.b}</p>
                     </div>
-                  </motion.div>
+                  </Reveal>
                 ))}
               </div>
             </div>
-          </motion.section>
+          </Reveal>
 
           {/* ラボ型開発 */}
-          <motion.section
-            id="section-lab"
-            className={styles.detail_section}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
-            <div aria-hidden="true" className={styles.sectionDecorRing} />
-            <div aria-hidden="true" className={styles.sectionDecorDot} />
+          <Reveal as="section" id="section-lab" y={40} className={styles.detail_section}>
+            <SectionDecor variant="section" />
             <div className={styles.detail_section__inner}>
               <div className={styles.detail_section__text}>
                 <p className={styles.eyebrow}>ラボ型開発</p>
@@ -226,54 +170,32 @@ export default function OffshoreServiceJa() {
                 />
               </div>
             </div>
-          </motion.section>
+          </Reveal>
 
           {/* チームの構成パターン */}
-          <motion.section
-            className={styles.patternsSection}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
-            <div aria-hidden="true" className={styles.sectionDecorRing} />
-            <div aria-hidden="true" className={styles.sectionDecorDot} />
+          <Reveal as="section" y={40} className={styles.patternsSection}>
+            <SectionDecor variant="section" />
             <h2 className={styles.patternsTitle}>チームの構成パターン</h2>
             <div className={styles.patternsGrid}>
               {PATTERNS.map((p, pi) => (
-                <motion.div
-                  key={pi}
-                  className={styles.patternCard}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: pi * 0.1 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                >
+                <Reveal as="div" key={pi} {...cardEntrance(pi + 2)} duration={0.5} delay={pi * 0.1} amount={0.2} className={styles.patternCard}>
                   <div className={styles.patternImgFrame}>
                     <Image src={p.img} alt={p.title} className={styles.patternImg} />
                   </div>
                   <h3 className={styles.patternCardTitle}>{p.title}</h3>
                   <p className={styles.patternCardDesc}>{p.desc}</p>
-                </motion.div>
+                </Reveal>
               ))}
             </div>
-          </motion.section>
+          </Reveal>
 
           {/* CTA */}
-          <motion.section
-            className={styles.cta}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            <div aria-hidden="true" className={styles.ctaDecorRing} />
-            <div aria-hidden="true" className={styles.ctaDecorDot} />
+          <Reveal as="section" y={30} duration={0.6} className={styles.cta}>
+            <SectionDecor variant="cta" tone="light" canvas={false} />
             <h2 className={styles.cta__title}>お問い合わせ</h2>
             <p className={styles.cta__body}>ご依頼・お見積もりについて、こちらからお問い合わせください。</p>
             <Link href="/ja/contactus" className={styles.cta__btn}>お問い合わせはこちら →</Link>
-          </motion.section>
+          </Reveal>
 
         </div>
         <ScrollTop />

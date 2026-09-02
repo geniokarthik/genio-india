@@ -8,6 +8,8 @@ import Header from "../components/Header";
 import Footer from "src/app/ja/components/Footer";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
+import SectionDecor from "src/app/common/components/SectionDecor";
+import { fadeUp, stagger, cardEntrance } from "src/app/common/motion/variants";
 import styles from "src/app/common/styles/HomeRedesign.module.css";
 import DesktopImg from "src/assets/images/service/desktop.png";
 import AppDevelopmentImg from "src/assets/images/service/appdevelopment.png";
@@ -80,16 +82,6 @@ const profile = [
   ["グループ会社", "株式会社ジェニオ"],
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  show:   { opacity: 1, y: 0 },
-};
-
-const stagger = {
-  hidden: {},
-  show:   { transition: { staggerChildren: 0.1 } },
-};
-
 export default function Home() {
   const heroRef = useRef(null);
   const rawX = useMotionValue(0);
@@ -145,7 +137,7 @@ export default function Home() {
             className={styles.heroLeft}
             initial="hidden"
             animate="show"
-            variants={stagger}
+            variants={stagger()}
           >
             <div aria-hidden="true" className={styles.heroLeftBg}>
               <motion.div
@@ -205,14 +197,13 @@ export default function Home() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
-          variants={stagger}
+          variants={stagger()}
         >
           <motion.div className={styles.servicesBackdropWrap} style={{ y: servicesBackdropY }}>
             <AnimatedHeroBackdrop className={styles.servicesBackdrop} />
           </motion.div>
-          <div aria-hidden="true" className={styles.sectionDecorRing} />
-          <div aria-hidden="true" className={styles.sectionDecorDot} />
-          <motion.div className={styles.sectionCenter} variants={fadeUp} transition={{ duration: 0.6 }}>
+          <SectionDecor variant="section" canvas={false} />
+          <motion.div className={styles.sectionCenter} variants={fadeUp}>
             <p className={styles.sectionEyebrow}>事業内容</p>
             <h2 className={styles.sectionTitle}>提供する<span>サービス</span></h2>
           </motion.div>
@@ -220,7 +211,7 @@ export default function Home() {
             {services.map((s, i) => (
               <motion.div
                 key={s.title}
-                variants={{ hidden: { opacity: 0, y: 36 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, delay: i * 0.1 } } }}
+                variants={{ hidden: { opacity: 0, ...cardEntrance(i) }, show: { opacity: 1, x: 0, y: 0, scale: 1, transition: { duration: 0.5, delay: i * 0.1 } } }}
               >
                 <Link href={s.href} className={styles.serviceCard}>
                   <img className={styles.serviceThumb} src={s.image} alt={s.alt} loading="lazy" />
@@ -243,14 +234,14 @@ export default function Home() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
-          variants={stagger}
+          variants={stagger()}
         >
           <div className={styles.statsInner}>
             {stats.map((s, i) => (
               <motion.div
                 key={s.label}
                 className={styles.statItem}
-                variants={{ hidden: { opacity: 0, scale: 0.8 }, show: { opacity: 1, scale: 1, transition: { duration: 0.5, delay: i * 0.12 } } }}
+                variants={{ hidden: { opacity: 0, ...cardEntrance(i + 2) }, show: { opacity: 1, x: 0, y: 0, scale: 1, transition: { duration: 0.5, delay: i * 0.12 } } }}
               >
                 <p className={styles.statNumber}>{s.value}</p>
                 <p className={styles.statLabel}>{s.label}</p>
@@ -266,12 +257,12 @@ export default function Home() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
-          variants={stagger}
+          variants={stagger()}
         >
           <div className={styles.profileBackdropWrap}>
             <AnimatedHeroBackdrop className={styles.profileBackdrop} />
           </div>
-          <motion.div className={styles.sectionCenter} style={{ marginBottom: "36px" }} variants={fadeUp} transition={{ duration: 0.6 }}>
+          <motion.div className={styles.sectionCenter} style={{ marginBottom: "36px" }} variants={fadeUp}>
             <p className={styles.sectionEyebrow}>会社概要</p>
             <h2 className={styles.sectionTitle}>Genio <span>Indiaについて</span></h2>
           </motion.div>
@@ -284,8 +275,8 @@ export default function Home() {
                 <motion.div
                   key={key}
                   className={styles.profileRow}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, ...cardEntrance(i + 1) }}
+                  whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.07 }}
                 >
