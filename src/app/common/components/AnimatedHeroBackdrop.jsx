@@ -37,7 +37,7 @@ function createShape(width, height) {
     rot: Math.random() * Math.PI * 2,
     rotSpd: (Math.random() - 0.5) * 0.008,
     size,
-    alpha: 0.18 + Math.random() * 0.22,
+    alpha: 0.4 + Math.random() * 0.35,
     life: 0,
     maxLife: 320 + Math.random() * 280,
   };
@@ -58,9 +58,9 @@ function drawShape(ctx, shape) {
 
   const size = shape.size;
   const gradient = ctx.createLinearGradient(-size, -size, size, size);
-  gradient.addColorStop(0, `rgba(255, 60, 40, ${Math.min(alpha + 0.1, 0.45)})`);
-  gradient.addColorStop(0.5, `rgba(224, 35, 17, ${alpha})`);
-  gradient.addColorStop(1, `rgba(160, 10, 5, ${Math.max(alpha - 0.08, 0.04)})`);
+  gradient.addColorStop(0, `rgba(255, 90, 60, ${Math.min(alpha + 0.15, 0.85)})`);
+  gradient.addColorStop(0.5, `rgba(226, 33, 16, ${Math.min(alpha + 0.05, 0.8)})`);
+  gradient.addColorStop(1, `rgba(190, 20, 10, ${Math.max(alpha - 0.04, 0.12)})`);
 
   ctx.save();
   ctx.translate(shape.x, shape.y);
@@ -115,6 +115,10 @@ export default function AnimatedHeroBackdrop({ className }) {
       return undefined;
     }
 
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
     const shapes = [];
     let width = 0;
     let height = 0;
@@ -127,7 +131,7 @@ export default function AnimatedHeroBackdrop({ className }) {
       canvas.height = height;
 
       if (shapes.length === 0) {
-        for (let i = 0; i < 18; i += 1) {
+        for (let i = 0; i < 24; i += 1) {
           const shape = createShape(width, height);
           shape.x = Math.random() * width;
           shape.y = Math.random() * height;
@@ -139,9 +143,6 @@ export default function AnimatedHeroBackdrop({ className }) {
 
     const draw = () => {
       context.clearRect(0, 0, width, height);
-
-      context.fillStyle = "#ffffff";
-      context.fillRect(0, 0, width, height);
 
       const warmGlow = context.createRadialGradient(
         width * 0.78,
@@ -169,12 +170,16 @@ export default function AnimatedHeroBackdrop({ className }) {
         drawShape(context, shape);
       }
 
-      frameId = window.requestAnimationFrame(draw);
+      if (!prefersReducedMotion) {
+        frameId = window.requestAnimationFrame(draw);
+      }
     };
 
     resize();
     draw();
-    window.addEventListener("resize", resize);
+    if (!prefersReducedMotion) {
+      window.addEventListener("resize", resize);
+    }
 
     return () => {
       window.cancelAnimationFrame(frameId);

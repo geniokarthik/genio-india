@@ -3,6 +3,9 @@ import Image from "next/image";
 import "../../globals.css";
 import { motion } from "framer-motion";
 import TeamMbersImg from "src/assets/images/service/teammembers.png";
+import Pattern1Img from "src/assets/images/service/ja/pattern1.png";
+import Pattern2Img from "src/assets/images/service/ja/pattern2.png";
+import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import Header from "src/app/ja/components/Header";
 import Footer from "src/app/ja/components/Footer";
 import Link from "next/link";
@@ -58,8 +61,8 @@ const STEPS = [
 ];
 
 const PATTERNS = [
-  { num: "P1", label: "パターン 1 — 直接連携型", desc: "顧客とブリッジSE（BrSE）が直接連携して作業を行います。日常的に関与したいクライアントに最適です。" },
-  { num: "P2", label: "パターン 2 — 専属チーム型", desc: "ブリッジSEが顧客側に出向き、インド側に専属の開発担当チームを立ち上げます。大規模チームに最適です。" },
+  { title: "パターン 1", img: Pattern1Img, desc: "顧客とブリッジSE（BrSE）が直接連携して作業を行います。" },
+  { title: "パターン 2", img: Pattern2Img, desc: "ブリッジSEが顧客側に出向き、インド側に専属の開発チームを立ち上げます。" },
 ];
 
 export default function OffshoreServiceJa() {
@@ -71,6 +74,9 @@ export default function OffshoreServiceJa() {
 
         {/* ── ダークヒーロー（全幅）── */}
         <section className={styles.hero}>
+          <AnimatedHeroBackdrop className={styles.heroCanvasBackdrop} />
+          <div aria-hidden="true" className={styles.heroDecorRing} />
+          <div aria-hidden="true" className={styles.heroDecorDot} />
           <div className={styles.heroInner}>
             <motion.div
               className={styles.hero__text}
@@ -110,6 +116,9 @@ export default function OffshoreServiceJa() {
             transition={{ duration: 0.7 }}
             viewport={{ once: true, amount: 0.1 }}
           >
+            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+            <div aria-hidden="true" className={styles.sectionDecorRing} />
+            <div aria-hidden="true" className={styles.sectionDecorDot} />
             <div className={styles.section_head}>
               <p className={styles.section_label}>オフショアとは？</p>
               <h2 className={styles.section_title}>オフショアの<span>メリット</span></h2>
@@ -141,6 +150,9 @@ export default function OffshoreServiceJa() {
             transition={{ duration: 0.7 }}
             viewport={{ once: true, amount: 0.05 }}
           >
+            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+            <div aria-hidden="true" className={styles.sectionDecorRing} />
+            <div aria-hidden="true" className={styles.sectionDecorDot} />
             <div className={styles.process__layout}>
               <motion.div
                 className={styles.process__img}
@@ -189,6 +201,9 @@ export default function OffshoreServiceJa() {
             transition={{ duration: 0.7 }}
             viewport={{ once: true, amount: 0.1 }}
           >
+            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+            <div aria-hidden="true" className={styles.sectionDecorRing} />
+            <div aria-hidden="true" className={styles.sectionDecorDot} />
             <div className={styles.detail_section__inner}>
               <div className={styles.detail_section__text}>
                 <p className={styles.eyebrow}>ラボ型開発</p>
@@ -200,18 +215,6 @@ export default function OffshoreServiceJa() {
 スタートアップから中堅企業まで、継続的な開発・改善を必要とするあらゆる企業様に最適なモデルです。`.split("\n\n").map((para, j) => (
                   <p key={j} className={styles.detail_section__para}>{para}</p>
                 ))}
-                <p className={styles.patternsHead}>チームの構成パターン</p>
-                <div className={styles.patternCards}>
-                  {PATTERNS.map((p, pi) => (
-                    <div key={pi} className={styles.patternCard}>
-                      <div className={styles.patternNum}>{p.num}</div>
-                      <div>
-                        <p className={styles.patternLabel}>{p.label}</p>
-                        <p className={styles.patternDesc}>{p.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
               </div>
               <div className={styles.detail_section__img}>
                 <Image
@@ -225,6 +228,38 @@ export default function OffshoreServiceJa() {
             </div>
           </motion.section>
 
+          {/* チームの構成パターン */}
+          <motion.section
+            className={styles.patternsSection}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+            <div aria-hidden="true" className={styles.sectionDecorRing} />
+            <div aria-hidden="true" className={styles.sectionDecorDot} />
+            <h2 className={styles.patternsTitle}>チームの構成パターン</h2>
+            <div className={styles.patternsGrid}>
+              {PATTERNS.map((p, pi) => (
+                <motion.div
+                  key={pi}
+                  className={styles.patternCard}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: pi * 0.1 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                >
+                  <div className={styles.patternImgFrame}>
+                    <Image src={p.img} alt={p.title} className={styles.patternImg} />
+                  </div>
+                  <h3 className={styles.patternCardTitle}>{p.title}</h3>
+                  <p className={styles.patternCardDesc}>{p.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
+
           {/* CTA */}
           <motion.section
             className={styles.cta}
@@ -233,6 +268,8 @@ export default function OffshoreServiceJa() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, amount: 0.1 }}
           >
+            <div aria-hidden="true" className={styles.ctaDecorRing} />
+            <div aria-hidden="true" className={styles.ctaDecorDot} />
             <h2 className={styles.cta__title}>お問い合わせ</h2>
             <p className={styles.cta__body}>ご依頼・お見積もりについて、こちらからお問い合わせください。</p>
             <Link href="/ja/contactus" className={styles.cta__btn}>お問い合わせはこちら →</Link>

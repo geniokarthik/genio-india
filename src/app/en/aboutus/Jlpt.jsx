@@ -4,6 +4,7 @@ import Image from "next/image";
 import "../../globals.css";
 import { motion } from "framer-motion";
 import styles from "src/app/common/styles/Jlpt.module.css";
+import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import karthik from "src/assets/images/our_team/karthik.png";
 import naveen from "src/assets/images/our_team/naveen.png";
 import ajith from "src/assets/images/our_team/ajith.png";
@@ -64,65 +65,87 @@ const others = [
 
 const jlptLevels = ["N1", "N2", "N3", "N4", "N5"];
 
-const getSubtitleText = (level) => {
-    const subtitles = {
-        "N5": "These members have a basic understanding of Japanese and are able to understand daily conversations and simple work instructions.Note: This section introduces our internal company members.",
-        "N4": "These members have a basic understanding of Japanese and are able to understand daily conversations as well as work-related instructions.",
-        "N3": "These members have an intermediate level of Japanese proficiency and can understand everyday conversations, commonly used expressions, and basic work-related communication in Japanese.",
-        "N2": "These members are capable of professional communication in Japanese,including requirement confirmation, specification understanding,and email correspondence in Japanese.",
-        "N1": "These members possess near-native Japanese proficiency and are capable of handling advanced professional communication, including complex negotiations, technical discussions, documentation, and business-level presentations in Japanese.",
-    };
-    return subtitles[level] || "";
+const LEVEL_MEANING = {
+    N1: "Near-native",
+    N2: "Business fluent",
+    N3: "Intermediate",
+    N4: "Conversational",
+    N5: "Foundational",
 };
 
-const groupByJLPT = () => {
-    const grouped = {};
-    jlptLevels.forEach(level => {
-        grouped[level] = [];
-    });
+const levelRank = (level) => jlptLevels.indexOf(level);
 
-    teamMembers.forEach(member => {
-        if (grouped[member.jlpt]) {
-            grouped[member.jlpt].push(member);
-        }
-    });
+const sortedTeam = [...teamMembers].sort((a, b) => levelRank(a.jlpt) - levelRank(b.jlpt));
+const sortedOthers = [...others].sort((a, b) => levelRank(a.jlpt) - levelRank(b.jlpt));
 
-    return grouped;
+const levelCounts = jlptLevels.reduce((acc, level) => {
+    acc[level] = teamMembers.filter((m) => m.jlpt === level).length;
+    return acc;
+}, {});
+
+const grid = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.07 } },
 };
 
-const groupOthersByJLPT = () => {
-    const grouped = {};
-    jlptLevels.forEach(level => {
-        grouped[level] = [];
-    });
-
-    others.forEach(member => {
-        if (grouped[member.jlpt]) {
-            grouped[member.jlpt].push(member);
-        }
-    });
-
-    return grouped;
+const cardIn = {
+    hidden: { opacity: 0, y: 22 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.45 } },
 };
+
+function MemberCard({ member, dashed }) {
+    return (
+        <motion.div
+            variants={cardIn}
+            className={`${styles.jlptMemberCard} ${dashed ? styles.jlptMemberCardExt : ""}`}
+        >
+            <div className={`${styles.jlptMemberPhoto} ${styles[`jlptRing${member.jlpt}`]}`}>
+                <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={84}
+                    height={84}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }}
+                />
+            </div>
+            <p className={styles.jlptMemberName}>{member.name}</p>
+            <p className={styles.jlptMemberRole}>{member.role}</p>
+            <span className={`${styles.jlptPill} ${styles[`jlptPill${member.jlpt}`]}`}>
+                JLPT {member.jlpt}
+            </span>
+            {dashed && member.linkedin && (
+                <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.jlptMemberLinkedin}
+                >
+                    LinkedIn ↗
+                </a>
+            )}
+        </motion.div>
+    );
+}
 
 export default function JapaneseClear() {
-    const groupedMembers = groupByJLPT();
-    const groupedOthers = groupOthersByJLPT();
+    const totalCertified = teamMembers.length;
 
     return (
         <motion.section
             id="team"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.8 }}
-            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true, amount: 0.05 }}
             className={styles.jlptSection}
-            >
-
+        >
+            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+            <div aria-hidden="true" className={styles.sectionDecorRing} />
+            <div aria-hidden="true" className={styles.sectionDecorDot} />
             <div className={styles.container}>
                 <div className={styles.secHead}>
-                  <p className={styles.secEyebrow}>Japanese Language Education</p>
-                  <h2 className={styles.secH2}>Our Commitment to <span>Japanese Language</span></h2>
+                    <p className={styles.secEyebrow}>Japanese Language Education</p>
+                    <h2 className={styles.secH2}>Our Commitment to <span>Japanese Language</span></h2>
                 </div>
                 <p className={styles.jlptIntro}>
                     In addition to our system development capabilities, we actively invest
@@ -133,90 +156,88 @@ export default function JapaneseClear() {
                     our members according to their officially certified proficiency levels.
                 </p>
 
-                <div className={styles.jlptContainer}>
-                    {/* INTERNAL MEMBERS (JLPT N1–N5) */}
-                    {jlptLevels.map((level) => {
-                        const members = groupedMembers[level];
-
-                        if (!members || members.length === 0) return null;
-
-                        return (
-                            <div key={level} className={styles.jlptGroup}>
-                                <div className={styles.jlptGroupHead}>
-                                  <div className={`${styles.jlptBadge} ${styles[`jlptLevel${level}`]}`}>{level}</div>
-                                  <h3 className={styles.jlptGroupTitle}>
-                                      JLPT {level} Certified {members.length === 1 ? "Member" : "Members"}
-                                  </h3>
-                                </div>
-                                <p className={styles.jlptGroupSub}>
-                                    {getSubtitleText(level)}
-                                </p>
-
-                                <div className={styles.jlptCards}>
-                                    {members.map((member, index) => (
-                                        <div key={index} className={styles.jlptCard}>
-                                            <div className={styles.jlptCardPhoto}>
-                                                <Image src={member.image} alt={member.name} width={72} height={72} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
-                                            </div>
-                                            <div>
-                                                <p className={styles.jlptCardName}>{member.name}</p>
-                                                <p className={styles.jlptCardRole}>{member.role}</p>
-                                                <span className={`${styles.jlptPill} ${styles[`jlptPill${level}`]}`}>JLPT {level}</span>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        );
-                    })}
-
-                    {/* OTHERS – EXTERNAL JAPANESE LANGUAGE PROGRAM PARTICIPANTS (Grouped by JLPT Level) */}
-                    <div className={styles.jlptGroupHead} style={{ marginTop: '2rem' }}>
-                      <h3 className={styles.jlptGroupTitle}>JLPT Certified Members (Japanese Language Program Participants)</h3>
-                      <span className={styles.jlptExtLabel}>External</span>
+                {/* ── PROFICIENCY OVERVIEW ── */}
+                <motion.div
+                    className={styles.jlptStatCard}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                >
+                    <div className={styles.jlptStatHead}>
+                        <p className={styles.jlptStatTitle}>Team JLPT Proficiency</p>
+                        <p className={styles.jlptStatTotal}>{totalCertified} certified engineers</p>
                     </div>
-
-                    <div className={styles.jlptExtNote}>
-                      They have acquired a basic understanding of Japanese and are capable of simple daily conversations.<br />
-                      <strong>Note:</strong> This section is provided as an introduction to our Japanese language education achievements.
-                      <span style={{ color: '#e22110', fontWeight: 600 }}> These individuals are not engaged in our software development projects.</span>
+                    <div className={styles.jlptBar}>
+                        {jlptLevels.map((level) => {
+                            const count = levelCounts[level];
+                            if (!count) return null;
+                            const pct = (count / totalCertified) * 100;
+                            return (
+                                <motion.div
+                                    key={level}
+                                    className={`${styles.jlptBarSeg} ${styles[`jlptLevel${level}`]}`}
+                                    initial={{ width: 0 }}
+                                    whileInView={{ width: `${pct}%` }}
+                                    transition={{ duration: 0.8, delay: 0.15 }}
+                                    viewport={{ once: true, amount: 0.3 }}
+                                    title={`JLPT ${level} · ${count}`}
+                                />
+                            );
+                        })}
                     </div>
-
-                    {jlptLevels.map((level) => {
-                        const othersAtLevel = groupedOthers[level];
-
-                        if (!othersAtLevel || othersAtLevel.length === 0) return null;
-
-                        return (
-                            <div key={`others-${level}`} className={styles.jlptGroup}>
-                                <div className={styles.jlptGroupHead}>
-                                  <div className={`${styles.jlptBadge} ${styles[`jlptLevel${level}`]}`}>{level}</div>
-                                  <h3 className={styles.jlptGroupTitle}>
-                                    JLPT {level} Certified {othersAtLevel.length === 1 ? "Member" : "Members"}
-                                  </h3>
+                    <div className={styles.jlptLegend}>
+                        {jlptLevels.map((level) => {
+                            const count = levelCounts[level];
+                            if (!count) return null;
+                            return (
+                                <div key={level} className={styles.jlptLegendItem}>
+                                    <span className={`${styles.jlptLegendDot} ${styles[`jlptLevel${level}`]}`} />
+                                    <span className={styles.jlptLegendLabel}>
+                                        JLPT {level} <em>{LEVEL_MEANING[level]}</em>
+                                    </span>
+                                    <span className={styles.jlptLegendCount}>{count}</span>
                                 </div>
-                                <div className={styles.jlptCards} style={{ paddingLeft: 0 }}>
-                                  {othersAtLevel.map((member, index) => (
-                                    <div key={index} className={styles.jlptCard}>
-                                      <div className={styles.jlptCardPhoto}>
-                                        <Image src={member.image} alt={member.name} width={72} height={72} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
-                                      </div>
-                                      <div>
-                                        <p className={styles.jlptCardName}>{member.name}</p>
-                                        <p className={styles.jlptCardRole}>{member.role}</p>
-                                        <span className={`${styles.jlptPill} ${styles[`jlptPill${member.jlpt}`]}`}>JLPT {member.jlpt}</span>
-                                        {member.linkedin && (
-                                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontSize: '0.78rem', fontWeight: 700, color: '#0077b5' }}>LinkedIn →</a>
-                                        )}
-                                      </div>
-                                    </div>
-                                  ))}
-                                </div>
-                            </div>
-                        );
-                    })}
+                            );
+                        })}
+                    </div>
+                </motion.div>
+
+                {/* ── CORE TEAM ── */}
+                <motion.div
+                    className={styles.jlptGrid}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.1 }}
+                    variants={grid}
+                >
+                    {sortedTeam.map((member) => (
+                        <MemberCard key={member.name} member={member} />
+                    ))}
+                </motion.div>
+
+                {/* ── EXTERNAL LANGUAGE PROGRAM PARTICIPANTS ── */}
+                <div className={styles.jlptExtHead}>
+                    <h3 className={styles.jlptExtTitle}>Language Program Participants</h3>
+                    <span className={styles.jlptExtBadge}>External</span>
                 </div>
+                <div className={styles.jlptExtNote}>
+                    They have acquired a basic understanding of Japanese and are capable of simple daily conversations.
+                    {" "}<strong>Note:</strong> this section introduces our Japanese language education achievements —
+                    <span className={styles.jlptExtWarn}> these individuals are not engaged in our software development projects.</span>
+                </div>
+                <motion.div
+                    className={styles.jlptGrid}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.1 }}
+                    variants={grid}
+                >
+                    {sortedOthers.map((member) => (
+                        <MemberCard key={member.name} member={member} dashed />
+                    ))}
+                </motion.div>
             </div>
-            </motion.section>
+        </motion.section>
     );
 }

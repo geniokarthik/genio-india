@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Header from "src/app/en/components/Header";
 import Footer from "src/app/en/components/Footer";
@@ -9,10 +9,10 @@ import styles from "src/app/common/styles/Contactus.module.css";
 import "../../globals.css";
 import returnhomeicon from "src/assets/images/contactus/returnhome.png";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
+import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import CryptoJS from 'crypto-js';
 
 export default function ContactForm() {
-    const [isClient, setIsClient] = useState(false);
     const [buttonFlg, setButtonFlg] = useState(false);
     const [inputFlg, setInputFlg] = useState(true);
     const [checkFlg, setCheckFlg] = useState(false);
@@ -102,10 +102,6 @@ export default function ContactForm() {
         }
     };
 
-    useEffect(() => { setIsClient(true); }, []);
-
-    if (!isClient) return null;
-
     return (
         <>
             <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet" />
@@ -113,6 +109,9 @@ export default function ContactForm() {
 
             {/* PAGE HERO */}
             <section className={styles.pageHero}>
+                <AnimatedHeroBackdrop className={styles.heroCanvasBackdrop} />
+                <div aria-hidden="true" className={styles.heroDecorRing} />
+                <div aria-hidden="true" className={styles.heroDecorDot} />
                 <div className={styles.heroWrap}>
                     <p className={styles.heroEyebrow}>Get in Touch</p>
                     <h1 className={styles.heroH1}><span>Contact Us</span></h1>
@@ -138,6 +137,11 @@ export default function ContactForm() {
 
             {/* CONTACT MAIN */}
             <section className={styles.contactMain}>
+                <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+                <div aria-hidden="true" className={styles.mainDecorRing} />
+                <div aria-hidden="true" className={styles.mainDecorDot} />
+                <div aria-hidden="true" className={styles.mainDecorRing2} />
+                <div aria-hidden="true" className={styles.mainDecorDot2} />
                 <div className={styles.heroWrap}>
                     <div className={styles.contactInner}>
 

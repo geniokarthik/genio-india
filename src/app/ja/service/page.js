@@ -12,6 +12,7 @@ import LanguageTeachingImg from "src/assets/images/service/languageteaching.png"
 import Header from "src/app/ja/components/Header";
 import Footer from "src/app/ja/components/Footer";
 import Link from "next/link";
+import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import styles from "src/app/common/styles/Service.module.css";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 
@@ -63,6 +64,7 @@ const DETAILS = [
     linkText: "ウェブ開発のご相談はこちら →",
     img: DesktopImg,
     imgAlt: "ウェブ開発",
+    objectFit: "contain",
     text: `お客様一人ひとりのニーズに応じた、設計から開発・運用まで一貫対応するWebサイト・システム開発サービスを提供しています。サービス内容は多岐にわたり、すべてのデバイスに対応する完全レスポンシブなWebデザイン、高機能でユーザー体験に優れたECサイトの構築、直感的に操作できるCMSとのスムーズな連携などを含んでいます。
 
 すべてのプロジェクトにおいて、「速度」「セキュリティ」「使いやすさ」を最優先に設計・開発を行い、デスクトップからスマートフォンまで、あらゆる画面サイズにおいて快適な操作性と優れたパフォーマンスを実現しています。
@@ -78,6 +80,7 @@ const DETAILS = [
     linkText: "アプリ開発のご相談はこちら →",
     img: AppDevelopmentImg,
     imgAlt: "アプリ開発",
+    objectFit: "contain",
     text: `iOSアプリ・Androidアプリの開発はもちろん、クロスプラットフォーム開発にも対応しています。経験豊富な開発チームが、お客様のアイデアやビジョンを、確かな技術で形にします。
 
 企画段階のアイデア整理やMVP（Minimum Viable Product）の設計から、開発、リリース、運用後のサポートまで、開発のすべての工程をお客様と密に連携しながら進めていきます。
@@ -135,6 +138,7 @@ const PROJECTS = [
     title: "Chatbot",
     img: chatbotImg,
     bg: "#0a0a0a",
+    cardImageFit: "contain",
     tagline: "AIを活用したカスタマーサポート自動化ボット。24時間365日の即時対応を実現します。",
     client: "GENIO INDIA",
     category: "AI・自動化",
@@ -262,6 +266,9 @@ export default function ServiceJa() {
 
         {/* ── ヒーロー（全幅）── */}
         <section className={styles.hero}>
+          <AnimatedHeroBackdrop className={styles.heroCanvasBackdrop} />
+          <div aria-hidden="true" className={styles.heroDecorRing} />
+          <div aria-hidden="true" className={styles.heroDecorDot} />
           <div className={styles.heroWrap}>
             <motion.div
               className={styles.hero__text}
@@ -313,6 +320,9 @@ export default function ServiceJa() {
               transition={{ duration: 0.7 }}
               viewport={{ once: true, amount: 0.1 }}
             >
+              <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+            <div aria-hidden="true" className={styles.sectionDecorRing} />
+            <div aria-hidden="true" className={styles.sectionDecorDot} />
               <div className={styles.svcWrap}>
                 <div className={`${styles.svcInner} ${i % 2 !== 0 ? styles.svcReverse : ""}`}>
                   <div className={styles.svcText}>
@@ -345,6 +355,9 @@ export default function ServiceJa() {
             transition={{ duration: 0.7 }}
             viewport={{ once: true, amount: 0.1 }}
           >
+            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+            <div aria-hidden="true" className={styles.sectionDecorRing} />
+            <div aria-hidden="true" className={styles.sectionDecorDot} />
             <div className={styles.section_head}>
               <p className={styles.section_label}>実績 · Projects</p>
               <h2 className={styles.section_title}>開発<span>実績のご紹介</span></h2>
@@ -471,6 +484,9 @@ export default function ServiceJa() {
             transition={{ duration: 0.7 }}
             viewport={{ once: true, amount: 0.05 }}
           >
+            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+            <div aria-hidden="true" className={styles.sectionDecorRing} />
+            <div aria-hidden="true" className={styles.sectionDecorDot} />
             <div className={styles.section_head}>
               <p className={styles.section_label}>技術対応範囲</p>
               <h2 className={styles.section_title}>技術領域の<span>ご紹介</span></h2>
@@ -512,6 +528,8 @@ export default function ServiceJa() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, amount: 0.1 }}
           >
+            <div aria-hidden="true" className={styles.ctaDecorRing} />
+            <div aria-hidden="true" className={styles.ctaDecorDot} />
             <h2 className={styles.cta__title}>お問い合わせ</h2>
             <p className={styles.cta__body}>ご依頼・お見積もりについて、こちらからお問い合わせください。</p>
             <Link href="/ja/contactus" className={styles.cta__btn}>お問い合わせはこちら →</Link>

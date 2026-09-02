@@ -4,6 +4,7 @@ import Image from "next/image";
 import "../../globals.css";
 import { motion } from "framer-motion";
 import styles from "src/app/common/styles/Team.module.css";
+import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import karthik from "src/assets/images/our_team/karthik.png";
 import elavarasan from "src/assets/images/our_team/elavarasan.png";
 import naveen from "src/assets/images/our_team/naveen.png";
@@ -90,6 +91,9 @@ export default function TeamSection() {
       viewport={{ once: true }}
       className={styles.teamSection}
     >
+      <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+            <div aria-hidden="true" className={styles.sectionDecorRing} />
+            <div aria-hidden="true" className={styles.sectionDecorDot} />
       <div className={styles.container}>
         <div className={styles.secHead}>
           <p className={styles.secEyebrow}>私たちのチーム</p>

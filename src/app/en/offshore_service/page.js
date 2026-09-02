@@ -3,6 +3,9 @@ import Image from "next/image";
 import "../../globals.css";
 import { motion } from "framer-motion";
 import TeamMbersImg from "src/assets/images/service/teammembers.png";
+import Pattern1Img from "src/assets/images/service/en/pattern1.png";
+import Pattern2Img from "src/assets/images/service/en/pattern2.png";
+import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import Header from "src/app/en/components/Header";
 import Footer from "src/app/en/components/Footer";
 import Link from "next/link";
@@ -58,8 +61,8 @@ const STEPS = [
 ];
 
 const PATTERNS = [
-  { num: "P1", label: "Pattern 1 — Direct Collaboration", desc: "The client and the Bridge SE (BrSE) work together directly. Ideal for clients who want close day-to-day involvement with their offshore team." },
-  { num: "P2", label: "Pattern 2 — Dedicated Setup", desc: "The bridge SE will visit the client and set up a dedicated development team in India. Best for larger teams requiring structured project management." },
+  { title: "Pattern 1", img: Pattern1Img, desc: "The client and the Bridge SE (BrSE) work together directly." },
+  { title: "Pattern 2", img: Pattern2Img, desc: "The bridge SE will visit the client and set up a dedicated development team in India." },
 ];
 
 export default function OffshoreServiceEn() {
@@ -69,8 +72,11 @@ export default function OffshoreServiceEn() {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet" />
         <Header />
 
-        {/* ── DARK HERO (full-width) ── */}
+        {/* ── HERO (full-width) ── */}
         <section className={styles.hero}>
+          <AnimatedHeroBackdrop className={styles.heroCanvasBackdrop} />
+          <div aria-hidden="true" className={styles.heroDecorRing} />
+          <div aria-hidden="true" className={styles.heroDecorDot} />
           <div className={styles.heroInner}>
             <motion.div
               className={styles.hero__text}
@@ -110,6 +116,9 @@ export default function OffshoreServiceEn() {
             transition={{ duration: 0.7 }}
             viewport={{ once: true, amount: 0.1 }}
           >
+            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+            <div aria-hidden="true" className={styles.sectionDecorRing} />
+            <div aria-hidden="true" className={styles.sectionDecorDot} />
             <div className={styles.section_head}>
               <p className={styles.section_label}>Why Offshore?</p>
               <h2 className={styles.section_title}>What are the benefits of offshore?</h2>
@@ -141,6 +150,9 @@ export default function OffshoreServiceEn() {
             transition={{ duration: 0.7 }}
             viewport={{ once: true, amount: 0.05 }}
           >
+            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+            <div aria-hidden="true" className={styles.sectionDecorRing} />
+            <div aria-hidden="true" className={styles.sectionDecorDot} />
             <div className={styles.process__layout}>
               <motion.div
                 className={styles.process__img}
@@ -189,6 +201,9 @@ export default function OffshoreServiceEn() {
             transition={{ duration: 0.7 }}
             viewport={{ once: true, amount: 0.1 }}
           >
+            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+            <div aria-hidden="true" className={styles.sectionDecorRing} />
+            <div aria-hidden="true" className={styles.sectionDecorDot} />
             <div className={styles.detail_section__inner}>
               <div className={styles.detail_section__text}>
                 <p className={styles.eyebrow}>Lab Development</p>
@@ -200,18 +215,6 @@ The team deeply understands your business and tech stack, minimizing communicati
 From startups to mid-sized enterprises, this model is ideal for any company that needs continuous development and improvement.`.split("\n\n").map((para, j) => (
                   <p key={j} className={styles.detail_section__para}>{para}</p>
                 ))}
-                <p className={styles.patternsHead}>Team Formation Patterns</p>
-                <div className={styles.patternCards}>
-                  {PATTERNS.map((p, pi) => (
-                    <div key={pi} className={styles.patternCard}>
-                      <div className={styles.patternNum}>{p.num}</div>
-                      <div>
-                        <p className={styles.patternLabel}>{p.label}</p>
-                        <p className={styles.patternDesc}>{p.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
               </div>
               <div className={styles.detail_section__img}>
                 <Image
@@ -225,6 +228,38 @@ From startups to mid-sized enterprises, this model is ideal for any company that
             </div>
           </motion.section>
 
+          {/* TEAM FORMATION PATTERNS */}
+          <motion.section
+            className={styles.patternsSection}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+            <div aria-hidden="true" className={styles.sectionDecorRing} />
+            <div aria-hidden="true" className={styles.sectionDecorDot} />
+            <h2 className={styles.patternsTitle}>Team Formation Patterns</h2>
+            <div className={styles.patternsGrid}>
+              {PATTERNS.map((p, pi) => (
+                <motion.div
+                  key={pi}
+                  className={styles.patternCard}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: pi * 0.1 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                >
+                  <div className={styles.patternImgFrame}>
+                    <Image src={p.img} alt={p.title} className={styles.patternImg} />
+                  </div>
+                  <h3 className={styles.patternCardTitle}>{p.title}</h3>
+                  <p className={styles.patternCardDesc}>{p.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
+
           {/* CTA */}
           <motion.section
             className={styles.cta}
@@ -233,6 +268,8 @@ From startups to mid-sized enterprises, this model is ideal for any company that
             transition={{ duration: 0.6 }}
             viewport={{ once: true, amount: 0.1 }}
           >
+            <div aria-hidden="true" className={styles.ctaDecorRing} />
+            <div aria-hidden="true" className={styles.ctaDecorDot} />
             <h2 className={styles.cta__title}>Contact Us</h2>
             <p className={styles.cta__body}>For inquiries and estimates, please reach out via the link below.</p>
             <Link href="/en/contactus" className={styles.cta__btn}>Get in Touch →</Link>

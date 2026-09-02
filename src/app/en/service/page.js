@@ -13,6 +13,7 @@ import Header from "src/app/en/components/Header";
 import Footer from "src/app/en/components/Footer";
 import Link from "next/link";
 import styles from "src/app/common/styles/Service.module.css";
+import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 
 const SERVICES = [
@@ -63,6 +64,7 @@ const DETAILS = [
     linkText: "Start a web project →",
     img: DesktopImg,
     imgAlt: "Web Development",
+    objectFit: "contain",
     text: `We provide end-to-end web site and system development services tailored to each client's needs — from design through development to ongoing operations.
 
 Our services include fully responsive web design for all devices, feature-rich e-commerce site construction, and seamless CMS integration for intuitive management.
@@ -78,6 +80,7 @@ On every project we prioritize speed, security, and usability — delivering exc
     linkText: "Start an app project →",
     img: AppDevelopmentImg,
     imgAlt: "App Development",
+    objectFit: "contain",
     text: `We handle iOS, Android, and cross-platform app development. Our experienced team turns your ideas and vision into reality with solid engineering.
 
 From early-stage idea organization and MVP design through development, release, and post-launch support, we work closely with you at every step.
@@ -135,6 +138,7 @@ const PROJECTS = [
     title: "Chatbot",
     img: chatbotImg,
     bg: "#0a0a0a",
+    cardImageFit: "contain",
     tagline: "An AI-powered customer support automation bot. Delivers instant 24/7 responses to inquiries using NLP technology.",
     client: "GENIO INDIA",
     category: "AI / Automation",
@@ -262,6 +266,9 @@ export default function ServiceEn() {
 
         {/* ── PAGE HERO (full-width) ── */}
         <section className={styles.hero}>
+          <AnimatedHeroBackdrop className={styles.heroCanvasBackdrop} />
+          <div aria-hidden="true" className={styles.heroDecorRing} />
+          <div aria-hidden="true" className={styles.heroDecorDot} />
           <div className={styles.heroWrap}>
             <motion.div
               className={styles.hero__text}
@@ -313,6 +320,9 @@ export default function ServiceEn() {
               transition={{ duration: 0.7 }}
               viewport={{ once: true, amount: 0.1 }}
             >
+              <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+            <div aria-hidden="true" className={styles.sectionDecorRing} />
+            <div aria-hidden="true" className={styles.sectionDecorDot} />
               <div className={styles.svcWrap}>
                 <div className={`${styles.svcInner} ${i % 2 !== 0 ? styles.svcReverse : ""}`}>
                   <div className={styles.svcText}>
@@ -345,6 +355,9 @@ export default function ServiceEn() {
             transition={{ duration: 0.7 }}
             viewport={{ once: true, amount: 0.1 }}
           >
+            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+            <div aria-hidden="true" className={styles.sectionDecorRing} />
+            <div aria-hidden="true" className={styles.sectionDecorDot} />
             <div className={styles.section_head}>
               <p className={styles.section_label}>Works · Projects</p>
               <h2 className={styles.section_title}>Our <span>Project Portfolio</span></h2>
@@ -473,6 +486,9 @@ export default function ServiceEn() {
             transition={{ duration: 0.7 }}
             viewport={{ once: true, amount: 0.05 }}
           >
+            <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+            <div aria-hidden="true" className={styles.sectionDecorRing} />
+            <div aria-hidden="true" className={styles.sectionDecorDot} />
             <div className={styles.section_head}>
               <p className={styles.section_label}>Technical Coverage</p>
               <h2 className={styles.section_title}>Technology Areas <span>We Support</span></h2>
@@ -514,6 +530,8 @@ export default function ServiceEn() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, amount: 0.1 }}
           >
+            <div aria-hidden="true" className={styles.ctaDecorRing} />
+            <div aria-hidden="true" className={styles.ctaDecorDot} />
             <h2 className={styles.cta__title}>Contact Us</h2>
             <p className={styles.cta__body}>For inquiries and estimates, please reach out via the link below. We respond within 2 business days.</p>
             <Link href="/en/contactus" className={styles.cta__btn}>Get in Touch →</Link>

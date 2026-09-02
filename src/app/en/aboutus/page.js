@@ -9,6 +9,7 @@ import Footer from "src/app/en/components/Footer";
 import TeamSection from "src/app/en/aboutus/TeamSection";
 import Jlpt from "src/app/en/aboutus/Jlpt";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
+import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import styles from "src/app/common/styles/Aboutus.module.css";
 import sidelogo from "src/assets/images/aboutus/sidelogo.png";
 
@@ -37,6 +38,7 @@ export default function AboutUs() {
 
   return (
     <>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet" />
       <Header />
       <div className={styles.home}>
         {/* Hero Section */}
@@ -48,6 +50,9 @@ export default function AboutUs() {
           className={styles.hero}
           id="corporatehistory"
         >
+          <AnimatedHeroBackdrop className={styles.heroCanvasBackdrop} />
+          <div aria-hidden="true" className={styles.heroDecorRing} />
+          <div aria-hidden="true" className={styles.heroDecorDot} />
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle}>
               <span className={styles.heroRedText}>Corporate History</span>
@@ -66,6 +71,9 @@ export default function AboutUs() {
           viewport={{ once: true }}
           className={styles.timelineSection}
         >
+          <AnimatedHeroBackdrop className={styles.sectionCanvasBackdrop} />
+            <div aria-hidden="true" className={styles.sectionDecorRing} />
+            <div aria-hidden="true" className={styles.sectionDecorDot} />
           <div className={styles.timeline} ref={timelineRef}>
             <div className={styles.timelineItem}>
               <div className={styles.timelineContent}>

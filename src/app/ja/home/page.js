@@ -1,11 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import Link from "next/link";
 import "../../globals.css";
 import Header from "../components/Header";
 import Footer from "src/app/ja/components/Footer";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
+import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import styles from "src/app/common/styles/HomeRedesign.module.css";
 import DesktopImg from "src/assets/images/service/desktop.png";
 import AppDevelopmentImg from "src/assets/images/service/appdevelopment.png";
@@ -89,6 +91,33 @@ const stagger = {
 };
 
 export default function Home() {
+  const heroRef = useRef(null);
+  const rawX = useMotionValue(0);
+  const rawY = useMotionValue(0);
+  const parallaxX = useSpring(rawX, { stiffness: 60, damping: 18, mass: 0.6 });
+  const parallaxY = useSpring(rawY, { stiffness: 60, damping: 18, mass: 0.6 });
+
+  const handleHeroMouseMove = (e) => {
+    const bounds = heroRef.current?.getBoundingClientRect();
+    if (!bounds) return;
+    const relX = (e.clientX - bounds.left) / bounds.width - 0.5;
+    const relY = (e.clientY - bounds.top) / bounds.height - 0.5;
+    rawX.set(relX * 28);
+    rawY.set(relY * 28);
+  };
+
+  const handleHeroMouseLeave = () => {
+    rawX.set(0);
+    rawY.set(0);
+  };
+
+  const servicesRef = useRef(null);
+  const { scrollYProgress: servicesProgress } = useScroll({
+    target: servicesRef,
+    offset: ["start end", "end start"],
+  });
+  const servicesBackdropY = useTransform(servicesProgress, [0, 1], [-40, 40]);
+
   return (
     <>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet" />
@@ -96,7 +125,12 @@ export default function Home() {
       <main>
 
         {/* ── ヒーロー ── */}
-        <section className={styles.hero}>
+        <section
+          className={styles.hero}
+          ref={heroRef}
+          onMouseMove={handleHeroMouseMove}
+          onMouseLeave={handleHeroMouseLeave}
+        >
           <motion.img
             src="/images/home/hero-gemini1.png"
             alt="Genio Indiaチーム"
@@ -106,49 +140,78 @@ export default function Home() {
             transition={{ duration: 1.2, ease: "easeOut" }}
           />
           <div aria-hidden="true" className={styles.heroOverlay} />
+
           <motion.div
             className={styles.heroLeft}
             initial="hidden"
             animate="show"
             variants={stagger}
           >
-            <motion.p
-              className={styles.heroTag}
-              variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
-            >
-              共に考え、共に形にする
-            </motion.p>
-            <motion.h1
-              className={styles.heroTitle}
-              variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.7, delay: 0.1 } } }}
-            >
-              あらゆる企業向けに<br />
-              <span>高品質なWebサイトを提供</span>
-            </motion.h1>
-            <motion.p
-              className={styles.heroDesc}
-              variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.2 } } }}
-            >
-              課題の定義からデザイン、開発、継続的な改善まで、全プロセスをサポートします。
-              Web・アプリ・データベースのソリューションを、確かな実装品質でお届けします。
-            </motion.p>
-            <motion.div
-              className={styles.heroActions}
-              variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.35 } } }}
-            >
-              <Link href="/ja/contactus" className={styles.btnPrimary}>お問い合わせ &rarr;</Link>
-            </motion.div>
+            <div aria-hidden="true" className={styles.heroLeftBg}>
+              <motion.div
+                className={styles.heroCanvasSlot}
+                style={{ x: parallaxX, y: parallaxY }}
+              >
+                <AnimatedHeroBackdrop className={styles.heroCanvasBackdrop} />
+              </motion.div>
+              <motion.div
+                className={styles.heroRingSlot}
+                style={{ x: parallaxX, y: parallaxY }}
+              >
+                <div className={styles.heroDecorRing} />
+              </motion.div>
+              <motion.div
+                className={styles.heroDotSlot}
+                style={{ x: parallaxX, y: parallaxY }}
+              >
+                <div className={styles.heroDecorDot} />
+              </motion.div>
+            </div>
+            <div className={styles.heroLeftContent}>
+              <motion.p
+                className={styles.heroTag}
+                variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
+              >
+                共に考え、共に形にする
+              </motion.p>
+              <motion.h1
+                className={styles.heroTitle}
+                variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.7, delay: 0.1 } } }}
+              >
+                あらゆる企業向けに<br />
+                <span>高品質なWebサイトを提供</span>
+              </motion.h1>
+              <motion.p
+                className={styles.heroDesc}
+                variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.2 } } }}
+              >
+                課題の定義からデザイン、開発、継続的な改善まで、全プロセスをサポートします。
+                Web・アプリ・データベースのソリューションを、確かな実装品質でお届けします。
+              </motion.p>
+              <motion.div
+                className={styles.heroActions}
+                variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.35 } } }}
+              >
+                <Link href="/ja/contactus" className={styles.btnPrimary}>お問い合わせ &rarr;</Link>
+              </motion.div>
+            </div>
           </motion.div>
         </section>
 
         {/* ── サービス ── */}
         <motion.section
+          ref={servicesRef}
           className={styles.servicesSection}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
           variants={stagger}
         >
+          <motion.div className={styles.servicesBackdropWrap} style={{ y: servicesBackdropY }}>
+            <AnimatedHeroBackdrop className={styles.servicesBackdrop} />
+          </motion.div>
+          <div aria-hidden="true" className={styles.sectionDecorRing} />
+          <div aria-hidden="true" className={styles.sectionDecorDot} />
           <motion.div className={styles.sectionCenter} variants={fadeUp} transition={{ duration: 0.6 }}>
             <p className={styles.sectionEyebrow}>事業内容</p>
             <h2 className={styles.sectionTitle}>提供する<span>サービス</span></h2>
@@ -205,6 +268,9 @@ export default function Home() {
           viewport={{ once: true, amount: 0.1 }}
           variants={stagger}
         >
+          <div className={styles.profileBackdropWrap}>
+            <AnimatedHeroBackdrop className={styles.profileBackdrop} />
+          </div>
           <motion.div className={styles.sectionCenter} style={{ marginBottom: "36px" }} variants={fadeUp} transition={{ duration: 0.6 }}>
             <p className={styles.sectionEyebrow}>会社概要</p>
             <h2 className={styles.sectionTitle}>Genio <span>Indiaについて</span></h2>
