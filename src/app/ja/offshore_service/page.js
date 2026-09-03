@@ -13,6 +13,7 @@ import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import Reveal from "src/app/common/components/Reveal";
 import SectionDecor from "src/app/common/components/SectionDecor";
 import HeroParallaxDecor, { useHeroParallax } from "src/app/common/components/HeroParallaxDecor";
+import HeroWaveDivider from "src/app/common/components/HeroWaveDivider";
 import { cardEntrance } from "src/app/common/motion/variants";
 
 const BENEFITS = [
@@ -97,6 +98,7 @@ export default function OffshoreServiceJa() {
               </h1>
             </Reveal>
           </div>
+          <HeroWaveDivider fill="#f9fafb" />
         </section>
 
         {/* ── コンテンツ（制限幅）── */}

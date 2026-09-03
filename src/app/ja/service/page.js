@@ -18,6 +18,7 @@ import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import Reveal from "src/app/common/components/Reveal";
 import SectionDecor from "src/app/common/components/SectionDecor";
 import HeroParallaxDecor, { useHeroParallax } from "src/app/common/components/HeroParallaxDecor";
+import HeroWaveDivider from "src/app/common/components/HeroWaveDivider";
 import { cardEntrance } from "src/app/common/motion/variants";
 
 const SERVICES = [
@@ -347,6 +348,7 @@ export default function ServiceJa() {
               </div>
             </Reveal>
           </div>
+          <HeroWaveDivider />
         </section>
 
         {/* ── コンテンツ（制限幅）── */}

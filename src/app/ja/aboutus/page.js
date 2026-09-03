@@ -12,6 +12,7 @@ import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import Reveal from "src/app/common/components/Reveal";
 import SectionDecor from "src/app/common/components/SectionDecor";
 import HeroParallaxDecor, { useHeroParallax } from "src/app/common/components/HeroParallaxDecor";
+import HeroWaveDivider from "src/app/common/components/HeroWaveDivider";
 import styles from "src/app/common/styles/Aboutus.module.css";
 import sidelogo from "src/assets/images/aboutus/sidelogo.png";
 
@@ -70,6 +71,7 @@ export default function AboutUs() {
             </p>
           </Reveal>
         </div>
+        <HeroWaveDivider />
       </section>
 
       <div className={styles.home}>

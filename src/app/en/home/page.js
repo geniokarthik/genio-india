@@ -9,6 +9,7 @@ import Footer from "../components/Footer";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import AnimatedHeroBackdrop from "src/app/common/components/AnimatedHeroBackdrop";
 import SectionDecor from "src/app/common/components/SectionDecor";
+import HeroWaveDivider from "src/app/common/components/HeroWaveDivider";
 import { fadeUp, stagger, cardEntrance } from "src/app/common/motion/variants";
 import styles from "src/app/common/styles/HomeRedesign.module.css";
 import DesktopImg from "src/assets/images/service/desktop.png";
@@ -189,6 +190,7 @@ export default function Home() {
               </motion.div>
             </div>
           </motion.div>
+          <HeroWaveDivider fill="#f9fafb" />
         </section>
 
         {/* ── SERVICES ── */}

@@ -1,0 +1,41 @@
+.heroWave {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.heroWave svg {
+  display: block;
+  width: 100%;
+  height: 110px;
+}
+
+.heroWaveDot {
+  position: absolute;
+  left: 12%;
+  bottom: 58px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(236, 72, 153, 0.75);
+  box-shadow: 0 0 0 6px rgba(236, 72, 153, 0.12);
+  animation: heroWaveDotFloat 4.5s ease-in-out infinite;
+}
+
+@keyframes heroWaveDotFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.15); }
+}
+
+@media (max-width: 768px) {
+  .heroWave svg { height: 56px; }
+  .heroWaveDot { bottom: 30px; width: 9px; height: 9px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroWaveDot { animation: none; }
+}

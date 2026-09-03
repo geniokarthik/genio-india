@@ -10,6 +10,7 @@ import "../../globals.css";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import SectionDecor from "src/app/common/components/SectionDecor";
 import HeroParallaxDecor, { useHeroParallax } from "src/app/common/components/HeroParallaxDecor";
+import HeroWaveDivider from "src/app/common/components/HeroWaveDivider";
 import CryptoJS from 'crypto-js';
 
 export default function ContactForm() {
@@ -130,6 +131,7 @@ export default function ContactForm() {
                     <h1 className={styles.heroTitle}>Contact <span>Us</span></h1>
                     <p className={styles.heroSubtitle}>Have a project in mind? Fill in the form below and we&apos;ll get back to you within 2 business days.</p>
                 </div>
+                <HeroWaveDivider />
             </section>
 
             {/* CONTACT MAIN */}

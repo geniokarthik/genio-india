@@ -11,6 +11,7 @@ import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import CryptoJS from "crypto-js";
 import SectionDecor from "src/app/common/components/SectionDecor";
 import HeroParallaxDecor, { useHeroParallax } from "src/app/common/components/HeroParallaxDecor";
+import HeroWaveDivider from "src/app/common/components/HeroWaveDivider";
 
 export default function ContactForm() {
     const { heroRef, parallaxX, parallaxY, onMouseMove, onMouseLeave } = useHeroParallax();
@@ -126,6 +127,7 @@ export default function ContactForm() {
                     <h1 className={styles.heroTitle}>お問い合わせ</h1>
                     <p className={styles.heroSubtitle}>プロジェクトのご相談・お見積もりなど、下記フォームよりお気軽にお問い合わせください。2営業日以内にご返答いたします。</p>
                 </div>
+                <HeroWaveDivider />
             </section>
 
             {/* CONTACT MAIN */}
