@@ -382,15 +382,13 @@
   .jlptMilestoneRoad {
     height: 40px;
     margin-left: 20px;
-    width: 2px;
+    width: 3px;
+    background: repeating-linear-gradient(to bottom, #d1d5db 0 6px, transparent 6px 12px);
+    animation: jlptRoadFlowMobile 1.1s linear infinite;
   }
 
   .jlptMilestoneRoad svg {
     display: none;
-  }
-
-  .jlptMilestoneRoad {
-    background: repeating-linear-gradient(to bottom, #d1d5db 0 6px, transparent 6px 12px);
   }
 
   .jlptMilestoneBody,
@@ -422,5 +420,19 @@
 
   .jlptMemberRow .jlptMemberFloat {
     width: calc(50% - 6px);
+  }
+}
+
+/* The desktop road runs via SVG stroke-dashoffset, which isn't there
+   once the SVG is swapped for the plain gradient rail on mobile — same
+   "running" effect here via background-position instead, so the road
+   still animates on mobile instead of sitting static. */
+@keyframes jlptRoadFlowMobile {
+  to { background-position: 0 -24px; }
+}
+
+@media (max-width: 700px) and (prefers-reduced-motion: reduce) {
+  .jlptMilestoneRoad {
+    animation: none;
   }
 }

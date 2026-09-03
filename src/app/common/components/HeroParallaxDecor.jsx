@@ -40,10 +40,7 @@ export default function HeroParallaxDecor({ x, y }) {
   return (
     <div aria-hidden="true" className={styles.heroLeftBg}>
       <motion.div className={styles.heroCanvasSlot} style={{ x, y }}>
-        <AnimatedHeroBackdrop className={styles.heroCanvasBackdrop} />
-      </motion.div>
-      <motion.div className={styles.heroRingSlot} style={{ x, y }}>
-        <div className={styles.heroDecorRing} />
+        <AnimatedHeroBackdrop density={0.55} className={styles.heroCanvasBackdrop} />
       </motion.div>
       <motion.div className={styles.heroDotSlot} style={{ x, y }}>
         <div className={styles.heroDecorDot} />

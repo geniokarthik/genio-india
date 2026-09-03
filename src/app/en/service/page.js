@@ -129,14 +129,14 @@ Whether for work, travel, or personal enrichment, experienced instructors provid
 const PROJECTS = [
   {
     id: "sl", type: "built", number: "No.01",
-    title: "Sales Ledger",
+    title: "Smart Sales Ledger",
     img: SalesImg,
     cardImageFit: "contain",
     tagline: "A ledger management system built for sales teams. Centralizes revenue, deals, and customer data to dramatically improve operational efficiency.",
     client: "GENIO INDIA",
     category: "Business System",
     outline: "We designed and built a ledger system from scratch for sales staff to log and manage daily activities. Features include real-time sales visualization, deal status tracking, and customer management — all optimized for mobile use.",
-    tags: ["React Native", "Node.js", "MySQL", "Firebase"],
+    tags: ["Flutter", "Laravel", "MySQL", "Firebase"],
   },
   {
     id: "cb", type: "built", number: "No.02",
@@ -148,7 +148,7 @@ const PROJECTS = [
     client: "GENIO INDIA",
     category: "AI / Automation",
     outline: "We built an intelligent chatbot that handles customer inquiries automatically using NLP. The system integrates with existing business workflows, reducing response time to near-zero and freeing support staff for complex cases.",
-    tags: ["Python", "NLP", "React", "Node.js", "MySQL"],
+    tags: ["Python", "React", "SQL Lite"],
   },
   {
     id: "ta", type: "involved", number: "No.03",
@@ -160,7 +160,7 @@ const PROJECTS = [
     client: "External Client",
     category: "Web Application",
     outline: "We contributed to the feature design and frontend development of this platform using React. Our team focused on delivering a smooth, intuitive user experience with high performance across all devices.",
-    tags: ["React", "JavaScript", "CSS3", "REST API"],
+    tags: ["Cake php", "JavaScript", "CSS"],
   },
 ];
 

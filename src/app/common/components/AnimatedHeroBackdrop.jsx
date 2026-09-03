@@ -40,7 +40,7 @@ function tracePolygon(ctx, pts) {
   ctx.closePath();
 }
 
-function createShape(width, height, tone) {
+function createShape(width, height, tone, densityAlpha = 1) {
   const type = TYPES[Math.floor(Math.random() * TYPES.length)];
   const palette = tone === "light" ? LIGHT_RGB : BRAND_RGB;
 
@@ -68,7 +68,7 @@ function createShape(width, height, tone) {
     rgb: palette[Math.floor(Math.random() * palette.length)],
     dashed: Math.random() < 0.55,
     filled: Math.random() < 0.5,
-    alpha: 0.55 + Math.random() * 0.25,
+    alpha: (0.55 + Math.random() * 0.25) * densityAlpha,
     life: 0,
     maxLife: 420 + Math.random() * 320,
   };
@@ -143,10 +143,17 @@ function drawShape(ctx, shape) {
   ctx.restore();
 }
 
-export default function AnimatedHeroBackdrop({ className, tone = "brand" }) {
+// density: scales shape count + opacity down from the default full
+// look — pass a value < 1 only for callers that specifically need a
+// lighter backdrop (e.g. a hero sitting right behind body text).
+// Leaving it unset keeps every other usage (section/CTA decor) exactly
+// as it already was.
+export default function AnimatedHeroBackdrop({ className, tone = "brand", density = 1 }) {
   const canvasRef = useRef(null);
   const toneRef = useRef(tone);
   toneRef.current = tone;
+  const densityRef = useRef(density);
+  densityRef.current = density;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -175,9 +182,10 @@ export default function AnimatedHeroBackdrop({ className, tone = "brand" }) {
       canvas.height = height;
 
       if (shapes.length === 0) {
-        const count = Math.max(9, Math.min(16, Math.round((width * height) / 85000)));
+        const baseCount = Math.max(9, Math.min(16, Math.round((width * height) / 85000)));
+        const count = Math.max(4, Math.round(baseCount * densityRef.current));
         for (let i = 0; i < count; i += 1) {
-          const shape = createShape(width, height, toneRef.current);
+          const shape = createShape(width, height, toneRef.current, densityRef.current);
           shape.x = Math.random() * width;
           shape.y = Math.random() * height;
           shape.life = Math.random() * shape.maxLife;
@@ -196,7 +204,7 @@ export default function AnimatedHeroBackdrop({ className, tone = "brand" }) {
         shape.life += 1;
 
         if (shape.life > shape.maxLife) {
-          Object.assign(shape, createShape(width, height, toneRef.current));
+          Object.assign(shape, createShape(width, height, toneRef.current, densityRef.current));
         }
 
         drawShape(context, shape);

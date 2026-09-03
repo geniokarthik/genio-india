@@ -14,7 +14,7 @@ import kavinesh from "src/assets/images/our_team/kavinesh.png";
 import sivaraj from "src/assets/images/our_team/sivaraj.png";
 import premkumar from "src/assets/images/jlpt/premkumar.jpg";
 import joshwa from "src/assets/images/jlpt/joshwa.jpg";
-import tamiliniyan from "src/assets/images/jlpt/placeholder-avatar.svg";
+import tamiliniyan from "src/assets/images/jlpt/tamiliniyan.jpeg";
 import linkedin from "src/assets/images/our_team/linkedin.png";
 
 const teamMembers = [

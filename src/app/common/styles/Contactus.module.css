@@ -630,7 +630,18 @@
 
 /* ── RESPONSIVE ───────────────────────────────── */
 @media (max-width: 900px) {
-  .heroInner { padding: 3rem 5%; }
+  /* .heroInner is a fixed-width (55%) flex item meant for the two-column
+     desktop layout — never reset on mobile before, so the hero title/
+     description were stuck squeezed into half the screen while the
+     other half showed nothing but background photo. */
+  .heroInner { width: 100%; padding: 3rem 5%; }
+
+  /* The overlay's left-to-right fade was tuned for that 55%-wide text
+     column — now that text spans the full width, flatten it to a near-
+     uniform tint so text on the right half doesn't sit on bare photo. */
+  .heroOverlay {
+    background: linear-gradient(180deg, rgba(255, 236, 233, 0.94) 0%, rgba(255, 236, 233, 0.88) 100%);
+  }
   .contactMain { padding: 52px 0 60px; }
   .contactInner { grid-template-columns: 1fr; }
   .progressSidebarCard { position: static; }

@@ -21,6 +21,7 @@ export default function SectionDecor({ variant = "section", tone = "brand", canv
       {canvas && (
         <AnimatedHeroBackdrop
           tone={tone}
+          density={variant === "hero" ? 0.55 : 1}
           className={`${styles.canvas} ${styles[`canvas--${variant}`] || ""}`}
         />
       )}

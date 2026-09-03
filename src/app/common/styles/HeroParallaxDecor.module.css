@@ -19,33 +19,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.9;
-}
-
-.heroRingSlot {
-  position: absolute;
-  top: 32px;
-  right: 32px;
-  width: 88px;
-  height: 88px;
-}
-
-.heroDecorRing {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(226, 33, 16, 0.5);
-  animation: heroDecorSpin 26s linear infinite;
-}
-
-.heroDecorRing::after {
-  content: '';
-  position: absolute;
-  inset: 18px;
-  border-radius: 50%;
-  border: 1px solid rgba(245, 158, 11, 0.4);
-  animation: heroDecorSpin 18s linear infinite reverse;
+  opacity: 0.65;
 }
 
 .heroDotSlot {
@@ -64,19 +38,12 @@
   animation: heroDecorFloat 4.5s ease-in-out infinite;
 }
 
-@keyframes heroDecorSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 @keyframes heroDecorFloat {
   0%, 100% { transform: translateY(0) scale(1); }
   50% { transform: translateY(-14px) scale(1.15); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .heroDecorRing,
-  .heroDecorRing::after,
   .heroDecorDot {
     animation: none;
   }

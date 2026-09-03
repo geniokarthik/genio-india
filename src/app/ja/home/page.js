@@ -145,13 +145,7 @@ export default function Home() {
                 className={styles.heroCanvasSlot}
                 style={{ x: parallaxX, y: parallaxY }}
               >
-                <AnimatedHeroBackdrop className={styles.heroCanvasBackdrop} />
-              </motion.div>
-              <motion.div
-                className={styles.heroRingSlot}
-                style={{ x: parallaxX, y: parallaxY }}
-              >
-                <div className={styles.heroDecorRing} />
+                <AnimatedHeroBackdrop density={0.55} className={styles.heroCanvasBackdrop} />
               </motion.div>
               <motion.div
                 className={styles.heroDotSlot}

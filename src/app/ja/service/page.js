@@ -129,14 +129,14 @@ WebアプリケーションやモバイルアプリとのMySQLデータ連携も
 const PROJECTS = [
   {
     id: "sl", type: "built", number: "No.01",
-    title: "Sales Ledger",
+    title: "Smart Sales Ledger",
     img: SalesImg,
     cardImageFit: "contain",
     tagline: "営業チームのための台帳管理システム。売上・案件・顧客情報を一元管理し、業務効率を大幅に向上させます。",
     client: "GENIO INDIA",
     category: "業務システム",
     outline: "営業スタッフが日々の活動を記録・管理するための台帳システムをゼロから設計・開発しました。リアルタイムの売上可視化、案件ステータス管理、顧客管理機能を備え、モバイル操作に最適化されています。",
-    tags: ["React Native", "Node.js", "MySQL", "Firebase"],
+    tags: ["Flutter", "Laravel", "MySQL", "Firebase"],
   },
   {
     id: "cb", type: "built", number: "No.02",
@@ -148,7 +148,7 @@ const PROJECTS = [
     client: "GENIO INDIA",
     category: "AI・自動化",
     outline: "NLP技術を活用したインテリジェントなチャットボットを構築しました。既存の業務フローと連携し、応答時間をほぼゼロに短縮。サポートスタッフが複雑な対応に集中できる環境を実現します。",
-    tags: ["Python", "NLP", "React", "Node.js", "MySQL"],
+     tags: ["Python", "React", "SQL Lite"],
   },
   {
     id: "ta", type: "involved", number: "No.03",
@@ -160,7 +160,7 @@ const PROJECTS = [
     client: "外部クライアント",
     category: "Webアプリケーション",
     outline: "Reactを使用したプラットフォームの機能設計とフロントエンド開発に貢献しました。全デバイスで高パフォーマンスを発揮する、直感的で快適なユーザー体験の実現を重視しました。",
-    tags: ["React", "JavaScript", "CSS3", "REST API"],
+    tags: ["Cake php", "JavaScript", "CSS"],
   },
 ];
 
