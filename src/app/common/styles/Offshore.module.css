@@ -342,7 +342,11 @@
    TEAM FORMATION PATTERNS
 ══════════════════════════════════════ */
 .patternsSection {
-  padding: 5rem 0 6rem;
+  padding: 0 0 6rem;
+  background: #f9fafb;
+  margin: 0 -5%;
+  padding-left: 5%;
+  padding-right: 5%;
   position: relative;
 }
 
@@ -474,7 +478,7 @@
   .detail_section__inner { grid-template-columns: 1fr; gap: 2rem; }
   .detail_section__reverse { direction: ltr; }
 
-  .patternsSection { padding: 3.5rem 0 4rem; }
+  .patternsSection { padding-bottom: 4rem; }
   .patternsGrid { grid-template-columns: 1fr; gap: 1.5rem; }
   .patternCard { padding: 20px; }
 

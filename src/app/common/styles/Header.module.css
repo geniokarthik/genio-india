@@ -6,7 +6,8 @@
   padding: 0.5rem 2.5rem;
   width: 100%;
   background: #fff;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid #eef0f2;
+  box-shadow: 0 2px 10px rgba(17, 24, 39, 0.05);
   position: fixed;
   top: 0;
   left: 0;
@@ -31,7 +32,7 @@
 
 .nav {
   display: flex;
-  gap: 2.5rem;
+  gap: 2rem;
   background: transparent;
   padding: 0;
   align-items: center;
@@ -39,9 +40,9 @@
 }
 
 .link {
-  color: #4b5563;
-  font-size: 0.95rem;
-  font-weight: 500;
+  color: #1f2937;
+  font-size: 0.92rem;
+  font-weight: 700;
   text-decoration: none;
   text-transform: none;
   transition: color 0.2s ease;
@@ -54,7 +55,6 @@
 
 .link.active {
   color: #e22110;
-  font-weight: 700;
 }
 
 .btnJoin {
@@ -109,22 +109,28 @@
 .sidebarNav {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 6px;
   margin-top: 40px;
 }
 
 .sidebarLink {
-  color: #333;
+  color: #1f2937;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 12px 16px;
+  border-radius: 12px;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
 .sidebarLink:hover {
   color: #e22110;
+  background: rgba(226, 33, 16, 0.06);
 }
 
 .sidebarLink.active {
-  color: #e22110; /* Active link color in sidebar */
+  color: #fff;
+  background: #e22110;
 }
 
 /* .sidebarFlagContainer {
@@ -161,7 +167,7 @@
   position: relative;
   transition: all 0.3s ease;
   right: 30px;
-  top: 10px;  
+  top: 10px;
 }
 
 .hamburgerIcon::before,
@@ -267,6 +273,58 @@
   font-weight: 700;
   color: #e22110;
   background: rgba(226, 33, 16, 0.08);
+}
+
+.langSelectorMobile {
+  position: relative;
+  margin-top: 12px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.langSelectorMobileBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.langSelectorMobileBtn:hover {
+  border-color: #e22110;
+  background: rgba(226, 33, 16, 0.05);
+}
+
+.langChevron {
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: #6b7280;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.langChevronOpen {
+  transform: rotate(180deg);
+}
+
+.langDropdownMobile {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 6px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
 }
 
 @media (max-width: 768px) {

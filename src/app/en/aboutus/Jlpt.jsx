@@ -13,8 +13,8 @@ import ajith from "src/assets/images/our_team/ajith.png";
 import kavinesh from "src/assets/images/our_team/kavinesh.png";
 import sivaraj from "src/assets/images/our_team/sivaraj.png";
 import premkumar from "src/assets/images/jlpt/premkumar.jpg";
-import joswa from "src/assets/images/jlpt/joswa.jpg";
-import tamiliniyanPlaceholder from "src/assets/images/jlpt/placeholder-avatar.svg";
+import joshwa from "src/assets/images/jlpt/joshwa.jpg";
+import tamiliniyan from "src/assets/images/jlpt/placeholder-avatar.svg";
 import linkedin from "src/assets/images/our_team/linkedin.png";
 
 const teamMembers = [
@@ -66,18 +66,18 @@ const others = [
     },
     {
         jlpt: "N5",
-        name: "Joswa",
+        name: "Joshwa",
         role: "Japanese Language Program Participant",
-        image: joswa,
+        image: joshwa,
         facePosition: "50% 22%",
-        linkedin: "",
+        linkedin: "https://www.linkedin.com/in/joshwa-s-b4028a386",
     },
     {
         // TODO: swap in a real photo once available — placeholder for now.
         jlpt: "N5",
         name: "Tamiliniyan",
         role: "Japanese Language Program Participant",
-        image: tamiliniyanPlaceholder,
+        image: tamiliniyan,
         facePosition: "center 30%",
         linkedin: "",
     },

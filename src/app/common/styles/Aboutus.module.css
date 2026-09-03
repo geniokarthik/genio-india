@@ -21,41 +21,124 @@
   z-index: 1;
 }
 
-/* Hero Section */
-/* Same plain, title-only hero as the Contact Us page — no gradient, no
-   decoration, just the page name. */
+/* Hero Section — full-bleed photo + light-red gradient, matching the
+   Home / Service / Offshore Service hero pattern site-wide. */
 .hero {
   margin: 0 0 4rem;
-  padding: 60px 0 50px;
-  background: #ffffff;
   position: relative;
-  overflow: hidden;
-  min-height: 260px;
+  min-height: 480px;
   display: flex;
   align-items: center;
+  overflow: hidden;
+}
+
+.heroBgImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  z-index: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    #ffece9 30%,
+    rgba(255, 236, 233, 0.92) 45%,
+    rgba(255, 236, 233, 0.5) 62%,
+    transparent 80%
+  );
+  z-index: 1;
+  pointer-events: none;
 }
 
 .heroContent {
+  width: 55%;
+  flex-shrink: 0;
+  padding: 64px 56px 64px 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.heroContent::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(226, 33, 16, 0.10) 0%, transparent 68%);
+  pointer-events: none;
+}
+
+.heroContent::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -60px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(226, 33, 16, 0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.heroLabel {
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e22110;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  display: block;
   position: relative;
   z-index: 1;
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 0 60px;
-  width: 100%;
+}
+
+.heroLabel::before {
+  content: '';
+  display: inline-block;
+  width: 22px;
+  height: 2px;
+  background: #e22110;
+  margin-right: 9px;
+  vertical-align: middle;
+  border-radius: 2px;
 }
 
 .heroTitle {
   font-family: 'Archivo', sans-serif;
-  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 900;
-  color: #e22110;
-  margin: 0;
+  color: #111827;
+  margin: 0 0 1rem;
   line-height: 1.1;
+  position: relative;
+  z-index: 1;
+}
+.heroTitle span { color: #e22110; }
+
+.heroDesc {
+  font-size: 1.05rem;
+  color: #374151;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 480px;
+  position: relative;
+  z-index: 1;
 }
 
-@media (max-width: 768px) {
-  .heroContent { padding: 0 20px; }
-  .hero { padding: 60px 0 40px; }
+@media (max-width: 900px) {
+  .heroContent { padding: 3rem 5%; }
+}
+
+@media (max-width: 600px) {
+  .heroContent { padding: 2.5rem 5%; }
 }
 
 /* Timeline Section — a plain flowing list: big year number, bold

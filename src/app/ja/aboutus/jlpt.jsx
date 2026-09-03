@@ -13,8 +13,8 @@ import ajith from "src/assets/images/our_team/ajith.png";
 import kavinesh from "src/assets/images/our_team/kavinesh.png";
 import sivaraj from "src/assets/images/our_team/sivaraj.png";
 import premkumar from "src/assets/images/jlpt/premkumar.jpg";
-import joswa from "src/assets/images/jlpt/joswa.jpg";
-import tamiliniyanPlaceholder from "src/assets/images/jlpt/placeholder-avatar.svg";
+import joshwa from "src/assets/images/jlpt/joshwa.jpg";
+import tamiliniyan from "src/assets/images/jlpt/placeholder-avatar.svg";
 import linkedin from "src/assets/images/our_team/linkedin.png";
 
 const teamMembers = [
@@ -68,16 +68,16 @@ const others = [
         jlpt: "N5",
         name: "ジョスワ",
         role: "日本語教育受講生",
-        image: joswa,
+        image: joshwa,
         facePosition: "50% 22%",
-        linkedin: "",
+        linkedin: "https://www.linkedin.com/in/joshwa-s-b4028a386",
     },
     {
         // TODO: 写真が用意でき次第、正式なものに差し替える — 現在は仮画像。
         jlpt: "N5",
         name: "タミリニヤン",
         role: "日本語教育受講生",
-        image: tamiliniyanPlaceholder,
+        image: tamiliniyan,
         facePosition: "center 30%",
         linkedin: "",
     },

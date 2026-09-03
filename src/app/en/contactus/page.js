@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Header from "src/app/en/components/Header";
 import Footer from "src/app/en/components/Footer";
 import Image from "next/image";
@@ -8,9 +9,11 @@ import styles from "src/app/common/styles/Contactus.module.css";
 import "../../globals.css";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import SectionDecor from "src/app/common/components/SectionDecor";
+import HeroParallaxDecor, { useHeroParallax } from "src/app/common/components/HeroParallaxDecor";
 import CryptoJS from 'crypto-js';
 
 export default function ContactForm() {
+    const { heroRef, parallaxX, parallaxY, onMouseMove, onMouseLeave } = useHeroParallax();
     const [buttonFlg, setButtonFlg] = useState(false);
     const [inputFlg, setInputFlg] = useState(true);
     const [checkFlg, setCheckFlg] = useState(false);
@@ -106,10 +109,25 @@ export default function ContactForm() {
             <Header />
 
             {/* PAGE HERO */}
-            <section className={styles.pageHero}>
-                <SectionDecor variant="hero" />
-                <div className={styles.heroWrap}>
-                    <h1 className={styles.heroTitle}>Contact Us</h1>
+            <section
+                className={styles.pageHero}
+                ref={heroRef}
+                onMouseMove={onMouseMove}
+                onMouseLeave={onMouseLeave}
+            >
+                <motion.img
+                    src="/images/home/hero_real_team4.png"
+                    alt="Genio India team"
+                    className={styles.heroBgImg}
+                    initial={{ opacity: 0, scale: 1.06 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                />
+                <div aria-hidden="true" className={styles.heroOverlay} />
+                <div className={styles.heroInner}>
+                    <HeroParallaxDecor x={parallaxX} y={parallaxY} />
+                    <p className={styles.heroLabel}>Get In Touch</p>
+                    <h1 className={styles.heroTitle}>Contact <span>Us</span></h1>
                     <p className={styles.heroSubtitle}>Have a project in mind? Fill in the form below and we&apos;ll get back to you within 2 business days.</p>
                 </div>
             </section>

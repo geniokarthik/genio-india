@@ -91,7 +91,7 @@ export default function Header() {
         >
          Contact Us
       </Link>
-       <LanguageSwitcher/>
+       <LanguageSwitcher variant="sidebar" />
       </div>
     </div>
   );

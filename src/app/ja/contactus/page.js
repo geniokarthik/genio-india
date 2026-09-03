@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Header from "src/app/ja/components/Header";
 import Footer from "src/app/ja/components/Footer";
 import Image from "next/image";
@@ -9,8 +10,10 @@ import "../../globals.css";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import CryptoJS from "crypto-js";
 import SectionDecor from "src/app/common/components/SectionDecor";
+import HeroParallaxDecor, { useHeroParallax } from "src/app/common/components/HeroParallaxDecor";
 
 export default function ContactForm() {
+    const { heroRef, parallaxX, parallaxY, onMouseMove, onMouseLeave } = useHeroParallax();
     const [buttonFlg, setButtonFlg] = useState(false);
     const [inputFlg, setInputFlg] = useState(true);
     const [checkFlg, setCheckFlg] = useState(false);
@@ -102,9 +105,24 @@ export default function ContactForm() {
             <Header />
 
             {/* PAGE HERO */}
-            <section className={styles.pageHero}>
-                <SectionDecor variant="hero" />
-                <div className={styles.heroWrap}>
+            <section
+                className={styles.pageHero}
+                ref={heroRef}
+                onMouseMove={onMouseMove}
+                onMouseLeave={onMouseLeave}
+            >
+                <motion.img
+                    src="/images/home/hero_real_team4.png"
+                    alt="Genio Indiaのチーム"
+                    className={styles.heroBgImg}
+                    initial={{ opacity: 0, scale: 1.06 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                />
+                <div aria-hidden="true" className={styles.heroOverlay} />
+                <div className={styles.heroInner}>
+                    <HeroParallaxDecor x={parallaxX} y={parallaxY} />
+                    <p className={styles.heroLabel}>ご相談・ご質問</p>
                     <h1 className={styles.heroTitle}>お問い合わせ</h1>
                     <p className={styles.heroSubtitle}>プロジェクトのご相談・お見積もりなど、下記フォームよりお気軽にお問い合わせください。2営業日以内にご返答いたします。</p>
                 </div>

@@ -40,7 +40,7 @@ export default function Header() {
         <Link href="/ja/service" className={`${styles.sidebarLink} ${pathname === "/ja/service" ? styles.active : ""}`} onClick={() => setSidebarOpen(false)}>サービス</Link>
         <Link href="/ja/aboutus" className={`${styles.sidebarLink} ${pathname === "/ja/aboutus" ? styles.active : ""}`} onClick={() => setSidebarOpen(false)}>会社情報</Link>
         <Link href="/ja/contactus" className={`${styles.sidebarLink} ${pathname === "/ja/contactus" ? styles.active : ""}`} onClick={() => setSidebarOpen(false)}>お問い合わせ</Link>
-        <LanguageSwitcher />
+        <LanguageSwitcher variant="sidebar" />
       </div>
     </div>
   );
