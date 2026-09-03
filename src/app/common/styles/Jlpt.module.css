@@ -45,188 +45,273 @@
 }
 
 /* ══════════════════════════════════════
-   PROFICIENCY OVERVIEW BAR
+   BRAND-RED PROFICIENCY SCALE (N1 strongest → N5 lightest)
+   — used for the roadmap's level nodes.
 ══════════════════════════════════════ */
-.jlptStatCard {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 20px;
-  padding: 28px 32px 24px;
-  margin-bottom: 56px;
-  box-shadow: 0 10px 34px rgba(17, 24, 39, 0.05);
+.jlptBadgeN1 { background: #7a0e08; }
+.jlptBadgeN2 { background: #a3160c; }
+.jlptBadgeN3 { background: #e22110; }
+.jlptBadgeN4 { background: #c23a28; }
+.jlptBadgeN5 { background: #b8452f; }
+
+/* ══════════════════════════════════════
+   LEVEL ROADMAP — each JLPT level is a milestone
+   on a connected path (N1 → N5), since this section
+   is fundamentally about levels.
+══════════════════════════════════════ */
+.jlptRoadmap {
+  position: relative;
 }
 
-.jlptStatHead {
+/* Reserves the node's own footprint in normal flow, while the node
+   itself sits at a left/center/right point via one of the zone classes
+   below. */
+.jlptMilestoneNodeSlot {
+  position: relative;
+  height: 64px;
+  margin-bottom: 8px;
+}
+
+.jlptMilestoneNode {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 16px rgba(17, 24, 39, 0.18);
+  z-index: 2;
 }
 
-.jlptStatTitle {
+/* Keep these percentages in sync with the NODE_X values in Jlpt.jsx —
+   the connecting SVG curves are drawn using those same numbers. */
+.jlptNodeLeft { left: 18%; }
+.jlptNodeCenter { left: 50%; }
+.jlptNodeRight { left: 82%; }
+
+/* Text beside the photos instead of stacked above them — keeps each
+   level's block short (which is what actually controls the vertical
+   gap to the next level) and uses the empty space next to the narrower
+   text column instead of leaving it blank. */
+.jlptMilestoneBody {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 24px;
+  width: auto;
+  max-width: 1050px;
+}
+
+.jlptMilestoneBodyLeft { margin-right: auto; }
+.jlptMilestoneBodyCenter { margin: 0 auto; }
+.jlptMilestoneBodyRight { margin-left: auto; }
+
+.jlptMilestoneText {
+  flex: 0 0 500px;
+  min-width: 0;
+}
+
+/* Content order mirrors which side of the path the level sits on: photo
+   leads on the left, text leads on the right. */
+.jlptMilestoneBodyLeft .jlptMilestoneText { order: 2; }
+.jlptMilestoneBodyLeft .jlptMemberRow { order: 1; }
+
+/* The "road" to the next level: a fixed, generous gap after this
+   level's content (not squeezed behind it, so it's always clearly
+   visible — a tall N4-style block with 3 member cards used to leave
+   almost no room for the curve before N5). */
+.jlptMilestoneRoad {
+  position: relative;
+  height: 64px;
+  margin: 4px 0 -6px;
+}
+
+.jlptMilestoneRoad svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.jlptMilestoneRoad path {
+  fill: none;
+  stroke: #d1d5db;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 7 8;
+  animation: jlptRoadFlow 1.1s linear infinite;
+}
+
+/* Dashes travel down the curve, like a running/marching-ants road. */
+@keyframes jlptRoadFlow {
+  to { stroke-dashoffset: -30; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jlptMilestoneRoad path {
+    animation: none;
+  }
+}
+
+.jlptMilestoneTitle {
   font-family: 'Archivo', sans-serif;
   font-weight: 800;
   font-size: 1.05rem;
   color: #111827;
-  margin: 0;
+  margin: 0 0 8px;
 }
 
-.jlptStatTotal {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #e22110;
-  margin: 0;
+.jlptMilestoneDesc {
+  font-size: 0.9rem;
+  color: #374151;
+  line-height: 1.6;
+  max-width: 620px;
+  margin: 0 0 14px;
 }
 
-.jlptBar {
-  display: flex;
-  width: 100%;
-  height: 14px;
-  border-radius: 999px;
-  overflow: hidden;
-  background: #f3f4f6;
-  margin-bottom: 20px;
-}
-
-.jlptBarSeg {
-  height: 100%;
-}
-
-.jlptLegend {
+.jlptMemberRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 28px;
-}
-
-.jlptLegendItem {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-}
-
-.jlptLegendDot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.jlptLegendLabel {
-  font-weight: 700;
-  color: #111827;
-}
-
-.jlptLegendLabel em {
-  font-style: normal;
-  font-weight: 500;
-  color: #9ca3af;
-  margin-left: 4px;
-}
-
-.jlptLegendCount {
-  font-weight: 800;
-  color: #e22110;
-  font-family: 'Archivo', sans-serif;
+  /* flex-shrink: 0 — never let the browser compress this row narrower
+     than its photos actually need (that's what silently wrapped the
+     3rd photo down to N4 before: the row got squeezed to fit whatever
+     width was left over after the text column, instead of the text
+     column giving way). */
+  flex: 0 0 auto;
+  gap: 16px;
 }
 
 /* ══════════════════════════════════════
-   BRAND-RED PROFICIENCY SCALE (N1 strongest → N5 lightest)
+   MEMBER CARDS — full portrait photo with
+   name/role on a scrim. (Full-frame instead of a
+   small circular avatar so faces actually read at
+   a glance.)
 ══════════════════════════════════════ */
-.jlptLevelN1 { background: linear-gradient(135deg, #7a0e08, #a3160c); }
-.jlptLevelN2 { background: linear-gradient(135deg, #a3160c, #e22110); }
-.jlptLevelN3 { background: linear-gradient(135deg, #e22110, #ef4a37); }
-.jlptLevelN4 { background: linear-gradient(135deg, #ef4a37, #f5806a); }
-.jlptLevelN5 { background: linear-gradient(135deg, #f5806a, #fbb3a3); }
+.jlptMemberRow .jlptMemberFloat {
+  width: 150px;
+}
 
-.jlptPillN1 { background: rgba(122,14,8,0.10); color: #7a0e08; }
-.jlptPillN2 { background: rgba(163,22,12,0.10); color: #a3160c; }
-.jlptPillN3 { background: rgba(226,33,16,0.10); color: #e22110; }
-.jlptPillN4 { background: rgba(239,74,55,0.12); color: #c23a28; }
-.jlptPillN5 { background: rgba(245,128,106,0.16); color: #b8452f; }
+/* Gentle up/down float, staggered per card via inline animation-delay
+   so they don't all bob in lockstep — a small "alive" touch. */
+.jlptMemberFloat {
+  animation: jlptMemberFloat 3.6s ease-in-out infinite;
+}
 
-.jlptRingN1 { box-shadow: 0 0 0 3px #7a0e08; }
-.jlptRingN2 { box-shadow: 0 0 0 3px #a3160c; }
-.jlptRingN3 { box-shadow: 0 0 0 3px #e22110; }
-.jlptRingN4 { box-shadow: 0 0 0 3px #ef4a37; }
-.jlptRingN5 { box-shadow: 0 0 0 3px #f5806a; }
+@keyframes jlptMemberFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
 
-/* ══════════════════════════════════════
-   MEMBER GRID / CARDS
-══════════════════════════════════════ */
-.jlptGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 20px;
-  margin-bottom: 24px;
+@media (prefers-reduced-motion: reduce) {
+  .jlptMemberFloat {
+    animation: none;
+  }
 }
 
 .jlptMemberCard {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 18px;
-  padding: 24px 16px 20px;
-  text-align: center;
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #e5e7eb;
+  box-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
 }
 
 /* transform lives only in :hover's own transition — see .projCard. */
 .jlptMemberCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 36px rgba(226, 33, 16, 0.12);
-  border-color: rgba(226, 33, 16, 0.25);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 18px 40px rgba(226, 33, 16, 0.2);
+  transition: box-shadow 0.25s ease;
 }
 
 .jlptMemberCardExt {
-  border-style: dashed;
-  background: #fafafa;
+  outline: 2px dashed rgba(255, 255, 255, 0.55);
+  outline-offset: -8px;
 }
 
-.jlptMemberPhoto {
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 auto 14px;
-}
-
+/* Name/role on the flip back — same palette as the Our Team cards
+   (Noto Sans JP name, teal role) scaled down to this card's size. */
 .jlptMemberName {
+  font-family: 'Noto Sans JP', inherit;
   font-weight: 800;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #111827;
-  margin: 0 0 2px;
+  margin: 0 0 4px;
 }
 
 .jlptMemberRole {
-  font-size: 0.84rem;
-  color: #374151;
-  line-height: 1.4;
-  margin: 0 0 12px;
-  min-height: 2.1em;
-}
-
-.jlptPill {
-  display: inline-block;
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-}
-
-.jlptMemberLinkedin {
-  display: block;
-  margin-top: 10px;
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  color: #0077b5;
-  text-decoration: none;
+  color: #1abc9c;
+  line-height: 1.35;
+  margin: 0;
 }
 
-.jlptMemberLinkedin:hover {
-  text-decoration: underline;
+/* ══════════════════════════════════════
+   EVERY JLPT CARD FLIPS — front: photo only,
+   back: name/role/LinkedIn — same treatment as
+   the Our Team cards elsewhere on this page.
+══════════════════════════════════════ */
+.jlptFlip {
+  position: absolute;
+  inset: 0;
+  perspective: 1000px;
+}
+
+.jlptFlipInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.jlptMemberCard:hover .jlptFlipInner {
+  transform: rotateY(180deg);
+}
+
+.jlptFlipFront,
+.jlptFlipBack {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.jlptFlipFront {
+  background: #ffffff;
+}
+
+/* Same flat background as the Our Team flip-card back. */
+.jlptFlipBack {
+  background-color: #f7f6f6;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 14px 12px;
+}
+
+.jlptFlipLinkedin {
+  display: inline-flex;
+  margin-top: 10px;
+  width: 32px;
+  height: 32px;
+  transition: transform 0.2s ease;
+}
+
+.jlptFlipLinkedin:hover {
+  transform: scale(1.1);
 }
 
 /* ══════════════════════════════════════
@@ -236,7 +321,7 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  margin: 12px 0 10px;
+  margin: 12px 0 16px;
   padding-top: 32px;
   border-top: 1px solid #e5e7eb;
 }
@@ -261,23 +346,74 @@
 }
 
 .jlptExtNote {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: #374151;
   line-height: 1.65;
   margin-bottom: 24px;
   max-width: 780px;
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #e22110;
+  border-radius: 10px;
+  padding: 14px 18px;
 }
 
 .jlptExtNote strong { color: #111827; }
 .jlptExtWarn { color: #e22110; font-weight: 600; }
 
 @media (max-width: 700px) {
-  .jlptGrid {
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 14px;
+  /* The winding left/center/right path doesn't have room on a narrow
+     screen — collapse every node to one left-hand column and swap the
+     curved SVG for a plain dashed rail, same idea as the Corporate
+     History timeline's mobile fallback. */
+  .jlptNodeLeft,
+  .jlptNodeCenter,
+  .jlptNodeRight {
+    left: 20px;
   }
 
-  .jlptStatCard {
-    padding: 22px 20px 18px;
+  .jlptMilestoneNodeSlot,
+  .jlptMilestoneNode {
+    width: 40px;
+    height: 40px;
+    font-size: 0.7rem;
+  }
+
+  .jlptMilestoneRoad {
+    height: 40px;
+    margin-left: 20px;
+    width: 2px;
+  }
+
+  .jlptMilestoneRoad svg {
+    display: none;
+  }
+
+  .jlptMilestoneRoad {
+    background: repeating-linear-gradient(to bottom, #d1d5db 0 6px, transparent 6px 12px);
+  }
+
+  .jlptMilestoneBody,
+  .jlptMilestoneBodyLeft,
+  .jlptMilestoneBodyCenter,
+  .jlptMilestoneBodyRight {
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding-left: 56px;
+  }
+
+  .jlptMilestoneText {
+    flex: none;
+    width: 100%;
+  }
+
+  .jlptMemberRow {
+    gap: 12px;
+  }
+
+  .jlptMemberRow .jlptMemberFloat {
+    width: calc(50% - 6px);
   }
 }

@@ -23,16 +23,19 @@
 
 /* Hero Section */
 .hero {
-  margin: 0 -5% 4rem;
+  margin: 0 0 4rem;
   padding: 80px 5% 60px;
-  background: linear-gradient(160deg, #fff 0%, #fef2f2 100%);
+  background: #ffffff;
   border-bottom: 1px solid #e5e7eb;
   position: relative;
+  overflow: hidden;
 }
 
 .heroContent {
   position: relative;
   z-index: 1;
+  max-width: 1160px;
+  margin: 0 auto;
 }
 
 .heroTitle {
@@ -111,41 +114,47 @@
   z-index: 2;
 }
 
+/* ── Card design (this is the part that was redone) ──
+   Text now stays left-aligned on both sides for readability —
+   right-aligned multi-line paragraphs were the main issue —
+   plus a bit more room, a red top accent, and softer shadow/radius. */
 .timelineContent {
-  padding: 1.4rem 1.6rem;
+  padding: 1.5rem 1.75rem;
   background: #ffffff;
-  border-radius: 14px;
+  border-radius: 16px;
   border: 1px solid #e5e7eb;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  max-width: 380px;
+  border-top: 3px solid #e22110;
+  box-shadow: 0 6px 22px rgba(17, 24, 39, 0.08);
+  max-width: 420px;
+  text-align: left;
 }
-
-.timelineItem:nth-child(odd) .timelineContent { text-align: right; }
-.timelineItem:nth-child(even) .timelineContent { text-align: left; }
 
 .year {
   font-size: 1.8rem;
   color: #e22110;
   margin-bottom: 0.3rem;
   font-weight: 900;
-  font-family: 'Archivo', sans-serif;
   display: block;
 }
 
 .text {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: #111827;
   display: block;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.9rem;
 }
 
 .description {
   font-size: 0.875rem;
   color: #475569;
   line-height: 1.7;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.5rem;
   padding-left: 0;
+}
+
+.description:last-child {
+  margin-bottom: 0;
 }
 
 .description::before {
@@ -175,9 +184,7 @@
     top: 22px;
   }
 
-  .timelineContent,
-  .timelineItem:nth-child(even) .timelineContent {
-    text-align: left;
+  .timelineContent {
     max-width: 100%;
   }
 

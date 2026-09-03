@@ -40,22 +40,27 @@ export default function AboutUs() {
     <>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet" />
       <Header />
+      {/* Hero Section */}
+      <Reveal as="section" y={50} duration={0.8} className={styles.hero} id="corporatehistory">
+        <SectionDecor variant="hero" />
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>
+            <span className={styles.heroRedText}>Corporate History</span>
+          </h1>
+          <h2 className={styles.heroSubtitle}>
+            The Story of Our Growth and Milestones Over the Years
+          </h2>
+        </div>
+      </Reveal>
+
       <div className={styles.home}>
-        {/* Hero Section */}
-        <Reveal as="section" y={50} duration={0.8} className={styles.hero} id="corporatehistory">
-          <SectionDecor variant="hero" />
-          <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>
-              <span className={styles.heroRedText}>Corporate History</span>
-            </h1>
-            <h2 className={styles.heroSubtitle}>
-              The Story of Our Growth and Milestones Over the Years
-            </h2>
-          </div>
-        </Reveal>
 
         {/* Timeline Section */}
         <Reveal as="section" duration={0.8} delay={0.3} className={styles.timelineSection}>
+          <div className={styles.sectionCenter}>
+            <p className={styles.sectionEyebrow}>Corporate History</p>
+            <h2 className={styles.sectionTitle}>The Story of Our Growth and Milestones Over the Years</h2>
+          </div>
           <SectionDecor variant="section" />
           <div className={styles.timeline} ref={timelineRef}>
             <div className={styles.timelineItem}>

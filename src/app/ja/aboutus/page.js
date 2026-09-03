@@ -40,20 +40,25 @@ export default function AboutUs() {
     <>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet" />
       <Header />
+      <Reveal as="section" y={50} duration={0.8} className={styles.hero} id="corporatehistory">
+        <SectionDecor variant="hero" />
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>
+            <span className={styles.heroRedText}>企業沿革</span>
+          </h1>
+          <h2 className={styles.heroSubtitle}>
+            当社の成長とこれまでの歩み
+          </h2>
+        </div>
+      </Reveal>
+
       <div className={styles.home}>
-        <Reveal as="section" y={50} duration={0.8} className={styles.hero} id="corporatehistory">
-          <SectionDecor variant="hero" />
-          <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>
-              <span className={styles.heroRedText}>企業沿革</span>
-            </h1>
-            <h2 className={styles.heroSubtitle}>
-              当社の成長とこれまでの歩み
-            </h2>
-          </div>
-        </Reveal>
 
         <Reveal as="section" duration={0.8} delay={0.3} className={styles.timelineSection}>
+          <div className={styles.sectionCenter}>
+            <p className={styles.sectionEyebrow}>企業沿革</p>
+            <h2 className={styles.sectionTitle}>当社の成長とこれまでの歩み</h2>
+          </div>
           <SectionDecor variant="section" />
           <div className={styles.timeline} ref={timelineRef}>
             <div className={styles.timelineItem}>

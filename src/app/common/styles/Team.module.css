@@ -9,7 +9,6 @@
 
 .teamSection {
   padding: 90px 0;
-  background: #f9fafb;
   position: relative;
 }
 
@@ -30,7 +29,6 @@
 }
 
 .secH2 {
-  font-family: 'Archivo', sans-serif;
   font-size: clamp(1.6rem, 3vw, 2.4rem);
   font-weight: 900;
   color: #111827;
@@ -73,16 +71,17 @@
 
 .teamGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  padding: 0;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0rem;
+  padding: 1rem;
 }
 
 .teamCard {
   perspective: 1000px;
+  padding: 1rem;
   position: relative;
-  overflow: hidden;
-  height: 430px;
+  overflow: hidden;  
+  height: 450px;
 }
 
 .flipCard {
@@ -126,21 +125,14 @@
 }
 
 .flipCardBack {
-  background: linear-gradient(160deg, #111827 0%, #1f2937 100%);
-  color: white;
+  background-color: #f7f6f6;
+  color: rgb(8, 8, 8);
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 28px 24px;
-  text-align: center;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: inherit;
-  overflow: hidden;
+  padding: 1.5rem;
 }
 
 .memberImage {
@@ -162,30 +154,29 @@
 }
 
 .memberName {
-  font-size: 1.1rem;
-  font-weight: 800;
-  margin-bottom: 6px;
-  color: #fff;
-  font-family: inherit;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: rgb(4, 4, 4);
+  font-family: 'Noto Sans JP';
 }
 
 .memberRole {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #e22110;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
+  font-size: 1rem;
+  color: #1ABC9C;
+  /* color: green; */
+  margin-bottom: 3.5rem;
   text-align: center;
+  font-weight: bold;
 }
 
 .memberDescription {
-  font-size: 0.84rem;
+  font-size: 1rem;
   line-height: 1.6;
   text-align: center;
-  margin-bottom: 20px;
-  color: rgba(255, 255, 255, 0.7);
-  font-style: normal;
+  margin-bottom: 3rem;
+  font-style: italic;
+  color: #333; 
 }
 
 .socialMedia {
@@ -211,20 +202,6 @@
   display: block;
 }
 
-.linkedinBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 18px;
-  border-radius: 999px;
-  background: #0077b5;
-  color: #fff;
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: transform 0.2s;
-}
-.linkedinBtn:hover { transform: scale(1.05); }
 
 /* Responsive Design */
 @media (max-width: 900px) {

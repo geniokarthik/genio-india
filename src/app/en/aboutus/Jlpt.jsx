@@ -14,6 +14,8 @@ import kavinesh from "src/assets/images/our_team/kavinesh.png";
 import sivaraj from "src/assets/images/our_team/sivaraj.png";
 import premkumar from "src/assets/images/jlpt/premkumar.jpg";
 import joswa from "src/assets/images/jlpt/joswa.jpg";
+import tamiliniyanPlaceholder from "src/assets/images/jlpt/placeholder-avatar.svg";
+import linkedin from "src/assets/images/our_team/linkedin.png";
 
 const teamMembers = [
     {
@@ -21,30 +23,35 @@ const teamMembers = [
         name: "Karthik",
         role: "Project Manager / Bridge SE",
         image: karthik,
+        facePosition: "60% 30%",
     },
     {
         jlpt: "N4",
         name: "Naveen",
         role: "Bilingual Full Stack Developer",
         image: naveen,
+        facePosition: "68% 38%",
     },
     {
         jlpt: "N4",
         name: "Ajith",
         role: "Bilingual Full Stack Developer",
         image: ajith,
+        facePosition: "55% 26%",
     },
     {
         jlpt: "N4",
         name: "Kavinesh",
         role: "Junior Software Developer",
         image: kavinesh,
+        facePosition: "50% 32%",
     },
     {
         jlpt: "N5",
         name: "Sivaraj",
         role: "Junior Software Developer",
         image: sivaraj,
+        facePosition: "47% 30%",
     },
 ];
 
@@ -54,6 +61,7 @@ const others = [
         name: "Premkumar",
         role: "Mechanical Designer",
         image: premkumar,
+        facePosition: "50% 30%",
         linkedin: "https://www.linkedin.com/in/premkumar-s-174896249",
     },
     {
@@ -61,18 +69,28 @@ const others = [
         name: "Joswa",
         role: "Japanese Language Program Participant",
         image: joswa,
+        facePosition: "50% 22%",
+        linkedin: "",
+    },
+    {
+        // TODO: swap in a real photo once available — placeholder for now.
+        jlpt: "N5",
+        name: "Tamiliniyan",
+        role: "Japanese Language Program Participant",
+        image: tamiliniyanPlaceholder,
+        facePosition: "center 30%",
         linkedin: "",
     },
 ];
 
 const jlptLevels = ["N1", "N2", "N3", "N4", "N5"];
 
-const LEVEL_MEANING = {
-    N1: "Near-native",
-    N2: "Business fluent",
-    N3: "Intermediate",
-    N4: "Conversational",
-    N5: "Foundational",
+const LEVEL_DESC = {
+    N1: "These members are capable of professional communication in Japanese, including requirement confirmation, specification understanding, and email correspondence in Japanese.",
+    N2: "These members can handle business-level Japanese communication, including meetings, reports, and coordination with Japanese stakeholders.",
+    N3: "These members can follow and take part in general workplace conversations and documentation in Japanese.",
+    N4: "These members have a basic understanding of Japanese and are able to understand daily conversations as well as work-related instructions.",
+    N5: "These members have a basic understanding of Japanese and are able to understand daily conversations and simple work instructions.",
 };
 
 const levelRank = (level) => jlptLevels.indexOf(level);
@@ -80,48 +98,132 @@ const levelRank = (level) => jlptLevels.indexOf(level);
 const sortedTeam = [...teamMembers].sort((a, b) => levelRank(a.jlpt) - levelRank(b.jlpt));
 const sortedOthers = [...others].sort((a, b) => levelRank(a.jlpt) - levelRank(b.jlpt));
 
-const levelCounts = jlptLevels.reduce((acc, level) => {
-    acc[level] = teamMembers.filter((m) => m.jlpt === level).length;
-    return acc;
-}, {});
+// Group a member list into { level, members }[] roadmap milestones,
+// in N1 → N5 order, skipping levels nobody currently holds.
+function groupByLevel(list) {
+    return jlptLevels
+        .map((level) => ({ level, members: list.filter((m) => m.jlpt === level) }))
+        .filter((g) => g.members.length > 0);
+}
+
+const teamMilestones = groupByLevel(sortedTeam);
+const otherMilestones = groupByLevel(sortedOthers);
 
 function MemberCard({ member, dashed, index = 0 }) {
     return (
-        <motion.div
-            variants={{ hidden: { opacity: 0, ...cardEntrance(index) }, show: { opacity: 1, x: 0, y: 0, scale: 1, transition: { duration: 0.45 } } }}
-            className={`${styles.jlptMemberCard} ${dashed ? styles.jlptMemberCardExt : ""}`}
-        >
-            <div className={`${styles.jlptMemberPhoto} ${styles[`jlptRing${member.jlpt}`]}`}>
-                <Image
-                    src={member.image}
-                    alt={member.name}
-                    width={84}
-                    height={84}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }}
-                />
-            </div>
-            <p className={styles.jlptMemberName}>{member.name}</p>
-            <p className={styles.jlptMemberRole}>{member.role}</p>
-            <span className={`${styles.jlptPill} ${styles[`jlptPill${member.jlpt}`]}`}>
-                JLPT {member.jlpt}
-            </span>
-            {dashed && member.linkedin && (
-                <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.jlptMemberLinkedin}
-                >
-                    LinkedIn ↗
-                </a>
-            )}
-        </motion.div>
+        // The gentle up/down float lives on this plain wrapper, not the
+        // motion.div below — framer-motion drives that one's own
+        // enter/hover transform, and a CSS animation on the same element
+        // would fight it. A per-card delay keeps the cards from bobbing
+        // in lockstep.
+        <div className={styles.jlptMemberFloat} style={{ animationDelay: `${index * 0.35}s` }}>
+            <motion.div
+                variants={{ hidden: { opacity: 0, ...cardEntrance(index) }, show: { opacity: 1, x: 0, y: 0, scale: 1, transition: { duration: 0.45 } } }}
+                className={`${styles.jlptMemberCard} ${dashed ? styles.jlptMemberCardExt : ""}`}
+            >
+                {/* Every JLPT card flips, front = photo only, back =
+                    name/role/LinkedIn — same treatment as the Our Team
+                    cards elsewhere on this page. */}
+                <div className={styles.jlptFlip}>
+                    <div className={styles.jlptFlipInner}>
+                        <div className={styles.jlptFlipFront}>
+                            <Image
+                                src={member.image}
+                                alt={member.name}
+                                fill
+                                sizes="(max-width: 700px) 40vw, 170px"
+                                style={{ objectFit: "cover", objectPosition: member.facePosition || "center 25%" }}
+                            />
+                        </div>
+                        <div className={styles.jlptFlipBack}>
+                            <p className={styles.jlptMemberName}>{member.name}</p>
+                            <p className={styles.jlptMemberRole}>{member.role}</p>
+                            {member.linkedin && (
+                                <a
+                                    href={member.linkedin}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.jlptFlipLinkedin}
+                                >
+                                    <Image src={linkedin} alt="LinkedIn" width={32} height={32} />
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+        </div>
+    );
+}
+
+// Left / right waypoints the path alternates through, in percent — keep
+// these in sync with .jlptNodeLeft / .jlptNodeRight in Jlpt.module.css,
+// since the connecting curves below use these same numbers as their SVG
+// start/end points. Straight alternation (not a 3-position cycle) so
+// every other level lines up directly under the one two above it.
+const NODE_X = [18, 82];
+const zoneOf = (x) => (x < 40 ? "Left" : x > 60 ? "Right" : "Center");
+
+// One JLPT-level "milestone" on the roadmap: a colored node sitting at
+// its own left/center/right point on a winding path, with a dashed curve
+// leading to the next node and the level's description + member photos
+// hanging below it, anchored to that same side.
+function LevelRoadmap({ milestones, dashed }) {
+    return (
+        <div className={`${styles.jlptRoadmap} ${dashed ? styles.jlptRoadmapExt : ""}`}>
+            {milestones.map(({ level, members }, gi) => {
+                const x = NODE_X[gi % NODE_X.length];
+                const hasNext = gi < milestones.length - 1;
+                const nextX = hasNext ? NODE_X[(gi + 1) % NODE_X.length] : null;
+                return (
+                    <div key={level} className={styles.jlptMilestone}>
+                        <div className={styles.jlptMilestoneNodeSlot}>
+                            <span
+                                className={`${styles.jlptMilestoneNode} ${styles[`jlptNode${zoneOf(x)}`]} ${styles[`jlptBadge${level}`]}`}
+                            >
+                                {level}
+                            </span>
+                        </div>
+                        <motion.div
+                            className={`${styles.jlptMilestoneBody} ${styles[`jlptMilestoneBody${zoneOf(x)}`]}`}
+                            initial={{ opacity: 0, y: 24 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                        >
+                            <div className={styles.jlptMilestoneText}>
+                                <h3 className={styles.jlptMilestoneTitle}>
+                                    JLPT {level} Certified {members.length > 1 ? "Members" : "Member"}
+                                </h3>
+                                <p className={styles.jlptMilestoneDesc}>{LEVEL_DESC[level]}</p>
+                            </div>
+                            <motion.div
+                                className={styles.jlptMemberRow}
+                                initial="hidden"
+                                whileInView="show"
+                                viewport={{ once: true, amount: 0.1 }}
+                                variants={stagger(0.07)}
+                            >
+                                {members.map((member, i) => (
+                                    <MemberCard key={member.name} member={member} dashed={dashed} index={i} />
+                                ))}
+                            </motion.div>
+                        </motion.div>
+                        {hasNext && (
+                            <div className={styles.jlptMilestoneRoad}>
+                                <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                                    <path d={`M${x},0 C${x},50 ${nextX},50 ${nextX},100`} />
+                                </svg>
+                            </div>
+                        )}
+                    </div>
+                );
+            })}
+        </div>
     );
 }
 
 export default function JapaneseClear() {
-    const totalCertified = teamMembers.length;
-
     return (
         <Reveal as="section" id="team" y={50} duration={0.8} amount={0.05} className={styles.jlptSection}>
             <SectionDecor variant="section" />
@@ -139,65 +241,8 @@ export default function JapaneseClear() {
                     our members according to their officially certified proficiency levels.
                 </p>
 
-                {/* ── PROFICIENCY OVERVIEW ── */}
-                <motion.div
-                    className={styles.jlptStatCard}
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                >
-                    <div className={styles.jlptStatHead}>
-                        <p className={styles.jlptStatTitle}>Team JLPT Proficiency</p>
-                        <p className={styles.jlptStatTotal}>{totalCertified} certified engineers</p>
-                    </div>
-                    <div className={styles.jlptBar}>
-                        {jlptLevels.map((level) => {
-                            const count = levelCounts[level];
-                            if (!count) return null;
-                            const pct = (count / totalCertified) * 100;
-                            return (
-                                <motion.div
-                                    key={level}
-                                    className={`${styles.jlptBarSeg} ${styles[`jlptLevel${level}`]}`}
-                                    initial={{ width: 0 }}
-                                    whileInView={{ width: `${pct}%` }}
-                                    transition={{ duration: 0.8, delay: 0.15 }}
-                                    viewport={{ once: true, amount: 0.3 }}
-                                    title={`JLPT ${level} · ${count}`}
-                                />
-                            );
-                        })}
-                    </div>
-                    <div className={styles.jlptLegend}>
-                        {jlptLevels.map((level) => {
-                            const count = levelCounts[level];
-                            if (!count) return null;
-                            return (
-                                <div key={level} className={styles.jlptLegendItem}>
-                                    <span className={`${styles.jlptLegendDot} ${styles[`jlptLevel${level}`]}`} />
-                                    <span className={styles.jlptLegendLabel}>
-                                        JLPT {level} <em>{LEVEL_MEANING[level]}</em>
-                                    </span>
-                                    <span className={styles.jlptLegendCount}>{count}</span>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </motion.div>
-
-                {/* ── CORE TEAM ── */}
-                <motion.div
-                    className={styles.jlptGrid}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, amount: 0.1 }}
-                    variants={stagger(0.07)}
-                >
-                    {sortedTeam.map((member, i) => (
-                        <MemberCard key={member.name} member={member} index={i} />
-                    ))}
-                </motion.div>
+                {/* ── INTERNAL TEAM, AS A LEVEL ROADMAP ── */}
+                <LevelRoadmap milestones={teamMilestones} />
 
                 {/* ── EXTERNAL LANGUAGE PROGRAM PARTICIPANTS ── */}
                 <div className={styles.jlptExtHead}>
@@ -206,20 +251,12 @@ export default function JapaneseClear() {
                 </div>
                 <div className={styles.jlptExtNote}>
                     They have acquired a basic understanding of Japanese and are capable of simple daily conversations.
-                    {" "}<strong>Note:</strong> this section introduces our Japanese language education achievements —
+                    <br />
+                    <strong>Note:</strong> this section is provided as an introduction to our Japanese language
+                    education achievements —
                     <span className={styles.jlptExtWarn}> these individuals are not engaged in our software development projects.</span>
                 </div>
-                <motion.div
-                    className={styles.jlptGrid}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, amount: 0.1 }}
-                    variants={stagger(0.07)}
-                >
-                    {sortedOthers.map((member, i) => (
-                        <MemberCard key={member.name} member={member} dashed index={i} />
-                    ))}
-                </motion.div>
+                <LevelRoadmap milestones={otherMilestones} dashed />
             </div>
         </Reveal>
     );

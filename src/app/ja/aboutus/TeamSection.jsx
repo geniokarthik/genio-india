@@ -15,6 +15,7 @@ import deivaraj from "src/assets/images/our_team/deivaraj.png";
 import dhanasekaran from "src/assets/images/our_team/dhanasekaran.png";
 import ajith from "src/assets/images/our_team/ajith.png";
 import kavinesh from "src/assets/images/our_team/kavinesh.png";
+import linkedin from "src/assets/images/our_team/linkedin.png";
 
 const teamMembers = [
   {
@@ -121,9 +122,15 @@ export default function TeamSection() {
                           href={member.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={styles.linkedinBtn}
+                          className={styles.socialLink}
                         >
-                          LinkedIn →
+                          <Image
+                            src={linkedin}
+                            alt="LinkedIn"
+                            width={40}
+                            height={40}
+                            className={styles.socialIcon}
+                          />
                         </a>
                       )}
                     </div>
