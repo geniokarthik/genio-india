@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "src/app/common/styles/Contactus.module.css";
 import "../../globals.css";
-import returnhomeicon from "src/assets/images/contactus/returnhome.png";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import SectionDecor from "src/app/common/components/SectionDecor";
 import CryptoJS from 'crypto-js';
@@ -110,9 +109,8 @@ export default function ContactForm() {
             <section className={styles.pageHero}>
                 <SectionDecor variant="hero" />
                 <div className={styles.heroWrap}>
-                    <p className={styles.heroEyebrow}>Get in Touch</p>
-                    <h1 className={styles.heroH1}><span>Contact Us</span></h1>
-                    <p className={styles.heroSub}>Have a project in mind? Fill in the form below and we&apos;ll get back to you within 2 business days.</p>
+                    <h1 className={styles.heroTitle}>Contact Us</h1>
+                    <p className={styles.heroSubtitle}>Have a project in mind? Fill in the form below and we&apos;ll get back to you within 2 business days.</p>
                 </div>
             </section>
 

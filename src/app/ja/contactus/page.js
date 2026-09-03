@@ -105,9 +105,8 @@ export default function ContactForm() {
             <section className={styles.pageHero}>
                 <SectionDecor variant="hero" />
                 <div className={styles.heroWrap}>
-                    <p className={styles.heroEyebrow}>お問い合わせ</p>
-                    <h1 className={styles.heroH1}><span>Contact Us</span></h1>
-                    <p className={styles.heroSub}>プロジェクトのご相談・お見積もりなど、下記フォームよりお気軽にお問い合わせください。2営業日以内にご返答いたします。</p>
+                    <h1 className={styles.heroTitle}>お問い合わせ</h1>
+                    <p className={styles.heroSubtitle}>プロジェクトのご相談・お見積もりなど、下記フォームよりお気軽にお問い合わせください。2営業日以内にご返答いたします。</p>
                 </div>
             </section>
 
