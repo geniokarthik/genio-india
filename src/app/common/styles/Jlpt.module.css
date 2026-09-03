@@ -410,6 +410,13 @@
   }
 
   .jlptMemberRow {
+    /* .jlptMilestoneBody switches to a column above, so this row's own
+       width is now the cross-axis — with align-items: flex-start (set
+       on the base rule) it shrinks to its content instead of filling
+       the container, leaving nothing solid for the 50% widths below to
+       resolve against. Without this, the photo cards can collapse to
+       zero width on mobile. */
+    width: 100%;
     gap: 12px;
   }
 
