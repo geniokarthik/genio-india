@@ -113,22 +113,6 @@ export default function ContactForm() {
                     <p className={styles.heroEyebrow}>Get in Touch</p>
                     <h1 className={styles.heroH1}><span>Contact Us</span></h1>
                     <p className={styles.heroSub}>Have a project in mind? Fill in the form below and we&apos;ll get back to you within 2 business days.</p>
-                    <div className={styles.progress}>
-                        <div className={styles.step}>
-                            <span className={`${styles.stepNumber} ${inputFlg ? styles.active : styles.inactive}`}>01</span>
-                            <span className={inputFlg ? styles.stepLabel : styles.instepLabel}>Input</span>
-                        </div>
-                        <div className={styles.line}></div>
-                        <div className={styles.step}>
-                            <span className={`${styles.stepNumber} ${checkFlg ? styles.active : styles.inactive}`}>02</span>
-                            <span className={checkFlg ? styles.stepLabel : styles.instepLabel}>Confirm</span>
-                        </div>
-                        <div className={styles.line}></div>
-                        <div className={styles.step}>
-                            <span className={`${styles.stepNumber} ${completedFlg ? styles.active : styles.inactive}`}>03</span>
-                            <span className={completedFlg ? styles.stepLabel : styles.instepLabel}>Complete</span>
-                        </div>
-                    </div>
                 </div>
             </section>
 
@@ -218,53 +202,35 @@ export default function ContactForm() {
                             )}
                         </div>
 
-                        {/* SIDEBAR */}
-                        <aside className={styles.infoSidebar}>
-                            <div className={styles.infoCard}>
-                                <h3 className={styles.infoCardTitle}>Contact Information</h3>
-                                <div className={styles.infoItem}>
-                                    <span className={styles.infoIcon}>
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                    </span>
-                                    <div>
-                                        <p className={styles.infoLabel}>Location</p>
-                                        <p className={styles.infoValue}>Namakkal, Tamil Nadu, India</p>
+                        {/* PROGRESS SIDEBAR */}
+                        {(() => {
+                            const s1 = (checkFlg || completedFlg) ? "done" : inputFlg ? "active" : "inactive";
+                            const s2 = completedFlg ? "done" : checkFlg ? "active" : "inactive";
+                            const s3 = completedFlg ? "active" : "inactive";
+                            const check = (
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            );
+                            return (
+                                <aside className={styles.progressSidebarCard}>
+                                    <div className={styles.progressStepRow}>
+                                        <span className={`${styles.progressStepNum} ${styles[s1]}`}>{s1 === "done" ? check : "01"}</span>
+                                        <span className={`${styles.progressStepLabel} ${styles[s1]}`}>Input</span>
                                     </div>
-                                </div>
-                                <div className={styles.infoItem}>
-                                    <span className={styles.infoIcon}>
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                                    </span>
-                                    <div>
-                                        <p className={styles.infoLabel}>Email</p>
-                                        <p className={styles.infoValue}>info@genioindia.co.in</p>
+                                    <div className={`${styles.progressConnector} ${s1 === "done" ? styles.done : ""}`} />
+                                    <div className={styles.progressStepRow}>
+                                        <span className={`${styles.progressStepNum} ${styles[s2]}`}>{s2 === "done" ? check : "02"}</span>
+                                        <span className={`${styles.progressStepLabel} ${styles[s2]}`}>Confirm</span>
                                     </div>
-                                </div>
-                                <div className={styles.infoItem}>
-                                    <span className={styles.infoIcon}>
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                                    </span>
-                                    <div>
-                                        <p className={styles.infoLabel}>Company</p>
-                                        <p className={styles.infoValue}>Genio India Software Pvt. Ltd.</p>
+                                    <div className={`${styles.progressConnector} ${s2 === "done" ? styles.done : ""}`} />
+                                    <div className={styles.progressStepRow}>
+                                        <span className={`${styles.progressStepNum} ${styles[s3]}`}>{s3 === "done" ? check : "03"}</span>
+                                        <span className={`${styles.progressStepLabel} ${styles[s3]}`}>Complete</span>
                                     </div>
-                                </div>
-                                <div className={styles.infoItem}>
-                                    <span className={styles.infoIcon}>
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                                    </span>
-                                    <div>
-                                        <p className={styles.infoLabel}>Response Time</p>
-                                        <p className={styles.infoValue}>Within 2 business days</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={styles.mapCard}>
-                                <iframe title="Genio India location" className={styles.mapFrame}
-                                    src="https://www.google.com/maps?q=11.515406,78.091705&output=embed"
-                                    loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
-                            </div>
-                        </aside>
+                                </aside>
+                            );
+                        })()}
 
                     </div>
                 </div>
