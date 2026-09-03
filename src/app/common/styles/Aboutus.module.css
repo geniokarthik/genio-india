@@ -22,13 +22,17 @@
 }
 
 /* Hero Section */
+/* Same plain, title-only hero as the Contact Us page — no gradient, no
+   decoration, just the page name. */
 .hero {
   margin: 0 0 4rem;
-  padding: 80px 5% 60px;
+  padding: 60px 0 50px;
   background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
   position: relative;
   overflow: hidden;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
 }
 
 .heroContent {
@@ -36,173 +40,155 @@
   z-index: 1;
   max-width: 1160px;
   margin: 0 auto;
+  padding: 0 60px;
+  width: 100%;
 }
 
 .heroTitle {
-  font-size: 3.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.heroRedText {
+  font-family: 'Archivo', sans-serif;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-weight: 900;
   color: #e22110;
+  margin: 0;
+  line-height: 1.1;
 }
 
-.heroSubtitle {
-  color: #050505;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
+@media (max-width: 768px) {
+  .heroContent { padding: 0 20px; }
+  .hero { padding: 60px 0 40px; }
 }
 
-/* Timeline Section */
+/* Timeline Section — a plain flowing list: big year number, bold
+   headline beside it, bullet points below. No cards, no path, no
+   circles — just clean text, single column. */
 .timelineSection {
   position: relative;
 }
 
 .timeline {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto 4rem;
-  padding: 2rem 0;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, #e22110 0%, #e5e7eb 100%);
-}
-
+/* A simple connecting thread down the left edge — a small dot per year
+   and a line running from it to the next one — so this still reads as
+   a timeline even though the content itself is plain text. Each item
+   owns its own dot and the line segment leading to the next item, so
+   it stays correct no matter how tall any one entry's content is. */
 .timelineItem {
   position: relative;
-  display: flex;
-  justify-content: flex-end;
-  padding-right: calc(50% + 34px);
-  margin-bottom: 2.5rem;
+  padding-left: 32px;
+  margin-bottom: 2.75rem;
   opacity: 0;
-  transform: translateX(-28px);
-  transition: all 0.6s ease-out;
+  transform: translateY(28px) scale(0.98);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.timelineItem:nth-child(even) {
-  justify-content: flex-start;
-  padding-right: 0;
-  padding-left: calc(50% + 34px);
-  transform: translateX(28px);
-}
-
-.timelineItem.animate {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.timelineDot {
+.timelineItem::before {
+  content: '';
   position: absolute;
-  top: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 16px;
-  height: 16px;
-  background-color: #e22110;
+  left: 0;
+  top: 14px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
+  background: #e22110;
   border: 3px solid #ffffff;
   box-shadow: 0 0 0 2px #e22110;
   z-index: 2;
 }
 
-/* ── Card design (this is the part that was redone) ──
-   Text now stays left-aligned on both sides for readability —
-   right-aligned multi-line paragraphs were the main issue —
-   plus a bit more room, a red top accent, and softer shadow/radius. */
-.timelineContent {
-  padding: 1.5rem 1.75rem;
-  background: #ffffff;
-  border-radius: 16px;
-  border: 1px solid #e5e7eb;
-  border-top: 3px solid #e22110;
-  box-shadow: 0 6px 22px rgba(17, 24, 39, 0.08);
-  max-width: 420px;
-  text-align: left;
+.timelineItem::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 14px;
+  bottom: -2.75rem;
+  width: 2px;
+  background: #e5e7eb;
+  z-index: 1;
+}
+
+.timelineItem:last-child::after {
+  display: none;
+}
+
+.timelineItem.animate {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.timelineItem:last-child {
+  margin-bottom: 0;
+}
+
+/* Same Archivo bold sans used for every other heading on the site
+   (Service, Contact, Team, JLPT) — a cleaner, more professional look
+   for a company's own site than the earlier serif/italic treatment.
+   white-space: nowrap keeps year + headline on one line instead of
+   wrapping wherever the browser finds room — sized so the longest
+   headline on this page still fits inside .timeline's 1000px at normal
+   screen widths. Mobile explicitly opts back into wrapping below,
+   since there's no font size that fits ~65 characters on one line at
+   phone widths and stays legible. */
+.timelineHeading {
+  margin: 0 0 1rem;
+  line-height: 1.15;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(to right, #e22110, transparent) 1;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .year {
-  font-size: 1.8rem;
-  color: #e22110;
-  margin-bottom: 0.3rem;
+  font-family: 'Archivo', sans-serif;
+  font-size: clamp(2.1rem, 4.5vw, 2.8rem);
   font-weight: 900;
-  display: block;
+  color: #e22110;
 }
 
 .text {
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-family: 'Archivo', sans-serif;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 800;
   color: #111827;
-  display: block;
-  margin-bottom: 0.9rem;
+}
+
+.timelineList {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.timelineList li::marker {
+  color: #e22110;
 }
 
 .description {
-  font-size: 0.875rem;
-  color: #475569;
-  line-height: 1.7;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #374151;
+  line-height: 1.75;
   margin-bottom: 0.5rem;
-  padding-left: 0;
 }
 
 .description:last-child {
   margin-bottom: 0;
 }
 
-.description::before {
-  content: none;
+@media (max-width: 900px) {
+  .timelineHeading {
+    white-space: normal;
+    overflow: visible;
+  }
+
+  .year { font-size: clamp(1.8rem, 6vw, 2.3rem); }
+  .text { font-size: clamp(1.05rem, 3.6vw, 1.25rem); }
 }
+
 @media (max-width: 768px) {
-  .timeline::before {
-    left: 20px;
-    transform: none;
-  }
-
-  .timelineItem,
-  .timelineItem:nth-child(even) {
-    justify-content: flex-start;
-    padding-right: 0;
-    padding-left: 48px;
-    transform: translateX(-20px);
-  }
-
-  .timelineItem.animate,
-  .timelineItem:nth-child(even).animate {
-    transform: translateX(0);
-  }
-
-  .timelineDot {
-    left: 20px;
-    top: 22px;
-  }
-
-  .timelineContent {
-    max-width: 100%;
-  }
-
-  .year { font-size: 1.4rem; }
-  .text { font-size: 0.85rem; }
-  .description { font-size: 0.82rem; }
-}
-
-@media (max-width: 480px) {
-  .timelineItem,
-  .timelineItem:nth-child(even) {
-    padding-left: 38px;
-  }
-
-  .timeline::before { left: 14px; }
-  .timelineDot { left: 14px; width: 12px; height: 12px; top: 26px; }
-  .year { font-size: 1.2rem; }
-  .timelineContent { padding: 1rem 1.2rem; }
+  .description { font-size: 1rem; }
 }
 
 .sectionCenter {
