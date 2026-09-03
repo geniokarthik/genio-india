@@ -308,7 +308,7 @@ export default function ServiceJa() {
   return (
     <>
       <main className={styles.main}>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@700;800;900&family=Fredoka:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
         <Header />
 
         {/* ── ヒーロー（全幅）── */}
@@ -359,7 +359,7 @@ export default function ServiceJa() {
             <Reveal as="section" key={d.id} id={`section-${d.id}`} y={40} className={styles.svcSection}>
               <SectionDecor variant="section" />
               <div className={styles.svcWrap}>
-                <div className={`${styles.svcInner} ${i % 2 !== 0 ? styles.svcReverse : ""}`}>
+                <div className={`${styles.svcInner} ${i % 2 !== 0 ? styles.svcReverse : ""} ${i % 2 === 0 ? styles.svcPink : styles.svcBlue}`}>
                   <div className={styles.svcText}>
                     <p className={styles.eyebrow}>{d.eyebrow}</p>
                     <h2 className={styles.svcH2}>{d.titleMain}<br /><span>{d.titleSpan}</span></h2>

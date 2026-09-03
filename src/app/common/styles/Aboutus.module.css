@@ -112,7 +112,7 @@
 }
 
 .heroTitle {
-  font-family: 'Archivo', sans-serif;
+  font-family: 'Fredoka', sans-serif;
   font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 900;
   color: #111827;
@@ -216,9 +216,10 @@
   margin-bottom: 0;
 }
 
-/* Same Archivo bold sans used for every other heading on the site
-   (Service, Contact, Team, JLPT) — a cleaner, more professional look
-   for a company's own site than the earlier serif/italic treatment.
+/* Same Archivo bold sans used for every other non-hero, non-card
+   heading on the site (Service, Contact, Team, JLPT) — a cleaner,
+   more professional look for a company's own site; the rounded
+   Fredoka look is reserved for hero headings and card headings only.
    white-space: nowrap keeps year + headline on one line instead of
    wrapping wherever the browser finds room — sized so the longest
    headline on this page still fits inside .timeline's 1000px at normal
@@ -362,7 +363,7 @@
 }
 
 .heroH1 {
-  font-family: 'Archivo', sans-serif;
+  font-family: 'Fredoka', sans-serif;
   font-size: clamp(2.4rem, 5vw, 3.8rem);
   font-weight: 900;
   line-height: 1.1;

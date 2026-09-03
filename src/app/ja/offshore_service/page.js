@@ -75,7 +75,7 @@ export default function OffshoreServiceJa() {
   return (
     <>
       <main className={styles.main}>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@700;800;900&family=Fredoka:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
         <Header />
 
         {/* ── ヒーロー（全幅）── */}
@@ -98,7 +98,7 @@ export default function OffshoreServiceJa() {
               </h1>
             </Reveal>
           </div>
-          <HeroWaveDivider fill="#f9fafb" />
+          <HeroWaveDivider fill="#ffffff" />
         </section>
 
         {/* ── コンテンツ（制限幅）── */}
@@ -107,92 +107,98 @@ export default function OffshoreServiceJa() {
           {/* オフショアのメリット */}
           <Reveal as="section" y={40} className={styles.benefits_section}>
             <SectionDecor variant="section" />
-            <div className={styles.section_head}>
-              <p className={styles.section_label}>オフショアとは？</p>
-              <h2 className={styles.section_title}>オフショアの<span>メリット</span></h2>
-              <p className={styles.benefits_lead}>内部リソースでは対応できない課題も、オフショア移行によって解決できます。</p>
-            </div>
-            <div className={styles.benefits_grid}>
-              {BENEFITS.map((b, i) => (
-                <Reveal as="div" key={b.title} {...cardEntrance(i)} duration={0.45} delay={i * 0.08} className={styles.benefit_card}>
-                  <div className={styles.benefit_icon}>{b.icon}</div>
-                  <p className={styles.benefit_title}>{b.title}</p>
-                  <p className={styles.benefit_desc}>{b.desc}</p>
-                </Reveal>
-              ))}
-            </div>
-          </Reveal>
-
-          {/* 開発プロセス */}
-          <Reveal as="section" y={40} amount={0.05} className={styles.process}>
-            <SectionDecor variant="section" />
-            <div className={styles.process__layout}>
-              <Reveal as="div" x={-40} amount={0.05} className={styles.process__img}>
-                <img
-                  src="/images/home/hero_real_team2.png"
-                  alt="開発チームの様子"
-                  className={styles.processImg}
-                />
-              </Reveal>
-              <div className={styles.process__steps}>
-                <div className={styles.section_head} style={{ textAlign: "left", marginBottom: "1.5rem" }}>
-                  <p className={styles.section_label}>開発プロセス</p>
-                  <h2 className={styles.section_title} style={{ textAlign: "left" }}>ご依頼の<span>流れ</span></h2>
-                </div>
-                {STEPS.map((s, i) => (
-                  <Reveal as="div" key={i} {...cardEntrance(i + 1)} duration={0.45} delay={i * 0.07} amount={0.05} className={styles.step}>
-                    <div className={styles.step__num}>{s.n}</div>
-                    <div className={styles.step__content}>
-                      <p className={styles.step__title}>{s.t}</p>
-                      <p className={styles.step__body}>{s.b}</p>
-                    </div>
+            <div className={`${styles.sectionCard} ${styles.sectionCardBlue}`}>
+              <div className={styles.section_head}>
+                <p className={styles.section_label}>オフショアとは？</p>
+                <h2 className={styles.section_title}>オフショアの<span>メリット</span></h2>
+                <p className={styles.benefits_lead}>内部リソースでは対応できない課題も、オフショア移行によって解決できます。</p>
+              </div>
+              <div className={styles.benefits_grid}>
+                {BENEFITS.map((b, i) => (
+                  <Reveal as="div" key={b.title} {...cardEntrance(i)} duration={0.45} delay={i * 0.08} className={styles.benefit_card}>
+                    <div className={styles.benefit_icon}>{b.icon}</div>
+                    <p className={styles.benefit_title}>{b.title}</p>
+                    <p className={styles.benefit_desc}>{b.desc}</p>
                   </Reveal>
                 ))}
               </div>
             </div>
           </Reveal>
 
-          {/* ラボ型開発 */}
-          <Reveal as="section" id="section-lab" y={40} className={styles.detail_section}>
+          {/* 開発プロセス */}
+          <Reveal as="section" y={40} amount={0.05} className={styles.process}>
             <SectionDecor variant="section" />
-            <div className={styles.detail_section__inner}>
-              <div className={styles.detail_section__text}>
-                <p className={styles.eyebrow}>ラボ型開発</p>
-                <h2 className={styles.labH2}>専任チームで、<br /><span>月額固定の安心感</span></h2>
-                {`専任の開発チームを月額固定でご提供するラボ型オフショア開発サービスです。プロジェクト単位での発注ではなく、専任エンジニアチームがお客様専用のリソースとして継続的に稼働します。
-
-チームはお客様のビジネスや技術スタックを深く理解した上で業務に当たるため、コミュニケーションコストを最小化しながら、スピーディーかつ高品質な開発を実現します。
-
-スタートアップから中堅企業まで、継続的な開発・改善を必要とするあらゆる企業様に最適なモデルです。`.split("\n\n").map((para, j) => (
-                  <p key={j} className={styles.detail_section__para}>{para}</p>
-                ))}
-              </div>
-              <div className={styles.detail_section__img}>
-                <Image
-                  src={TeamMbersImg}
-                  alt="ラボ型開発"
-                  width={520}
-                  height={420}
-                  style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
-                />
+            <div className={`${styles.sectionCard} ${styles.sectionCardWhite}`}>
+              <div className={styles.process__layout}>
+                <Reveal as="div" x={-40} amount={0.05} className={styles.process__img}>
+                  <img
+                    src="/images/home/hero_real_team2.png"
+                    alt="開発チームの様子"
+                    className={styles.processImg}
+                  />
+                </Reveal>
+                <div className={styles.process__steps}>
+                  <div className={styles.section_head} style={{ textAlign: "left", marginBottom: "1.5rem" }}>
+                    <p className={styles.section_label}>開発プロセス</p>
+                    <h2 className={styles.section_title} style={{ textAlign: "left" }}>ご依頼の<span>流れ</span></h2>
+                  </div>
+                  {STEPS.map((s, i) => (
+                    <Reveal as="div" key={i} {...cardEntrance(i + 1)} duration={0.45} delay={i * 0.07} amount={0.05} className={styles.step}>
+                      <div className={styles.step__num}>{s.n}</div>
+                      <div className={styles.step__content}>
+                        <p className={styles.step__title}>{s.t}</p>
+                        <p className={styles.step__body}>{s.b}</p>
+                      </div>
+                    </Reveal>
+                  ))}
+                </div>
               </div>
             </div>
           </Reveal>
 
-          {/* チームの構成パターン */}
-          <Reveal as="section" y={40} className={styles.patternsSection}>
+          {/* ラボ型開発（チームの構成パターンも同じカード内に含める） */}
+          <Reveal as="section" id="section-lab" y={40} className={styles.detail_section}>
             <SectionDecor variant="section" />
-            <h2 className={styles.patternsTitle}>チームの構成パターン</h2>
-            <div className={styles.patternsGrid}>
-              {PATTERNS.map((p, pi) => (
-                <Reveal as="div" key={pi} {...cardEntrance(pi + 2)} duration={0.5} delay={pi * 0.1} amount={0.2} className={styles.patternCard}>
-                  <div className={styles.patternImgFrame}>
-                    <Image src={p.img} alt={p.title} className={styles.patternImg} />
+            <div className={styles.detail_section__inner}>
+              <div className={styles.detail_section__row}>
+                <div className={styles.detail_section__text}>
+                  <p className={styles.eyebrow}>ラボ型開発</p>
+                  <h2 className={styles.labH2}>専任チームで、<br /><span>月額固定の安心感</span></h2>
+                  {`専任の開発チームを月額固定でご提供するラボ型オフショア開発サービスです。プロジェクト単位での発注ではなく、専任エンジニアチームがお客様専用のリソースとして継続的に稼働します。
+
+チームはお客様のビジネスや技術スタックを深く理解した上で業務に当たるため、コミュニケーションコストを最小化しながら、スピーディーかつ高品質な開発を実現します。
+
+スタートアップから中堅企業まで、継続的な開発・改善を必要とするあらゆる企業様に最適なモデルです。`.split("\n\n").map((para, j) => (
+                    <p key={j} className={styles.detail_section__para}>{para}</p>
+                  ))}
+                </div>
+                <div className={styles.detail_section__img}>
+                  <div className={styles.detail_section__imgFrame}>
+                    <Image
+                      src={TeamMbersImg}
+                      alt="ラボ型開発"
+                      width={520}
+                      height={420}
+                      style={{ width: "100%", height: "auto", objectFit: "cover" }}
+                    />
                   </div>
-                  <h3 className={styles.patternCardTitle}>{p.title}</h3>
-                  <p className={styles.patternCardDesc}>{p.desc}</p>
-                </Reveal>
-              ))}
+                </div>
+              </div>
+
+              <div className={styles.detail_section__patterns}>
+                <h3 className={styles.patternsTitle}>チームの構成パターン</h3>
+                <div className={styles.patternsGrid}>
+                  {PATTERNS.map((p, pi) => (
+                    <Reveal as="div" key={pi} {...cardEntrance(pi + 2)} duration={0.5} delay={pi * 0.1} amount={0.2} className={styles.patternCard}>
+                      <div className={styles.patternImgFrame}>
+                        <Image src={p.img} alt={p.title} className={styles.patternImg} />
+                      </div>
+                      <h3 className={styles.patternCardTitle}>{p.title}</h3>
+                      <p className={styles.patternCardDesc}>{p.desc}</p>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
             </div>
           </Reveal>
 

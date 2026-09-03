@@ -75,7 +75,7 @@ export default function OffshoreServiceEn() {
   return (
     <>
       <main className={styles.main}>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@700;800;900&family=Fredoka:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
         <Header />
 
         {/* ── HERO (full-width) ── */}
@@ -98,7 +98,7 @@ export default function OffshoreServiceEn() {
               </h1>
             </Reveal>
           </div>
-          <HeroWaveDivider fill="#f9fafb" />
+          <HeroWaveDivider fill="#ffffff" />
         </section>
 
         {/* ── PAGE CONTENT (constrained) ── */}
@@ -107,92 +107,98 @@ export default function OffshoreServiceEn() {
           {/* BENEFITS */}
           <Reveal as="section" y={40} className={styles.benefits_section}>
             <SectionDecor variant="section" />
-            <div className={styles.section_head}>
-              <p className={styles.section_label}>Why Offshore?</p>
-              <h2 className={styles.section_title}>What are the benefits of offshore?</h2>
-              <p className={styles.benefits_lead}>Problems that cannot be solved with internal resources can be resolved by moving offshore.</p>
-            </div>
-            <div className={styles.benefits_grid}>
-              {BENEFITS.map((b, i) => (
-                <Reveal as="div" key={b.title} {...cardEntrance(i)} duration={0.45} delay={i * 0.08} className={styles.benefit_card}>
-                  <div className={styles.benefit_icon}>{b.icon}</div>
-                  <p className={styles.benefit_title}>{b.title}</p>
-                  <p className={styles.benefit_desc}>{b.desc}</p>
-                </Reveal>
-              ))}
-            </div>
-          </Reveal>
-
-          {/* DEVELOPMENT PROCESS */}
-          <Reveal as="section" y={40} amount={0.05} className={styles.process}>
-            <SectionDecor variant="section" />
-            <div className={styles.process__layout}>
-              <Reveal as="div" x={-40} amount={0.05} className={styles.process__img}>
-                <img
-                  src="/images/home/hero_real_team2.png"
-                  alt="Development team at work"
-                  className={styles.processImg}
-                />
-              </Reveal>
-              <div className={styles.process__steps}>
-                <div className={styles.section_head} style={{ textAlign: "left", marginBottom: "1.5rem" }}>
-                  <p className={styles.section_label}>Development Process</p>
-                  <h2 className={styles.section_title} style={{ textAlign: "left" }}>How <span>We Work</span></h2>
-                </div>
-                {STEPS.map((s, i) => (
-                  <Reveal as="div" key={i} {...cardEntrance(i + 1)} duration={0.45} delay={i * 0.07} amount={0.05} className={styles.step}>
-                    <div className={styles.step__num}>{s.n}</div>
-                    <div className={styles.step__content}>
-                      <p className={styles.step__title}>{s.t}</p>
-                      <p className={styles.step__body}>{s.b}</p>
-                    </div>
+            <div className={`${styles.sectionCard} ${styles.sectionCardBlue}`}>
+              <div className={styles.section_head}>
+                <p className={styles.section_label}>Why Offshore?</p>
+                <h2 className={styles.section_title}>What are the benefits of offshore?</h2>
+                <p className={styles.benefits_lead}>Problems that cannot be solved with internal resources can be resolved by moving offshore.</p>
+              </div>
+              <div className={styles.benefits_grid}>
+                {BENEFITS.map((b, i) => (
+                  <Reveal as="div" key={b.title} {...cardEntrance(i)} duration={0.45} delay={i * 0.08} className={styles.benefit_card}>
+                    <div className={styles.benefit_icon}>{b.icon}</div>
+                    <p className={styles.benefit_title}>{b.title}</p>
+                    <p className={styles.benefit_desc}>{b.desc}</p>
                   </Reveal>
                 ))}
               </div>
             </div>
           </Reveal>
 
-          {/* LAB DEVELOPMENT */}
-          <Reveal as="section" id="section-lab" y={40} className={styles.detail_section}>
+          {/* DEVELOPMENT PROCESS */}
+          <Reveal as="section" y={40} amount={0.05} className={styles.process}>
             <SectionDecor variant="section" />
-            <div className={styles.detail_section__inner}>
-              <div className={styles.detail_section__text}>
-                <p className={styles.eyebrow}>Lab Development</p>
-                <h2 className={styles.labH2}>Dedicated Team,<br /><span>Fixed Monthly Cost</span></h2>
-                {`Our Lab-type offshore development service provides you with a dedicated development team at a fixed monthly cost. Rather than per-project outsourcing, a dedicated engineer team works continuously as your own resource.
-
-The team deeply understands your business and tech stack, minimizing communication overhead while delivering fast, high-quality development.
-
-From startups to mid-sized enterprises, this model is ideal for any company that needs continuous development and improvement.`.split("\n\n").map((para, j) => (
-                  <p key={j} className={styles.detail_section__para}>{para}</p>
-                ))}
-              </div>
-              <div className={styles.detail_section__img}>
-                <Image
-                  src={TeamMbersImg}
-                  alt="Lab Development"
-                  width={520}
-                  height={420}
-                  style={{ width: "100%", height: "auto", borderRadius: "16px", objectFit: "cover" }}
-                />
+            <div className={`${styles.sectionCard} ${styles.sectionCardWhite}`}>
+              <div className={styles.process__layout}>
+                <Reveal as="div" x={-40} amount={0.05} className={styles.process__img}>
+                  <img
+                    src="/images/home/hero_real_team2.png"
+                    alt="Development team at work"
+                    className={styles.processImg}
+                  />
+                </Reveal>
+                <div className={styles.process__steps}>
+                  <div className={styles.section_head} style={{ textAlign: "left", marginBottom: "1.5rem" }}>
+                    <p className={styles.section_label}>Development Process</p>
+                    <h2 className={styles.section_title} style={{ textAlign: "left" }}>How <span>We Work</span></h2>
+                  </div>
+                  {STEPS.map((s, i) => (
+                    <Reveal as="div" key={i} {...cardEntrance(i + 1)} duration={0.45} delay={i * 0.07} amount={0.05} className={styles.step}>
+                      <div className={styles.step__num}>{s.n}</div>
+                      <div className={styles.step__content}>
+                        <p className={styles.step__title}>{s.t}</p>
+                        <p className={styles.step__body}>{s.b}</p>
+                      </div>
+                    </Reveal>
+                  ))}
+                </div>
               </div>
             </div>
           </Reveal>
 
-          {/* TEAM FORMATION PATTERNS */}
-          <Reveal as="section" y={40} className={styles.patternsSection}>
+          {/* LAB DEVELOPMENT (+ Team Formation Patterns, inside the same card) */}
+          <Reveal as="section" id="section-lab" y={40} className={styles.detail_section}>
             <SectionDecor variant="section" />
-            <h2 className={styles.patternsTitle}>Team Formation Patterns</h2>
-            <div className={styles.patternsGrid}>
-              {PATTERNS.map((p, pi) => (
-                <Reveal as="div" key={pi} {...cardEntrance(pi + 2)} duration={0.5} delay={pi * 0.1} amount={0.2} className={styles.patternCard}>
-                  <div className={styles.patternImgFrame}>
-                    <Image src={p.img} alt={p.title} className={styles.patternImg} />
+            <div className={styles.detail_section__inner}>
+              <div className={styles.detail_section__row}>
+                <div className={styles.detail_section__text}>
+                  <p className={styles.eyebrow}>Lab Development</p>
+                  <h2 className={styles.labH2}>Dedicated Team,<br /><span>Fixed Monthly Cost</span></h2>
+                  {`Our Lab-type offshore development service provides you with a dedicated development team at a fixed monthly cost. Rather than per-project outsourcing, a dedicated engineer team works continuously as your own resource.
+
+The team deeply understands your business and tech stack, minimizing communication overhead while delivering fast, high-quality development.
+
+From startups to mid-sized enterprises, this model is ideal for any company that needs continuous development and improvement.`.split("\n\n").map((para, j) => (
+                    <p key={j} className={styles.detail_section__para}>{para}</p>
+                  ))}
+                </div>
+                <div className={styles.detail_section__img}>
+                  <div className={styles.detail_section__imgFrame}>
+                    <Image
+                      src={TeamMbersImg}
+                      alt="Lab Development"
+                      width={520}
+                      height={420}
+                      style={{ width: "100%", height: "auto", objectFit: "cover" }}
+                    />
                   </div>
-                  <h3 className={styles.patternCardTitle}>{p.title}</h3>
-                  <p className={styles.patternCardDesc}>{p.desc}</p>
-                </Reveal>
-              ))}
+                </div>
+              </div>
+
+              <div className={styles.detail_section__patterns}>
+                <h3 className={styles.patternsTitle}>Team Formation Patterns</h3>
+                <div className={styles.patternsGrid}>
+                  {PATTERNS.map((p, pi) => (
+                    <Reveal as="div" key={pi} {...cardEntrance(pi + 2)} duration={0.5} delay={pi * 0.1} amount={0.2} className={styles.patternCard}>
+                      <div className={styles.patternImgFrame}>
+                        <Image src={p.img} alt={p.title} className={styles.patternImg} />
+                      </div>
+                      <h3 className={styles.patternCardTitle}>{p.title}</h3>
+                      <p className={styles.patternCardDesc}>{p.desc}</p>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
             </div>
           </Reveal>
 
