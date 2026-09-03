@@ -182,7 +182,14 @@ export default function AnimatedHeroBackdrop({ className, tone = "brand", densit
       canvas.height = height;
 
       if (shapes.length === 0) {
-        const baseCount = Math.max(9, Math.min(16, Math.round((width * height) / 85000)));
+        // The old max of 16 meant a normal-height (~500px) section and an
+        // unusually tall one (e.g. Contact's single long form section,
+        // ~1400px+) both topped out at the same shape count — spread over
+        // far more area, the tall section's shapes end up sparse and
+        // unevenly clustered instead of an even, comparable density.
+        // Raising the cap lets count keep scaling with actual area while
+        // the min (9) still protects small sections from looking empty.
+        const baseCount = Math.max(9, Math.min(28, Math.round((width * height) / 85000)));
         const count = Math.max(4, Math.round(baseCount * densityRef.current));
         for (let i = 0; i < count; i += 1) {
           const shape = createShape(width, height, toneRef.current, densityRef.current);

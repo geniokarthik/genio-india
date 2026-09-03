@@ -132,7 +132,12 @@ export default function ContactForm() {
 
             {/* CONTACT MAIN */}
             <section className={styles.contactMain}>
-                <SectionDecor variant="section" />
+                {/* Very low density — a handful of slow-moving shapes, not
+                    the normal section's full shape count. Against this
+                    card's plain white background, anything close to the
+                    default count/opacity reads as a pink/red wash instead
+                    of individual floating shapes. */}
+                <SectionDecor variant="section" density={1.5} />
                 <SectionDecor variant="section2" canvas={false} />
                 <div className={styles.heroWrap}>
                     <div className={styles.contactInner}>

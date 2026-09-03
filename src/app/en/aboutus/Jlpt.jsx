@@ -226,7 +226,7 @@ function LevelRoadmap({ milestones, dashed }) {
 export default function JapaneseClear() {
     return (
         <Reveal as="section" id="team" y={50} duration={0.8} amount={0.05} className={styles.jlptSection}>
-            <SectionDecor variant="section" />
+            <SectionDecor variant="section" density={0.75} />
             <div className={styles.container}>
                 <div className={styles.secHead}>
                     <p className={styles.secEyebrow}>Japanese Language Education</p>

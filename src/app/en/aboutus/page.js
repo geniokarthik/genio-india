@@ -83,7 +83,7 @@ export default function AboutUs() {
             <p className={styles.sectionEyebrow}>Corporate History</p>
             <h2 className={styles.sectionTitle}>The Story of Our Growth and Milestones Over the Years</h2>
           </div>
-          <SectionDecor variant="section" />
+          <SectionDecor variant="section" density={0.75} />
           <div className={styles.timeline} ref={timelineRef}>
             <div className={styles.timelineItem}>
               <h3 className={styles.timelineHeading}>

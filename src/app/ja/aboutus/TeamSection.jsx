@@ -86,7 +86,7 @@ const teamMembers = [
 export default function TeamSection() {
   return (
     <Reveal as="section" id="team" y={50} duration={0.9} className={styles.teamSection}>
-      <SectionDecor variant="section" />
+      <SectionDecor variant="section" density={0.75} />
       <div className={styles.container}>
         <div className={styles.secHead}>
           <p className={styles.secEyebrow}>私たちのチーム</p>

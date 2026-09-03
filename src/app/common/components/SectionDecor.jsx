@@ -13,15 +13,18 @@ import styles from "src/app/common/styles/Decor.module.css";
  *   <SectionDecor variant="section" />           // mid-page section
  *   <SectionDecor variant="cta" tone="light" />  // shapes on a red/dark CTA band
  *   <SectionDecor variant="hero" tone="light" /> // shapes on a red/dark hero
+ *   <SectionDecor variant="section" density={1.4} /> // richer backdrop for one
+ *                                                     // unusually large/plain section
  */
-export default function SectionDecor({ variant = "section", tone = "brand", canvas = true }) {
+export default function SectionDecor({ variant = "section", tone = "brand", canvas = true, density }) {
   const isLight = tone === "light";
+  const resolvedDensity = density ?? (variant === "hero" ? 0.55 : 1);
   return (
     <>
       {canvas && (
         <AnimatedHeroBackdrop
           tone={tone}
-          density={variant === "hero" ? 0.55 : 1}
+          density={resolvedDensity}
           className={`${styles.canvas} ${styles[`canvas--${variant}`] || ""}`}
         />
       )}
