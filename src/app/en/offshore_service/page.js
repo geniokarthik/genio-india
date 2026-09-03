@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import "../../globals.css";
+import { motion } from "framer-motion";
 import TeamMbersImg from "src/assets/images/service/teammembers.png";
 import Pattern1Img from "src/assets/images/service/en/pattern1.png";
 import Pattern2Img from "src/assets/images/service/en/pattern2.png";
@@ -11,6 +12,7 @@ import styles from "src/app/common/styles/Offshore.module.css";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import Reveal from "src/app/common/components/Reveal";
 import SectionDecor from "src/app/common/components/SectionDecor";
+import HeroParallaxDecor, { useHeroParallax } from "src/app/common/components/HeroParallaxDecor";
 import { cardEntrance } from "src/app/common/motion/variants";
 
 const BENEFITS = [
@@ -67,6 +69,8 @@ const PATTERNS = [
 ];
 
 export default function OffshoreServiceEn() {
+  const { heroRef, parallaxX, parallaxY, onMouseMove, onMouseLeave } = useHeroParallax();
+
   return (
     <>
       <main className={styles.main}>
@@ -74,22 +78,23 @@ export default function OffshoreServiceEn() {
         <Header />
 
         {/* ── HERO (full-width) ── */}
-        <section className={styles.hero}>
-          <SectionDecor variant="hero" tone="light" />
+        <section className={styles.hero} ref={heroRef} onMouseMove={onMouseMove} onMouseLeave={onMouseLeave}>
+          <motion.img
+            src="/images/home/hero-real-team.png"
+            alt="Genio India development team"
+            className={styles.heroBgImg}
+            initial={{ opacity: 0, scale: 1.06 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+          />
+          <div aria-hidden="true" className={styles.heroOverlay} />
           <div className={styles.heroInner}>
+            <HeroParallaxDecor x={parallaxX} y={parallaxY} />
             <Reveal as="div" x={-50} duration={0.8} immediate className={styles.hero__text}>
               <p className={styles.hero__label}>Offshore Services</p>
               <h1 className={styles.hero__title}>
-                Offshoring means giving some work to a company in another country where labor costs are lower to save money.
+                Offshoring means giving some work to a company in another country where <span>labor costs are lower</span> to save money.
               </h1>
-            </Reveal>
-
-            <Reveal as="div" x={50} duration={0.8} delay={0.2} immediate className={styles.hero__collage}>
-              <img
-                src="/images/home/hero-real-team.png"
-                alt="Genio India development team"
-                className={styles.heroImg}
-              />
             </Reveal>
           </div>
         </section>

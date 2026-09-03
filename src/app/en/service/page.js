@@ -1,10 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import "../../globals.css";
 import { motion, AnimatePresence } from "framer-motion";
 import DesktopImg from "src/assets/images/service/desktop.png";
 import AppDevelopmentImg from "src/assets/images/service/appdevelopment.png";
+import MySQLImg from "src/assets/images/service/mysql.png";
 import SalesImg from "src/assets/images/service/Sales.png";
 import chatbotImg from "src/assets/images/service/chatbot.png";
 import tarteImg from "src/assets/images/service/tarte.png";
@@ -16,6 +17,7 @@ import styles from "src/app/common/styles/Service.module.css";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import Reveal from "src/app/common/components/Reveal";
 import SectionDecor from "src/app/common/components/SectionDecor";
+import HeroParallaxDecor, { useHeroParallax } from "src/app/common/components/HeroParallaxDecor";
 import { cardEntrance } from "src/app/common/motion/variants";
 
 const SERVICES = [
@@ -96,7 +98,7 @@ We prioritize security, scalability, and intuitive UI/UX design — delivering s
     titleSpan: "Optimization",
     link: "/en/contactus",
     linkText: "Talk database requirements →",
-    img: "/images/service/database-admin.png",
+    img: MySQLImg,
     imgAlt: "MySQL Database",
     objectFit: "contain",
     text: `We provide comprehensive solutions for MySQL document reading and data processing, supporting efficient retrieval, analysis, and management of structured data.
@@ -161,7 +163,16 @@ const PROJECTS = [
   },
 ];
 
-const SPAN2 = ["Languages", "Databases", "IDEs & Design Tools", "AWS Services"];
+const TECH_CATEGORY_ICONS = [
+  <svg key="os" viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>,
+  <svg key="lang" viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="8 6 3 12 8 18"/><polyline points="16 6 21 12 16 18"/></svg>,
+  <svg key="fw" viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>,
+  <svg key="db" viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>,
+  <svg key="cms" viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>,
+  <svg key="ide" viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><polyline points="7 9 10 12 7 15"/><line x1="12" y1="15" x2="16" y2="15"/></svg>,
+  <svg key="mw" viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="6" rx="1.5"/><rect x="2" y="15" width="20" height="6" rx="1.5"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>,
+  <svg key="aws" viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>,
+];
 
 const techAreas = [
   {
@@ -255,10 +266,43 @@ const techAreas = [
 
 export default function ServiceEn() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [activeTech, setActiveTech] = useState(0);
+  const techTrackRef = useRef(null);
+  const { heroRef, parallaxX, parallaxY, onMouseMove, onMouseLeave } = useHeroParallax();
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
+  const scrollTechCardIntoView = (idx) => {
+    requestAnimationFrame(() => {
+      const track = techTrackRef.current;
+      const card = track?.children[idx];
+      if (!track || !card) return;
+      // Scroll only the horizontal track itself (never scrollIntoView) so this
+      // can never drag the whole page's vertical scroll position along with it.
+      const offset = card.offsetLeft - (track.clientWidth - card.clientWidth) / 2;
+      track.scrollTo({ left: offset, behavior: "smooth" });
+    });
+  };
+
+  const selectTech = (idx) => {
+    setActiveTech(idx);
+    scrollTechCardIntoView(idx);
+  };
+
+  const goTech = (dir) => {
+    setActiveTech((prev) => {
+      const next = (prev + dir + techAreas.length) % techAreas.length;
+      scrollTechCardIntoView(next);
+      return next;
+    });
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => goTech(1), 4000);
+    return () => clearTimeout(timer);
+  }, [activeTech]);
 
   return (
     <>
@@ -267,10 +311,19 @@ export default function ServiceEn() {
         <Header />
 
         {/* ── PAGE HERO (full-width) ── */}
-        <section className={styles.hero}>
-          <SectionDecor variant="hero" />
+        <section className={styles.hero} ref={heroRef} onMouseMove={onMouseMove} onMouseLeave={onMouseLeave}>
+          <motion.img
+            src="/images/service/service.png"
+            alt="What We Offer"
+            className={styles.heroBgImg}
+            initial={{ opacity: 0, scale: 1.06 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+          />
+          <div aria-hidden="true" className={styles.heroOverlay} />
           <div className={styles.heroWrap}>
-            <Reveal as="div" y={30} duration={0.8} immediate className={styles.hero__text}>
+            <HeroParallaxDecor x={parallaxX} y={parallaxY} />
+            <Reveal as="div" x={-50} duration={0.8} immediate className={styles.hero__text}>
               <p className={styles.hero__label}>What We Offer</p>
               <h1 className={styles.hero__title}>
                 India-Based High Quality, <span>Low Cost</span> Offshore Development
@@ -279,19 +332,19 @@ export default function ServiceEn() {
                 We build web systems, apps, and MySQL databases from scratch.
                 Our dedicated team meets Japanese market quality standards.
               </p>
-            </Reveal>
-            <Reveal as="div" y={20} duration={0.6} delay={0.3} immediate className={styles.svcTabs}>
-              {SERVICES.map((item) => (
-                <a
-                  key={item.id}
-                  href={`#section-${item.id}`}
-                  className={styles.svcTab}
-                  onClick={(e) => { e.preventDefault(); scrollTo(`section-${item.id}`); }}
-                >
-                  {ServiceIcons[item.id]}
-                  {item.label}
-                </a>
-              ))}
+              <div className={styles.svcTabs}>
+                {SERVICES.map((item) => (
+                  <a
+                    key={item.id}
+                    href={`#section-${item.id}`}
+                    className={styles.svcTab}
+                    onClick={(e) => { e.preventDefault(); scrollTo(`section-${item.id}`); }}
+                  >
+                    {ServiceIcons[item.id]}
+                    {item.label}
+                  </a>
+                ))}
+              </div>
             </Reveal>
           </div>
         </section>
@@ -314,13 +367,15 @@ export default function ServiceEn() {
                     <Link href={d.link} className={styles.svcLink}>{d.linkText}</Link>
                   </div>
                   <div className={styles.svcImg}>
-                    <Image
-                      src={d.img}
-                      alt={d.imgAlt}
-                      width={520}
-                      height={380}
-                      style={{ width: "100%", height: "380px", borderRadius: "20px", objectFit: d.objectFit || "cover", display: "block", boxShadow: "0 20px 60px rgba(0,0,0,0.1)" }}
-                    />
+                    <div className={styles.svcImgFrame}>
+                      <Image
+                        src={d.img}
+                        alt={d.imgAlt}
+                        width={520}
+                        height={380}
+                        style={{ objectFit: d.objectFit || "cover" }}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -456,32 +511,70 @@ export default function ServiceEn() {
             <div className={styles.section_head}>
               <p className={styles.section_label}>Technical Coverage</p>
               <h2 className={styles.section_title}>Technology Areas <span>We Support</span></h2>
-              <p className={styles.techLead}>Browse our technology stack by category.</p>
+              <p className={styles.techLead}>Tap a category to see the exact tools we work with.</p>
             </div>
-            <div className={styles.techGrid}>
+
+            <div className={styles.techCarousel}>
+              <button type="button" className={styles.techArrow} onClick={() => goTech(-1)} aria-label="Previous category">
+                <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+
+              <div className={styles.techTrack} ref={techTrackRef}>
+                {techAreas.map((area, idx) => (
+                  <motion.button
+                    layout
+                    type="button"
+                    key={area.category}
+                    className={`${styles.techCardMini} ${idx === activeTech ? styles.techCardMiniActive : ""}`}
+                    onClick={() => selectTech(idx)}
+                  >
+                    <motion.span layout="position" className={styles.techCardMiniIcon}>{TECH_CATEGORY_ICONS[idx]}</motion.span>
+                    <motion.p layout="position" className={styles.techCardMiniTitle}>{area.category}</motion.p>
+                    <motion.span layout="position" className={styles.techCardMiniBadge}>{area.items.length} TECHNOLOGIES</motion.span>
+
+                    <AnimatePresence initial={false}>
+                      {idx === activeTech && (
+                        <motion.div
+                          key="items"
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.25 }}
+                          className={styles.techCardMiniItems}
+                        >
+                          <div className={styles.techItems}>
+                            {area.items.map((item) => (
+                              <div className={styles.techItem} key={`${area.category}-${item.name}`}>
+                                {item.logo ? (
+                                  <img src={item.logo} alt={item.name} loading="lazy" />
+                                ) : (
+                                  <span className={styles.techFallback}>{item.name.slice(0, 2).toUpperCase()}</span>
+                                )}
+                                <span>{item.name}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.button>
+                ))}
+              </div>
+
+              <button type="button" className={styles.techArrow} onClick={() => goTech(1)} aria-label="Next category">
+                <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
+
+            <div className={styles.techDots}>
               {techAreas.map((area, idx) => (
-                <Reveal
-                  as="div"
+                <button
+                  type="button"
                   key={area.category}
-                  {...cardEntrance(idx + 3)}
-                  duration={0.45}
-                  delay={idx * 0.05}
-                  className={`${styles.techCard} ${SPAN2.includes(area.category) ? styles.techCardSpan2 : ""}`}
-                >
-                  <h3 className={styles.techCardHead}>{area.category}</h3>
-                  <div className={styles.techItems}>
-                    {area.items.map((item) => (
-                      <div className={styles.techItem} key={`${area.category}-${item.name}`}>
-                        {item.logo ? (
-                          <img src={item.logo} alt={item.name} loading="lazy" />
-                        ) : (
-                          <span className={styles.techFallback}>{item.name.slice(0, 2).toUpperCase()}</span>
-                        )}
-                        <span>{item.name}</span>
-                      </div>
-                    ))}
-                  </div>
-                </Reveal>
+                  className={`${styles.techDot} ${idx === activeTech ? styles.techDotActive : ""}`}
+                  onClick={() => selectTech(idx)}
+                  aria-label={area.category}
+                />
               ))}
             </div>
           </Reveal>

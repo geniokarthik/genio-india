@@ -34,53 +34,81 @@
    HERO — full-width, on-brand red
 ══════════════════════════════════════ */
 .hero {
-  background: linear-gradient(135deg, #e22110 0%, #c41d0e 55%, #8f1509 100%);
-  padding: 6rem 0 5rem;
   position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
   overflow: hidden;
 }
 
-.hero::before {
-  content: '';
+.heroBgImg {
   position: absolute;
-  top: -80px; right: -80px;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(255,255,255,0.16) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  z-index: 0;
 }
 
-.hero::after {
-  content: '';
+.heroOverlay {
   position: absolute;
-  bottom: -60px; left: -60px;
-  width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(0,0,0,0.18) 0%, transparent 70%);
-  border-radius: 50%;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    #ffece9 30%,
+    rgba(255, 236, 233, 0.92) 45%,
+    rgba(255, 236, 233, 0.5) 62%,
+    transparent 80%
+  );
+  z-index: 1;
   pointer-events: none;
 }
 
 .heroInner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 5%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.5rem;
-  align-items: center;
+  width: 55%;
+  flex-shrink: 0;
+  padding: 64px 56px 64px 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.heroInner::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(226, 33, 16, 0.10) 0%, transparent 68%);
+  pointer-events: none;
+}
+
+.heroInner::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -60px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(226, 33, 16, 0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero__text {
   position: relative;
   z-index: 1;
 }
-
-.hero__text { min-width: 0; }
 
 .hero__label {
   font-size: 0.8rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.85);
+  color: #e22110;
   margin-bottom: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   display: block;
 }
 
@@ -89,7 +117,7 @@
   display: inline-block;
   width: 22px;
   height: 2px;
-  background: #fff;
+  background: #e22110;
   margin-right: 9px;
   vertical-align: middle;
   border-radius: 2px;
@@ -97,29 +125,13 @@
 
 .hero__title {
   font-family: 'Archivo', sans-serif;
-  font-size: clamp(1.3rem, 2.4vw, 2.2rem);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
   font-weight: 900;
-  line-height: 1.3;
-  color: #ffffff;
+  line-height: 1.35;
+  color: #111827;
   margin-bottom: 0;
 }
-
-.hero__collage {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.heroImg {
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-  border-radius: 20px;
-  display: block;
-  border: 4px solid rgba(255,255,255,0.18);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.35);
-}
+.hero__title span { color: #e22110; }
 
 /* ══════════════════════════════════════
    BENEFITS SECTION
@@ -438,7 +450,13 @@
    RESPONSIVE
 ══════════════════════════════════════ */
 @media (max-width: 900px) {
+  .heroInner { padding: 3rem 5%; }
+
   .benefits_grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .heroInner { padding: 2.5rem 5%; }
 }
 
 @media (max-width: 560px) {
@@ -446,19 +464,6 @@
 }
 
 @media (max-width: 768px) {
-  .heroInner {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .heroImg {
-    height: 260px;
-  }
-
-  .hero {
-    padding: 4rem 0 3rem;
-  }
-
   .benefits_grid { grid-template-columns: repeat(2, 1fr); }
 
   .process__layout {

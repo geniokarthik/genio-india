@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import "../../globals.css";
+import { motion } from "framer-motion";
 import TeamMbersImg from "src/assets/images/service/teammembers.png";
 import Pattern1Img from "src/assets/images/service/ja/pattern1.png";
 import Pattern2Img from "src/assets/images/service/ja/pattern2.png";
@@ -11,6 +12,7 @@ import styles from "src/app/common/styles/Offshore.module.css";
 import ScrollTop from "src/app/common/scrolltop/ScrollTop";
 import Reveal from "src/app/common/components/Reveal";
 import SectionDecor from "src/app/common/components/SectionDecor";
+import HeroParallaxDecor, { useHeroParallax } from "src/app/common/components/HeroParallaxDecor";
 import { cardEntrance } from "src/app/common/motion/variants";
 
 const BENEFITS = [
@@ -67,29 +69,32 @@ const PATTERNS = [
 ];
 
 export default function OffshoreServiceJa() {
+  const { heroRef, parallaxX, parallaxY, onMouseMove, onMouseLeave } = useHeroParallax();
+
   return (
     <>
       <main className={styles.main}>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet" />
         <Header />
 
-        {/* ── ダークヒーロー（全幅）── */}
-        <section className={styles.hero}>
-          <SectionDecor variant="hero" tone="light" />
+        {/* ── ヒーロー（全幅）── */}
+        <section className={styles.hero} ref={heroRef} onMouseMove={onMouseMove} onMouseLeave={onMouseLeave}>
+          <motion.img
+            src="/images/home/hero-real-team.png"
+            alt="Genio India 開発チーム"
+            className={styles.heroBgImg}
+            initial={{ opacity: 0, scale: 1.06 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+          />
+          <div aria-hidden="true" className={styles.heroOverlay} />
           <div className={styles.heroInner}>
+            <HeroParallaxDecor x={parallaxX} y={parallaxY} />
             <Reveal as="div" x={-50} duration={0.8} immediate className={styles.hero__text}>
               <p className={styles.hero__label}>オフショアサービス</p>
               <h1 className={styles.hero__title}>
-                オフショアとは、コスト削減を目的として人件費の安い海外企業に業務を委託することです。
+                オフショアとは、<span>コスト削減</span>を目的として人件費の安い海外企業に業務を委託することです。
               </h1>
-            </Reveal>
-
-            <Reveal as="div" x={50} duration={0.8} delay={0.2} immediate className={styles.hero__collage}>
-              <img
-                src="/images/home/hero-real-team.png"
-                alt="Genio India 開発チーム"
-                className={styles.heroImg}
-              />
             </Reveal>
           </div>
         </section>
