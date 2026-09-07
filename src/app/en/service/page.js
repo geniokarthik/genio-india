@@ -135,7 +135,7 @@ const PROJECTS = [
     tagline: "A ledger management system built for sales teams. Centralizes revenue, deals, and customer data to dramatically improve operational efficiency.",
     client: "GENIO INDIA",
     category: "Business System",
-    outline: "We designed and built a ledger system from scratch for sales staff to log and manage daily activities. Features include real-time sales visualization, deal status tracking, and customer management — all optimized for mobile use.",
+    outline: "Smart Sales Ledger is your all-in-one business companion — manage customers and suppliers, track sales, purchases, and payments, and monitor outstanding balances in real time. Keep control of your products and stock, add staff with role-based access, and get clear insights with dashboards and downloadable PDF reports, all in one simple app.",
     tags: ["Flutter", "Laravel", "MySQL", "Firebase"],
     appLinks: { googlePlay: "https://play.google.com/store/apps/details?id=in.co.genioindia.SmartSalesLedger", appStore: "https://apps.apple.com/in/app/smart-sales-ledger/id6790286264" },
   },

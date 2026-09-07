@@ -135,7 +135,7 @@ const PROJECTS = [
     tagline: "営業チームのための台帳管理システム。売上・案件・顧客情報を一元管理し、業務効率を大幅に向上させます。",
     client: "GENIO INDIA",
     category: "業務システム",
-    outline: "営業スタッフが日々の活動を記録・管理するための台帳システムをゼロから設計・開発しました。リアルタイムの売上可視化、案件ステータス管理、顧客管理機能を備え、モバイル操作に最適化されています。",
+    outline: "Smart Sales Ledger は、ビジネスに必要なすべてを一つにまとめたアプリです。顧客・仕入先の管理、売上・仕入・支払いの記録、未払い残高のリアルタイム追跡に対応。在庫・商品の管理、役割ベースのスタッフアクセス設定、ダッシュボードやPDFレポートによる経営分析まで、すべてをシンプルな一つのアプリで完結できます。",
     tags: ["Flutter", "Laravel", "MySQL", "Firebase"],
     appLinks: { googlePlay: "https://play.google.com/store/apps/details?id=in.co.genioindia.SmartSalesLedger", appStore: "https://apps.apple.com/in/app/smart-sales-ledger/id6790286264" },
   },
