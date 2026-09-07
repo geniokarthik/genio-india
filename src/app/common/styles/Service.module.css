@@ -1067,6 +1067,78 @@
 }
 .drawerBack:hover { color: #0f172a; }
 
+/* ── Drawer App Download CTA ── */
+.drawerAppCta {
+  margin-top: 28px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #c0392b 0%, #8e1a0e 100%);
+  padding: 28px 24px;
+  text-align: center;
+}
+.drawerAppCtaTitle {
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(1.2rem, 3vw, 1.55rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+.drawerAppCtaDesc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.drawerAppBtns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.appStoreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #111;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 18px;
+  text-decoration: none;
+  transition: background .18s, transform .15s;
+  min-width: 145px;
+}
+.appStoreBtn:hover { background: #000; transform: translateY(-1px); }
+.appStoreBtn span {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.25;
+  font-size: 15px;
+  font-weight: 700;
+}
+.appStoreBtn span small {
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: .05em;
+  opacity: .75;
+  text-transform: uppercase;
+}
+.appStoreBtnDisabled {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #111;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: 700;
+  min-width: 145px;
+  justify-content: center;
+  opacity: .7;
+  cursor: default;
+}
+
 /* responsive */
 @media (max-width: 900px) {
   .projects__grid { grid-template-columns: repeat(2,1fr); }
@@ -1277,7 +1349,9 @@
 }
 
 .techItem span {
-  overflow-wrap: anywhere;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  white-space: nowrap;
 }
 
 .techItem img {
@@ -1314,9 +1388,22 @@
   .techCarousel { gap: 0.6rem; }
   .techArrow { width: 36px; height: 36px; }
   .techArrow svg { width: 15px; height: 15px; }
-  .techCardMini { width: 220px; padding: 20px 14px; }
+  .techCardMini { width: calc(100vw - 32px); max-width: 420px; padding: 20px 16px; }
   .techCardMiniIcon { width: 40px; height: 40px; margin-bottom: 10px; }
   .techCardMiniIcon svg { width: 20px; height: 20px; }
   .techCardMiniTitle { font-size: 0.88rem; }
-  .techCardMiniItems .techItems { gap: 10px 8px; padding: 10px; }
+  .techCardMiniItems .techItems {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 6px;
+    padding: 10px;
+  }
+  .techItem {
+    font-size: 0.75rem;
+    gap: 5px;
+    overflow: hidden;
+  }
+  .techItem img {
+    width: 16px;
+    height: 16px;
+  }
 }

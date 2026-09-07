@@ -79,7 +79,7 @@ const profile = [
   ["Established",        "July 28, 2022"],
   ["Representative",     "TAKUYA YONEDA"],
   ["Location",           "Namakkal, Tamil Nadu, India"],
-  ["Delivered Projects", "5"],
+  ["Delivered Projects", "9"],
   ["Parent Company",     "Genio Co., Ltd."],
 ];
 

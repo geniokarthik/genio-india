@@ -137,6 +137,7 @@ const PROJECTS = [
     category: "業務システム",
     outline: "営業スタッフが日々の活動を記録・管理するための台帳システムをゼロから設計・開発しました。リアルタイムの売上可視化、案件ステータス管理、顧客管理機能を備え、モバイル操作に最適化されています。",
     tags: ["Flutter", "Laravel", "MySQL", "Firebase"],
+    appLinks: { googlePlay: "https://play.google.com/store/apps/details?id=in.co.genioindia.SmartSalesLedger", appStore: "https://apps.apple.com/in/app/smart-sales-ledger/id6790286264" },
   },
   {
     id: "cb", type: "built", number: "No.02",
@@ -491,6 +492,47 @@ export default function ServiceJa() {
                             {selectedProject.tags.map((t) => (
                               <span key={t} className={styles.dtag}>{t}</span>
                             ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {selectedProject.appLinks && (
+                        <div className={styles.drawerAppCta}>
+                          <h3 className={styles.drawerAppCtaTitle}>ビジネスをもっと、<br />スマートに。</h3>
+                          <p className={styles.drawerAppCtaDesc}>Smart Sales Ledgerをダウンロードして、今日から無料トライアルを始めましょう。クレジットカード不要。</p>
+                          <div className={styles.drawerAppBtns}>
+                            {selectedProject.appLinks.googlePlay && (
+                              <a href={selectedProject.appLinks.googlePlay} className={styles.appStoreBtn} target="_blank" rel="noopener noreferrer">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                  <path d="M3.18 1.07 13.35 12 3.18 22.93A2 2 0 0 1 2 21.14V2.86A2 2 0 0 1 3.18 1.07Z" fill="#EA4335"/>
+                                  <path d="m13.35 12 3.06-3.06 4.24 2.45a2 2 0 0 1 0 3.22l-4.24 2.45Z" fill="#FBBC05"/>
+                                  <path d="M3.18 1.07 13.35 12 16.41 8.94l-9.52-5.5A2 2 0 0 0 3.18 1.07Z" fill="#4CAF50"/>
+                                  <path d="M3.18 22.93 13.35 12l3.06 3.06-9.52 5.5a2 2 0 0 1-3.71-1.63Z" fill="#1A73E8"/>
+                                </svg>
+                                <span>
+                                  <small>GET IT ON</small>
+                                  Google Play
+                                </span>
+                              </a>
+                            )}
+                            {selectedProject.appLinks.appStore ? (
+                              <a href={selectedProject.appLinks.appStore} className={styles.appStoreBtn} target="_blank" rel="noopener noreferrer">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                </svg>
+                                <span>
+                                  <small>DOWNLOAD ON THE</small>
+                                  App Store
+                                </span>
+                              </a>
+                            ) : (
+                              <div className={styles.appStoreBtnDisabled}>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                                </svg>
+                                <span>Coming Soon</span>
+                              </div>
+                            )}
                           </div>
                         </div>
                       )}
