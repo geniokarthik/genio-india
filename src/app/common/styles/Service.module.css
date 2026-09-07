@@ -1265,7 +1265,7 @@
 .techCardMini {
   scroll-snap-align: center;
   flex: 0 0 auto;
-  width: 260px;
+  width: 320px;
   background: #f9fafb;
   border: 2px solid transparent;
   border-radius: 18px;
@@ -1325,11 +1325,14 @@
 }
 .techCardMiniItems .techItems {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(115px, 1fr));
   align-content: start;
   gap: 12px 10px;
   padding: 14px;
   margin: 0;
+}
+.techCardMiniItems .techItems .techItem:only-child {
+  grid-column: 1 / -1;
 }
 
 .techItems {
@@ -1341,6 +1344,7 @@
 .techItem {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 7px;
   min-width: 0;
   font-size: 0.82rem;
@@ -1349,23 +1353,33 @@
 }
 
 .techItem span {
-  word-break: keep-all;
-  overflow-wrap: normal;
-  white-space: nowrap;
+  min-width: 0;
+  flex: 0 1 auto;
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  line-height: 1.3;
 }
 
 .techItem img {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
+  padding: 3px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 1px 2px rgba(17, 24, 39, 0.08);
   object-fit: contain;
   flex-shrink: 0;
+  align-self: flex-start;
 }
 
 .techFallback {
-  width: 20px;
-  height: 20px;
-  background: rgba(226, 33, 16, 0.08);
-  border-radius: 4px;
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(17, 24, 39, 0.08);
+  border-radius: 7px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1373,6 +1387,7 @@
   font-weight: 800;
   color: #e22110;
   flex-shrink: 0;
+  align-self: flex-start;
 }
 
 /* Responsive: proj grid + tech carousel */
@@ -1385,25 +1400,25 @@
 }
 
 @media (max-width: 640px) {
-  .techCarousel { gap: 0.6rem; }
-  .techArrow { width: 36px; height: 36px; }
-  .techArrow svg { width: 15px; height: 15px; }
-  .techCardMini { width: calc(100vw - 32px); max-width: 420px; padding: 20px 16px; }
+  .techCarousel { gap: 0.35rem; }
+  .techArrow { width: 30px; height: 30px; }
+  .techArrow svg { width: 13px; height: 13px; }
+  .techCardMini { width: min(260px, calc(100vw - 112px)); padding: 18px 12px; }
   .techCardMiniIcon { width: 40px; height: 40px; margin-bottom: 10px; }
   .techCardMiniIcon svg { width: 20px; height: 20px; }
   .techCardMiniTitle { font-size: 0.88rem; }
   .techCardMiniItems .techItems {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px 6px;
-    padding: 10px;
+    padding: 8px;
   }
   .techItem {
-    font-size: 0.75rem;
     gap: 5px;
-    overflow: hidden;
+    font-size: 0.74rem;
   }
-  .techItem img {
-    width: 16px;
-    height: 16px;
+  .techItem img, .techFallback {
+    width: 18px;
+    height: 18px;
+    padding: 2px;
   }
 }
